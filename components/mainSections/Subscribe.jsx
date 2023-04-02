@@ -31,7 +31,6 @@ function Subscribe() {
               />
               <div className=" group flex justify-start items-center transition-all py-3 px-7 hover:md:bg-[#3554d1] bg-[#f8d448] rounded">
                 <button className="text-[15px] font-medium  transition-all group-hover:md:text-white font-sans text-[#051036]  ">
-                  {" "}
                   Subscribe
                 </button>
               </div>

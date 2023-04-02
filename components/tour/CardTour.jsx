@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { BiHeart } from "react-icons/bi";
-import Currency from "react-currency-formatter";
+
 import ImageSlider from "./ImageSlider";
 
 function CardTour({ image, location, title, description, price }) {
@@ -57,7 +57,7 @@ function CardTour({ image, location, title, description, price }) {
         </span>
         <span className="text-[#0d6efd]">
           us
-          <Currency quantity={price} />
+          {price}
         </span>
       </div>
     </div>
