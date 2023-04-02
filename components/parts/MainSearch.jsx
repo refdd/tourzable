@@ -5,75 +5,58 @@ import SearcHome from "./SearcHome";
 function MainSearch() {
   const { handleClick, isClicked, setIsClicked } = useStateContext();
   useEffect(() => {
-    setIsClicked({ hote: true });
+    setIsClicked({ Packages: true });
   }, []);
   return (
     <div className="flex flex-col items-center justify-center mt-5 md:mt-20">
       {/* search types */}
       <ul className="flex items-center space-x-8 md:space-x-10 ">
         <li
-          onClick={() => handleClick("hote")}
+          onClick={() => handleClick("Packages")}
           className="relative flex justify-center items-center"
         >
           <span
             className={`${
-              isClicked.hote ? "text-[#3554D1] " : "text-white"
+              isClicked.Packages ? "text-[#3554D1] " : "text-white"
             } font-sans text-[15px] font-medium cursor-pointer capitalize md:text-xl`}
           >
-            hote
+            Packages
           </span>
-          {isClicked.hote ? (
+          {isClicked.Packages ? (
             <span className="absolute -bottom-2 left-0 h-[1px] w-full bg-white " />
           ) : (
             ""
           )}
         </li>
         <li
-          onClick={() => handleClick("tour")}
+          onClick={() => handleClick("Activities")}
           className="relative flex justify-center items-center"
         >
           <span
             className={`${
-              isClicked.tour ? "text-[#3554D1] " : "text-white"
+              isClicked.Activities ? "text-[#3554D1] " : "text-white"
             } font-sans text-[15px] font-medium cursor-pointer capitalize md:text-xl`}
           >
-            tour
+            Activities
           </span>
-          {isClicked.tour ? (
+          {isClicked.Activities ? (
             <span className="absolute -bottom-2 left-0 h-[1px] w-full bg-white " />
           ) : (
             ""
           )}
         </li>
         <li
-          onClick={() => handleClick("acitivty")}
+          onClick={() => handleClick("UmrahPlus")}
           className="relative flex justify-center items-center"
         >
           <span
             className={`${
-              isClicked.acitivty ? "text-[#3554D1] " : "text-white"
+              isClicked.UmrahPlus ? "text-[#3554D1] " : "text-white"
             } font-sans text-[15px] font-medium cursor-pointer capitalize md:text-xl`}
           >
-            acitivity
+            Umrah Plus
           </span>
-          {isClicked.acitivty ? (
-            <span className="absolute -bottom-2 left-0 h-[1px] w-full bg-white " />
-          ) : (
-            ""
-          )}
-        </li>
-        <li
-          onClick={() => handleClick("HolidayRentals")}
-          className="relative flex justify-center items-center"
-        >
-          <span
-            className={`${
-              isClicked.HolidayRentals ? "text-[#3554D1] " : "text-white"
-            } font-sans text-[15px] font-medium cursor-pointer capitalize md:text-xl`}
-          >
-            holiday Rentals
-          </span>
-          {isClicked.HolidayRentals ? (
+          {isClicked.UmrahPlus ? (
             <span className="absolute -bottom-2 left-0 h-[1px] w-full bg-white " />
           ) : (
             ""

@@ -3,10 +3,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const StateContext = createContext();
 
 const initialState = {
-  hote: false,
-  tour: false,
-  acitivty: false,
-  HolidayRentals: false,
+  Packages: false,
+  Activities: false,
+  UmrahPlus: false,
 };
 
 export const ContextProvider = ({ children }) => {

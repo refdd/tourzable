@@ -18,11 +18,6 @@ import { Pagination } from "swiper";
 function TourRow() {
   return (
     <div className="container mx-auto px-4 mb-11">
-      <HeaderSections
-        titel={"Recommended Hotels"}
-        desc={"Interdum et malesuada fames ac ante ipsum"}
-      />
-
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -49,36 +44,44 @@ function TourRow() {
         <SwiperSlide>
           <CardTour
             image={[Hotel, Hotel2, Hotel3]}
-            location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            location="jeddah"
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+            }
             price={23}
           />
         </SwiperSlide>
         <SwiperSlide>
           <CardTour
             image={[Hotel2, Hotel3, Hotel]}
-            location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            location="Riyadh"
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+            }
             price={23}
           />
         </SwiperSlide>
         <SwiperSlide>
           <CardTour
             image={[Hotel3, Hotel2, Hotel3]}
-            location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            location="Al Ula"
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+            }
             price={23}
           />
         </SwiperSlide>
         <SwiperSlide>
           <CardTour
             image={[Hotel2, Hotel, Hotel3]}
-            location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            location="Riyadh"
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -86,8 +89,10 @@ function TourRow() {
           <CardTour
             image={[Hotel, Hotel3, Hotel2]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -95,8 +100,10 @@ function TourRow() {
           <CardTour
             image={[Hotel3, Hotel, Hotel2]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -104,8 +111,10 @@ function TourRow() {
           <CardTour
             image={[Hotel2, Hotel2, Hotel]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -113,8 +122,10 @@ function TourRow() {
           <CardTour
             image={[Hotel, Hotel3, Hotel2]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -122,8 +133,10 @@ function TourRow() {
           <CardTour
             image={[Hotel2, Hotel, Hotel3]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -131,8 +144,10 @@ function TourRow() {
           <CardTour
             image={[Hotel3, Hotel2, Hotel]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -140,8 +155,10 @@ function TourRow() {
           <CardTour
             image={[Hotel, Hotel, Hotel]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -149,8 +166,10 @@ function TourRow() {
           <CardTour
             image={[Hotel, Hotel, Hotel]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -158,8 +177,10 @@ function TourRow() {
           <CardTour
             image={[Hotel, Hotel, Hotel]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>
@@ -167,8 +188,10 @@ function TourRow() {
           <CardTour
             image={[Hotel, Hotel, Hotel]}
             location="Westminster Borough, London"
-            title={"The Montcalm At Brewery London"}
-            description={"Lorem ipsum dolor sit amet consectetur."}
+            title={"Explore Alula Tour Package"}
+            description={
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
+            }
             price={23}
           />
         </SwiperSlide>

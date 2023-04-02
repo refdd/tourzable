@@ -44,7 +44,11 @@ function SearcHome() {
               onChange={(e) => setLocation(e.target.value)}
               renderValue={(selected) => {
                 if (selected.length === 0) {
-                  return <em className="text-gray-500 my-4">Placeholder</em>;
+                  return (
+                    <em className="text-gray-500 my-4 capitalize">
+                      tour landmark
+                    </em>
+                  );
                 }
                 const reasit = countries.filter(
                   (item) => item.value == selected
@@ -55,7 +59,7 @@ function SearcHome() {
               displayEmpty
             >
               <MenuItem disabled value="">
-                <em>Placeholder</em>
+                <em>tour landmark</em>
               </MenuItem>
               {countries.map((item) => (
                 <MenuItem key={item.id} value={item.value}>
@@ -78,8 +82,8 @@ function SearcHome() {
           <DateRangePicker />
         </div>
         <div
-          className="  group flex space-x-1 justify-center transition-all items-center bg-[#3554d1]
-         hover:md:bg-[#051036] rounded py-5  md:flex-1  md:px-3 md:h-12 md:rounded-[100px] "
+          className="  group flex space-x-1 justify-center transition-all items-center bg-secondColor
+         hover:md:bg-mainLightColor rounded py-5  md:flex-1  md:px-3 md:h-12 md:rounded-[100px] "
         >
           <BiSearch className="text-white text-lg" />
           <button className="text-lg text-white font-sans  font-medium">

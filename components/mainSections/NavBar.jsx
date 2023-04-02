@@ -43,32 +43,27 @@ function NavBar() {
                 Home{" "}
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Categoies{" "}
+                Packages{" "}
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Destinations
+                Activities
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Blog
+                Umrah Plus
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Pages{" "}
+                Landmarks
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Dshbord
+                Saudi Travel Blog
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Contact
+                E-Visa
               </li>
             </ul>
           </div>
           {/* button distop */}
           <div className=" hidden md:flex items-center space-x-3">
-            <div className=" h-[50px] bg-white  px-7 rounded-md flex items-center justify-center ">
-              <p className="text-[#051036] text-sm  cursor-pointer">
-                Become An Expert
-              </p>
-            </div>
             <div className=" group h-[50px] border transition-all hover:bg-white border-white px-7 rounded-md flex items-center justify-cente ">
               <p className="text-[#fff] transition-all group-hover:text-[#051036]   text-sm cursor-pointer">
                 Sign In / Register
@@ -103,22 +98,22 @@ function NavBar() {
             Home{" "}
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Categoies{" "}
+            Packages
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Destinations
+            Activities
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Blog
+            Umrah Plus
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Pages{" "}
+            Landmarks
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Dshbord
+            Saudi Travel Blog
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Contact
+            E-Visa
           </li>
         </ul>
       </div>

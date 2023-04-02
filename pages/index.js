@@ -10,6 +10,8 @@ import NextTrip from "@/components/mainSections/NextTrip";
 import Subscribe from "@/components/mainSections/Subscribe";
 import DownLoadApp from "@/components/mainSections/DownLoadApp";
 import NotMember from "@/components/mainSections/NotMember";
+import Footer from "@/components/mainSections/Footer";
+import HeaderSections from "@/components/parts/HeaderSections";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,13 +26,26 @@ export default function Home() {
       </Head>
       <MainHeader />
       <WhyChooseUs />
+      <HeaderSections
+        titel={"Most Popular Saudi Tours"}
+        desc={
+          "Best Offers Of Package Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Booking And Enjoy."
+        }
+      />
       <TourRow />
+      <HeaderSections
+        titel={"Most Popular Activities"}
+        desc={
+          "Best Offers Of Activity Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Activity And Enjoy."
+        }
+      />
       <TourRow />
       <Reviews />
       <NextTrip />
       <Subscribe />
       <DownLoadApp />
       <NotMember />
+      <Footer />
     </>
   );
 }
