@@ -100,15 +100,15 @@ function Footer() {
             <p className="text-white text-[16px] font-sans font-medium capitalize border-white">
               Get Updates & More
             </p>
-            <div class="flex items-center border rounded border-white py-2 bg-white">
+            <div className="flex items-center border rounded border-white py-2 bg-white">
               <input
-                class="appearance-none bg-transparent border-none w-full text-gray-950 bg-white mr-3 py-2 rounded px-2 leading-tight focus:outline-none"
+                className="appearance-none bg-transparent border-none w-full text-gray-950 bg-white mr-3 py-2 rounded px-2 leading-tight focus:outline-none"
                 type="text"
                 placeholder="your Email"
                 aria-label="Full name"
               />
               <button
-                class="flex-shrink-0   text-lg  text-gray-950 py-1 px-4 rounded underline"
+                className="flex-shrink-0   text-lg  text-gray-950 py-1 px-4 rounded underline"
                 type="button"
               >
                 subscride

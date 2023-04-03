@@ -12,6 +12,7 @@ import DownLoadApp from "@/components/mainSections/DownLoadApp";
 import NotMember from "@/components/mainSections/NotMember";
 import Footer from "@/components/mainSections/Footer";
 import HeaderSections from "@/components/parts/HeaderSections";
+import OfferSection from "@/components/mainSections/OfferSection";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,6 +42,7 @@ export default function Home() {
       />
       <TourRow />
       <Reviews />
+      <OfferSection />
       <NextTrip />
       <Subscribe />
       <DownLoadApp />

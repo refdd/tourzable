@@ -5,7 +5,7 @@ import ReviewsSlider from "../parts/ReviewsSlider";
 
 function Reviews() {
   return (
-    <div className=" container mx-auto px-4 bg-[#13357b] py-10">
+    <div className=" container mx-auto px-4 bg-mainColor py-10">
       <div className="flex flex-col space-y-5 md:flex-row">
         {/* header review */}
         <div className="flex flex-col space-y-5 md:w-[50%] md:space-y-12 md:py-10 ">

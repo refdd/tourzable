@@ -21,10 +21,10 @@ function NavBar() {
     });
   }, []);
   return (
-    <div className="fixed top-0 left-0 z-40 w-full">
+    <div className="fixed top-0 left-0  w-full z-[10000]">
       <div className="flex flex-col">
         <div
-          className={`flex items-center justify-between transition-all px-3 py-4 md:py-2 ${
+          className={`flex items-center justify-between transition-all px-3 py-4 md:py-2  ${
             menuBar ? "bg-white" : ""
           } ${!isTop ? "bg-[#051036]" : ""} `}
         >
