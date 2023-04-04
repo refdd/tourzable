@@ -1,13 +1,13 @@
 import React from "react";
 import HeaderVideo from "../parts/HeaderVideo";
 import MainSearch from "../parts/MainSearch";
-import NavBar from "./NavBar";
+import MainNavBar from "./MainNavBar";
 
 function MainHeader() {
   return (
     <div className="relative overflow-hidden">
       <HeaderVideo />
-      <NavBar />
+      <MainNavBar />
       {/* header contnet */}
       <div className="absolute top-[62%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full  ">
         <p className="text-center text-3xl text-white font-sans font-semibold md:text-5xl">

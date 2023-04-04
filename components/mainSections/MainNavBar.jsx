@@ -4,7 +4,8 @@ import NavLogo from "../../public/assets/images/The-Logo.png";
 import DarkLogo from "../../public/assets/images/logo-dark.svg";
 import { BiUserCircle } from "react-icons/bi";
 import { CgMenuLeftAlt } from "react-icons/cg";
-function NavBar() {
+import Link from "next/link";
+function MainNavBar() {
   const [menuBar, setMenuBar] = useState(false);
   const [isTop, setIsTop] = useState(true);
   const handelMenubar = () => {
@@ -40,10 +41,12 @@ function NavBar() {
             {/* links desktop */}
             <ul className={` hidden  md:flex  `}>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Home{" "}
+                <Link legacyBehavior href={"/"}>
+                  Home
+                </Link>
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Packages{" "}
+                <Link href={"/list-Popular-Saudi-Tours"}>Packages</Link>
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
                 Activities
@@ -94,25 +97,27 @@ function NavBar() {
             menuBar ? "flex" : "hidden"
           }  flex-col p-6 bg-white border-y`}
         >
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Home{" "}
+          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
+            <Link legacyBehavior href={"/"}>
+              Home
+            </Link>
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Packages
+          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
+            <Link href={"/list-Popular-Saudi-Tours"}>Packages</Link>
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             Activities
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             Umrah Plus
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             Landmarks
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             Saudi Travel Blog
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             E-Visa
           </li>
         </ul>
@@ -121,4 +126,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default MainNavBar;
