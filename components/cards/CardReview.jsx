@@ -5,7 +5,7 @@ import avatar from "../../public/assets/images/attractive-g1ed8274c6_640.jpg";
 function CardReview() {
   return (
     <div className="bg-white py-8 flex flex-col space-y-6 px-9 rounded md:space-y-12 md:py-10">
-      <p className="text-[#3554d1] font-medium text-[16px] font-sans capitalize ">
+      <p className="text-[#051036] font-medium text-[16px] font-sans capitalize ">
         Hotel Equatorial Melaka
       </p>
       <p className="text-[#051036] text-[16px] font-medium font-sans capitalize">

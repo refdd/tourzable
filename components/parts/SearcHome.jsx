@@ -29,7 +29,7 @@ function SearcHome() {
   const formattedStartDate = format(dateRange.startDate, "EEE dd MMM");
   const formattedEndDate = format(dateRange.endDate, "EEE dd MMM");
   return (
-    <div className="w-[90%] bg-white rounded-md mt-10 mx-auto  md:rounded-[100px]">
+    <div className="w-[90%] bg-white rounded-md mt-10 mx-auto  md:rounded-[100px] shadow-lg border md:border-0 md:shadow-none">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col md:flex-row  md:divide-x space-y-4 py-5 px-6 md:py-0"

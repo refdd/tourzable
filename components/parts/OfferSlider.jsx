@@ -50,7 +50,7 @@ function OfferSlider() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -61,7 +61,7 @@ function OfferSlider() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -72,7 +72,7 @@ function OfferSlider() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -83,7 +83,7 @@ function OfferSlider() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -94,7 +94,7 @@ function OfferSlider() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -105,7 +105,7 @@ function OfferSlider() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -116,7 +116,7 @@ function OfferSlider() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -127,7 +127,7 @@ function OfferSlider() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -138,7 +138,7 @@ function OfferSlider() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
       </Swiper>

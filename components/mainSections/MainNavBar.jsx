@@ -27,7 +27,7 @@ function MainNavBar() {
         <div
           className={`flex items-center justify-between transition-all px-3 py-4 md:py-2  ${
             menuBar ? "bg-white" : ""
-          } ${!isTop ? "bg-[#051036]" : ""} `}
+          } ${!isTop ? "bg-[#FFF]" : undefined} `}
         >
           <div className=" flex items-center space-x-5">
             {/* logo */}
@@ -40,35 +40,82 @@ function MainNavBar() {
             </div>
             {/* links desktop */}
             <ul className={` hidden  md:flex  `}>
-              <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+              <li
+                className={` text-lg   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                  !isTop ? "text-[#051036]" : "text-[#fff]"
+                } `}
+              >
                 <Link legacyBehavior href={"/"}>
                   Home
                 </Link>
               </li>
-              <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+              <li
+                className={` text-lg   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                  !isTop ? "text-[#051036]" : "text-[#fff]"
+                } `}
+              >
                 <Link href={"/list-Popular-Saudi-Tours"}>Packages</Link>
               </li>
-              <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+              <li
+                className={` text-lg   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                  !isTop ? "text-[#051036]" : "text-[#fff]"
+                } `}
+              >
                 Activities
               </li>
-              <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+              <li
+                className={` text-lg   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                  !isTop ? "text-[#051036]" : "text-[#fff]"
+                } `}
+              >
                 Umrah Plus
               </li>
-              <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+              <li
+                className={` text-lg   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                  !isTop ? "text-[#051036]" : "text-[#fff]"
+                } `}
+              >
                 Landmarks
               </li>
-              <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+              <li
+                className={` text-lg   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                  !isTop ? "text-[#051036]" : "text-[#fff]"
+                } `}
+              >
+                Destinations
+              </li>
+              <li
+                className={` text-lg   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                  !isTop ? "text-[#051036]" : "text-[#fff]"
+                } `}
+              >
                 Saudi Travel Blog
               </li>
-              <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+              <li
+                className={` text-lg   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                  !isTop ? "text-[#051036]" : "text-[#fff]"
+                } `}
+              >
                 E-Visa
               </li>
             </ul>
           </div>
           {/* button distop */}
           <div className=" hidden md:flex items-center space-x-3">
-            <div className=" group h-[50px] border transition-all hover:bg-white border-white px-7 rounded-md flex items-center justify-cente ">
-              <p className="text-[#fff] transition-all group-hover:text-[#051036]   text-sm cursor-pointer">
+            <div
+              className={`group h-[50px] border transition-all  px-7 rounded-md flex items-center justify-cente ${
+                !isTop
+                  ? " border-[#051036] hover:bg-[#3554d1] "
+                  : "hover:bg-white border-white"
+              }  `}
+            >
+              <p
+                className={` transition-all   text-sm cursor-pointer ${
+                  !isTop
+                    ? "text-[#051036] group-hover:text-[#FFFF]  "
+                    : "text-white group-hover:text-[#051036] "
+                } `}
+              >
                 Sign In / Register
               </p>
             </div>
@@ -78,15 +125,15 @@ function MainNavBar() {
             {/* icon user */}
             <BiUserCircle
               size={30}
-              className={` transition-all hover:text-[#0a58ca] cursor-pointer ${
-                menuBar ? "text-gray-700 " : "text-white"
-              }`}
+              className={` transition-all hover:text-[#0a58ca] cursor-pointer
+              
+              ${menuBar || !isTop ? "text-gray-700 " : "text-white"}`}
             />
             <CgMenuLeftAlt
               onClick={handelMenubar}
               size={30}
               className={` cursor-pointer transition-all ${
-                menuBar ? "text-gray-700" : "text-white"
+                menuBar || !isTop ? "text-gray-700" : "text-white"
               }`}
             />
           </div>
@@ -113,6 +160,9 @@ function MainNavBar() {
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             Landmarks
+          </li>
+          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
+            Destinations
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             Saudi Travel Blog

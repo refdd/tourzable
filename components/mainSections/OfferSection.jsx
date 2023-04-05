@@ -25,14 +25,14 @@ function OfferSection() {
             </div>
             {/*  */}
             <div className="flex space-x-1 z-40 justify-center items-center">
-              <span className="text-8xl font-semibold font-sans text-mainColor">
+              <span className="text-8xl font-semibold font-sans text-MainYeloow">
                 50
               </span>
               <div className="flex flex-col justify-center ">
-                <span className=" leading-[40px] text-mainColor text-[55px] font-semibold ">
+                <span className=" leading-[40px] text-MainYeloow text-[55px] font-semibold ">
                   %
                 </span>
-                <span className=" leading-[40px] text-mainColor text-[55px] font-semibold">
+                <span className=" leading-[40px] text-MainYeloow text-[55px] font-semibold">
                   off
                 </span>
               </div>

@@ -3,17 +3,17 @@ import { BiHeart } from "react-icons/bi";
 import ImageSlider from "../tour/ImageSlider";
 function CardOffer({ image, location, title, description, price }) {
   return (
-    <div className=" tourcard group flex flex-col space-y-3 p-2 border bg-white z-40 rounded ">
+    <div className=" tourcard group flex flex-col space-y-3 p-2 border bg-white z-40 rounded-md ">
       {/* image card */}
       <div className=" w-full h-[250px] relative overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
         <ImageSlider arrayOfImages={image} />
         {/* typs tour will add from backend */}
         <div className="absolute top-3 left-2   flex flex-col space-y-2  z-10">
-          <p className="text-white font-sans capitalize py-1 px-3 rounded   bg-[#051036]">
+          {/* <p className="text-white font-sans capitalize py-1 px-3 rounded   bg-[#051036]">
             Breakfast included
-          </p>
-          <p className="text-white font-sans capitalize bg-mainColor py-1 px-3 rounded  ">
+          </p> */}
+          <p className="text-mainColor font-sans capitalize bg-MainYeloow py-1 px-3 rounded  font-semibold ">
             10% off
           </p>
         </div>
@@ -42,10 +42,10 @@ function CardOffer({ image, location, title, description, price }) {
       </p>
       {/* rating*/}
       <div className=" flex items-center space-x-2">
-        <span className="h-[30px] w-[30px] bg-[#3554d1] font-semibold  text-white rounded flex justify-center items-center">
+        <span className="h-[30px] w-[30px] bg-MainYeloow font-semibold  text-mainColor rounded flex justify-center items-center">
           4.8
         </span>
-        <span className="text-[#051036] font-medium font-sans text-sm ">
+        <span className="text-mainColor font-medium font-sans text-sm ">
           Excaptional
         </span>
         <span className="text-[#697488] text-sm font-sans font-medium ">
@@ -54,13 +54,11 @@ function CardOffer({ image, location, title, description, price }) {
       </div>
       {/* price */}
       <div className=" flex items-center space-x-1 text-lg font-sans font-medium ">
-        <span className=" group-hover:text-[#0d6efd] text-[16px] transition-all text-[#051036]">
+        <span className=" group-hover:text-[#0d6efd] text-[16px] transition-all text-[#051036] ">
           Starting form
         </span>
-        <span className="text-[#0d6efd]">
-          us
-          {price}
-        </span>
+        <span className="text-[#0d6efd]">${price}</span>
+        <span className="text-gray-500  line-through">${price - 50}</span>
       </div>
     </div>
   );

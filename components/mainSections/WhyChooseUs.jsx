@@ -6,7 +6,7 @@ import FraturedIcon2 from "../../public/assets/images/2.svg";
 import FraturedIcon3 from "../../public/assets/images/3.svg";
 function WhyChooseUs() {
   return (
-    <div className="container mx-auto  px-4">
+    <div className="container mx-auto  px-4  mt-[450px] md:mt-4">
       <HeaderSections
         titel={"Why Choose Us"}
         desc={"These popular destinations have a lot to offer"}

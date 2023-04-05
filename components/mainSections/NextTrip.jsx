@@ -14,13 +14,13 @@ function NextTrip() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="flex flex-col space-y-4">
           {/* image */}
-          <div className=" group relative w-full h-[320px] overflow-hidden rounded ">
+          <div className=" group relative w-full h-[320px] overflow-hidden rounded  shadow-lg shadow-[#5c2d9040] ">
             <Image
               src={trip1}
               fill
               loading="lazy"
               alt=""
-              className="rounded group-hover:scale-110 transition-all ease-in-out"
+              className="rounded group-hover:scale-110 transition-all ease-in-out "
             />
           </div>
           <div className="flex flex-col space-y-1">
@@ -34,7 +34,7 @@ function NextTrip() {
         </div>
         <div className="flex flex-col space-y-4">
           {/* image */}
-          <div className=" group relative w-full h-[320px] overflow-hidden rounded ">
+          <div className=" group relative w-full h-[320px] overflow-hidden rounded shadow-lg shadow-[#5c2d9040]  ">
             <Image
               src={trip2}
               fill
@@ -54,7 +54,7 @@ function NextTrip() {
         </div>
         <div className="flex flex-col space-y-4">
           {/* image */}
-          <div className=" group relative w-full h-[320px] overflow-hidden rounded ">
+          <div className=" group relative w-full h-[320px] overflow-hidden rounded shadow-lg shadow-[#5c2d9040]  ">
             <Image
               src={trip3}
               fill

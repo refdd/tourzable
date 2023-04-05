@@ -17,10 +17,12 @@ function ListTourcontainer() {
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
             price={23}
+            slug={"taif-city-tour-cable-car-ride3"}
           />
         </div>
         <div>
           <CardListTour
+            slug={"taif-city-tour-cable-car-ride3"}
             image={[Hotel3, Hotel2, Hotel]}
             location="Riyadh"
             title={"Explore Alula Tour Package"}
@@ -32,6 +34,7 @@ function ListTourcontainer() {
         </div>
         <div>
           <CardListTour
+            slug={"taif-city-tour-cable-car-ride3"}
             image={[Hotel, Hotel2, Hotel3]}
             location="Riyadh"
             title={"Explore Alula Tour Package"}
@@ -43,6 +46,7 @@ function ListTourcontainer() {
         </div>
         <div>
           <CardListTour
+            slug={"taif-city-tour-cable-car-ride3"}
             image={[Hotel, Hotel2, Hotel3]}
             location="Riyadh"
             title={"Explore Alula Tour Package"}
@@ -54,6 +58,7 @@ function ListTourcontainer() {
         </div>
         <div>
           <CardListTour
+            slug={"taif-city-tour-cable-car-ride3"}
             image={[Hotel, Hotel2, Hotel3]}
             location="Riyadh"
             title={"Explore Alula Tour Package"}
@@ -65,6 +70,7 @@ function ListTourcontainer() {
         </div>
         <div>
           <CardListTour
+            slug={"taif-city-tour-cable-car-ride3"}
             image={[Hotel, Hotel2, Hotel3]}
             location="Riyadh"
             title={"Explore Alula Tour Package"}
@@ -76,6 +82,7 @@ function ListTourcontainer() {
         </div>
         <div>
           <CardListTour
+            slug={"taif-city-tour-cable-car-ride3"}
             image={[Hotel, Hotel2, Hotel3]}
             location="Riyadh"
             title={"Explore Alula Tour Package"}
@@ -87,6 +94,7 @@ function ListTourcontainer() {
         </div>
         <div>
           <CardListTour
+            slug={"taif-city-tour-cable-car-ride3"}
             image={[Hotel, Hotel2, Hotel3]}
             location="Riyadh"
             title={"Explore Alula Tour Package"}
@@ -98,6 +106,7 @@ function ListTourcontainer() {
         </div>
         <div>
           <CardListTour
+            slug={"taif-city-tour-cable-car-ride3"}
             image={[Hotel, Hotel2, Hotel3]}
             location="Riyadh"
             title={"Explore Alula Tour Package"}

@@ -35,7 +35,7 @@ function TourRow() {
           },
           1024: {
             slidesPerView: 4,
-            spaceBetween: 30,
+            spaceBetween: 10,
           },
         }}
         modules={[Pagination]}
@@ -49,7 +49,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -60,7 +60,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -71,7 +71,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -82,7 +82,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -93,7 +93,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -104,7 +104,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -115,7 +115,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -126,7 +126,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -137,7 +137,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -148,7 +148,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -159,7 +159,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -170,7 +170,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -181,7 +181,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -192,7 +192,7 @@ function TourRow() {
             description={
               "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
             }
-            price={23}
+            price={999}
           />
         </SwiperSlide>
       </Swiper>

@@ -4,7 +4,7 @@ function HeaderVideo() {
   return (
     <div className="w-full h-full relative">
       <video
-        className=" w-full h-[572px] md:h-full object-cover"
+        className=" w-full h-full object-cover"
         src={require("../../public/assets/video.mp4")}
         autoPlay
         loop
