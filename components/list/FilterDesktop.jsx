@@ -1,6 +1,8 @@
 import {
   Checkbox,
   FormControlLabel,
+  InputAdornment,
+  InputLabel,
   Slider,
   TextField,
   Typography,
@@ -19,7 +21,7 @@ function FilterDesktop() {
       <div className="flex flex-col space-y-5">
         {/* search */}
         <div className="">
-          <p className=" font-medium text-lg text-[#051036] font-sans capitalize ">
+          <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
             Search by property name
           </p>
           <div className=" py-6 border-b">
@@ -34,16 +36,25 @@ function FilterDesktop() {
         </div>
         {/* deals */}
         <div className="">
-          <p className=" font-medium text-lg text-[#051036] font-sans capitalize ">
-            Search by property name
+          <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
+            Your Start Point
           </p>
           <ul className=" flex flex-col space-y-1  py-5  border-b">
             <li className="flex items-center justify-between">
               <div className="">
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="Free cancellation"
-                />
+                <FormControlLabel control={<Checkbox />} label="Riyadh" />
+              </div>
+              {/* <span>92</span> */}
+            </li>
+            <li className="flex items-center justify-between">
+              <div className="">
+                <FormControlLabel control={<Checkbox />} label="Tabuk" />
+              </div>
+              {/* <span>92</span> */}
+            </li>
+            <li className="flex items-center justify-between">
+              <div className="">
+                <FormControlLabel control={<Checkbox />} label="Abha" />
               </div>
               {/* <span>92</span> */}
             </li>
@@ -51,17 +62,7 @@ function FilterDesktop() {
               <div className="">
                 <FormControlLabel
                   control={<Checkbox />}
-                  label="Reserve now, pay at stay"
-                />
-              </div>
-              {/* <span>92</span> */}
-            </li>
-            <li className="flex items-center justify-between">
-              <div className="">
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="
-                  Properties with special offers"
+                  label="Al-Ula / Madian Saleh"
                 />
               </div>
               {/* <span>92</span> */}
@@ -70,56 +71,30 @@ function FilterDesktop() {
         </div>
         {/* Popular Filters */}
         <div className="">
-          <p className=" font-medium text-lg text-[#051036] font-sans capitalize ">
-            Popular Filters
+          <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
+            Days Count
           </p>
           <ul className=" flex flex-col space-y-1  py-5  border-b">
             <li className="flex items-center justify-between">
               <div className="">
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="Breakfast Included"
+                <TextField
+                  label="Days Count"
+                  id="outlined-start-adornment"
+                  sx={{ m: 1, width: "25ch" }}
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">day</InputAdornment>
+                    ),
+                  }}
                 />
               </div>
-              <span>92</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <div className="">
-                <FormControlLabel control={<Checkbox />} label="Romantic" />
-              </div>
-              <span>45</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <div className="">
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="
-                  Airport Transfer"
-                />
-              </div>
-              <span>21</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <div className="">
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="
-                  WiFi Included"
-                />
-              </div>
-              <span>68</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <div className="">
-                <FormControlLabel control={<Checkbox />} label="5 Star" />
-              </div>
-              <span>679</span>
             </li>
           </ul>
         </div>
         {/* Nightly Price */}
         <div className="">
-          <p className=" font-medium text-lg text-[#051036] font-sans capitalize ">
+          <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
             Popular Filters
           </p>
           <div className="flex flex-col space-y-1  py-5  border-b">
@@ -139,7 +114,7 @@ function FilterDesktop() {
         {/*  */}
         {/* Nightly Price */}
         <div className="">
-          <p className=" font-medium text-lg text-[#051036] font-sans capitalize ">
+          <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
             Star Rating
           </p>
           <ul className="flex flex-wrap gap-2  py-5  border-b">

@@ -4,7 +4,15 @@ import { BiHeart } from "react-icons/bi";
 
 import ImageSlider from "../tour/ImageSlider";
 
-function CardTour({ image, location, title, description, price }) {
+function CardTour({
+  image,
+  location,
+  title,
+  description,
+  price,
+  duration,
+  activitiey,
+}) {
   return (
     <div className=" tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e]">
       {/* image card */}
@@ -23,7 +31,9 @@ function CardTour({ image, location, title, description, price }) {
       </div>
       {/*duration */}
       <div className="absolute top-44 right-5 rounded bg-MainYeloow py-1 px-3 z-10  ">
-        <p className="text-mainColor font-sans capitalize">6 Days</p>
+        <p className="text-mainColor font-sans capitalize">
+          {duration} {activitiey ? "hours" : "Days"}
+        </p>
       </div>
       {/* title */}
       <div className="">

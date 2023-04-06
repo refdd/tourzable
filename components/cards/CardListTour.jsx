@@ -1,3 +1,4 @@
+import { useStateContext } from "@/contexts/ContextProvider";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,11 +8,25 @@ import { BsArrowUpRight, BsFillStarFill } from "react-icons/bs";
 import ImageSlider from "../tour/ImageSlider";
 
 function CardListTour({ slug, image, location, title, description, price }) {
+  const { ViewTours } = useStateContext();
+
   return (
     <Link href={`/list-Popular-Saudi-Tours/${slug}`}>
-      <div className=" tourcard group flex flex-col space-y-2 border-b pb-3 md:flex-row  md:space-y-0 md:space-x-2">
+      <div
+        className={
+          ViewTours
+            ? " tourcard group flex flex-col space-y-2 border-b pb-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e "
+            : " tourcard group flex flex-col space-y-2 border-b pb-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e md:flex-row  md:space-y-0 md:space-x-2"
+        }
+      >
         {/* image card */}
-        <div className=" w-full h-[250px] relative overflow-hidden rounded md:w-[250px]">
+        <div
+          className={
+            ViewTours
+              ? " w-full h-[250px] relative overflow-hidden rounded "
+              : " w-full h-[250px] relative overflow-hidden rounded md:w-[300px]  "
+          }
+        >
           {/* <Image src={image} fill className="rounded" alt="tour" /> */}
           <ImageSlider arrayOfImages={image} />
           {/* typs tour will add from backend */}
@@ -30,7 +45,13 @@ function CardListTour({ slug, image, location, title, description, price }) {
           </div>
         </div>
         {/* crnter */}
-        <div className="flex flex-col space-y-2 md:w-[50%] md:space-y-5">
+        <div
+          className={
+            ViewTours
+              ? "flex flex-col space-y-2 "
+              : "flex flex-col space-y-2 md:w-[50%] md:space-y-5"
+          }
+        >
           {/* title */}
           <div className="">
             {/* location */}
@@ -39,7 +60,7 @@ function CardListTour({ slug, image, location, title, description, price }) {
             </p>
           </div>
           {/* location and rating */}
-          <div className="flex items-center justify-between pr-2">
+          <div className="flex items-center space-x-4 pr-2">
             {/* location */}
             <div className="flex space-x-3 items-center ">
               <span className="text-lg text-[#051036] font-medium font-serif capitalize underline">
@@ -51,47 +72,54 @@ function CardListTour({ slug, image, location, title, description, price }) {
               8 nights, 2 adult{" "}
             </p>
           </div>
-          <p className="text-gray-500 text-lg font-sans capitalize font-normal">
+          <p className="text-gray-500 text-lg font-sans capitalize font-normal md:text-[16px]">
             {description}
           </p>
 
           {/* free cancellation */}
           <div className="flex flex-col ">
             <span className="text-[#008009] font-medium text-sm capitalize font-sans">
-              Free cancellation
-            </span>
-            <span className="text-[#008009] font-normal text-sm capitalize font-sans">
-              You can cancel later, so lock in this great price today.
+              Visited Locations
             </span>
           </div>
           {/* featured */}
           <ul className="flex gap-3 items-center flex-wrap ">
             <li className="border border-[#dddddd] rounded-full px-5  ">
               <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
-                Breakfast
+                Riyadh
               </span>
             </li>
             <li className="border border-[#dddddd] rounded-full px-5  ">
               <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
-                WiFi
+                Jeddah
               </span>
             </li>
             <li className="border border-[#dddddd] rounded-full px-5  ">
               <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
-                Spa
+                Mecca
               </span>
             </li>
             <li className="border border-[#dddddd] rounded-full px-5  ">
               <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
-                Bar
+                Medina
               </span>
             </li>
           </ul>
         </div>
         {/* right side */}
-        <div className="  flex flex-col space-y-2 md:flex-1 ">
+        <div
+          className={`  flex flex-col space-y-2 ${
+            ViewTours ? "md:flex-1" : "md:flex-1"
+          } `}
+        >
           {/* rating*/}
-          <div className=" flex items-center space-x-2 md:flex-col md:space-x-0 md:space-y-1">
+          <div
+            className={
+              ViewTours
+                ? " flex items-center space-x-2 "
+                : " flex items-center space-x-2 md:flex-col md:space-x-0 md:space-y-1"
+            }
+          >
             <span className="h-[30px] w-[30px] bg-[#3554d1] font-semibold  text-white rounded flex justify-center items-center">
               4.8
             </span>
@@ -110,14 +138,17 @@ function CardListTour({ slug, image, location, title, description, price }) {
             </div>
           </div>
           {/* price */}
-          <div className=" flex items-center space-x-1 text-lg font-sans font-medium  md:flex-col ">
+          <div
+            className={
+              ViewTours
+                ? " flex items-center space-x-1 text-lg font-sans font-medium   "
+                : " flex items-center space-x-1 text-lg font-sans font-medium  md:flex-col "
+            }
+          >
             <span className=" group-hover:text-[#0d6efd] text-[16px] transition-all text-[#051036]">
               Starting form
             </span>
             <span className="text-[#0d6efd]">us ${price}</span>
-            <p className=" text-[#697488] text-sm capitalize font-sans">
-              +US$828 taxes
-            </p>
           </div>
           {/* button */}
           <div className="flex items-center justify-center py-3 gap-3 bg-[#3554d1] rounded transition-all hover:md:bg-[#051036]">

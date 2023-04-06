@@ -9,6 +9,8 @@ import Subscribe from "@/components/mainSections/Subscribe";
 import DownLoadApp from "@/components/mainSections/DownLoadApp";
 import NotMember from "@/components/mainSections/NotMember";
 import Footer from "@/components/mainSections/Footer";
+import FaQSection from "@/components/mainSections/FaQSection";
+import MainHeaderList from "@/components/list/MainHeaderList";
 function ListTour() {
   return (
     <>
@@ -18,9 +20,9 @@ function ListTour() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <MainHeaderList />
 
-      <NormailNavBar />
-      <div className="py-20 bg-[#f5f5f5]"> </div>
+      <div className="py-2 bg-[#f5f5f5]"> </div>
       <div className=" grid grid-cols-1 gap-5 md:grid-cols-4">
         <div className="hidden md:block col-span-1">
           <FilterDesktop />
@@ -30,6 +32,7 @@ function ListTour() {
           <ListTourcontainer />
         </div>
       </div>
+      <FaQSection />
       <Subscribe />
       <DownLoadApp />
       <NotMember />

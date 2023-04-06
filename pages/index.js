@@ -13,6 +13,8 @@ import NotMember from "@/components/mainSections/NotMember";
 import Footer from "@/components/mainSections/Footer";
 import HeaderSections from "@/components/parts/HeaderSections";
 import OfferSection from "@/components/mainSections/OfferSection";
+import ActivitiesRow from "@/components/tour/ActivitiesRow";
+import FaQSection from "@/components/mainSections/FaQSection";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,10 +42,11 @@ export default function Home() {
           "Best Offers Of Activity Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Activity And Enjoy."
         }
       />
-      <TourRow />
+      <ActivitiesRow />
       <Reviews />
       <OfferSection />
       <NextTrip />
+      <FaQSection />
       <Subscribe />
       <DownLoadApp />
       <NotMember />

@@ -10,6 +10,7 @@ const initialState = {
 
 export const ContextProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(initialState);
+  const [ViewTours, setViewTours] = useState(false);
   const [dateRange, setDateRange] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -20,7 +21,15 @@ export const ContextProvider = ({ children }) => {
     setIsClicked({ ...initialState, [clicked]: true });
   return (
     <StateContext.Provider
-      value={{ handleClick, isClicked, setIsClicked, dateRange, setDateRange }}
+      value={{
+        handleClick,
+        isClicked,
+        setIsClicked,
+        dateRange,
+        setDateRange,
+        ViewTours,
+        setViewTours,
+      }}
     >
       {children}
     </StateContext.Provider>

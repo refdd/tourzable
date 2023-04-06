@@ -3,11 +3,19 @@ import CardListTour from "../cards/CardListTour";
 import Hotel from "../../public/assets/images/3.png";
 import Hotel2 from "../../public/assets/images/2.png";
 import Hotel3 from "../../public/assets/images/4.png";
+import { useStateContext } from "@/contexts/ContextProvider";
 function ListTourcontainer() {
+  const { ViewTours, setViewTours } = useStateContext();
+
   return (
     <div className="container mx-auto px-4 mt-6">
-      <div className="grid grid-cols-1 gap-5 md:gap-7">
-        <div></div>
+      <div
+        className={
+          ViewTours
+            ? "grid grid-cols-2 gap-5 md:gap-7"
+            : "grid grid-cols-1 gap-5 md:gap-7"
+        }
+      >
         <div>
           <CardListTour
             image={[Hotel2, Hotel3, Hotel]}
