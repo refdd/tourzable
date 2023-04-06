@@ -22,7 +22,7 @@ function ActivitiesRow() {
   console.log(activeId);
   return (
     <div className="container mx-auto px-4 mb-11 z-40">
-      <ul className="flex pa justify-start items-start gap-4 mb-6 flex-wrap">
+      <ul className="flex pa justify-start items-start gap-4 mb-6 flex-wrap md:justify-center">
         {locationTour?.map(({ id, title }) => (
           <li
             onClick={handleClick(id)}

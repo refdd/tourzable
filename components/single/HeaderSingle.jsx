@@ -19,7 +19,7 @@ function HeaderSingle() {
         </div>
       </div>
       {/* location */}
-      <div className="flex flex-col gap-3  mt-3">
+      <div className="flex flex-col gap-3  mt-3 md:flex-row md:justify-between">
         <div className="flex items-center gap-2  flex-wrap ">
           <div className="flex items-start space-x-1 ">
             <ImLocation2 className=" text-[#697488] text-[16px] " />

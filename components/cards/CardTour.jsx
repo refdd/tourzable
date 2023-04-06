@@ -23,7 +23,7 @@ function CardTour({
         {/* heart icon */}
         <div
           className="group/item absolute top-3 right-2 shadow-md h-[30px] w-[30px]  bg-white flex items-center justify-center 
-            rounded-full transition-all hover:bg-[#3554d1]
+            rounded-full transition-all hover:bg-[#3554d1] z-10
          "
         >
           <BiHeart className="text-sm text-black transition-all group-hover/item:text-white" />
