@@ -1,11 +1,13 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { BiHeart } from "react-icons/bi";
 import { CiPlay1 } from "react-icons/ci";
 import gallery1 from "../../public/assets/images/gallery1.png";
 import gallery2 from "../../public/assets/images/gallery2.png";
 import gallery3 from "../../public/assets/images/gallery3.png";
+import GallerySlider from "./GallerySlider";
 function SingleGalleryContainer() {
+  const [openGallery, setOpenGallery] = useState(false);
   return (
     <div className="container mx-auto px-4 md:px-10 my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -14,6 +16,9 @@ function SingleGalleryContainer() {
             <Image
               src={gallery1}
               fill
+              sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
               alt=""
               loading="lazy"
               className="rounded"
@@ -34,6 +39,9 @@ function SingleGalleryContainer() {
               <Image
                 src={gallery2}
                 fill
+                sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
                 alt=""
                 loading="lazy"
                 className="rounded"
@@ -46,6 +54,9 @@ function SingleGalleryContainer() {
               <Image
                 src={gallery3}
                 fill
+                sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
                 alt=""
                 loading="lazy"
                 className="rounded"
@@ -65,6 +76,9 @@ function SingleGalleryContainer() {
               <Image
                 src={gallery1}
                 fill
+                sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
                 alt=""
                 loading="lazy"
                 className="rounded"
@@ -76,12 +90,18 @@ function SingleGalleryContainer() {
               <Image
                 src={gallery3}
                 fill
+                sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
                 alt=""
                 loading="lazy"
                 className="rounded"
               />
               {/* heart icon */}
               <div
+                onClick={() => {
+                  setOpenGallery(true);
+                }}
                 className="group/item absolute bottom-4 right-4 shadow-md h-[50px] w-fit px-5 rounded cursor-pointer bg-white flex items-center justify-center 
            transition-all hover:bg-[#3554d1] z-10
          "
@@ -94,6 +114,10 @@ function SingleGalleryContainer() {
           </div>
         </div>
       </div>
+      <GallerySlider
+        openGallery={openGallery}
+        setOpenGallery={setOpenGallery}
+      />
     </div>
   );
 }

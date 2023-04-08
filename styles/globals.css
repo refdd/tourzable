@@ -66,7 +66,9 @@
 .swiper-button-prev:hover {
   visibility: visible;
 }
-
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+  color: #704f88 !important;
+}
 @media only screen and (max-width: 786px) {
   .css-1hj5xsr-MuiInputBase-root-MuiInput-root-MuiSelect-root:before {
     bottom: -8px;

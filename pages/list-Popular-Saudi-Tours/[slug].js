@@ -1,6 +1,9 @@
 import NormailNavBar from "@/components/mainSections/NormailNavBar";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
+import From from "@/components/single/From";
 import HeaderSingle from "@/components/single/HeaderSingle";
+import Itinerary from "@/components/single/Itinerary";
+import OverView from "@/components/single/OverView";
 import SingleGalleryContainer from "@/components/single/SingleGalleryContainer";
 import React from "react";
 
@@ -18,6 +21,13 @@ function SingleTour() {
       </div>
       <HeaderSingle />
       <SingleGalleryContainer />
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="col-span-2 container mx-auto px-4">
+          <OverView />
+          <Itinerary />
+        </div>
+        <From />
+      </div>
     </div>
   );
 }
