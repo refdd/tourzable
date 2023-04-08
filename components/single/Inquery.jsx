@@ -1,6 +1,6 @@
 import { TextareaAutosize, TextField } from "@mui/material";
 import React, { useState } from "react";
-import MuiPhoneNumber from "material-ui-phone-number";
+import MuiPhoneNumber from "material-ui-phone-number-2";
 import { ImMan } from "react-icons/im";
 import { FaChild } from "react-icons/fa";
 import { BsPersonAdd } from "react-icons/bs";
