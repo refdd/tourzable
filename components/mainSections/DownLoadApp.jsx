@@ -1,23 +1,23 @@
 import Image from "next/image";
 import React from "react";
 import { BsApple, BsGooglePlay } from "react-icons/bs";
-import AppImage from "../../public/assets/images/app.png";
+import AppImage from "../../public/assets/images/apps.webp";
 function DownLoadApp() {
   return (
     <div className=" container mx-auto px-4 mt-10 pt-6  pb-8">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* content  */}
         <div className="flex flex-col space-y-4 md:space-y-8">
-          <p className=" text-3xl text-[#051036] font-sans capitalize font-semibold ">
+          <p className=" text-3xl text-mainColor font-sans capitalize font-semibold ">
             Download the App
           </p>
           <p className="text-[#051036] text-[16px] font-sans capitalize ">
-            Book in advance or last-minute with GoTrip. Receive instant
+            Book in advance or last-minute with tourzable. Receive instant
             confirmation. Access your booking info offline.
           </p>
           {/* buttons */}
           <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 ">
-            <div className="flex items-center space-x-4 bg-[#13357b] rounded-lg  w-fit px-7 py-3">
+            <div className="flex items-center space-x-4 bg-mainColor rounded-lg  w-fit px-7 py-3">
               <BsApple className="text-white text-2xl" />
               <div className="flex flex-col ">
                 <span className="text-white text-[14px] font-sans capitalize">
@@ -28,7 +28,7 @@ function DownLoadApp() {
                 </span>
               </div>
             </div>
-            <div className="flex items-center space-x-4 bg-[#13357b] rounded-lg  w-fit px-7 py-3">
+            <div className="flex items-center space-x-4 bg-mainColor rounded-lg  w-fit px-7 py-3">
               <BsGooglePlay className="text-white text-2xl" />
               <div className="flex flex-col ">
                 <span className="text-white text-[14px] font-sans capitalize">
@@ -42,7 +42,7 @@ function DownLoadApp() {
           </div>
         </div>
         {/* image */}
-        <div className="relative w-full h-[180px] pt-6 md:h-[266px] ">
+        <div className="relative w-full h-[180px] pt-6 md:h-[280px] ">
           <Image
             src={AppImage}
             fill

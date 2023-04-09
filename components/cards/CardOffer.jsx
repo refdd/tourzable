@@ -5,7 +5,7 @@ function CardOffer({ image, location, title, description, price }) {
   return (
     <div className=" tourcard group flex flex-col space-y-3 p-2 border bg-white z-40 rounded-md ">
       {/* image card */}
-      <div className=" w-full h-[250px] relative overflow-hidden rounded">
+      <div className=" w-full h-[180px] relative overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
         <ImageSlider arrayOfImages={image} />
         {/* typs tour will add from backend */}
@@ -37,7 +37,7 @@ function CardOffer({ image, location, title, description, price }) {
           {title}
         </p>
       </div>
-      <p className="text-gray-500 text-lg font-sans capitalize font-normal">
+      <p className="text-gray-500 text-sm md:text-lg font-sans capitalize font-normal">
         {description}
       </p>
       {/* rating*/}
@@ -54,11 +54,13 @@ function CardOffer({ image, location, title, description, price }) {
       </div>
       {/* price */}
       <div className=" flex items-center space-x-1 text-lg font-sans font-medium ">
-        <span className=" group-hover:text-[#0d6efd] text-[16px] transition-all text-[#051036] ">
+        <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
           Starting form
         </span>
-        <span className="text-[#0d6efd]">${price}</span>
-        <span className="text-gray-500  line-through">${price - 50}</span>
+        <span className="text-mainColor ">${price}</span>
+        <span className="text-gray-500  line-through text-sm">
+          ${price - 50}
+        </span>
       </div>
     </div>
   );

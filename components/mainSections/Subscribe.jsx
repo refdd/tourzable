@@ -8,7 +8,7 @@ function Subscribe() {
     <div className="container mx-auto px-4 mt-10">
       <div className="flex flex-col md:flex-row">
         {/* image */}
-        <div className=" group relative w-full h-[390px] overflow-hidden md:w-[500px] ">
+        <div className=" group relative w-full h-[200px] rounded-t-md  md:h-[390px] overflow-hidden md:w-[500px] ">
           <Image src={subsribe} fill loading="lazy" alt="" className="t" />
         </div>
         {/* contnet */}

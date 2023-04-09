@@ -15,8 +15,8 @@ function CardListTour({ slug, image, location, title, description, price }) {
       <div
         className={
           ViewTours
-            ? " tourcard group flex flex-col space-y-2 border-b pb-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e "
-            : " tourcard group flex flex-col space-y-2 border-b pb-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e md:flex-row  md:space-y-0 md:space-x-2"
+            ? " relative  tourcard group flex flex-col space-y-2 border-b pb-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] "
+            : " relative tourcard group flex flex-col space-y-2 border-b pb-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] md:flex-row  md:space-y-0 md:space-x-2"
         }
       >
         {/* image card */}
@@ -30,19 +30,25 @@ function CardListTour({ slug, image, location, title, description, price }) {
           {/* <Image src={image} fill className="rounded" alt="tour" /> */}
           <ImageSlider arrayOfImages={image} />
           {/* typs tour will add from backend */}
-          <div className="absolute top-3 left-2 rounded bg-[#051036] py-1 px-3  ">
-            <p className="text-white font-sans capitalize">
-              Breakfast included
-            </p>
-          </div>
+
           {/* heart icon */}
           <div
             className="group/item absolute top-3 right-2 shadow-md h-[30px] w-[30px]  bg-white flex items-center justify-center 
-        rounded-full transition-all hover:bg-[#3554d1]
+        rounded-full transition-all hover:bg-mainColor z-10
      "
           >
             <BiHeart className="text-sm text-black transition-all group-hover/item:text-white" />
           </div>
+        </div>
+        {/*duration */}
+        <div
+          className={
+            ViewTours
+              ? "absolute top-[208px] right-5 rounded bg-MainYeloow py-1 px-5 z-10  "
+              : "hidden  "
+          }
+        >
+          <p className="text-mainColor font-sans capitalize">6 Days</p>
         </div>
         {/* crnter */}
         <div
@@ -68,22 +74,34 @@ function CardListTour({ slug, image, location, title, description, price }) {
               </span>
             </div>
             {/* duration  */}
-            <p className="text-[#697488] textt-sm font-sans capitalize ">
-              8 nights, 2 adult{" "}
-            </p>
+            <div
+              className={
+                ViewTours
+                  ? "hidden   "
+                  : " rounded bg-MainYeloow py-1 px-5 z-10 "
+              }
+            >
+              <p className="text-mainColor font-sans capitalize"> 6 Days</p>
+            </div>
           </div>
           <p className="text-gray-500 text-lg font-sans capitalize font-normal md:text-[16px]">
             {description}
           </p>
 
           {/* free cancellation */}
-          <div className="flex flex-col ">
-            <span className="text-[#008009] font-medium text-sm capitalize font-sans">
+          <div className={ViewTours ? " flex-col hidden  " : "flex flex-col  "}>
+            <span className="text-textPurple font-medium text-sm capitalize font-sans">
               Visited Locations
             </span>
           </div>
           {/* featured */}
-          <ul className="flex gap-3 items-center flex-wrap ">
+          <ul
+            className={
+              ViewTours
+                ? "hidden gap-3 items-center flex-wrap "
+                : "flex gap-3 items-center flex-wrap "
+            }
+          >
             <li className="border border-[#dddddd] rounded-full px-5  ">
               <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
                 Riyadh
@@ -120,7 +138,7 @@ function CardListTour({ slug, image, location, title, description, price }) {
                 : " flex items-center space-x-2 md:flex-col md:space-x-0 md:space-y-1"
             }
           >
-            <span className="h-[30px] w-[30px] bg-[#3554d1] font-semibold  text-white rounded flex justify-center items-center">
+            <span className="h-[30px] w-[30px] bg-mainColor font-semibold  text-white rounded flex justify-center items-center">
               4.8
             </span>
             <span className="text-[#051036] font-medium font-sans text-sm ">
@@ -145,13 +163,13 @@ function CardListTour({ slug, image, location, title, description, price }) {
                 : " flex items-center space-x-1 text-lg font-sans font-medium  md:flex-col "
             }
           >
-            <span className=" group-hover:text-[#0d6efd] text-[16px] transition-all text-[#051036]">
+            <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
               Starting form
             </span>
-            <span className="text-[#0d6efd]">us ${price}</span>
+            <span className="text-mainColor">us ${price}</span>
           </div>
           {/* button */}
-          <div className="flex items-center justify-center py-3 gap-3 bg-[#3554d1] rounded transition-all hover:md:bg-[#051036]">
+          <div className="flex items-center justify-center py-3 gap-3 bg-mainColor rounded transition-all hover:md:bg-[#051036]">
             <button className="text-[15px] text-white font-sans font-medium capitalize">
               View Detail
             </button>

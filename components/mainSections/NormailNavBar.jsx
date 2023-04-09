@@ -49,7 +49,7 @@ function NormailNavBar() {
                 <Link href={"/list-Popular-Saudi-Tours"}>Packages</Link>
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Activities
+                <Link href={"/Popular-Activities"}> Activities</Link>
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
                 Umrah Plus
@@ -106,7 +106,7 @@ function NormailNavBar() {
             <Link href={"/list-Popular-Saudi-Tours"}>Packages</Link>
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Activities
+            <Link href={"/Popular-Activities"}> Activities</Link>
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
             Umrah Plus

@@ -12,7 +12,7 @@ function ListTourcontainer() {
       <div
         className={
           ViewTours
-            ? "grid grid-cols-2 gap-5 md:gap-7"
+            ? "grid grid-cols-3 gap-5 md:gap-3"
             : "grid grid-cols-1 gap-5 md:gap-7"
         }
       >
@@ -22,9 +22,9 @@ function ListTourcontainer() {
             location="Riyadh"
             title={"Explore Alula Tour Package"}
             description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
             }
-            price={23}
+            price={999}
             slug={"taif-city-tour-cable-car-ride3"}
           />
         </div>
@@ -35,9 +35,9 @@ function ListTourcontainer() {
             location="Riyadh"
             title={"Explore Alula Tour Package"}
             description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
             }
-            price={23}
+            price={999}
           />
         </div>
         <div>
@@ -47,9 +47,9 @@ function ListTourcontainer() {
             location="Riyadh"
             title={"Explore Alula Tour Package"}
             description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
             }
-            price={23}
+            price={999}
           />
         </div>
         <div>
@@ -59,9 +59,9 @@ function ListTourcontainer() {
             location="Riyadh"
             title={"Explore Alula Tour Package"}
             description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
             }
-            price={23}
+            price={999}
           />
         </div>
         <div>
@@ -71,9 +71,9 @@ function ListTourcontainer() {
             location="Riyadh"
             title={"Explore Alula Tour Package"}
             description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
             }
-            price={23}
+            price={999}
           />
         </div>
         <div>
@@ -83,9 +83,9 @@ function ListTourcontainer() {
             location="Riyadh"
             title={"Explore Alula Tour Package"}
             description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
             }
-            price={23}
+            price={999}
           />
         </div>
         <div>
@@ -95,9 +95,9 @@ function ListTourcontainer() {
             location="Riyadh"
             title={"Explore Alula Tour Package"}
             description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
             }
-            price={23}
+            price={999}
           />
         </div>
         <div>
@@ -107,9 +107,9 @@ function ListTourcontainer() {
             location="Riyadh"
             title={"Explore Alula Tour Package"}
             description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
             }
-            price={23}
+            price={999}
           />
         </div>
         <div>
@@ -119,9 +119,9 @@ function ListTourcontainer() {
             location="Riyadh"
             title={"Explore Alula Tour Package"}
             description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
             }
-            price={23}
+            price={999}
           />
         </div>
       </div>

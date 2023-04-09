@@ -16,7 +16,7 @@ function GallerySlider({ openGallery, setOpenGallery }) {
         openGallery ? "block" : "hidden"
       }`}
     >
-      <div className="absolute top-16 right-12   ">
+      <div className="absolute top-16 right-12  z-[30000]  ">
         <div
           onClick={() => {
             setOpenGallery(false);
@@ -26,25 +26,25 @@ function GallerySlider({ openGallery, setOpenGallery }) {
           <CgClose className="text-mainColor text-2xl  " />
         </div>
       </div>
-      <div className=" container mx-auto px-11  absolute top-[62%] left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+      <div className=" container mx-auto px-44  absolute top-[62%] left-1/2 -translate-x-1/2 -translate-y-1/2 ">
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           <SwiperSlide>
-            <div className="relative w-full h-[400px]  ">
+            <div className="relative w-full h-[400px] md:h-[600px]  ">
               <Image src={gallery1} priority fill alt="" className="rounded" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="relative w-full h-[400px]  ">
+            <div className="relative w-full h-[400px] md:h-[600px]   ">
               <Image src={gallery1} fill alt="" priority className="rounded" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="relative w-full h-[400px]  ">
+            <div className="relative w-full h-[400px] md:h-[600px]  ">
               <Image src={gallery1} fill alt="" priority className="rounded" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="relative w-full h-[400px]  ">
+            <div className="relative w-full h-[400px] md:h-[600px]  ">
               <Image src={gallery1} fill alt="" priority className="rounded" />
             </div>
           </SwiperSlide>

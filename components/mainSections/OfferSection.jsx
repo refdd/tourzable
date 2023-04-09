@@ -11,7 +11,7 @@ function OfferSection() {
       <div className="grid grid-cols-1 md:grid-cols-3">
         <div
           style={{ backgroundImage: `url(${bg.src})` }}
-          className="relative bg-right-bottom bg-no-repeat py-20  order-2 md:py-48 z-0 "
+          className="relative bg-right-bottom bg-no-repeat py-20  md:order-2 md:py-48 z-0 "
         >
           <div className="flex flex-col  items-center justify-center gap-5 relative">
             {/*  */}
@@ -48,7 +48,7 @@ function OfferSection() {
           </div>
           <div className="absolute top-0 left-0 w-full h-full bg-[#0000009c] z-10"></div>
         </div>
-        <div className="md:col-span-2 order-1 md:-mr-10">
+        <div className="md:col-span-2 md:order-1 md:-mr-10">
           <OfferSlider />
         </div>
       </div>

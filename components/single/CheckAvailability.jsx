@@ -1,15 +1,13 @@
-import { TextareaAutosize, TextField } from "@mui/material";
-import React, { useState } from "react";
-import MuiPhoneNumber from "material-ui-phone-number-2";
-import { ImMan } from "react-icons/im";
-import { FaChild } from "react-icons/fa";
-import { BsPersonAdd } from "react-icons/bs";
-import { MdOutlinePersonRemoveAlt1 } from "react-icons/md";
+import { TextField } from "@mui/material";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-function Inquery() {
-  const [number, setnumber] = useState("+1");
+import React, { useState } from "react";
+import { BsPersonAdd } from "react-icons/bs";
+import { FaChild } from "react-icons/fa";
+import { ImMan } from "react-icons/im";
+import { MdOutlinePersonRemoveAlt1 } from "react-icons/md";
+
+function CheckAvailability() {
   const [aduits, setAduits] = useState(0);
   const [childs, setChilds] = useState(0);
   const handleAddCounter = (type) => {
@@ -28,60 +26,38 @@ function Inquery() {
       setChilds(childs - 1);
     }
   };
-  const handleOnChange = (value) => {
-    setnumber(value);
-  };
   return (
     <form className="py-2 px-3 ">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
-        {/* frist name  */}
-        <div className="">
-          <TextField
-            fullWidth
-            id="standard-basic"
-            label="Frist Name"
-            variant="standard"
-            required
-          />
+      <div className="grid grid-cols-2 gap-4 ">
+        {/*date*/}
+        <div className=" mt-5 ">
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              slotProps={{
+                textField: {
+                  variant: "standard",
+                  fullWidth: true,
+                  label: "Start Day",
+                },
+              }}
+            />
+          </LocalizationProvider>
         </div>
-        {/* last name */}
-        <div className="">
-          <TextField
-            required
-            fullWidth
-            id="standard-basic"
-            label="Last Name"
-            variant="standard"
-          />
-        </div>
-        {/*email address */}
-        <div className=" md:col-span-2">
-          <TextField
-            fullWidth
-            type="email"
-            id="standard-basic"
-            label="Email Address"
-            variant="standard"
-            required
-          />
-        </div>
-        {/*code andnumber */}
-        <div className=" md:col-span-2 mt-5">
-          <MuiPhoneNumber
-            sx={{ "& svg": { height: "0.7em" } }}
-            // slot={{}}
-            label="Country Code & Phone Num"
-            value={number}
-            autoFormat={true}
-            fullWidth
-            required
-            variant="standard"
-            defaultCountry="us"
-            onChange={handleOnChange}
-          />
+        <div className=" mt-5 ">
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              slotProps={{
+                textField: {
+                  variant: "standard",
+                  fullWidth: true,
+                  label: "End Day",
+                },
+              }}
+            />
+          </LocalizationProvider>
         </div>
         {/* counter */}
-        <div className="  md:col-span-2">
+        <div className=" col-span-2 border-y-2 py-4">
           <div className=" grid grid-cols-2 gap-3 mt-5">
             <div className="flex flex-col space-y-2">
               <div className="flex items-center">
@@ -151,30 +127,11 @@ function Inquery() {
             </div>
           </div>
         </div>
-        {/*date*/}
-        <div className=" mt-5  md:col-span-2">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              slotProps={{
-                textField: { variant: "standard", fullWidth: true },
-              }}
-            />
-          </LocalizationProvider>
-        </div>
-        {/*text message */}
-        <div className=" mt-5  md:col-span-2">
-          <textarea
-            id="message"
-            rows="5"
-            className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  "
-            placeholder="Add your suggestions to modify the itinerary or add other features or any additional special request"
-          ></textarea>
-        </div>
         {/* buttonsent */}
-        <div className=" md:col-span-2 ">
+        <div className=" col-span-2 ">
           <button className="flex justify-center items-center py-4 bg-mainColor rounded-md cursor-pointer w-full">
             <span className="text-[16px] font-medium text-white font-sans capitalize text-center">
-              send
+              Check availability
             </span>
           </button>
         </div>
@@ -183,4 +140,4 @@ function Inquery() {
   );
 }
 
-export default Inquery;
+export default CheckAvailability;

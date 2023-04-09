@@ -11,7 +11,7 @@ import NotMember from "@/components/mainSections/NotMember";
 import Footer from "@/components/mainSections/Footer";
 import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
-function ListTour() {
+function PopularActivities() {
   return (
     <>
       <Head>
@@ -23,11 +23,11 @@ function ListTour() {
       <MainHeaderList />
 
       <div className="py-2 bg-[#f5f5f5]"> </div>
-      <div className=" grid grid-cols-1 gap-5  md:grid-cols-5">
+      <div className=" grid grid-cols-1 gap-5 md:grid-cols-4">
         <div className="hidden md:block col-span-1">
           <FilterDesktop />
         </div>
-        <div className="col-span-4">
+        <div className="col-span-3">
           <HeaderList />
           <ListTourcontainer />
         </div>
@@ -41,4 +41,4 @@ function ListTour() {
   );
 }
 
-export default ListTour;
+export default PopularActivities;

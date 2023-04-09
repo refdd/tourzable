@@ -26,28 +26,28 @@ function OverView() {
           <div className=" flex justify-center items-center flex-col">
             <AiOutlineStar className="text-3xl text-MainYeloow " />
             <span className="text-lg text-mainColor font-sans font-medium capitalize">
-              tour Rate
+              Hotel Rate
             </span>
             <span className="text-[15px] text-gray-500 font-sans capitalize">
-              5
+              5 stars
             </span>
           </div>
           <div className=" flex justify-center items-center flex-col">
             <GiMeal className="text-3xl text-MainYeloow " />
             <span className="text-lg text-mainColor font-sans font-medium capitalize">
-              Full Board
+              Meals
             </span>
             <span className="text-[15px] text-gray-500 font-sans capitalize">
-              Meals Type
+              Full Board
             </span>
           </div>
           <div className=" flex justify-center items-center flex-col">
             <BsFillCalendar2WeekFill className="text-3xl text-MainYeloow " />
             <span className="text-lg text-mainColor font-sans font-medium capitalize">
-              days
+              duration
             </span>
             <span className="text-[15px] text-gray-500 font-sans capitalize">
-              8
+              8 days
             </span>
           </div>
         </div>

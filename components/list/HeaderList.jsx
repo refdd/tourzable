@@ -13,7 +13,7 @@ function HeaderList() {
     <div className=" container mx-auto px-4  pt-3 bg-white  ">
       <div className="flex flex-col space-y-3 border-b pb-7 md:flex-row md:items-center md:justify-between md:px-6 ">
         <p className="font-medium text-lg font-sans capitalize text-[#051036]">
-          3,269 properties <span className="font-normal"> in Europe</span>{" "}
+          269 tour In saudi
         </p>
         <div className="flex items-center space-x-7">
           {/* sort */}
@@ -21,10 +21,10 @@ function HeaderList() {
             onClick={() => {
               setOpenSort(!openSort);
             }}
-            className=" relative group flex  h-10 px-5 rounded-full bg-[#3554d10d]  space-x-2 items-center cursor-pointer transition-all hover:md:bg-[#3554d1] "
+            className=" relative group flex  h-10 px-5 rounded-full bg-MainYeloow  space-x-2 items-center cursor-pointer transition-all hover:md:bg-mainColor "
           >
-            <TbArrowsUpDown className="text-lg text-[#3554d1] group-hover:md:text-white" />
-            <button className="font-medium text-[15px] font-sans capitalize text-[#3554d1]  group-hover:md:text-white">
+            <TbArrowsUpDown className="text-lg text-mainColor group-hover:md:text-white" />
+            <button className="font-medium text-[15px] font-sans capitalize text-mainColor  group-hover:md:text-white">
               Sort
             </button>
             {openSort && (
@@ -42,14 +42,14 @@ function HeaderList() {
             onClick={() => {
               setViewTours(!ViewTours);
             }}
-            className=" group hidden md:flex  h-10 px-5 rounded-full bg-[#3554d10d]  space-x-2 items-center cursor-pointer transition-all hover:md:bg-[#3554d1] "
+            className=" group hidden md:flex  h-10 px-5 rounded-full bg-MainYeloow  space-x-2 items-center cursor-pointer transition-all hover:md:bg-mainColor "
           >
             {ViewTours ? (
-              <BsFillGrid3X3GapFill className="text-lg text-[#3554d1] group-hover:text-white" />
+              <BsFillGrid3X3GapFill className="text-lg text-mainColor group-hover:text-white" />
             ) : (
-              <AiOutlineOrderedList className="text-lg text-[#3554d1] group-hover:text-white" />
+              <AiOutlineOrderedList className="text-lg text-mainColor group-hover:text-white" />
             )}
-            <button className="font-medium text-[15px] font-sans capitalize text-[#3554d1]  group-hover:text-white">
+            <button className="font-medium text-[15px] font-sans capitalize text-mainColor  group-hover:text-white">
               {ViewTours ? " grid View" : "  list View"}
             </button>
           </div>
@@ -57,10 +57,10 @@ function HeaderList() {
             onClick={() => {
               setOpenFilter(true);
             }}
-            className="   flex  md:hidden h-10 px-5 rounded-full bg-[#3554d10d]  space-x-2 items-center cursor-pointer "
+            className="   flex  md:hidden h-10 px-5 rounded-full bg-MainYeloow space-x-2 items-center cursor-pointer "
           >
-            <TbArrowsUpDown className="text-lg text-[#3554d1]" />
-            <button className="font-medium text-[15px] font-sans capitalize text-[#3554d1]">
+            <TbArrowsUpDown className="text-lg text-mainColor" />
+            <button className="font-medium text-[15px] font-sans capitalize text-mainColor">
               Filter
             </button>
           </div>

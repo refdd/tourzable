@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { FaAngleUp } from "react-icons/fa";
-import landmark from "../../public/assets/images/tourList.jpg";
+import landmark from "../../public/assets/images/listtour.webp";
 const questions = [
   {
     id: 1,

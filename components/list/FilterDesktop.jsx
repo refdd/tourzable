@@ -16,19 +16,20 @@ function FilterDesktop() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  console.log(value);
   return (
     <div className="container mx-auto px-4 pt-7">
       <div className="flex flex-col space-y-5">
         {/* search */}
         <div className="">
           <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
-            Search by property name
+            Search by tour name
           </p>
           <div className=" py-6 border-b">
             <TextField
               fullWidth
               id="outlined-textarea"
-              label="e.g Best Western"
+              label="ex: Al Ula Tour Package"
               placeholder="Search"
               multiline
             />
@@ -72,19 +73,22 @@ function FilterDesktop() {
         {/* Popular Filters */}
         <div className="">
           <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
-            Days Count
+            number of Days
           </p>
           <ul className=" flex flex-col space-y-1  py-5  border-b">
             <li className="flex items-center justify-between">
               <div className="">
                 <TextField
-                  label="Days Count"
+                  label="Days number"
                   id="outlined-start-adornment"
                   sx={{ m: 1, width: "25ch" }}
                   fullWidth
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment position="start">day</InputAdornment>
+                      <InputAdornment position="start">
+                        {" "}
+                        ex: 6 days
+                      </InputAdornment>
                     ),
                   }}
                 />
@@ -95,11 +99,11 @@ function FilterDesktop() {
         {/* Nightly Price */}
         <div className="">
           <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
-            Popular Filters
+            Price Range
           </p>
           <div className="flex flex-col space-y-1  py-5  border-b">
             <Typography id="range-slider" gutterBottom>
-              $0 - $700
+              ${value[0]} - ${value[1]}
             </Typography>
             <Slider
               value={value}
@@ -107,7 +111,21 @@ function FilterDesktop() {
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0}
-              max={100}
+              max={1000}
+              sx={{
+                "& .MuiSlider-thumb": {
+                  color: "#5C2D90",
+                },
+                "& .MuiSlider-track": {
+                  color: "#FFD440",
+                },
+                "& .MuiSlider-rail": {
+                  color: "#acc4e4",
+                },
+                "& .MuiSlider-active": {
+                  color: "green",
+                },
+              }}
             />
           </div>
         </div>
@@ -120,35 +138,21 @@ function FilterDesktop() {
           <ul className="flex flex-wrap gap-2  py-5  border-b">
             <li
               className="flex justify-center items-center bg-[#3554d10d] rounded-full py-1 px-5
-              text-[15px] font-medium  text-[#3554d1] transition-all hover:text-white hover:bg-[#3554d1]
-               cursor-pointer  "
-            >
-              <span>1</span>
-            </li>
-            <li
-              className="flex justify-center items-center bg-[#3554d10d] rounded-full py-1 px-5
-              text-[15px] font-medium  text-[#3554d1] transition-all hover:text-white hover:bg-[#3554d1]
-               cursor-pointer  "
-            >
-              <span>2</span>
-            </li>
-            <li
-              className="flex justify-center items-center bg-[#3554d10d] rounded-full py-1 px-5
-              text-[15px] font-medium  text-[#3554d1] transition-all hover:text-white hover:bg-[#3554d1]
+              text-[15px] font-medium  text-mainColor transition-all hover:text-white hover:bg-mainColor
                cursor-pointer  "
             >
               <span>3</span>
             </li>
             <li
               className="flex justify-center items-center bg-[#3554d10d] rounded-full py-1 px-5
-              text-[15px] font-medium  text-[#3554d1] transition-all hover:text-white hover:bg-[#3554d1]
+              text-[15px] font-medium  text-mainColor transition-all hover:text-white hover:bg-mainColor
                cursor-pointer  "
             >
               <span>4</span>
             </li>
             <li
               className="flex justify-center items-center bg-[#3554d10d] rounded-full py-1 px-5
-              text-[15px] font-medium  text-[#3554d1] transition-all hover:text-white hover:bg-[#3554d1]
+              text-[15px] font-medium  text-mainColor transition-all hover:text-white hover:bg-mainColor
                cursor-pointer  "
             >
               <span>5</span>
@@ -158,7 +162,7 @@ function FilterDesktop() {
         {/* button Search */}
         <div
           className="flex justify-center items-center space-x-1
-         bg-[#3554d1] rounded py-3 text-white text-lg transition-all hover:bg-[#051036] hover:text-white"
+         bg-mainColor rounded py-3 text-white text-lg transition-all hover:bg-[#051036] hover:text-white"
         >
           <BiSearch className="" />
           <button>search</button>

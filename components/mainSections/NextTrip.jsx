@@ -14,7 +14,7 @@ function NextTrip() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="flex flex-col space-y-4">
           {/* image */}
-          <div className=" group relative w-full h-[320px] overflow-hidden rounded  shadow-lg shadow-[#5c2d9040] ">
+          <div className=" group relative w-full h-[220px] md:h-[320px] overflow-hidden rounded-lg  shadow-lg shadow-[#5c2d9040] ">
             <Image
               src={trip1}
               fill
@@ -27,7 +27,7 @@ function NextTrip() {
             <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
               10 European ski destinations you should visit this winter
             </p>
-            <span className="text-[#697488] text-[15px] font-sans capitalize">
+            <span className="text-MainYeloow text-[15px] font-sans capitalize">
               April 06, 2022
             </span>
           </div>
@@ -47,7 +47,7 @@ function NextTrip() {
             <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
               10 European ski destinations you should visit this winter
             </p>
-            <span className="text-[#697488] text-[15px] font-sans capitalize">
+            <span className="text-MainYeloow text-[15px] font-sans capitalize">
               April 06, 2022
             </span>
           </div>
@@ -67,7 +67,7 @@ function NextTrip() {
             <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
               10 European ski destinations you should visit this winter
             </p>
-            <span className="text-[#697488] text-[15px] font-sans capitalize">
+            <span className="text-MainYeloow text-[15px] font-sans capitalize">
               April 06, 2022
             </span>
           </div>

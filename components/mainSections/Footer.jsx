@@ -12,13 +12,13 @@ import {
 import footerLoge from "../../public/assets/images/The-Logo.png";
 function Footer() {
   return (
-    <div className="container mx-auto px-4 bg-[#0d2857]">
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-6 pb-4 md:pt-24">
+    <div className="container mx-auto px-4 bg-mainColor">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-6 pb-4 md:pt-11">
         <div className=" flex flex-col space-y-16 py-7">
           {/*  */}
           <div className=" flex flex-col space-y-7">
             {/* logo footer */}
-            <div className="relative w-[256px]  h-[53px]  ">
+            <div className="relative  w-[256px] h-[53px] md:w-[373px]  md:h-[90px]   bg-white p-73 rounded ">
               <Image
                 src={footerLoge}
                 fill
@@ -43,7 +43,7 @@ function Footer() {
                   Need live support?
                 </span>
                 <span className="text-lg text-white font-medium  ">
-                  hi@gotrip.com
+                  hi@tourzable.com
                 </span>
               </div>
             </div>
@@ -56,24 +56,24 @@ function Footer() {
 
             {/* buttons */}
             <div className="flex   flex-row  space-x-3 ">
-              <div className="flex items-center space-x-1 bg-[#13357b] rounded-lg  w-fit px-4 py-3">
-                <BsApple className="text-white text-2xl" />
+              <div className="flex items-center space-x-1 bg-MainYeloow rounded-lg  w-fit px-4 py-3">
+                <BsApple className="text-mainColor text-2xl" />
                 <div className="flex flex-col ">
-                  <span className="text-white text-[14px] font-sans capitalize">
+                  <span className="text-mainColor text-[14px] font-sans capitalize">
                     Download on the
                   </span>
-                  <span className="text-white font-medium text-[15px] font-sans ">
+                  <span className="text-mainColor font-medium text-[15px] font-sans ">
                     Apple Store
                   </span>
                 </div>
               </div>
-              <div className="flex items-center space-x-1 bg-[#13357b] rounded-lg  w-fit px-4 py-3">
-                <BsGooglePlay className="text-white text-2xl" />
+              <div className="flex items-center space-x-1 bg-MainYeloow rounded-lg  w-fit px-4 py-3">
+                <BsGooglePlay className="text-mainColor text-2xl" />
                 <div className="flex flex-col ">
-                  <span className="text-white text-[14px] font-sans capitalize">
+                  <span className="text-mainColor text-[14px] font-sans capitalize">
                     Get in on
                   </span>
-                  <span className="text-white font-medium text-[15px] font-sans ">
+                  <span className="text-mainColor font-medium text-[15px] font-sans ">
                     Google Play
                   </span>
                 </div>
