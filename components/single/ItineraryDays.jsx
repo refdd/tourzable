@@ -36,10 +36,10 @@ function ItineraryDays() {
     setActiveIndex(activeIndex === index ? null : index);
   };
   return (
-    <div className="max-w-4xl mx-auto py-5 px-4 sm:px-6 lg:px-8">
+    <div className="container mx-auto py-5 px-4 ">
       <div className="">
         {questions.map((q, index) => (
-          <div key={q.id} className=" border mb-8 rounded shadow-lg py-5 px-3 ">
+          <div key={q.id} className=" border mb-4 rounded shadow-lg py-5 px-3 ">
             <button
               className="flex  items-center justify-between px-3 w-full "
               onClick={() => handleClick(index)}

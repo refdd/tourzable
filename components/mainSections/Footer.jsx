@@ -1,15 +1,25 @@
 import { TextField } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import { AiFillPhone } from "react-icons/ai";
 import {
   BsApple,
   BsFacebook,
+  BsFillEnvelopeFill,
   BsGooglePlay,
   BsInstagram,
   BsLinkedin,
   BsTwitter,
 } from "react-icons/bs";
+import { GrLocationPin } from "react-icons/gr";
+import { MdLocationPin } from "react-icons/md";
 import footerLoge from "../../public/assets/images/The-Logo.png";
+import mada from "../../public/assets/images/mada.webp";
+import visa from "../../public/assets/images/master.png";
+import master from "../../public/assets/images/visa.png";
+import ma3rof from "../../public/assets/images/ma3rof.png";
+import min from "../../public/assets/images/min.png";
+import Link from "next/link";
 function Footer() {
   return (
     <div className="container mx-auto px-4 bg-mainColor">
@@ -34,7 +44,10 @@ function Footer() {
                   Toll Free Customer Care
                 </span>
                 <span className="text-lg text-white font-medium  ">
-                  +(1) 123 456 7890
+                  2050129551
+                </span>
+                <span className="text-lg text-white font-medium  ">
+                  310584566400003
                 </span>
               </div>
               {/* coll and support */}
@@ -115,78 +128,120 @@ function Footer() {
               </button>
             </div>
           </div>
-          {/* company */}
+          {/* Tourzable */}
           <div className="pt-5">
             <p className="text-white text-[16px] font-sans font-medium capitalize border-white">
-              Company
+              Tourzable
             </p>
             <ul className="flex flex-col space-y-7 pt-2 text-white text-[16px] font-sans capitalize">
               <li className=" hover:text-[#3554d1] transition-all">
                 <span>About Us</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Careers</span>
+                <span>E-Visa</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Blog</span>
+                <span>Privacy</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Press</span>
+                <span>Terms & Conditions</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Gift Cards</span>
+                <span>Cancellation Policy</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Magazine</span>
-              </li>
-            </ul>
-          </div>
-          {/* support */}
-          <div className=" pt-5">
-            <p className="text-white text-[16px] font-sans font-medium capitalize border-white">
-              Support
-            </p>
-            <ul className="flex flex-col space-y-7 pt-2 text-white text-[16px] font-sans capitalize">
-              <li className=" hover:text-[#3554d1] transition-all">
-                <span>Contact</span>
+                <span>Contact Us</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Legal Notice</span>
-              </li>
-              <li className=" hover:text-[#3554d1] transition-all">
-                <span>Privacy Policy</span>
-              </li>
-              <li className=" hover:text-[#3554d1] transition-all">
-                <span>Terms and Conditions</span>
-              </li>
-              <li className=" hover:text-[#3554d1] transition-all">
-                <span>Sitemap</span>
+                <span>FAQ</span>
               </li>
             </ul>
           </div>
           {/* support */}
           <div className=" pt-5">
             <p className="text-white text-[16px] font-sans font-medium capitalize border-white">
-              Other Services
+              Dashboard
             </p>
             <ul className="flex flex-col space-y-7 pt-2 text-white text-[16px] font-sans capitalize">
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Car hire</span>
+                <span>Customer</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Activity Finder</span>
+                <span>Agency</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Tour List</span>
+                <span>DMC</span>
               </li>
-              <li className=" hover:text-[#3554d1] transition-all">
-                <span>Cruise Ticket</span>
+              <li className=" hover:text-[#3554d1] transition-all ">
+                <p className="text-[16px] text-white font-medium capitalize font-sans">
+                  Ways You Can Pay
+                </p>
               </li>
-              <li className=" hover:text-[#3554d1] transition-all">
-                <span>Holiday Rental</span>
+              <li className=" hover:text-[#3554d1] transition-all ">
+                <div className="flex flex-col ">
+                  <Image
+                    src={mada}
+                    width={90}
+                    height={90}
+                    alt="mada"
+                    className=""
+                  />
+                  <Image
+                    src={visa}
+                    width={50}
+                    height={50}
+                    alt="mada"
+                    className=""
+                  />
+                  <Image
+                    src={master}
+                    width={50}
+                    height={50}
+                    alt="mada"
+                    className=""
+                  />
+                </div>
               </li>
-              <li className=" hover:text-[#3554d1] transition-all">
-                <span>Travel Agents</span>
+            </ul>
+          </div>
+          {/* support */}
+          <div className=" pt-5">
+            <p className="text-white text-[16px] font-sans font-medium capitalize border-white">
+              Contact Us
+            </p>
+            <ul className="flex flex-col space-y-7 pt-2 text-white text-[16px] font-sans capitalize">
+              <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
+                <AiFillPhone className="text-lg text-white" />
+                <span>0564445507</span>
+              </li>
+              <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
+                <MdLocationPin className="text-lg text-white" />
+                <span>Eastern Province</span>
+              </li>
+              <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
+                <BsFillEnvelopeFill className="text-lg text-textPurple" />
+                <span> Sales@Tourzable.Com</span>
+              </li>
+              <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
+                <div className="flex flex-col ">
+                  <Link href={"https://maroof.sa/businesses/details/126288"}>
+                    <Image
+                      src={ma3rof}
+                      width={90}
+                      height={90}
+                      alt="mada"
+                      className=""
+                    />
+                  </Link>
+
+                  <Image
+                    src={min}
+                    width={100}
+                    height={90}
+                    alt="mada"
+                    className=""
+                  />
+                </div>
               </li>
             </ul>
           </div>

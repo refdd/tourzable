@@ -3,7 +3,7 @@ import ItineraryDays from "./ItineraryDays";
 
 function Itinerary() {
   return (
-    <div className="py-5">
+    <div id="Itinerary" className=" mt-5">
       <div className="flex justify-between items-center">
         <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
           Itinerary

@@ -1,14 +1,43 @@
-import { TextField } from "@mui/material";
-import React from "react";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
+import React, { useState } from "react";
+import { FaAngleDown } from "react-icons/fa";
 
 function LeaveReview() {
+  const [openReview, setOpenReview] = useState(false);
+  const [age, setAge] = useState("");
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
-    <div className="container mx-auto px-4">
-      <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
-        Leave A Review
-      </p>
+    <div id="Reviews" className="container mx-auto px-4 mt-5">
+      <div
+        onClick={() => {
+          setOpenReview(!openReview);
+        }}
+        className=" flex items-center gap-4 cursor-pointer"
+      >
+        <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
+          Leave A Review
+        </p>
+        <FaAngleDown
+          className={`text-lg text-mainColor transition-transform  ${
+            openReview ? "rotate-180" : " rotate-0"
+          }`}
+        />
+      </div>
+
       <form>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
+        <div
+          className={` grid-cols-1 gap-5 md:grid-cols-2 border transition-all rounded-md p-3 shadow-lg mt-5  ${
+            openReview ? "grid" : "hidden "
+          }`}
+        >
           {/* frist name  */}
           <div className="">
             <TextField
@@ -20,7 +49,7 @@ function LeaveReview() {
             />
           </div>
           {/*email address */}
-          <div className=" md:col-span-2">
+          <div className=" md:col-span-1">
             <TextField
               fullWidth
               type="email"
@@ -29,6 +58,50 @@ function LeaveReview() {
               variant="standard"
               required
             />
+          </div>
+          {/* package Review */}
+          <div className="md:col-span-1">
+            <FormControl variant="standard" sx={{ width: "100%" }}>
+              <InputLabel id="demo-simple-select-standard-label">
+                Package Review
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                value={age}
+                onChange={handleChange}
+                label="Package Review"
+              >
+                <MenuItem value="">
+                  <em>star</em>
+                </MenuItem>
+                <MenuItem value={10}>1</MenuItem>
+                <MenuItem value={20}>2</MenuItem>
+                <MenuItem value={30}>3</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+          {/* Operator Review*/}
+          <div className="md:col-span-1">
+            <FormControl variant="standard" sx={{ width: "100%" }}>
+              <InputLabel id="demo-simple-select-standard-label">
+                Operator Review
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                value={age}
+                onChange={handleChange}
+                label="Operator Review"
+              >
+                <MenuItem value="">
+                  <em>star</em>
+                </MenuItem>
+                <MenuItem value={10}>1</MenuItem>
+                <MenuItem value={20}>2</MenuItem>
+                <MenuItem value={30}>3</MenuItem>
+              </Select>
+            </FormControl>
           </div>
           {/*text message */}
           <div className=" mt-5  md:col-span-2">

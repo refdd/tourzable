@@ -75,6 +75,9 @@
   font-weight: 500 !important;
   margin-bottom: 2px !important;
 }
+html {
+  scroll-behavior: smooth;
+}
 @media only screen and (max-width: 786px) {
   .css-1hj5xsr-MuiInputBase-root-MuiInput-root-MuiSelect-root:before {
     bottom: -8px;

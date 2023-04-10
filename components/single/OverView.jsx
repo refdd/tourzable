@@ -7,7 +7,7 @@ import { FcCheckmark } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
 function OverView() {
   return (
-    <div className="">
+    <div id="overview" className="">
       <div className=" border-b pb-4">
         <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
           Property highlights
