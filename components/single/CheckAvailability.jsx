@@ -6,10 +6,19 @@ import { BsPersonAdd } from "react-icons/bs";
 import { FaChild } from "react-icons/fa";
 import { ImMan } from "react-icons/im";
 import { MdOutlinePersonRemoveAlt1 } from "react-icons/md";
+import { useForm, Controller } from "react-hook-form";
 
 function CheckAvailability() {
+  const [startDay, setStartDay] = useState(null);
+  const [endDay, setEndDay] = useState(null);
   const [aduits, setAduits] = useState(0);
   const [childs, setChilds] = useState(0);
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
   const handleAddCounter = (type) => {
     if (type == "adults") {
       setAduits(aduits + 1);
@@ -26,13 +35,21 @@ function CheckAvailability() {
       setChilds(childs - 1);
     }
   };
+  const onSubmit = (data) => {
+    console.log({ ...data, aduits, childs, startDay, endDay });
+  };
+
   return (
-    <form className="py-2 px-3 ">
+    <form onSubmit={handleSubmit(onSubmit)} className="py-2 px-3 ">
       <div className="grid grid-cols-2 gap-4 ">
         {/*date*/}
         <div className=" mt-5 ">
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
+              value={startDay}
+              onChange={(date) => {
+                setStartDay(date);
+              }}
               slotProps={{
                 textField: {
                   variant: "standard",
@@ -46,6 +63,10 @@ function CheckAvailability() {
         <div className=" mt-5 ">
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
+              value={endDay}
+              onChange={(date) => {
+                setEndDay(date);
+              }}
               slotProps={{
                 textField: {
                   variant: "standard",

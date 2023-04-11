@@ -29,7 +29,6 @@ function SingleTour() {
       }
     });
   }, []);
-  console.log(isTop);
   return (
     <div className="">
       {isTop ? <NormailNavBar /> : <TapsTour />}

@@ -7,6 +7,16 @@ const initialState = {
   Activities: false,
   UmrahPlus: false,
 };
+const initialDataInquiry = {
+  firstName: "user",
+  lastName: "user",
+  email: "text@example.com",
+  data: "26-04-2023",
+  message: "message",
+  number: "+1 (867) 543-2456",
+  aduits: 4,
+  childs: 4,
+};
 
 export const ContextProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(initialState);
