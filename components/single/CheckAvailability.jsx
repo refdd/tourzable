@@ -7,12 +7,15 @@ import { FaChild } from "react-icons/fa";
 import { ImMan } from "react-icons/im";
 import { MdOutlinePersonRemoveAlt1 } from "react-icons/md";
 import { useForm, Controller } from "react-hook-form";
+import { useRouter } from "next/router";
 
 function CheckAvailability() {
   const [startDay, setStartDay] = useState(null);
   const [endDay, setEndDay] = useState(null);
   const [aduits, setAduits] = useState(0);
   const [childs, setChilds] = useState(0);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -27,6 +30,8 @@ function CheckAvailability() {
       setChilds(childs + 1);
     }
   };
+  const startDayFormate = startDay ? startDay.format("DD-MM-YYYY") : startDay;
+  const endDayFormate = endDay ? endDay.format("DD-MM-YYYY") : endDay;
   const handleremoveCounter = (type) => {
     if (type == "adults" && aduits > 0) {
       setAduits(aduits - 1);
@@ -36,7 +41,14 @@ function CheckAvailability() {
     }
   };
   const onSubmit = (data) => {
-    console.log({ ...data, aduits, childs, startDay, endDay });
+    console.log({
+      ...data,
+      aduits,
+      childs,
+      startDay: startDayFormate,
+      endDay: endDayFormate,
+    });
+    router.push("/Checkout");
   };
 
   return (
@@ -55,6 +67,7 @@ function CheckAvailability() {
                   variant: "standard",
                   fullWidth: true,
                   label: "Start Day",
+                  required: true,
                 },
               }}
             />
@@ -72,6 +85,7 @@ function CheckAvailability() {
                   variant: "standard",
                   fullWidth: true,
                   label: "End Day",
+                  required: true,
                 },
               }}
             />
@@ -98,6 +112,7 @@ function CheckAvailability() {
                   <BsPersonAdd />{" "}
                 </div>
                 <TextField
+                  required
                   type="tel"
                   variant="standard"
                   value={aduits}
@@ -131,6 +146,7 @@ function CheckAvailability() {
                   <BsPersonAdd />{" "}
                 </div>
                 <TextField
+                  required
                   type="tel"
                   variant="standard"
                   value={childs}

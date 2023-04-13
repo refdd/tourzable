@@ -11,6 +11,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useForm, FormProvider } from "react-hook-form";
 import CustomTextField from "../hleper/CustomTextField";
 import { format } from "date-fns";
+import { useRouter } from "next/router";
 
 function Inquery() {
   const [number, setnumber] = useState("+1");
@@ -18,7 +19,7 @@ function Inquery() {
   const [childs, setChilds] = useState(0);
   const methods = useForm();
   const [selectedDate, setSelectedDate] = useState(null);
-
+  const router = useRouter();
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -46,11 +47,12 @@ function Inquery() {
   };
   const onSubmit = (data) => {
     console.log({ ...data, number, aduits, childs, data: dateFormated });
+    router.push("/Thank_you");
   };
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} className="py-2 px-3 ">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-y-4 md:gap-x-4 ">
           {/* frist name  */}
           <div className="">
             <CustomTextField
@@ -70,7 +72,7 @@ function Inquery() {
             />
           </div>
           {/*email address */}
-          <div className=" md:col-span-2">
+          <div className=" md:mt-2">
             <CustomTextField
               required
               name="email"
@@ -79,7 +81,7 @@ function Inquery() {
             />
           </div>
           {/*code andnumber */}
-          <div className=" md:col-span-2 mt-5">
+          <div className=" md:mt-2 ">
             <MuiPhoneNumber
               sx={{ "& svg": { height: "0.7em" } }}
               // slot={{}}
@@ -95,7 +97,7 @@ function Inquery() {
           </div>
           {/* counter */}
           <div className="  md:col-span-2">
-            <div className=" grid grid-cols-2 gap-3 mt-5">
+            <div className=" grid grid-cols-2 gap-3 mt-5 md:mt-0">
               <div className="flex flex-col space-y-2">
                 <div className="flex items-center">
                   <ImMan className="text-2xl text-MainYeloow" />
@@ -114,6 +116,7 @@ function Inquery() {
                     <BsPersonAdd />{" "}
                   </div>
                   <TextField
+                    fullWidth
                     type="tel"
                     variant="standard"
                     value={aduits}
@@ -147,6 +150,7 @@ function Inquery() {
                     <BsPersonAdd />{" "}
                   </div>
                   <TextField
+                    fullWidth
                     type="tel"
                     variant="standard"
                     value={childs}
@@ -165,7 +169,7 @@ function Inquery() {
             </div>
           </div>
           {/*date*/}
-          <div className=" mt-5  md:col-span-2">
+          <div className="  md:col-span-2">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 value={selectedDate}
@@ -184,7 +188,7 @@ function Inquery() {
           <div className=" mt-5  md:col-span-2">
             <textarea
               id="message"
-              rows="5"
+              rows="2"
               className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  "
               placeholder="Add your suggestions to modify the itinerary or add other features or any additional special request"
               {...methods.register("message", { required: true })}

@@ -18,6 +18,7 @@ module.exports = {
         MainYeloow: "#FFD440",
         textColor: "#3A2D4C",
         secandTextColor: "#462472",
+        shadowColorMain: "#9e6eae5e",
       },
     },
   },

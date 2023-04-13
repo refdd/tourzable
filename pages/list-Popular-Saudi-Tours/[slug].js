@@ -36,11 +36,20 @@ function SingleTour() {
       {/*  */}
       <div className="pt-28 bg-[#f5f5f5]"></div>
       <div className="flex flex-wrap items-center justify-between py-4 bg-[#f5f5f5] container mx-auto px-4">
-        <IconBreadcrumbs />
+        <IconBreadcrumbs
+          links={[
+            { name: "Home", slug: "/" },
+            {
+              name: "List Popular Saudi Tours",
+              slug: "/list-Popular-Saudi-Tours",
+            },
+          ]}
+          currentLink={"Taif City Tour Cable Car Ride3"}
+        />
       </div>
       <HeaderSingle />
       <SingleGalleryContainer />
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-1">
         <div className="col-span-2 container mx-auto px-4">
           <OverView />
           <Itinerary />
