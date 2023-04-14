@@ -8,6 +8,8 @@ import HeaderSections from "../parts/HeaderSections";
 import trip1 from "../../public/assets/images/trip1.png";
 import trip2 from "../../public/assets/images/trip2.png";
 import trip3 from "../../public/assets/images/trip3.png";
+import { BsArrowUpRight } from "react-icons/bs";
+import Link from "next/link";
 function NextTrip() {
   return (
     <div className="container mx-auto px-4">
@@ -105,6 +107,14 @@ function NextTrip() {
           </SwiperSlide>
         </Swiper>
       </div>
+      <Link href={"/list_blog"}>
+        <div className=" group flex items-center mx-auto  space-x-2 w-fit rounded transition-all hover:md:bg-MainYeloow bg-mainColor h-16 px-5 md:px-10 cursor-pointer  ">
+          <button className=" font-medium font-sans text-[15px] text-white md:font-semibold md:text-lg">
+            Register
+          </button>
+          <BsArrowUpRight className=" text-lg  text-white " />
+        </div>
+      </Link>
     </div>
   );
 }
