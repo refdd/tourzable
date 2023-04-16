@@ -20,7 +20,7 @@ function ListTour() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainHeaderList />
+      <MainHeaderList title={"SAUDI ARABIA TOURS"} />
 
       <div className="py-2 bg-[#f5f5f5]"> </div>
       <div className=" grid grid-cols-1 gap-5  md:grid-cols-5">

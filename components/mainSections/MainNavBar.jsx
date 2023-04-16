@@ -68,7 +68,7 @@ function MainNavBar() {
                   !isTop ? "text-[#051036]" : "text-[#fff]"
                 } `}
               >
-                Umrah Plus
+                <Link href={"/umrah"}> Umrah Plus</Link>
               </li>
               <li
                 className={` text-lg   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
@@ -156,7 +156,7 @@ function MainNavBar() {
             <Link href={"/Popular-Activities"}> Activities</Link>
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
-            Umrah Plus
+            <Link href={"/umrah"}> Umrah Plus</Link>
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             Landmarks

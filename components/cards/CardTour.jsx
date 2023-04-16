@@ -12,11 +12,12 @@ function CardTour({
   price,
   duration,
   activitiey,
+  blog,
 }) {
   return (
     <div className=" tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e]">
       {/* image card */}
-      <div className=" w-full h-[180px] relative overflow-hidden rounded">
+      <div className=" overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
         <ImageSlider arrayOfImages={image} />
 
@@ -30,11 +31,13 @@ function CardTour({
         </div>
       </div>
       {/*duration */}
-      <div className="absolute top-40 right-5 rounded bg-MainYeloow py-1 px-3 z-10  ">
-        <p className="text-mainColor font-sans capitalize">
-          {duration} {activitiey ? "hours" : "Days"}
-        </p>
-      </div>
+      {!blog && (
+        <div className="absolute top-40 right-5 rounded bg-MainYeloow py-1 px-3 z-10  ">
+          <p className="text-mainColor font-sans capitalize">
+            {duration} {activitiey ? "hours" : "Days"}
+          </p>
+        </div>
+      )}
       {/* title */}
       <div className="">
         {/* location */}

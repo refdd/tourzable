@@ -10,13 +10,11 @@ import trip2 from "../../public/assets/images/trip2.png";
 import trip3 from "../../public/assets/images/trip3.png";
 import { BsArrowUpRight } from "react-icons/bs";
 import Link from "next/link";
-function NextTrip() {
+
+function ReadAlso() {
   return (
     <div className="container mx-auto px-4">
-      <HeaderSections
-        titel={"Get inspiration for your next trip"}
-        desc={"Interdum et malesuada fames"}
-      />
+      <HeaderSections titel={"read also"} />
       <div className="">
         <Swiper
           modules={[Pagination]}
@@ -34,7 +32,7 @@ function NextTrip() {
               spaceBetween: 40,
             },
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 4,
               spaceBetween: 10,
             },
           }}
@@ -105,18 +103,54 @@ function NextTrip() {
               </div>
             </div>
           </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col space-y-4">
+              {/* image */}
+              <div className=" group relative w-full h-[220px] md:h-[320px]  overflow-hidden rounded shadow-lg shadow-[#5c2d9040]  ">
+                <Image
+                  src={trip3}
+                  fill
+                  loading="lazy"
+                  alt=""
+                  className="rounded group-hover:scale-110 transition-all ease-in-out"
+                />
+              </div>
+              <div className="flex flex-col space-y-1">
+                <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
+                  10 European ski destinations you should visit this winter
+                </p>
+                <span className="text-MainYeloow text-[15px] font-sans capitalize">
+                  April 06, 2022
+                </span>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col space-y-4">
+              {/* image */}
+              <div className=" group relative w-full h-[220px] md:h-[320px]  overflow-hidden rounded shadow-lg shadow-[#5c2d9040]  ">
+                <Image
+                  src={trip2}
+                  fill
+                  loading="lazy"
+                  alt=""
+                  className="rounded group-hover:scale-110 transition-all ease-in-out"
+                />
+              </div>
+              <div className="flex flex-col space-y-1">
+                <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
+                  10 European ski destinations you should visit this winter
+                </p>
+                <span className="text-MainYeloow text-[15px] font-sans capitalize">
+                  April 06, 2022
+                </span>
+              </div>
+            </div>
+          </SwiperSlide>
         </Swiper>
       </div>
-      <Link href={"/list_blog"}>
-        <div className=" group flex items-center mx-auto  space-x-2 w-fit rounded transition-all hover:md:bg-MainYeloow bg-mainColor h-16 px-5 md:px-10 cursor-pointer  ">
-          <button className=" font-medium font-sans text-[15px] text-white md:font-semibold md:text-lg">
-            See More
-          </button>
-          <BsArrowUpRight className=" text-lg  text-white " />
-        </div>
-      </Link>
     </div>
   );
 }
 
-export default NextTrip;
+export default ReadAlso;

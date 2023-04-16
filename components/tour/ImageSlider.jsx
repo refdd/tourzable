@@ -28,7 +28,7 @@ export default function ImageSlider({ arrayOfImages }) {
       >
         {arrayOfImages.map((img, index) => (
           <SwiperSlide key={index}>
-            <div className=" hoverArrows relative w-full h-[250px] group/imagcard overflow-hidden">
+            <div className=" hoverArrows relative w-full h-[180px] group/imagcard overflow-hidden">
               <Image
                 src={img}
                 fill

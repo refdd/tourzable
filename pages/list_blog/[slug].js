@@ -1,7 +1,14 @@
+import DownLoadApp from "@/components/mainSections/DownLoadApp";
+import FaQSection from "@/components/mainSections/FaQSection";
+import Footer from "@/components/mainSections/Footer";
 import NormailNavBar from "@/components/mainSections/NormailNavBar";
+import NotMember from "@/components/mainSections/NotMember";
+import Subscribe from "@/components/mainSections/Subscribe";
 import HeaderPages from "@/components/parts/HeaderPages";
 import OverViewSingleBlog from "@/components/singelBlog/OverViewSingleBlog";
+import ReadAlso from "@/components/singelBlog/ReadAlso";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
+import RelatedTours from "@/components/single/RelatedTours";
 import React from "react";
 
 function singelBlog() {
@@ -25,8 +32,16 @@ function singelBlog() {
       />
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3 container mx-auto px-4">
         <OverViewSingleBlog />
-        <div> right side</div>
+        <div>
+          <RelatedTours blog />
+        </div>
       </div>
+      <ReadAlso />
+      <FaQSection />
+      <Subscribe />
+      <DownLoadApp />
+      <NotMember />
+      <Footer />
     </div>
   );
 }
