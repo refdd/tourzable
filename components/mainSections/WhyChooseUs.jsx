@@ -8,9 +8,15 @@ import HeaderSections from "../parts/HeaderSections";
 import FraturedIcon1 from "../../public/assets/images/1.svg";
 import FraturedIcon2 from "../../public/assets/images/2.svg";
 import FraturedIcon3 from "../../public/assets/images/3.svg";
-function WhyChooseUs() {
+function WhyChooseUs({ homepage }) {
   return (
-    <div className="container mx-auto  px-4  mt-[390px] md:mt-4">
+    <div
+      className={
+        homepage
+          ? "container mx-auto  px-4  mt-[390px] md:mt-4"
+          : "container mx-auto  px-4  mt-4"
+      }
+    >
       <HeaderSections
         titel={"Why Choose Us"}
         desc={"These popular destinations have a lot to offer"}

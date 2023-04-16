@@ -16,7 +16,6 @@ function FilterDesktop() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log(value);
   return (
     <div className="container mx-auto px-4 pt-7">
       <div className="flex flex-col space-y-5">

@@ -28,7 +28,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainHeader />
-      <WhyChooseUs />
+      <WhyChooseUs homepage />
       <HeaderSections
         titel={"Most Popular Saudi Tours"}
         desc={

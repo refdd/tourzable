@@ -135,7 +135,9 @@ function Footer() {
             </p>
             <ul className="flex flex-col space-y-7 pt-2 text-white text-[16px] font-sans capitalize">
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>About Us</span>
+                <Link href={"/AboutUs"}>
+                  <span>About Us</span>
+                </Link>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
                 <span>E-Visa</span>
@@ -150,7 +152,9 @@ function Footer() {
                 <span>Cancellation Policy</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Contact Us</span>
+                <Link href={"/contact-us"}>
+                  <span>Contact Us</span>
+                </Link>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
                 <span>FAQ</span>
