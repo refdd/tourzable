@@ -1,6 +1,10 @@
 import ListBlogContainer from "@/components/listPlog/ListBlogContainer";
 import ReactPost from "@/components/listPlog/ReactPost";
+import DownLoadApp from "@/components/mainSections/DownLoadApp";
+import Footer from "@/components/mainSections/Footer";
 import NormailNavBar from "@/components/mainSections/NormailNavBar";
+import NotMember from "@/components/mainSections/NotMember";
+import Subscribe from "@/components/mainSections/Subscribe";
 import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import From from "@/components/single/From";
@@ -29,6 +33,10 @@ function listBlog() {
           <From />
         </div>
       </div>
+      <Subscribe />
+      <DownLoadApp />
+      <NotMember />
+      <Footer />
     </div>
   );
 }

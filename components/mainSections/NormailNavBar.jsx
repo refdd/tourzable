@@ -74,10 +74,17 @@ function NormailNavBar() {
                 Landmarks
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Saudi Travel Blog
+                <Link href={"list_blog"}>Saudi Travel Blog</Link>
               </li>
               <li className=" text-lg text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
                 E-Visa
+              </li>
+              <li className=" text-lg text-[#051036]  font-semibold font-sans hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
+                <Link href={"/customize-your-trip"}>
+                  <span className="py-1 px-1 rounded-lg flex items-center justify-center bg-MainYeloow">
+                    customize-your-trip
+                  </span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -113,28 +120,35 @@ function NormailNavBar() {
             menuBar ? "flex" : "hidden"
           }  flex-col p-6 bg-white border-y`}
         >
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
             <Link legacyBehavior href={"/"}>
               Home
             </Link>
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
             <Link href={"/list-Popular-Saudi-Tours"}>Packages</Link>
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
             <Link href={"/Popular-Activities"}> Activities</Link>
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
             <Link href={"/umrah"}> Umrah Plus</Link>
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
             Landmarks
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Saudi Travel Blog
+          <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+            <Link href={"list_blog"}>Saudi Travel Blog</Link>
           </li>
-          <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+          <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
             E-Visa
+          </li>
+          <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
+            <Link href={"/customize-your-trip"}>
+              <span className="py-1 px-1 rounded-lg flex items-center justify-center bg-MainYeloow">
+                customize-your-trip
+              </span>
+            </Link>
           </li>
         </ul>
       </div>
