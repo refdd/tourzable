@@ -9,6 +9,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
+import SignInBY from "./SignInBY";
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup
@@ -42,8 +43,8 @@ function FormSignUp() {
   };
   return (
     <div className="bg-[#e5f0fd] py-11 ">
-      <div className="container mx-auto px-4 md:w-[60%]">
-        <div className="py-4 px-3 bg-white shadow-lg rounded-md">
+      <div className="container mx-auto px-4 md:w-[40%] bg-white shadow-lg rounded-md">
+        <div className="py-4 px-3 ">
           {/* header form  */}
           <div className="flex flex-col space-y-4 ">
             <p className="text-[22px] font-medium capitalize font-sans text-mainColor ">
@@ -190,6 +191,7 @@ function FormSignUp() {
             </form>
           </FormProvider>
         </div>
+        <SignInBY />
       </div>
     </div>
   );

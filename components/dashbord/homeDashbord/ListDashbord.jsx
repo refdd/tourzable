@@ -78,20 +78,24 @@ function ListDashbord() {
           </Link>
         </ListItem>
         <ListItem>
-          <ListItemButton>
-            <ListItemIcon>
-              <AiFillSetting className="text-2xl text-mainColor" />
-            </ListItemIcon>
-            <ListItemText primary={"  Settings "} />
-          </ListItemButton>
+          <Link href={"/dashboard/Settings"}>
+            <ListItemButton>
+              <ListItemIcon>
+                <AiFillSetting className="text-2xl text-mainColor" />
+              </ListItemIcon>
+              <ListItemText primary={"  Settings "} />
+            </ListItemButton>
+          </Link>
         </ListItem>
         <ListItem>
-          <ListItemButton>
-            <ListItemIcon>
-              <MdLogout className="text-2xl text-mainColor" />
-            </ListItemIcon>
-            <ListItemText primary={"  Logout "} />
-          </ListItemButton>
+          <Link href={"/"}>
+            <ListItemButton>
+              <ListItemIcon>
+                <MdLogout className="text-2xl text-mainColor" />
+              </ListItemIcon>
+              <ListItemText primary={"  Logout "} />
+            </ListItemButton>
+          </Link>
         </ListItem>
       </List>
     </div>

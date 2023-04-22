@@ -6,6 +6,7 @@ import CustomTextField from "../hleper/CustomTextField";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useRouter } from "next/router";
+import SignInBY from "./SignInBY";
 function FormSignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
@@ -22,8 +23,8 @@ function FormSignIn() {
   };
   return (
     <div className="bg-[#e5f0fd] py-11 ">
-      <div className="container mx-auto px-4 md:w-[40%]">
-        <div className="py-4 px-3 bg-white shadow-lg rounded-md md:py-9">
+      <div className="container mx-auto px-4 md:w-[35%]  bg-white shadow-lg rounded-md md:py-9">
+        <div className="py-4 px-3">
           {/* header form  */}
           <div className="flex flex-col space-y-4 ">
             <p className="text-[22px] font-medium capitalize font-sans text-mainColor ">
@@ -102,6 +103,7 @@ function FormSignIn() {
             </form>
           </FormProvider>
         </div>
+        <SignInBY />
       </div>
     </div>
   );

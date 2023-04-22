@@ -1,4 +1,5 @@
 import FormSignUp from "@/components/auth/FormSignUp";
+import SignInBY from "@/components/auth/SignInBY";
 import NormailNavBar from "@/components/mainSections/NormailNavBar";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import React from "react";
