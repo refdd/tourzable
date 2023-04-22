@@ -11,7 +11,7 @@ import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
 import React from "react";
 
-function dashboard() {
+function Dashboard() {
   const { sideBar } = useStateContext();
   return (
     <div className="bg-[#f5f5f5]">
@@ -50,4 +50,4 @@ function dashboard() {
   );
 }
 
-export default dashboard;
+export default Dashboard;

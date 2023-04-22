@@ -12,7 +12,7 @@ import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
 import React from "react";
 
-function wishlist() {
+function Wishlist() {
   const { sideBar } = useStateContext();
 
   return (
@@ -53,4 +53,4 @@ function wishlist() {
   );
 }
 
-export default wishlist;
+export default Wishlist;
