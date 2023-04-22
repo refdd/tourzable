@@ -1,11 +1,8 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Tabs, { tabsClasses } from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import FavoritesContainer from "./FavoritesContainer";
 function TabPanel(props) {
@@ -80,18 +77,13 @@ function FavoritesTour() {
             <Tab label="Landmarks Favorites" {...a11yProps(1)} />
           </Tabs>
         </AppBar>
-        <SwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-          index={value}
-          onChangeIndex={handleChangeIndex}
-        >
-          <TabPanel value={value} index={0} dir={theme.direction}>
-            <FavoritesContainer />
-          </TabPanel>
-          <TabPanel value={value} index={1} dir={theme.direction}>
-            <FavoritesContainer />
-          </TabPanel>
-        </SwipeableViews>
+
+        <TabPanel value={value} index={0} dir={theme.direction}>
+          <FavoritesContainer />
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <FavoritesContainer />
+        </TabPanel>
       </Box>
     </div>
   );
