@@ -116,26 +116,30 @@ function MainNavBar() {
                   : "hover:bg-white border-white"
               }  `}
             >
-              <p
-                className={` transition-all   text-sm cursor-pointer ${
-                  !isTop
-                    ? "text-[#051036] group-hover:text-[#FFFF]  "
-                    : "text-white group-hover:text-[#051036] "
-                } `}
-              >
-                Sign In / Register
-              </p>
+              <Link href={"/sign-up"}>
+                <p
+                  className={` transition-all   text-sm cursor-pointer ${
+                    !isTop
+                      ? "text-[#051036] group-hover:text-[#FFFF]  "
+                      : "text-white group-hover:text-[#051036] "
+                  } `}
+                >
+                  Sign In / Register
+                </p>
+              </Link>
             </div>
           </div>
           {/* user and menu bar */}
           <div className="flex md:hidden items-center space-x-2">
             {/* icon user */}
-            <BiUserCircle
-              size={30}
-              className={` transition-all hover:text-[#0a58ca] cursor-pointer
+            <Link href={"/sign-up"}>
+              <BiUserCircle
+                size={30}
+                className={` transition-all hover:text-[#0a58ca] cursor-pointer
               
               ${menuBar || !isTop ? "text-gray-700 " : "text-white"}`}
-            />
+              />
+            </Link>
             <CgMenuLeftAlt
               onClick={handelMenubar}
               size={30}

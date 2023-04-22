@@ -1,12 +1,16 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import NavLogo from "../../public/assets/images/The-Logo.png";
-import DarkLogo from "../../public/assets/images/logo-dark.svg";
-import { BiUserCircle } from "react-icons/bi";
+import NavLogo from "../../../public/assets/images/The-Logo.png";
+import DarkLogo from "../../../public/assets/images/logo-dark.svg";
+import { BiMenuAltLeft, BiUserCircle } from "react-icons/bi";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import Link from "next/link";
-function NormailNavBar() {
+import IconDaskbord from "./IconDaskbord";
+import { useStateContext } from "@/contexts/ContextProvider";
+
+function DashbordNavBar() {
   const [menuBar, setMenuBar] = useState(false);
+  const { sideBar, setSideBar } = useStateContext();
   const handelMenubar = () => {
     setMenuBar(!menuBar);
   };
@@ -29,8 +33,8 @@ function NormailNavBar() {
                   alt="logo"
                   fill
                   sizes="(max-width: 768px) 100vw,
-                (max-width: 1200px) 50vw,
-                33vw"
+                    (max-width: 1200px) 50vw,
+                    33vw"
                 />
               ) : (
                 <Image
@@ -39,10 +43,22 @@ function NormailNavBar() {
                   loading={"lazy"}
                   alt="logo"
                   sizes="(max-width: 768px) 100vw,
-                (max-width: 1200px) 50vw,
-                33vw"
+                    (max-width: 1200px) 50vw,
+                    33vw"
                 />
               )}
+            </div>
+            {/* icon dashbord */}
+            <div className="block md:hidden">
+              <IconDaskbord />
+            </div>
+            <div
+              onClick={() => {
+                setSideBar(!sideBar);
+              }}
+              className=" text-3xl  text-white cursor-pointer hidden md:block"
+            >
+              <BiMenuAltLeft />
             </div>
             {/* links desktop */}
             <ul className={` hidden  md:flex items-center  `}>
@@ -150,4 +166,4 @@ function NormailNavBar() {
   );
 }
 
-export default NormailNavBar;
+export default DashbordNavBar;

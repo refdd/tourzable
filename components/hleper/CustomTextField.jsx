@@ -11,6 +11,7 @@ function CustomTextField({ name, label, required, type }) {
       <Controller
         name={name}
         control={control}
+        defaultValue=""
         render={({ field }) => (
           <TextField
             type={type}

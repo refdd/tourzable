@@ -21,12 +21,23 @@ const initialDataInquiry = {
 export const ContextProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(initialState);
   const [ViewTours, setViewTours] = useState(false);
+  const [sideBar, setSideBar] = useState(true);
   const [dateRange, setDateRange] = useState({
     startDate: new Date(),
     endDate: new Date(),
     key: "selection",
   });
+  const [navDashbord, setnavDashbord] = useState(false);
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
 
+    setnavDashbord(!navDashbord);
+  };
   const handleClick = (clicked) =>
     setIsClicked({ ...initialState, [clicked]: true });
   return (
@@ -39,6 +50,11 @@ export const ContextProvider = ({ children }) => {
         setDateRange,
         ViewTours,
         setViewTours,
+        navDashbord,
+        setnavDashbord,
+        toggleDrawer,
+        sideBar,
+        setSideBar,
       }}
     >
       {children}

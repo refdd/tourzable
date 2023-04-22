@@ -15,7 +15,7 @@ function handleClick(event) {
 
 export default function IconBreadcrumbs({ links, currentLink }) {
   return (
-    <div role="presentation" className="" onClick={handleClick}>
+    <div role="presentation" className="md:px-10" onClick={handleClick}>
       <Breadcrumbs aria-label="breadcrumb">
         {links?.map((itemlink, index) => (
           <Link

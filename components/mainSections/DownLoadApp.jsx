@@ -4,7 +4,7 @@ import { BsApple, BsGooglePlay } from "react-icons/bs";
 import AppImage from "../../public/assets/images/apps.webp";
 function DownLoadApp() {
   return (
-    <div className=" container mx-auto px-4 mt-10 pt-6  pb-8">
+    <div className=" container mx-auto px-4 mt-10 pt-6  md:px-10 pb-8">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* content  */}
         <div className="flex flex-col space-y-4 md:space-y-8">

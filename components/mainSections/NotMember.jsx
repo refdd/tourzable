@@ -3,7 +3,7 @@ import { BsArrowUpRight } from "react-icons/bs";
 
 function NotMember() {
   return (
-    <div className="container mx-auto px-4 bg-[#6b36a647] py-10">
+    <div className="container mx-auto px-4 bg-[#6b36a647] py-10 md:px-10">
       <div className="flex flex-col space-y-5">
         <p className="text-[26px] text-[#051036] font-sans capitalize font-semibold">
           Not a Member Yet?

@@ -78,6 +78,16 @@
 html {
   scroll-behavior: smooth;
 }
+.css-1eqj694-MuiTabs-root .MuiTabs-scrollButtons {
+  color: #5c2d90;
+}
+.css-1o9g21p {
+  border-radius: 10px;
+}
+.css-1a4cg4j-MuiButtonBase-root-MuiTab-root {
+  font-size: 15px;
+  font-weight: 600;
+}
 @media only screen and (max-width: 786px) {
   .css-1hj5xsr-MuiInputBase-root-MuiInput-root-MuiSelect-root:before {
     bottom: -8px;

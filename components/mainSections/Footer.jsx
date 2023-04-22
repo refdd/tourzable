@@ -22,7 +22,7 @@ import min from "../../public/assets/images/min.png";
 import Link from "next/link";
 function Footer() {
   return (
-    <div className="container mx-auto px-4 bg-mainColor">
+    <div className="container mx-auto px-4 md:px-10 bg-mainColor">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-6 pb-4 md:pt-11">
         <div className=" flex flex-col space-y-16 py-7">
           {/*  */}

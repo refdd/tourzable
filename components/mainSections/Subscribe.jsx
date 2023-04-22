@@ -5,7 +5,7 @@ import { BsEnvelopePaper } from "react-icons/bs";
 import subsribe from "../../public/assets/images/subsribe.png";
 function Subscribe() {
   return (
-    <div className="container mx-auto px-4 mt-10">
+    <div className="container mx-auto px-4 mt-10 md:px-10">
       <div className="flex flex-col md:flex-row">
         {/* image */}
         <div className=" group relative w-full h-[200px] rounded-t-md  md:h-[390px] overflow-hidden md:w-[500px] ">
