@@ -1,4 +1,5 @@
 import React from "react";
+import DestinationsBox from "../hleper/DestinationsBox";
 import HeaderVideo from "../parts/HeaderVideo";
 import MainSearch from "../parts/MainSearch";
 import MainNavBar from "./MainNavBar";
@@ -8,6 +9,7 @@ function MainHeader() {
     <div className="relative ">
       <HeaderVideo />
       <MainNavBar />
+
       {/* header contnet */}
       <div className="absolute top-[167%] md:top-[62%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full  ">
         <p className="text-center text-xl text-white font-sans font-semibold md:text-5xl">

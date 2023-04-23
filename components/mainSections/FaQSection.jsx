@@ -65,19 +65,6 @@ function FaQSection() {
               <h2 className=" text-mainColor text-[15px] md:text-lg font-medium font-sans capitalize">
                 {q.question}
               </h2>
-              {/* <svg
-                className={`w-5 h-5 transition-transform ${
-                  activeIndex === index ? "transform rotate-180" : ""
-                }`}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 16a.7.7 0 0 1-.5-.2L4.7 11a.7.7 0 0 1 1-.9L10 14.2l4.3-4.1a.7.7 0 1 1 1 1.1l-5 4.8a.7.7 0 0 1-.5.2z"
-                  clipRule="evenodd"
-                />
-              </svg> */}
             </button>
             {activeIndex === index && (
               <p className="mt-4 text-base text-gray-500">{q.answer}</p>

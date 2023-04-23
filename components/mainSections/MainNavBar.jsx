@@ -5,6 +5,7 @@ import DarkLogo from "../../public/assets/images/logo-dark.svg";
 import { BiUserCircle } from "react-icons/bi";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import Link from "next/link";
+import DestinationsBox from "../hleper/DestinationsBox";
 function MainNavBar() {
   const [menuBar, setMenuBar] = useState(false);
   const [isTop, setIsTop] = useState(true);
@@ -78,11 +79,12 @@ function MainNavBar() {
                 Landmarks
               </li>
               <li
-                className={` text-sm   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                className={`  group/des  text-sm   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
                   !isTop ? "text-[#051036]" : "text-[#fff]"
                 } `}
               >
-                Destinations
+                <span> Destinations</span>
+                <DestinationsBox />
               </li>
               <li
                 className={` text-sm   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${

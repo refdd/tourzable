@@ -1,7 +1,5 @@
 import Head from "next/head";
 import React from "react";
-import MainHeader from "@/components/mainSections/MainHeader";
-import NormailNavBar from "@/components/mainSections/NormailNavBar";
 import HeaderList from "@/components/list/HeaderList";
 import ListTourcontainer from "@/components/list/ListTourcontainer";
 import FilterDesktop from "@/components/list/FilterDesktop";

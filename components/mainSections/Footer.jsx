@@ -157,7 +157,9 @@ function Footer() {
                 </Link>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>FAQ</span>
+                <Link href={"/FAQ"}>
+                  <span>FAQ</span>
+                </Link>
               </li>
             </ul>
           </div>
