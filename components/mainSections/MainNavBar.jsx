@@ -6,11 +6,25 @@ import { BiUserCircle } from "react-icons/bi";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import Link from "next/link";
 import DestinationsBox from "../hleper/DestinationsBox";
+import DestinationsTree from "../hleper/DestinationsTree";
 function MainNavBar() {
   const [menuBar, setMenuBar] = useState(false);
+  const [disableScroll, setDisableScroll] = useState(false);
   const [isTop, setIsTop] = useState(true);
+  function toggleScroll() {
+    const body = document.querySelector("body");
+
+    if (disableScroll) {
+      body.classList.remove("overflow-hidden");
+    } else {
+      body.classList.add("overflow-hidden");
+    }
+
+    setDisableScroll(!disableScroll);
+  }
   const handelMenubar = () => {
     setMenuBar(!menuBar);
+    toggleScroll();
   };
   useEffect(() => {
     document.addEventListener("scroll", () => {
@@ -155,7 +169,7 @@ function MainNavBar() {
         <ul
           className={` ${
             menuBar ? "flex" : "hidden"
-          }  flex-col p-6 bg-white border-y`}
+          }  md:hidden flex-col p-6 bg-white border-y overflow-y-auto h-screen pb-40 `}
         >
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             <Link legacyBehavior href={"/"}>
@@ -175,7 +189,7 @@ function MainNavBar() {
             Landmarks
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
-            Destinations
+            <DestinationsTree />
           </li>
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             <Link href={"list_blog"}>Saudi Travel Blog</Link>
@@ -183,6 +197,7 @@ function MainNavBar() {
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             E-Visa
           </li>
+
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             <Link href={"/customize-your-trip"}>
               <span className="py-1 px-1 rounded-lg flex items-center justify-center bg-MainYeloow">

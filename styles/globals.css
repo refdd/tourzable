@@ -89,6 +89,17 @@ html {
   font-weight: 600;
   text-transform: capitalize;
 }
+.css-1g86id8-MuiTreeItem-content .MuiTreeItem-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #051036;
+}
+.css-1g86id8-MuiTreeItem-content {
+  flex-direction: row-reverse;
+}
+.css-g0jugy-MuiCollapse-root-MuiTreeItem-group {
+  margin-top: 12px;
+}
 @media only screen and (max-width: 786px) {
   .css-1hj5xsr-MuiInputBase-root-MuiInput-root-MuiSelect-root:before {
     bottom: -8px;
