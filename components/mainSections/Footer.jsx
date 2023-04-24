@@ -146,7 +146,9 @@ function Footer() {
                 <span>Privacy</span>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Terms & Conditions</span>
+                <Link href={"/Terms-conditions"}>
+                  <span>Terms & Conditions</span>
+                </Link>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
                 <span>Cancellation Policy</span>
