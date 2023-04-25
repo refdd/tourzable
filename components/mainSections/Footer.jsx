@@ -140,10 +140,14 @@ function Footer() {
                 </Link>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>E-Visa</span>
+                <Link href={"/visa"}>
+                  <span>E-Visa</span>
+                </Link>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Privacy</span>
+                <Link href={"/Privacy"}>
+                  <span>Privacy</span>
+                </Link>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
                 <Link href={"/Terms-conditions"}>
@@ -151,7 +155,9 @@ function Footer() {
                 </Link>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
-                <span>Cancellation Policy</span>
+                <Link href={"/cancellation-policy"}>
+                  <span>Cancellation Policy</span>
+                </Link>
               </li>
               <li className=" hover:text-[#3554d1] transition-all">
                 <Link href={"/contact-us"}>

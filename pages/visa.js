@@ -6,11 +6,12 @@ import Footer from "@/components/mainSections/Footer";
 import NotMember from "@/components/mainSections/NotMember";
 import OverViewTerms from "@/components/mainSections/OverViewTerms";
 import Subscribe from "@/components/mainSections/Subscribe";
+import VisaSection from "@/components/mainSections/VisaSection";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import Head from "next/head";
 import React from "react";
 
-function TermsConditions() {
+function Visa() {
   return (
     <>
       <Head>
@@ -19,14 +20,14 @@ function TermsConditions() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainHeaderList title={"Terms and Conditions "} />
+      <MainHeaderList title={"Visa "} />
       <div className="flex flex-wrap items-center justify-between py-4 bg-[#f5f5f5] container mx-auto px-4">
         <IconBreadcrumbs
           links={[{ name: "Home", slug: "/" }]}
-          currentLink={"FAQ"}
+          currentLink={"Visa"}
         />
       </div>
-      <OverViewTerms />
+      <VisaSection />
       <Subscribe />
       <DownLoadApp />
       <NotMember />
@@ -35,4 +36,4 @@ function TermsConditions() {
   );
 }
 
-export default TermsConditions;
+export default Visa;

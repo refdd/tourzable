@@ -16,10 +16,11 @@ import OfferSection from "@/components/mainSections/OfferSection";
 import ActivitiesRow from "@/components/tour/ActivitiesRow";
 import FaQSection from "@/components/mainSections/FaQSection";
 import LandMarkSection from "@/components/mainSections/LandMarkSection";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <>
       <Head>
@@ -47,7 +48,7 @@ export default function Home() {
       <LandMarkSection />
       <Reviews />
       <OfferSection />
-      <NextTrip />
+      <NextTrip posts={posts} />
       <FaQSection />
       <Subscribe />
       <DownLoadApp />
@@ -55,4 +56,17 @@ export default function Home() {
       <Footer />
     </>
   );
+}
+
+export async function getStaticProps() {
+  const posts = await fetchApi(`${baseUrl}/posts`);
+  // const tours = await fetchApi(`${baseUrl}/packages`);
+
+  return {
+    props: {
+      posts: posts.data,
+      // tours: tours.data,
+    },
+    revalidate: 10,
+  };
 }

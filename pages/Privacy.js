@@ -10,7 +10,7 @@ import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import Head from "next/head";
 import React from "react";
 
-function TermsConditions() {
+function Privacy() {
   return (
     <>
       <Head>
@@ -19,7 +19,7 @@ function TermsConditions() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainHeaderList title={"Terms and Conditions "} />
+      <MainHeaderList title={"Privacy "} />
       <div className="flex flex-wrap items-center justify-between py-4 bg-[#f5f5f5] container mx-auto px-4">
         <IconBreadcrumbs
           links={[{ name: "Home", slug: "/" }]}
@@ -35,4 +35,4 @@ function TermsConditions() {
   );
 }
 
-export default TermsConditions;
+export default Privacy;

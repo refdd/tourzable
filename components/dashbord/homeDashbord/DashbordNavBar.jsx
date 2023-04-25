@@ -85,7 +85,9 @@ function DashbordNavBar() {
                 <Link href={"list_blog"}>Saudi Travel Blog</Link>
               </li>
               <li className=" text-sm text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                E-Visa
+                <Link href={"/visa"}>
+                  <span>E-Visa</span>
+                </Link>
               </li>
               <li className=" text-sm text-[#051036]  font-semibold font-sans hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
                 <Link href={"/customize-your-trip"}>
@@ -155,7 +157,9 @@ function DashbordNavBar() {
             <Link href={"list_blog"}>Saudi Travel Blog</Link>
           </li>
           <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            E-Visa
+            <Link href={"/visa"}>
+              <span>E-Visa</span>
+            </Link>
           </li>
           <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             <Link href={"/customize-your-trip"}>

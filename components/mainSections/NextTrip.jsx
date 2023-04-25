@@ -5,12 +5,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import HeaderSections from "../parts/HeaderSections";
-import trip1 from "../../public/assets/images/trip1.png";
-import trip2 from "../../public/assets/images/trip2.png";
-import trip3 from "../../public/assets/images/trip3.png";
 import { BsArrowUpRight } from "react-icons/bs";
+import { format } from "date-fns";
 import Link from "next/link";
-function NextTrip() {
+function NextTrip({ posts }) {
+  const formatDate = (dateCurrenity) => {
+    const dateString = dateCurrenity;
+    const date = new Date(dateString);
+    const formattedDate = format(date, "MMMM dd, yyyy");
+    return formattedDate;
+  };
   return (
     <div className="container mx-auto px-4">
       <HeaderSections
@@ -39,72 +43,33 @@ function NextTrip() {
             },
           }}
         >
-          <SwiperSlide>
-            <div className="flex flex-col space-y-4">
-              {/* image */}
-              <div className=" group relative w-full h-[220px] md:h-[320px] overflow-hidden rounded-lg  shadow-lg shadow-[#5c2d9040] ">
-                <Image
-                  src={trip1}
-                  fill
-                  loading="lazy"
-                  alt=""
-                  className="rounded group-hover:scale-110 transition-all ease-in-out "
-                />
+          {posts?.map((post) => (
+            <SwiperSlide key={post.id}>
+              <div className="flex flex-col space-y-4">
+                {/* image */}
+                <div className=" group relative w-full h-[290px] md:h-[320px] overflow-hidden rounded-lg  shadow-lg shadow-[#5c2d9040] ">
+                  <Image
+                    loader={() => {
+                      return `${post.image}`;
+                    }}
+                    src={post.image}
+                    fill
+                    loading="lazy"
+                    alt=""
+                    className="rounded group-hover:scale-110 transition-all ease-in-out  object-fill"
+                  />
+                </div>
+                <div className="flex flex-col space-y-1">
+                  <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
+                    {post.title}
+                  </p>
+                  <span className="text-MainYeloow text-[15px] font-sans capitalize">
+                    {formatDate(post.created_at)}
+                  </span>
+                </div>
               </div>
-              <div className="flex flex-col space-y-1">
-                <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
-                  10 European ski destinations you should visit this winter
-                </p>
-                <span className="text-MainYeloow text-[15px] font-sans capitalize">
-                  April 06, 2022
-                </span>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col space-y-4">
-              {/* image */}
-              <div className=" group relative w-full h-[220px] md:h-[320px]  overflow-hidden rounded shadow-lg shadow-[#5c2d9040]  ">
-                <Image
-                  src={trip2}
-                  fill
-                  loading="lazy"
-                  alt=""
-                  className="rounded group-hover:scale-110 transition-all ease-in-out"
-                />
-              </div>
-              <div className="flex flex-col space-y-1">
-                <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
-                  10 European ski destinations you should visit this winter
-                </p>
-                <span className="text-MainYeloow text-[15px] font-sans capitalize">
-                  April 06, 2022
-                </span>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col space-y-4">
-              {/* image */}
-              <div className=" group relative w-full h-[220px] md:h-[320px]  overflow-hidden rounded shadow-lg shadow-[#5c2d9040]  ">
-                <Image
-                  src={trip3}
-                  fill
-                  loading="lazy"
-                  alt=""
-                  className="rounded group-hover:scale-110 transition-all ease-in-out"
-                />
-              </div>
-              <div className="flex flex-col space-y-1">
-                <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
-                  10 European ski destinations you should visit this winter
-                </p>
-                <span className="text-MainYeloow text-[15px] font-sans capitalize">
-                  April 06, 2022
-                </span>
-              </div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       <Link href={"/list_blog"}>
