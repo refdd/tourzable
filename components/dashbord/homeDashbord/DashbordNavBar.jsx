@@ -77,7 +77,9 @@ function DashbordNavBar() {
                 <Link href={"/umrah"}> Umrah Plus</Link>
               </li>
               <li className=" text-sm text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-                Landmarks
+                <Link href={"/LandMarks"}>
+                  <span>Landmarks</span>
+                </Link>
               </li>
               <li className=" text-sm text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
                 <Link href={"list_blog"}>Saudi Travel Blog</Link>
@@ -145,7 +147,9 @@ function DashbordNavBar() {
             <Link href={"/umrah"}> Umrah Plus</Link>
           </li>
           <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
-            Landmarks
+            <Link href={"/LandMarks"}>
+              <span>Landmarks</span>
+            </Link>
           </li>
           <li className=" text-sm text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
             <Link href={"list_blog"}>Saudi Travel Blog</Link>

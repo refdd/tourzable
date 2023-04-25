@@ -15,6 +15,7 @@ import HeaderSections from "@/components/parts/HeaderSections";
 import OfferSection from "@/components/mainSections/OfferSection";
 import ActivitiesRow from "@/components/tour/ActivitiesRow";
 import FaQSection from "@/components/mainSections/FaQSection";
+import LandMarkSection from "@/components/mainSections/LandMarkSection";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function Home() {
         }
       />
       <ActivitiesRow />
+      <LandMarkSection />
       <Reviews />
       <OfferSection />
       <NextTrip />

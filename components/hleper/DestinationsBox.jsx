@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { AiOutlineGlobal } from "react-icons/ai";
 import {
@@ -18,22 +19,24 @@ function DestinationsBox() {
             asia
           </p>
           <ul className="flex flex-col space-y-5">
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
-              Jordan
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
+              <Link href={"/Destinations/Jordan"}>
+                <span>Jordan</span>
+              </Link>
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Dubai
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Nepal
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Bhutan
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Sri Lanka
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Oman
             </li>
           </ul>
@@ -51,22 +54,22 @@ function DestinationsBox() {
             Africa
           </p>
           <ul className="flex flex-col space-y-5">
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Egypt
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Morocco
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Tanzania Safari
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Uganda Safari
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Rwanda Safari
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Tunisia
             </li>
           </ul>
@@ -84,16 +87,16 @@ function DestinationsBox() {
             Europe
           </p>
           <ul className="flex flex-col space-y-5">
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Turkey
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Greece
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Spain
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Italy
             </li>
           </ul>
@@ -111,19 +114,19 @@ function DestinationsBox() {
             Latin America
           </p>
           <ul className="flex flex-col space-y-5">
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Peru
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Mexico
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Argentina
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Chile
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Costa Rica
             </li>
           </ul>
@@ -141,13 +144,13 @@ function DestinationsBox() {
             Multi-Country Trips
           </p>
           <ul className="flex flex-col space-y-5">
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Middle East Tours
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Middle East & Mediterranean Tours
             </li>
-            <li className="text-sm text-gray-950 font-sans capitalize font-medium">
+            <li className="text-sm text-gray-950 font-sans capitalize font-medium cursor-pointer">
               Middle East & Africa Tours
             </li>
           </ul>

@@ -16,6 +16,7 @@
     "@mui/lab": "^5.0.0-alpha.124",
     "@mui/material": "^5.11.15",
     "@mui/x-date-pickers": "^6.0.4",
+    "d3-geo": "^3.1.0",
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.7",
     "eslint": "8.37.0",
@@ -28,6 +29,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.8",
     "react-icons": "^4.8.0",
+    "react-simple-maps": "^3.0.0",
     "swiper": "^9.2.0",
     "yup": "^1.1.1"
   },
