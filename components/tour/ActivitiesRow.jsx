@@ -12,9 +12,8 @@ const locationTour = [
   { id: 2, title: "Dubai" },
   { id: 3, title: "Qatar" },
 ];
-function ActivitiesRow() {
+function ActivitiesRow({ Activities }) {
   const [activeId, setActiveId] = useState(null);
-  const [toursall, settoursall] = useState([]);
   const handleClick = (id) => () => {
     const activeElement = locationTour.find((id) => id === id);
     activeElement && setActiveId(id);
@@ -61,188 +60,23 @@ function ActivitiesRow() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel, Hotel2, Hotel3]}
-            location="jeddah"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel3, Hotel2, Hotel3]}
-            location="Al Ula"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel, Hotel3]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel, Hotel3, Hotel2]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel3, Hotel, Hotel2]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel2, Hotel]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel, Hotel3, Hotel2]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel, Hotel3]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel3, Hotel2, Hotel]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel, Hotel, Hotel]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel, Hotel, Hotel]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel, Hotel, Hotel]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel, Hotel, Hotel]}
-            location="Westminster Borough, London"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attraction"
-            }
-            price={999}
-            duration={15}
-            activitiey
-          />
-        </SwiperSlide>
+        {Activities?.map((activitie) => (
+          <SwiperSlide key={activitie.id}>
+            <CardTour
+              image={activitie.images}
+              location={activitie.city.desc}
+              title={activitie.title}
+              description={
+                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
+              }
+              sigleImage={activitie.image}
+              price={activitie.best_price}
+              duration={activitie.duration}
+              ratingNumber={4}
+              activitiey
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

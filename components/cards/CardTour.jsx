@@ -13,13 +13,33 @@ function CardTour({
   duration,
   activitiey,
   blog,
+  ratingNumber,
+  sigleImage,
 }) {
   return (
-    <div className=" tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e]">
+    <div className=" tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] ">
       {/* image card */}
       <div className=" overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
-        <ImageSlider arrayOfImages={image} />
+        {image.length == 0 ? (
+          <div className=" hoverArrows relative w-full h-[180px] group/imagcard overflow-hidden">
+            <Image
+              loader={() => {
+                return `${sigleImage}`;
+              }}
+              src={sigleImage}
+              fill
+              sizes="(max-width: 768px) 100vw,
+             (max-width: 1200px) 50vw,
+             33vw"
+              loading="lazy"
+              className="rounded group-hover/imagcard:scale-105 transition-all"
+              alt="tour"
+            />
+          </div>
+        ) : (
+          <ImageSlider arrayOfImages={image} />
+        )}
 
         {/* heart icon */}
         <div
@@ -44,7 +64,7 @@ function CardTour({
         <p className="text-[#697488] text-sm font-sans font-normal capitalize mb-1">
           {location}
         </p>
-        <p className="hover-underline-animation text-lg text-[#051036] font-medium font-serif capitalize">
+        <p className="hover-underline-animation text-lg text-[#051036] font-medium font-serif capitalize md:h-[54px]">
           {title}
         </p>
       </div>
@@ -54,7 +74,7 @@ function CardTour({
       {/* rating*/}
       <div className=" flex items-center space-x-2">
         <span className="h-[30px] w-[30px] bg-MainYeloow font-semibold  text-mainColor rounded flex justify-center items-center">
-          4.8
+          {ratingNumber}
         </span>
         <span className="text-[#051036] font-medium font-sans text-sm ">
           Excaptional

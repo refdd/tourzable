@@ -33,7 +33,7 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-.swiper {
+.mySwiper {
   padding-bottom: 55px !important;
 }
 .swiper-button-next:after,

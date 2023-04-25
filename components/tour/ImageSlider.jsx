@@ -20,17 +20,20 @@ export default function ImageSlider({ arrayOfImages }) {
       <Swiper
         cssMode={true}
         navigation={true}
-        pagination={true}
+        pagination={false}
         mousewheel={true}
         keyboard={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper"
+        modules={[Navigation, Mousewheel, Keyboard]}
+        className="mySwiperImage"
       >
         {arrayOfImages.map((img, index) => (
           <SwiperSlide key={index}>
             <div className=" hoverArrows relative w-full h-[180px] group/imagcard overflow-hidden">
               <Image
-                src={img}
+                loader={() => {
+                  return `${img.file}`;
+                }}
+                src={img.file}
                 fill
                 sizes="(max-width: 768px) 100vw,
                 (max-width: 1200px) 50vw,

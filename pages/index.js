@@ -20,7 +20,7 @@ import { baseUrl, fetchApi } from "@/utils/ferchApi";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ posts }) {
+export default function Home({ posts, tours, Activities }) {
   return (
     <>
       <Head>
@@ -37,14 +37,14 @@ export default function Home({ posts }) {
           "Best Offers Of Package Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Booking And Enjoy."
         }
       />
-      <TourRow />
+      <TourRow tours={tours} />
       <HeaderSections
         titel={"Most Popular Activities"}
         desc={
           "Best Offers Of Activity Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Activity And Enjoy."
         }
       />
-      <ActivitiesRow />
+      <ActivitiesRow Activities={Activities} />
       <LandMarkSection />
       <Reviews />
       <OfferSection />
@@ -60,12 +60,14 @@ export default function Home({ posts }) {
 
 export async function getStaticProps() {
   const posts = await fetchApi(`${baseUrl}/posts`);
-  // const tours = await fetchApi(`${baseUrl}/packages`);
+  const tours = await fetchApi(`${baseUrl}/packages?type_id=1&limit=12`);
+  const Activities = await fetchApi(`${baseUrl}/packages?type_id=2&limit=12`);
 
   return {
     props: {
       posts: posts.data,
-      // tours: tours.data,
+      tours: tours.data,
+      Activities: Activities.data,
     },
     revalidate: 10,
   };
