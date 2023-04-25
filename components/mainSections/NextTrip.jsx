@@ -52,6 +52,7 @@ function NextTrip({ posts }) {
                     loader={() => {
                       return `${post.image}`;
                     }}
+                    unoptimized={true}
                     src={post.image}
                     fill
                     loading="lazy"

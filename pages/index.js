@@ -47,7 +47,7 @@ export default function Home({ posts, tours, Activities }) {
       <ActivitiesRow Activities={Activities} />
       <LandMarkSection />
       <Reviews />
-      <OfferSection />
+      {/* <OfferSection /> */}
       <NextTrip posts={posts} />
       <FaQSection />
       <Subscribe />

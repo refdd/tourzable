@@ -47,8 +47,10 @@ function WhyChooseUs({ homepage }) {
             <div className="flex flex-col space-y-3  ">
               <div className=" flex max-w-full w-full  justify-center items-center">
                 <Image
-                  width={100}
-                  height={90}
+                  width="0"
+                  height="0"
+                  sizes="100vw"
+                  className="w-full h-auto"
                   src={FraturedIcon1}
                   static
                   alt="features"
@@ -71,8 +73,10 @@ function WhyChooseUs({ homepage }) {
             <div className="flex flex-col space-y-3  ">
               <div className=" flex max-w-full w-full  justify-center items-center">
                 <Image
-                  width={100}
-                  height={90}
+                  width="0"
+                  height="0"
+                  sizes="100vw"
+                  className="w-full h-auto"
                   src={FraturedIcon2}
                   static
                   alt="features"
@@ -94,8 +98,10 @@ function WhyChooseUs({ homepage }) {
             <div className="flex flex-col space-y-3  ">
               <div className=" flex max-w-full w-full  justify-center items-center">
                 <Image
-                  width={100}
-                  height={90}
+                  width="0"
+                  height="0"
+                  sizes="100vw"
+                  className="w-full h-auto"
                   src={FraturedIcon3}
                   static
                   alt="features"

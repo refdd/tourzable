@@ -33,6 +33,7 @@ export default function ImageSlider({ arrayOfImages }) {
                 loader={() => {
                   return `${img.file}`;
                 }}
+                unoptimized={true}
                 src={img.file}
                 fill
                 sizes="(max-width: 768px) 100vw,

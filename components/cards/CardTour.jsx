@@ -27,6 +27,7 @@ function CardTour({
               loader={() => {
                 return `${sigleImage}`;
               }}
+              unoptimized={true}
               src={sigleImage}
               fill
               sizes="(max-width: 768px) 100vw,
