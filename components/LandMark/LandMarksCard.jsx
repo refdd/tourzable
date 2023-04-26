@@ -10,6 +10,10 @@ function LandMarksCard({ imaga, title, destination }) {
       <Link href={"/LandMarks/dumah-al-jandal-city"}>
         <div className=" group relative w-full h-[220px] md:h-[280px] overflow-hidden rounded-lg  shadow-lg shadow-[#5c2d9040] ">
           <Image
+            loader={() => {
+              return `${imaga}`;
+            }}
+            unoptimized={true}
             src={imaga}
             fill
             loading="lazy"

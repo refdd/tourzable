@@ -69,11 +69,9 @@ function TourRow({ tours }) {
               image={tour?.images}
               location={tour?.city?.desc}
               title={tour.title}
-              description={
-                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-              }
+              description={tour.short_desc.substring(0, 90)}
               price={tour.best_price}
-              duration={tour.duration}
+              duration={tour.duration_to_book}
               ratingNumber={tour.package_rating}
             />
           </SwiperSlide>

@@ -35,6 +35,9 @@ function Footer() {
                 loading="lazy"
                 alt="footer loge "
                 className=""
+                sizes="(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw"
               />
             </div>
             <div className=" flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-10">

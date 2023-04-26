@@ -50,7 +50,7 @@ function WhyChooseUs({ homepage }) {
                   width="0"
                   height="0"
                   sizes="100vw"
-                  className="w-full h-auto"
+                  className="w-[100] h-[90]"
                   src={FraturedIcon1}
                   static
                   alt="features"
@@ -76,7 +76,7 @@ function WhyChooseUs({ homepage }) {
                   width="0"
                   height="0"
                   sizes="100vw"
-                  className="w-full h-auto"
+                  className="w-[100] h-[90]"
                   src={FraturedIcon2}
                   static
                   alt="features"
@@ -101,7 +101,7 @@ function WhyChooseUs({ homepage }) {
                   width="0"
                   height="0"
                   sizes="100vw"
-                  className="w-full h-auto"
+                  className="w-[100] h-[90]"
                   src={FraturedIcon3}
                   static
                   alt="features"

@@ -18,6 +18,7 @@ function ActivitiesRow({ Activities }) {
     const activeElement = locationTour.find((id) => id === id);
     activeElement && setActiveId(id);
   };
+
   return (
     <div className="container mx-auto px-4 mb-11 z-40">
       <ul className="flex pa justify-start items-start gap-2 mb-6 flex-wrap md:justify-center">
@@ -66,12 +67,10 @@ function ActivitiesRow({ Activities }) {
               image={activitie.images}
               location={activitie.city.desc}
               title={activitie.title}
-              description={
-                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-              }
+              description={activitie.short_desc.substring(0, 90)}
               sigleImage={activitie.image}
               price={activitie.best_price}
-              duration={activitie.duration}
+              duration={activitie.duration_to_book}
               ratingNumber={4}
               activitiey
             />

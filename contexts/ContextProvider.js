@@ -22,6 +22,7 @@ export const ContextProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(initialState);
   const [ViewTours, setViewTours] = useState(false);
   const [sideBar, setSideBar] = useState(true);
+  const [destination, setDestination] = useState(15);
   const [dateRange, setDateRange] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -55,6 +56,8 @@ export const ContextProvider = ({ children }) => {
         toggleDrawer,
         sideBar,
         setSideBar,
+        destination,
+        setDestination,
       }}
     >
       {children}

@@ -79,7 +79,7 @@ function SearcHome() {
             </p>
           </div>
 
-          <DateRangePicker />
+          {/* <DateRangePicker /> */}
         </div>
         <div
           className="  group flex space-x-1 justify-center transition-all items-center bg-secondColor
