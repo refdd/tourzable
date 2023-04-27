@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper";
-function OfferSlider() {
+function OfferSlider({ offers }) {
   return (
     <div>
       <HeaderSections
@@ -42,105 +42,20 @@ function OfferSlider() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <CardOffer
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardOffer
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardOffer
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardOffer
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardOffer
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardOffer
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardOffer
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardOffer
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardOffer
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
+        {offers?.map((offer) => (
+          <SwiperSlide key={offer.id}>
+            <CardOffer
+              image={offer.images}
+              location={offer.city.desc}
+              title={offer.title}
+              description={offer.short_desc.substring(0, 90)}
+              price={offer.best_price}
+              sigleImage={offer.image}
+              discount={offer.discount}
+              ratingNumber={offer.package_rating}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

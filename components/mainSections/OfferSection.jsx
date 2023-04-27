@@ -5,7 +5,7 @@ import OfferSlider from "../parts/OfferSlider";
 const endDate = new Date();
 endDate.setDate(endDate.getDate() + 10);
 endDate.setHours(23, 9, 59, 0);
-function OfferSection() {
+function OfferSection({ offers }) {
   return (
     <div className="container mx-auto px-4 mt-10">
       <div className="grid grid-cols-1 md:grid-cols-3">
@@ -49,7 +49,7 @@ function OfferSection() {
           <div className="absolute top-0 left-0 w-full h-full bg-[#0000009c] z-10"></div>
         </div>
         <div className="md:col-span-2 md:order-1 md:-mr-10">
-          <OfferSlider />
+          <OfferSlider offers={offers} />
         </div>
       </div>
     </div>

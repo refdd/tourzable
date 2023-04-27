@@ -28,7 +28,7 @@ const questions = [
       "Tourzable Is The First Saudi Travel Portal That Collect The Best Travel Offers From Travel Companies And Present It To The Travellers, We Offers A Wide Array Of Benefits To Our Clientele. Flexible Itineraries - Competitive Prices - Excellent Customer Service - Facilitated Payment - And Quality Assurance. So We Assure You A Unique And Insightful Travel Experience In Saudi.",
   },
 ];
-function FaQSection() {
+function FaQSection({ faqs }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleClick = (index) => {
@@ -41,7 +41,7 @@ function FaQSection() {
         desc="Saudi Travel FAQ"
       />
       <div className="mt-12">
-        {questions.map((q, index) => (
+        {faqs.map((q, index) => (
           <div key={q.id} className=" border mb-8 rounded shadow-lg py-5 px-3 ">
             <button
               className="flex  w-full items-center text-left   space-x-2  "

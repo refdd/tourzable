@@ -33,7 +33,6 @@ function LandMarksContainer() {
       });
   }, [destination]);
 
-  console.log(landmarks);
   return (
     <div className="container mx-auto px-4 md:px-0 md:col-span-5 py-6">
       <div className=" flex justify-end">
@@ -164,7 +163,7 @@ function LandMarksContainer() {
             key={landmark.id}
             imaga={landmark.image}
             title={landmark.title}
-            destination={" Eastern Province"}
+            destination={landmark.city.title}
           />
         ))}
       </div>

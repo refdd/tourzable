@@ -1,20 +1,50 @@
+import Image from "next/image";
 import React from "react";
 import { BiHeart } from "react-icons/bi";
 import ImageSlider from "../tour/ImageSlider";
-function CardOffer({ image, location, title, description, price }) {
+function CardOffer({
+  image,
+  location,
+  title,
+  description,
+  price,
+  sigleImage,
+  discount,
+  ratingNumber,
+}) {
   return (
     <div className=" tourcard group flex flex-col space-y-3 p-2 border bg-white z-40 rounded-md ">
       {/* image card */}
       <div className=" w-full h-[180px] relative overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
-        <ImageSlider arrayOfImages={image} />
+        {image.length == 0 ? (
+          <div className=" hoverArrows relative w-full h-[180px] group/imagcard overflow-hidden">
+            <Image
+              loader={() => {
+                return `${sigleImage}`;
+              }}
+              unoptimized={true}
+              src={sigleImage}
+              fill
+              sizes="(max-width: 768px) 100vw,
+             (max-width: 1200px) 50vw,
+             33vw"
+              loading="lazy"
+              className="rounded group-hover/imagcard:scale-105 transition-all"
+              alt="tour"
+            />
+          </div>
+        ) : (
+          <ImageSlider arrayOfImages={image} />
+        )}
+
         {/* typs tour will add from backend */}
         <div className="absolute top-3 left-2   flex flex-col space-y-2  z-10">
           {/* <p className="text-white font-sans capitalize py-1 px-3 rounded   bg-[#051036]">
             Breakfast included
           </p> */}
           <p className="text-mainColor font-sans capitalize bg-MainYeloow py-1 px-3 rounded  font-semibold ">
-            10% off
+            {discount}% off
           </p>
         </div>
         {/* heart icon */}
@@ -43,7 +73,7 @@ function CardOffer({ image, location, title, description, price }) {
       {/* rating*/}
       <div className=" flex items-center space-x-2">
         <span className="h-[30px] w-[30px] bg-MainYeloow font-semibold  text-mainColor rounded flex justify-center items-center">
-          4.8
+          {ratingNumber}
         </span>
         <span className="text-mainColor font-medium font-sans text-sm ">
           Excaptional
@@ -57,10 +87,10 @@ function CardOffer({ image, location, title, description, price }) {
         <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
           Starting form
         </span>
-        <span className="text-mainColor ">${price}</span>
-        <span className="text-gray-500  line-through text-sm">
-          ${price - 50}
+        <span className="text-mainColor ">
+          ${price - (discount / 100) * price}
         </span>
+        <span className="text-gray-500  line-through text-sm">${price}</span>
       </div>
     </div>
   );
