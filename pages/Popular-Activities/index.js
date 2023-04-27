@@ -11,7 +11,8 @@ import NotMember from "@/components/mainSections/NotMember";
 import Footer from "@/components/mainSections/Footer";
 import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
-function PopularActivities() {
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
+function PopularActivities({ Activities }) {
   return (
     <>
       <Head>
@@ -29,7 +30,7 @@ function PopularActivities() {
         </div>
         <div className="col-span-3">
           <HeaderList />
-          <ListTourcontainer />
+          <ListTourcontainer tours={Activities} />
         </div>
       </div>
       {/* <FaQSection /> */}
@@ -42,3 +43,13 @@ function PopularActivities() {
 }
 
 export default PopularActivities;
+export async function getStaticProps() {
+  const Activities = await fetchApi(`${baseUrl}/packages?type_id=2&limit=20`);
+
+  return {
+    props: {
+      Activities: Activities.data,
+    },
+    revalidate: 10,
+  };
+}

@@ -11,8 +11,9 @@ import NotMember from "@/components/mainSections/NotMember";
 import Footer from "@/components/mainSections/Footer";
 import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 
-function umrah() {
+function umrah({ umrahs }) {
   return (
     <>
       <Head>
@@ -30,7 +31,7 @@ function umrah() {
         </div>
         <div className="col-span-3">
           <HeaderList />
-          <ListTourcontainer />
+          <ListTourcontainer tours={umrahs} />
         </div>
       </div>
       {/* <FaQSection /> */}
@@ -43,3 +44,13 @@ function umrah() {
 }
 
 export default umrah;
+export async function getStaticProps() {
+  const umrahs = await fetchApi(`${baseUrl}/packages?type_id=3s&limit=20`);
+
+  return {
+    props: {
+      umrahs: umrahs.data,
+    },
+    revalidate: 10,
+  };
+}

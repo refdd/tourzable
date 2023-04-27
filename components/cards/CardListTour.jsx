@@ -7,7 +7,17 @@ import { BsArrowUpRight, BsFillStarFill } from "react-icons/bs";
 
 import ImageSlider from "../tour/ImageSlider";
 
-function CardListTour({ slug, image, location, title, description, price }) {
+function CardListTour({
+  slug,
+  image,
+  location,
+  title,
+  description,
+  price,
+  sigleImage,
+  duration,
+  reatingNumber,
+}) {
   const { ViewTours } = useStateContext();
 
   return (
@@ -28,7 +38,27 @@ function CardListTour({ slug, image, location, title, description, price }) {
           }
         >
           {/* <Image src={image} fill className="rounded" alt="tour" /> */}
-          <ImageSlider arrayOfImages={image} />
+          {image.length == 0 ? (
+            <div className=" hoverArrows relative w-full h-[180px] group/imagcard overflow-hidden">
+              <Image
+                loader={() => {
+                  return `${sigleImage}`;
+                }}
+                unoptimized={true}
+                src={sigleImage}
+                fill
+                sizes="(max-width: 768px) 100vw,
+             (max-width: 1200px) 50vw,
+             33vw"
+                loading="lazy"
+                className="rounded group-hover/imagcard:scale-105 transition-all"
+                alt="tour"
+              />
+            </div>
+          ) : (
+            <ImageSlider arrayOfImages={image} />
+          )}
+
           {/* typs tour will add from backend */}
 
           {/* heart icon */}
@@ -48,7 +78,7 @@ function CardListTour({ slug, image, location, title, description, price }) {
               : "hidden  "
           }
         >
-          <p className="text-mainColor font-sans capitalize">6 Days</p>
+          <p className="text-mainColor font-sans capitalize">{duration}Days</p>
         </div>
         {/* crnter */}
         <div
@@ -81,7 +111,10 @@ function CardListTour({ slug, image, location, title, description, price }) {
                   : " rounded bg-MainYeloow py-1 px-5 z-10 "
               }
             >
-              <p className="text-mainColor font-sans capitalize"> 6 Days</p>
+              <p className="text-mainColor font-sans capitalize">
+                {" "}
+                {duration} Days
+              </p>
             </div>
           </div>
           <p className="text-gray-500 text-lg font-sans capitalize font-normal md:text-[16px]">
@@ -139,7 +172,7 @@ function CardListTour({ slug, image, location, title, description, price }) {
             }
           >
             <span className="h-[30px] w-[30px] bg-mainColor font-semibold  text-white rounded flex justify-center items-center">
-              4.8
+              {reatingNumber}
             </span>
             <span className="text-[#051036] font-medium font-sans text-sm ">
               Excaptional

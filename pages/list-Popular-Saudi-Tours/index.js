@@ -9,7 +9,8 @@ import NotMember from "@/components/mainSections/NotMember";
 import Footer from "@/components/mainSections/Footer";
 import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
-function ListTour() {
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
+function ListTour({ tours }) {
   return (
     <>
       <Head>
@@ -27,7 +28,7 @@ function ListTour() {
         </div>
         <div className="col-span-4">
           <HeaderList />
-          <ListTourcontainer />
+          <ListTourcontainer tours={tours} />
         </div>
       </div>
       {/* <FaQSection /> */}
@@ -40,3 +41,14 @@ function ListTour() {
 }
 
 export default ListTour;
+
+export async function getStaticProps() {
+  const tours = await fetchApi(`${baseUrl}/packages?type_id=1&limit=20`);
+
+  return {
+    props: {
+      tours: tours.data,
+    },
+    revalidate: 10,
+  };
+}
