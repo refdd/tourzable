@@ -32,7 +32,7 @@ function PopularActivities() {
           <ListTourcontainer />
         </div>
       </div>
-      <FaQSection />
+      {/* <FaQSection /> */}
       <Subscribe />
       <DownLoadApp />
       <NotMember />

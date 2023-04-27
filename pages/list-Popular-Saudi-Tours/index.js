@@ -30,7 +30,7 @@ function ListTour() {
           <ListTourcontainer />
         </div>
       </div>
-      <FaQSection />
+      {/* <FaQSection /> */}
       <Subscribe />
       <DownLoadApp />
       <NotMember />

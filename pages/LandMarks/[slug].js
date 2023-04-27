@@ -39,7 +39,7 @@ function SingleLandmark() {
         </div>
       </div>
       <ReadAlso />
-      <FaQSection />
+      {/* <FaQSection /> */}
       <Subscribe />
       <DownLoadApp />
       <NotMember />

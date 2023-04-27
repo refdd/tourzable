@@ -31,7 +31,7 @@ function Destinations() {
           <ListTourcontainer />
         </div>
       </div>
-      <FaQSection />
+      {/* <FaQSection /> */}
       <Subscribe />
       <DownLoadApp />
       <NotMember />
