@@ -5,7 +5,7 @@ function HeaderVideo() {
     <div className="w-full h-full relative">
       <video
         className=" w-full h-full object-cover"
-        src={require("../../public/assets/video.mp4")}
+        src={"https://new.tourzable.com/videos/01.mov"}
         autoPlay
         loop
         muted
