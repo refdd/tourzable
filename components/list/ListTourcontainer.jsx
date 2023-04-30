@@ -4,8 +4,7 @@ import Hotel from "../../public/assets/images/3.png";
 import Hotel2 from "../../public/assets/images/2.png";
 import Hotel3 from "../../public/assets/images/4.png";
 import { useStateContext } from "@/contexts/ContextProvider";
-function ListTourcontainer({ tours }) {
-  console.log(tours);
+function ListTourcontainer({ tours, pageType }) {
   const { ViewTours, setViewTours } = useStateContext();
 
   return (
@@ -29,6 +28,7 @@ function ListTourcontainer({ tours }) {
               sigleImage={tour?.image}
               duration={tour?.duration_to_book}
               reatingNumber={tour?.package_rating}
+              pageType={pageType}
             />
           </div>
         ))}

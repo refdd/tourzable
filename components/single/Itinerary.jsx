@@ -1,7 +1,7 @@
 import React from "react";
 import ItineraryDays from "./ItineraryDays";
 
-function Itinerary() {
+function Itinerary({ daysItinerary }) {
   return (
     <div id="Itinerary" className=" mt-5">
       <div className="flex justify-between items-center">
@@ -9,10 +9,10 @@ function Itinerary() {
           Itinerary
         </p>
         <span>
-          Days: <span>(4)</span>
+          Days: <span>({daysItinerary.length})</span>
         </span>
       </div>
-      <ItineraryDays />
+      <ItineraryDays daysItinerary={daysItinerary} />
     </div>
   );
 }

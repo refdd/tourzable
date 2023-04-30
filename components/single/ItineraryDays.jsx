@@ -29,7 +29,7 @@ const questions = [
   },
 ];
 
-function ItineraryDays() {
+function ItineraryDays({ daysItinerary }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleClick = (index) => {
@@ -38,7 +38,7 @@ function ItineraryDays() {
   return (
     <div className="container mx-auto py-5 px-4 ">
       <div className="">
-        {questions.map((q, index) => (
+        {daysItinerary.map((q, index) => (
           <div key={q.id} className=" border mb-4 rounded shadow-lg py-5 px-3 ">
             <button
               className="flex  items-center justify-between px-3 w-full "
@@ -46,7 +46,7 @@ function ItineraryDays() {
             >
               <div className="flex flex-col items-center justify-center h-[60px] w-[60px]  rounded-full bg-mainColor">
                 <span className="text-[16px] text-white font-medium  font-sans">
-                  Day{q.id}
+                  {q.title.replace(/["\\]/g, "")}
                 </span>
                 <FaAngleUp className="text-[16px] text-white" />
               </div>
@@ -59,71 +59,51 @@ function ItineraryDays() {
                 <p className="text-[16px] font-sans text-textPurple capitalize font-semibold pt-3">
                   Day Description
                 </p>
-                <p className="mt-4 text-base text-gray-500 font-sans capitalize">
-                  {q.answer}
-                </p>
+                <div className="mt-4 text-base text-gray-500 font-sans capitalize">
+                  <div dangerouslySetInnerHTML={{ __html: q.desc }}></div>
+                </div>
                 <p className="text-[16px] font-sans text-textPurple capitalize font-semibold pt-3">
                   Landmarks
                 </p>
                 <div className="flex flex-col space-y-3">
-                  <div className="flex items-start space-x-3">
-                    <div className=" w-14 ">
-                      <div className=" flex items-center justify-center border-2 border-textPurple  w-10 h-10  rounded-full">
-                        <span>1</span>
+                  {q?.landmarks?.map((item) => (
+                    <div key={item.id} className="flex items-start space-x-3">
+                      <div className=" w-14 ">
+                        <div className=" flex items-center justify-center border-2 border-textPurple  w-10 h-10  rounded-full">
+                          <span>1</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center relative rounded shadow-lg bg-[#eef3f7] p-3">
+                        <div className="flex flex-col ">
+                          <h4 className="text-xs font-sans text-textPurple  capitalize py-3">
+                            {item.title}
+                          </h4>
+                          <hr />
+                          <div className="text-xs font-sans capitalize text-[#555]">
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: item.desc.substring(0, 90),
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                        <div className="">
+                          <Image
+                            loader={() => {
+                              return `${item.image}`;
+                            }}
+                            unoptimized={true}
+                            src={item.image}
+                            width={100}
+                            height={100}
+                            loading="lazy"
+                            alt="landmarks"
+                            className=" object-contain rounded-full"
+                          />
+                        </div>
                       </div>
                     </div>
-                    <div className="flex items-center relative rounded shadow-lg bg-[#eef3f7] p-3">
-                      <div className="flex flex-col ">
-                        <h4 className="text-xs font-sans text-textPurple  capitalize py-3">
-                          Kingdom Of Dadan & Lahyan
-                        </h4>
-                        <hr />
-                        <p className="text-xs font-sans capitalize text-[#555]">
-                          Mada'in Saleh, Or Al-Hijr City, Is Considered One Of
-                          The Most Important Archaeological Sites...
-                        </p>
-                      </div>
-                      <div className="">
-                        <Image
-                          src={landmark}
-                          width={100}
-                          height={100}
-                          loading="lazy"
-                          alt="landmarks"
-                          className=" object-fill rounded-full"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className=" w-14 ">
-                      <div className=" flex items-center justify-center border-2 border-textPurple  w-10 h-10  rounded-full">
-                        <span>2</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center relative rounded shadow-lg bg-[#eef3f7] p-3">
-                      <div className="flex flex-col ">
-                        <h4 className="text-xs font-sans text-textPurple  capitalize py-3">
-                          Kingdom Of Dadan & Lahyan
-                        </h4>
-                        <hr />
-                        <p className="text-xs font-sans capitalize text-[#555]">
-                          Mada'in Saleh, Or Al-Hijr City, Is Considered One Of
-                          The Most Important Archaeological Sites...
-                        </p>
-                      </div>
-                      <div className="">
-                        <Image
-                          src={landmark}
-                          width={100}
-                          height={100}
-                          loading="lazy"
-                          alt="landmarks"
-                          className=" object-fill rounded-full"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             )}

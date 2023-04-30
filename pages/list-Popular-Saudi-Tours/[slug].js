@@ -15,9 +15,10 @@ import RelatedTours from "@/components/single/RelatedTours";
 import SingleGalleryContainer from "@/components/single/SingleGalleryContainer";
 import TapsTour from "@/components/single/TapsTour";
 import TermsAndConditions from "@/components/single/TermsAndConditions";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import React, { useEffect, useState } from "react";
 
-function SingleTour() {
+function SingleTour({ singletour }) {
   const [isTop, setIsTop] = useState(true);
   useEffect(() => {
     document.addEventListener("scroll", () => {
@@ -29,6 +30,19 @@ function SingleTour() {
       }
     });
   }, []);
+  console.log(singletour);
+  const {
+    best_price,
+    title,
+    package_rating,
+    city,
+    min,
+    max,
+    duration,
+    desc,
+    days,
+    note,
+  } = singletour;
   return (
     <div className="">
       {isTop ? <NormailNavBar /> : <TapsTour />}
@@ -47,20 +61,26 @@ function SingleTour() {
           currentLink={"Taif City Tour Cable Car Ride3"}
         />
       </div>
-      <HeaderSingle />
+      <HeaderSingle
+        title={title}
+        ratingNumber={package_rating}
+        location={city?.title}
+        price={best_price}
+        starNumber={5}
+      />
       <SingleGalleryContainer />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-1">
         <div className="col-span-2 container mx-auto px-4">
-          <OverView />
-          <Itinerary />
-          <AdditionalInfo />
+          <OverView min={min} max={max} duration={duration} desc={desc} />
+          <Itinerary daysItinerary={days} />
+          <AdditionalInfo noteContent={note} />
           <CancellationPolicy />
           <TermsAndConditions />
           <LeaveReview />
         </div>
         <From />
       </div>
-      <RelatedTours />
+      {/* <RelatedTours /> */}
       <Subscribe />
       <DownLoadApp />
       <NotMember />
@@ -70,3 +90,12 @@ function SingleTour() {
 }
 
 export default SingleTour;
+export async function getServerSideProps({ params }) {
+  const singletour = await fetchApi(`${baseUrl}/packages/${params.slug}`);
+
+  return {
+    props: {
+      singletour: singletour.data,
+    }, // will be passed to the page component as props
+  };
+}

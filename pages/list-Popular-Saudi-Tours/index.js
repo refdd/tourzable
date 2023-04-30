@@ -28,7 +28,10 @@ function ListTour({ tours }) {
         </div>
         <div className="col-span-4">
           <HeaderList />
-          <ListTourcontainer tours={tours} />
+          <ListTourcontainer
+            pageType={"list-Popular-Saudi-Tours"}
+            tours={tours}
+          />
         </div>
       </div>
       {/* <FaQSection /> */}

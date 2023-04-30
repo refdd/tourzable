@@ -30,7 +30,10 @@ function PopularActivities({ Activities }) {
         </div>
         <div className="col-span-3">
           <HeaderList />
-          <ListTourcontainer tours={Activities} />
+          <ListTourcontainer
+            pageType={"Popular-Activities"}
+            tours={Activities}
+          />
         </div>
       </div>
       {/* <FaQSection /> */}

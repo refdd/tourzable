@@ -17,11 +17,12 @@ function CardListTour({
   sigleImage,
   duration,
   reatingNumber,
+  pageType,
 }) {
   const { ViewTours } = useStateContext();
 
   return (
-    <Link href={`/list-Popular-Saudi-Tours/${slug}`}>
+    <Link href={`/${pageType}/${slug}`}>
       <div
         className={
           ViewTours

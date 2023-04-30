@@ -5,7 +5,7 @@ import { GiMeal } from "react-icons/gi";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { FcCheckmark } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
-function OverView() {
+function OverView({ min, max, duration, desc }) {
   return (
     <div id="overview" className="">
       <div className=" border-b pb-4">
@@ -19,7 +19,7 @@ function OverView() {
               Group Size
             </span>
             <span className="text-[15px] text-gray-500 font-sans capitalize">
-              2-30
+              {min}-{max}
             </span>
           </div>
 
@@ -47,30 +47,18 @@ function OverView() {
               duration
             </span>
             <span className="text-[15px] text-gray-500 font-sans capitalize">
-              8 days
+              {duration} days
             </span>
           </div>
         </div>
         {/* overview  */}
         <div className="py-4 border-y flex flex-col space-y-4">
-          <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
-            Overview
-          </p>
-          <p className="text-[#051036] text-[15px] font-sans capitalize leading-[1.875] ">
-            You can directly book the best price if your travel dates are
-            available, all discounts are already included. In the following
-            house description you will find all information about our listing.
-            <br />
-            <br />
-            2-room terraced house on 2 levels. Comfortable and cosy furnishings:
-            1 room with 1 french bed and radio. Shower, sep. WC. Upper floor:
-            (steep stair) living/dining room with 1 sofabed (110 cm, length 180
-            cm), TV. Exit to the balcony. Small kitchen (2 hot plates, oven,
-          </p>
+          <div dangerouslySetInnerHTML={{ __html: desc }} className=""></div>
           <span className="text-mainColor text-[14px] underline font-medium font-sans capitalize">
             See More
           </span>
         </div>
+
         {/* price includes  */}
         <div className="flex flex-col gap-4 pt-4 md:flex-row">
           <div className="p-3 bg-gray-50 rounded shadow-md md:flex-1">

@@ -31,7 +31,7 @@ function umrah({ umrahs }) {
         </div>
         <div className="col-span-3">
           <HeaderList />
-          <ListTourcontainer tours={umrahs} />
+          <ListTourcontainer pageType={"umrah"} tours={umrahs} />
         </div>
       </div>
       {/* <FaQSection /> */}
