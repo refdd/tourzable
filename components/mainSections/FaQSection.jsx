@@ -41,7 +41,7 @@ function FaQSection({ faqs }) {
         desc="Saudi Travel FAQ"
       />
       <div className="mt-12">
-        {faqs.map((q, index) => (
+        {faqs?.map((q, index) => (
           <div key={q.id} className=" border mb-8 rounded shadow-lg py-5 px-3 ">
             <button
               className="flex  w-full items-center text-left   space-x-2  "

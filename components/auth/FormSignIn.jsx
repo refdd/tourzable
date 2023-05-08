@@ -7,19 +7,26 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useRouter } from "next/router";
 import SignInBY from "./SignInBY";
+import { useSession, signIn, signOut } from "next-auth/react";
+
 function FormSignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
-
+  const { data: session } = useSession();
+  console.log(session);
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
   const methods = useForm();
   const onSubmit = (data) => {
-    console.log({
+    // console.log({
+    //   ...data,
+    // });
+    signIn("credentials", {
+      redirect: false,
       ...data,
     });
-    router.push("/dashboard");
+    // router.push("/dashboard");
   };
   return (
     <div className="bg-[#e5f0fd] py-11 ">
@@ -48,7 +55,7 @@ function FormSignIn() {
               <div className=" md:col-span-2">
                 <CustomTextField
                   required
-                  name="firstName "
+                  name="email"
                   label="Frist Name "
                   type={"text"}
                 />

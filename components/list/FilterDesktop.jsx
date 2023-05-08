@@ -7,14 +7,24 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 
 function FilterDesktop() {
   const [value, setValue] = useState([0, 100]);
-
+  const [place, setplace] = useState();
+  const router = useRouter();
+  const path = router.pathname;
+  const { query } = router;
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const handlePlace = (e) => {
+    setplace(e.target.value);
+  };
+  const handleSearch = () => {
+    router.push({ pathname: path, query: { search: place } });
   };
   return (
     <div className="container mx-auto px-4 pt-7">
@@ -31,6 +41,8 @@ function FilterDesktop() {
               label="ex: Al Ula Tour Package"
               placeholder="Search"
               multiline
+              value={place}
+              onChange={handlePlace}
             />
           </div>
         </div>
@@ -164,7 +176,7 @@ function FilterDesktop() {
          bg-mainColor rounded py-3 text-white text-lg transition-all hover:bg-[#051036] hover:text-white"
         >
           <BiSearch className="" />
-          <button>search</button>
+          <button onClick={handleSearch}>search</button>
         </div>
       </div>
     </div>

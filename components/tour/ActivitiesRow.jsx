@@ -18,6 +18,7 @@ function ActivitiesRow({ Activities }) {
     const activeElement = locationTour.find((id) => id === id);
     activeElement && setActiveId(id);
   };
+  console.log(Activities[0]);
 
   return (
     <div className="container mx-auto px-4 mb-11 z-40">
@@ -70,7 +71,7 @@ function ActivitiesRow({ Activities }) {
               description={activitie.short_desc.substring(0, 90)}
               sigleImage={activitie.image}
               price={activitie.best_price}
-              duration={activitie.duration_to_book}
+              duration={activitie.duration}
               ratingNumber={4}
               activitiey
             />

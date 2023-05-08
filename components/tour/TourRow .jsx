@@ -71,7 +71,7 @@ function TourRow({ tours }) {
               title={tour.title}
               description={tour.short_desc.substring(0, 90)}
               price={tour.best_price}
-              duration={tour.duration_to_book}
+              duration={tour.duration}
               ratingNumber={tour.package_rating}
             />
           </SwiperSlide>

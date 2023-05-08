@@ -45,13 +45,15 @@ function ListTour({ tours }) {
 
 export default ListTour;
 
-export async function getStaticProps() {
-  const tours = await fetchApi(`${baseUrl}/packages?type_id=1&limit=20`);
+export async function getServerSideProps({ query }) {
+  const place = query.search;
+  const tours = await fetchApi(
+    `${baseUrl}/packages?type_id=1&limit=20&search=${place}`
+  );
 
   return {
     props: {
       tours: tours.data,
     },
-    revalidate: 10,
   };
 }

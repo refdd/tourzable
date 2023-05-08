@@ -5,7 +5,7 @@ import { GiMeal } from "react-icons/gi";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { FcCheckmark } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
-function OverView({ min, max, duration, desc }) {
+function OverView({ min, max, duration, desc, includes, unincludes, board }) {
   return (
     <div id="overview" className="">
       <div className=" border-b pb-4">
@@ -38,7 +38,7 @@ function OverView({ min, max, duration, desc }) {
               Meals
             </span>
             <span className="text-[15px] text-gray-500 font-sans capitalize">
-              Full Board
+              {board?.title}
             </span>
           </div>
           <div className=" flex justify-center items-center flex-col">
@@ -66,30 +66,12 @@ function OverView({ min, max, duration, desc }) {
               Price Includes
             </p>
             <ul className="flex flex-col space-y-3 py-4">
-              <li className="flex items-center space-x-2">
-                <FcCheckmark />
-                <p>Tour Guide</p>
-              </li>
-              <li className="flex items-center space-x-2">
-                <FcCheckmark />
-                <p>Private 4X4 Drive Car With Private Chauffeur</p>
-              </li>
-              <li className="flex items-center space-x-2">
-                <FcCheckmark />
-                <p>Lunch And Dinner</p>
-              </li>
-              <li className="flex items-center space-x-2">
-                <FcCheckmark />
-                <p>Drinks And Snacks</p>
-              </li>
-              <li className="flex items-center space-x-2">
-                <FcCheckmark />
-                <p>Entrance Fees To Attractions</p>
-              </li>
-              <li className="flex items-center space-x-2">
-                <FcCheckmark />
-                <p>Breakfast At The Property</p>
-              </li>
+              {includes?.map((item) => (
+                <li key={item.id} className="flex items-center space-x-2">
+                  <FcCheckmark />
+                  <p>{item.title}</p>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="p-3 bg-gray-50 rounded shadow-md md:flex-1">
@@ -97,22 +79,12 @@ function OverView({ min, max, duration, desc }) {
               NOT Includes
             </p>
             <ul className="flex flex-col space-y-3 py-4">
-              <li className="flex items-center space-x-2">
-                <AiOutlineClose className="text-lg text-red-600" />
-                <p>Medical Insurance</p>
-              </li>
-              <li className="flex items-center space-x-2">
-                <AiOutlineClose className="text-lg text-red-600" />
-                <p>Airline Tickets</p>
-              </li>
-              <li className="flex items-center space-x-2">
-                <AiOutlineClose className="text-lg text-red-600" />
-                <p>All Personal Expenses</p>
-              </li>
-              <li className="flex items-center space-x-2">
-                <AiOutlineClose className="text-lg text-red-600" />
-                <p>Flight Equipment And Personal Clothing.</p>
-              </li>
+              {unincludes?.map((item) => (
+                <li key={item.id} className="flex items-center space-x-2">
+                  <AiOutlineClose className="text-lg text-red-600" />
+                  <p>{item.title}</p>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

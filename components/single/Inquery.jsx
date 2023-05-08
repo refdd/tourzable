@@ -12,8 +12,9 @@ import { useForm, FormProvider } from "react-hook-form";
 import CustomTextField from "../hleper/CustomTextField";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
+import axios from "axios";
 
-function Inquery() {
+function Inquery({ idPackage }) {
   const [number, setnumber] = useState("+1");
   const [aduits, setAduits] = useState(0);
   const [childs, setChilds] = useState(0);
@@ -46,8 +47,30 @@ function Inquery() {
     setnumber(value);
   };
   const onSubmit = (data) => {
+    axios
+      .post(
+        "https://new.tourzable.com/api/send_inquiry",
+        {
+          ...data,
+          name: `${data.firstName} ${data.lastName}`,
+          phone: number,
+          adult: aduits,
+          kid: childs,
+          start_date: dateFormated,
+          package_id: idPackage,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log({ ...data, number, aduits, childs, data: dateFormated });
-    router.push("/Thank_you");
+    // router.push("/Thank_you");
   };
   return (
     <FormProvider {...methods}>
@@ -57,7 +80,7 @@ function Inquery() {
           <div className="">
             <CustomTextField
               required
-              name="firstName "
+              name="firstName"
               label="Frist Name "
               type={"text"}
             />
@@ -66,7 +89,7 @@ function Inquery() {
           <div className="">
             <CustomTextField
               required
-              name="lastName "
+              name="lastName"
               label="Last Name "
               type={"text"}
             />
@@ -191,7 +214,7 @@ function Inquery() {
               rows="2"
               className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  "
               placeholder="Add your suggestions to modify the itinerary or add other features or any additional special request"
-              {...methods.register("message", { required: true })}
+              {...methods.register("comment", { required: true })}
             ></textarea>
           </div>
           {/* buttonsent */}

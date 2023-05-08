@@ -30,7 +30,6 @@ function SingleTour({ singletour }) {
       }
     });
   }, []);
-  console.log(singletour);
   const {
     best_price,
     title,
@@ -42,7 +41,13 @@ function SingleTour({ singletour }) {
     desc,
     days,
     note,
+    includes,
+    unincludes,
+    board,
+    policy,
+    id,
   } = singletour;
+  console.log(singletour);
   return (
     <div className="">
       {isTop ? <NormailNavBar /> : <TapsTour />}
@@ -66,19 +71,27 @@ function SingleTour({ singletour }) {
         ratingNumber={package_rating}
         location={city?.title}
         price={best_price}
-        starNumber={5}
+        starNumber={package_rating}
       />
       <SingleGalleryContainer />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-1">
         <div className="col-span-2 container mx-auto px-4">
-          <OverView min={min} max={max} duration={duration} desc={desc} />
+          <OverView
+            min={min}
+            max={max}
+            duration={duration}
+            desc={desc}
+            includes={includes}
+            unincludes={unincludes}
+            board={board}
+          />
           <Itinerary daysItinerary={days} />
           <AdditionalInfo noteContent={note} />
-          <CancellationPolicy />
+          <CancellationPolicy Cancellation_Policy={policy} />
           <TermsAndConditions />
           <LeaveReview />
         </div>
-        <From />
+        <From idPackage={id} />
       </div>
       {/* <RelatedTours /> */}
       <Subscribe />

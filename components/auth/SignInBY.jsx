@@ -3,7 +3,7 @@ import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { useSession, signIn, signOut } from "next-auth/react";
 function SignInBY() {
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
   return (
     <div className="py-7 flex flex-col space-y-6 items-center justify-center">
       <p className="text-sm text-gray-950 font-sans capitalize ">
@@ -20,7 +20,7 @@ function SignInBY() {
       {/* google */}
       <div
         onClick={() => {
-          signIn();
+          signIn("google");
         }}
         className=" group transition-all  flex items-center py-5 border w-full justify-center space-x-3 border-[#3554d1] hover:md:bg-mainColor rounded-2xl "
       >
@@ -30,6 +30,13 @@ function SignInBY() {
           Google
         </button>
       </div>
+      <button
+        onClick={() => {
+          signOut();
+        }}
+      >
+        logout
+      </button>
       <p className="text-sm text-gray-950 font-sans capitalize">
         By signing in, I agree to GoTrip Terms of Use and Privacy Policy.
       </p>

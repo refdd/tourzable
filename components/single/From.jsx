@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CheckAvailability from "./CheckAvailability";
 import Inquery from "./Inquery";
 
-function From() {
+function From({ idPackage }) {
   const [openFrom, setOpenFrom] = useState(false);
   return (
     <div className="container mx-auto px-4 pb-8 h-full ">
@@ -38,7 +38,7 @@ function From() {
             </button>
           </div>
         </div>
-        {openFrom ? <CheckAvailability /> : <Inquery />}
+        {openFrom ? <CheckAvailability /> : <Inquery idPackage={idPackage} />}
       </div>
     </div>
   );

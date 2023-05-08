@@ -1,7 +1,7 @@
 import { useStateContext } from "@/contexts/ContextProvider";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BiHeart } from "react-icons/bi";
 import { BsArrowUpRight, BsFillStarFill } from "react-icons/bs";
 
@@ -20,7 +20,8 @@ function CardListTour({
   pageType,
 }) {
   const { ViewTours } = useStateContext();
-
+  const [reviewNumbers, setReviewNumbers] = useState(null);
+  useEffect(() => {});
   return (
     <Link href={`/${pageType}/${slug}`}>
       <div
@@ -179,7 +180,7 @@ function CardListTour({
               Excaptional
             </span>
             <span className="text-[#697488] text-sm font-sans font-medium ">
-              3,014 reviews
+              3,908402938014 reviews
             </span>
             <div className="flex items-start space-x-1 justify-center text-MainYeloow">
               <BsFillStarFill />

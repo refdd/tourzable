@@ -53,9 +53,7 @@ function CardTour({
       {/*duration */}
       {!blog && (
         <div className="absolute top-40 right-5 rounded bg-MainYeloow py-1 px-3 z-10  ">
-          <p className="text-mainColor font-sans capitalize">
-            {duration} {activitiey ? "hours" : "Days"}
-          </p>
+          <p className="text-mainColor font-sans capitalize">{duration}</p>
         </div>
       )}
       {/* title */}

@@ -10,13 +10,14 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
 import SignInBY from "./SignInBY";
+import axios from "axios";
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup
     .string()
     .min(8, "Password must be at least 8 characters")
     .required("Password is required"),
-  confirmPassword: yup
+  password_confirmation: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match")
     .required("Confirm password is required"),
@@ -29,17 +30,33 @@ function FormSignUp() {
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
-  const methods = useForm();
-  const { handleSubmit, control } = useForm({ resolver });
+  const methods = useForm({ resolver });
+  const { handleSubmit, control } = methods;
   const handleOnChange = (value) => {
     setnumber(value);
   };
   const onSubmit = (data) => {
-    console.log({
-      ...data,
-      number,
-    });
-    router.push("/dashboard");
+    axios
+      .post(
+        "http://new.tourzable.com/api/register",
+        {
+          ...data,
+          phone: number,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    router.push("/Login");
   };
   return (
     <div className="bg-[#e5f0fd] py-11 ">
@@ -68,7 +85,7 @@ function FormSignUp() {
               <div className="">
                 <CustomTextField
                   required
-                  name="firstName "
+                  name="first_name"
                   label="Frist Name "
                   type={"text"}
                 />
@@ -77,7 +94,7 @@ function FormSignUp() {
               <div className="">
                 <CustomTextField
                   required
-                  name="lastName "
+                  name="last_name"
                   label="Last Name "
                   type={"text"}
                 />
@@ -146,7 +163,7 @@ function FormSignUp() {
               {/* confirm password */}
               <div className="">
                 <Controller
-                  name="confirmPassword"
+                  name="password_confirmation"
                   control={control}
                   defaultValue=""
                   render={({
