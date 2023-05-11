@@ -18,7 +18,6 @@ function ActivitiesRow({ Activities }) {
     const activeElement = locationTour.find((id) => id === id);
     activeElement && setActiveId(id);
   };
-  console.log(Activities[0]);
 
   return (
     <div className="container mx-auto px-4 mb-11 z-40">

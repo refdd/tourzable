@@ -3,7 +3,7 @@ import { AiFillStar } from "react-icons/ai";
 import Partners from "../parts/Partners";
 import ReviewsSlider from "../parts/ReviewsSlider";
 
-function Reviews({ reviews }) {
+function Reviews({ reviews, allPartners }) {
   return (
     <div className=" container mx-auto px-4 bg-mainColor py-10">
       <div className="flex flex-col space-y-5 md:flex-row">
@@ -48,7 +48,7 @@ function Reviews({ reviews }) {
         {/* review Slider */}
         <ReviewsSlider reviews={reviews} />
       </div>
-      <Partners />
+      <Partners allPartners={allPartners} />
     </div>
   );
 }

@@ -27,6 +27,7 @@ export default function Home({
   reviews,
   faqs,
   offers,
+  partners,
 }) {
   return (
     <>
@@ -53,7 +54,7 @@ export default function Home({
       />
       <ActivitiesRow Activities={Activities} />
       <LandMarkSection />
-      <Reviews reviews={reviews} />
+      <Reviews reviews={reviews} allPartners={partners} />
       <OfferSection offers={offers} />
       {/* <NextTrip posts={posts} /> */}
       <FaQSection faqs={faqs} />
@@ -72,6 +73,7 @@ export async function getStaticProps() {
   const reviews = await fetchApi(`${baseUrl}/reviews?limit=6`);
   const faqs = await fetchApi(`${baseUrl}/faqs?limit=4`);
   const offers = await fetchApi(`${baseUrl}/offers?limit=1`);
+  const partners = await fetchApi(`${baseUrl}/partners`);
 
   return {
     props: {
@@ -81,6 +83,7 @@ export async function getStaticProps() {
       reviews: reviews.data,
       faqs: faqs.data,
       offers: offers.data,
+      partners: partners.data,
     },
     revalidate: 10,
   };
