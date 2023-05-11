@@ -5,7 +5,7 @@ import { GiMeal } from "react-icons/gi";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { FcCheckmark } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
-function OverView({ min, max, duration, desc, includes, unincludes, board }) {
+function OverView({ min, max, duration, desc, includes, unincludes, board , hotel_rate }) {
   return (
     <div id="overview" className="">
       <div className=" border-b pb-4">
@@ -29,7 +29,7 @@ function OverView({ min, max, duration, desc, includes, unincludes, board }) {
               Hotel Rate
             </span>
             <span className="text-[15px] text-gray-500 font-sans capitalize">
-              5 stars
+             {hotel_rate}
             </span>
           </div>
           <div className=" flex justify-center items-center flex-col">
@@ -54,9 +54,7 @@ function OverView({ min, max, duration, desc, includes, unincludes, board }) {
         {/* overview  */}
         <div className="py-4 border-y flex flex-col space-y-4">
           <div dangerouslySetInnerHTML={{ __html: desc }} className=""></div>
-          <span className="text-mainColor text-[14px] underline font-medium font-sans capitalize">
-            See More
-          </span>
+        
         </div>
 
         {/* price includes  */}

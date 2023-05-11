@@ -20,10 +20,11 @@ function LandMarksContainer({allregions}) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  console.log(destination);
   useEffect(() => {
     axios
       .get(
-        `http://new.tourzable.com/api/landmarks?city_id=${destination}&limit=4`
+        `http://new.tourzable.com/api/landmarks?region_id=${destination}&limit=4`
       )
       .then((response) => {
         setlandmarks(response.data.data);
@@ -64,7 +65,7 @@ function LandMarksContainer({allregions}) {
             key={item.id}
             onClick={() => {
               handleClose();
-              setDestination(15);
+              setDestination(item.id);
             }}
           >
             {item.desc}

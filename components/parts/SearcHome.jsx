@@ -10,8 +10,6 @@ import { useRouter } from "next/router";
 function SearcHome({regions}) {
   const { dateRange, setDateRange } = useStateContext();
   const [location, setLocation] = useState("");
-  const [openDate, setOpenDate] = useState(false);
-  const boxRef = useRef();
   const router = useRouter();
   const {  isClicked } = useStateContext();
 
@@ -25,33 +23,33 @@ function SearcHome({regions}) {
     
     console.log({ ...data, location })
   
-    router.push({pathname:"results" , query:{type_id:isClicked.typeTour ,region_id:1 , date:"2021-12-12" }});
+    router.push({pathname:"results" , query:{type_id:isClicked.typeTour ,region_id:location , date:"2021-12-12" }});
   };
-  useEffect(() => {
-    const handleClick = (event) => {
-      if (boxRef.current && !boxRef.current.contains(event.target)) {
-        setOpenDate(false)
-      }
+  // useEffect(() => {
+  //   const handleClick = (event) => {
+  //     if (boxRef.current && !boxRef.current.contains(event.target)) {
+  //       setOpenDate(false)
+  //     }
       
-    };
+  //   };
 
-    document.addEventListener('click', handleClick);
+  //   document.addEventListener('click', handleClick);
 
-    return () => {
-      document.removeEventListener('click', handleClick);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener('click', handleClick);
+  //   };
+  // }, []);
   const formattedStartDate = format(dateRange.startDate, "EEE dd MMM");
   const formattedEndDate = format(dateRange.endDate, "EEE dd MMM");
   // close date range box 
 
   return (
-    <div className="w-[90%] bg-white rounded-md mt-10 mx-auto  md:rounded-[100px] shadow-lg border md:border-0 md:shadow-none">
+    <div className="w-[90%] md:w-[50%] bg-white rounded-md mt-10 mx-auto  md:rounded-[100px] shadow-lg border md:border-0 md:shadow-none md:shadow-xl">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col md:flex-row  md:divide-x space-y-4 py-5 px-6 md:py-0"
+        className="flex flex-col md:flex-row  md:divide-x space-y-4 py-5 px-6 md:py-0 md:space-y-0 md:items-center"
       >
-        <div className=" md:w-[40%] md:px-3">
+        <div className=" md:w-[50%] md:px-3">
           <div className="felx flex-col justify-center md:mt-2">
             <InputLabel>Location</InputLabel>
             <Select
@@ -86,7 +84,7 @@ function SearcHome({regions}) {
             </Select>
           </div>
         </div>
-        <div ref={boxRef} className="relative md:w-[40%] md:px-3">
+        {/* <div ref={boxRef} className="relative md:w-[40%] md:px-3">
           <div
           onClick={()=>{
             setOpenDate(!openDate)
@@ -100,10 +98,10 @@ function SearcHome({regions}) {
             </p>
           </div>
           {openDate &&<DateRangePicker   /> }
-        </div>
+        </div> */}
         <div
           className="  group flex space-x-1 justify-center transition-all items-center bg-secondColor
-         hover:md:bg-mainLightColor rounded py-5  md:flex-1  md:px-3 md:h-12 md:rounded-[100px] "
+         hover:md:bg-mainLightColor rounded py-5   md:flex-1  md:px-3 md:h-12 md:rounded-[100px] "
         >
           <BiSearch className="text-white text-lg" />
           <button className="text-lg text-white font-sans  font-medium">

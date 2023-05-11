@@ -30,7 +30,6 @@ export default function Home({
   partners,
   regions
 }) {
-  // console.log(regions);
   return (
     <>
       <Head>
@@ -58,7 +57,7 @@ export default function Home({
       <LandMarkSection  regions={regions}/>
       <Reviews reviews={reviews} allPartners={partners} />
       <OfferSection offers={offers} />
-      {/* <NextTrip posts={posts} /> */}
+      <NextTrip posts={posts} />
       <FaQSection faqs={faqs} />
       <Subscribe />
       <DownLoadApp />
@@ -69,9 +68,9 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  // const posts = await fetchApi(`${baseUrl}/posts&limit=12`);
-  const tours = await fetchApi(`${baseUrl}/packages?type_id=1&limit=12`);
-  const Activities = await fetchApi(`${baseUrl}/packages?type_id=2&limit=12`);
+  const posts = await fetchApi(`${baseUrl}/posts?limit=9`);
+  const tours = await fetchApi(`${baseUrl}/packages?type_id=1&limit=9`);
+  const Activities = await fetchApi(`${baseUrl}/packages?type_id=2&limit=9`);
   const reviews = await fetchApi(`${baseUrl}/reviews?limit=6`);
   const faqs = await fetchApi(`${baseUrl}/faqs?limit=4`);
   const offers = await fetchApi(`${baseUrl}/offers?limit=1`);
@@ -80,7 +79,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      // posts: posts.data,
+      posts: posts.data,
       tours: tours.data,
       Activities: Activities.data,
       reviews: reviews.data,

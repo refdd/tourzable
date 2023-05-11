@@ -6,7 +6,6 @@ import Hotel3 from "../../public/assets/images/4.png";
 import { useStateContext } from "@/contexts/ContextProvider";
 function ListTourcontainer({ tours, pageType }) {
   const { ViewTours, setViewTours } = useStateContext();
-
   return (
     <div className="container mx-auto px-4 mt-6">
       <div
@@ -22,7 +21,7 @@ function ListTourcontainer({ tours, pageType }) {
               image={tour?.images}
               location={tour?.city?.title}
               title={tour.title}
-              description={tour?.short_desc?.substring(0, 90)}
+              description={tour?.short_desc}
               price={tour?.best_price}
               slug={tour.slug}
               sigleImage={tour?.image}

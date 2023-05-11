@@ -15,6 +15,7 @@ function CardTour({
   blog,
   ratingNumber,
   sigleImage,
+  homepage,
 }) {
   return (
     <div className=" tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] ">
@@ -38,7 +39,7 @@ function CardTour({
             />
           </div>
         ) : (
-          <ImageSlider arrayOfImages={image} />
+          <ImageSlider arrayOfImages={image} homepage />
         )}
 
         {/* heart icon */}
