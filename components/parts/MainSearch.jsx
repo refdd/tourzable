@@ -2,17 +2,18 @@ import React, { useEffect } from "react";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { Button } from "@mui/material";
 import SearcHome from "./SearcHome";
-function MainSearch() {
+function MainSearch({regions}) {
   const { handleClick, isClicked, setIsClicked } = useStateContext();
   useEffect(() => {
     setIsClicked({ Packages: true });
   }, []);
+  console.log(isClicked);
   return (
     <div className="flex flex-col items-center justify-center mt-5 md:mt-20 ">
       {/* search types */}
       <ul className="flex items-center space-x-8 md:space-x-10 ">
         <li
-          onClick={() => handleClick("Packages")}
+          onClick={() => handleClick("Packages" , 1)}
           className="relative flex justify-center items-center"
         >
           <span
@@ -31,7 +32,7 @@ function MainSearch() {
           )}
         </li>
         <li
-          onClick={() => handleClick("Activities")}
+          onClick={() => handleClick("Activities" , 2)}
           className="relative flex justify-center items-center"
         >
           <span
@@ -50,7 +51,7 @@ function MainSearch() {
           )}
         </li>
         <li
-          onClick={() => handleClick("UmrahPlus")}
+          onClick={() => handleClick("UmrahPlus" , 3)}
           className="relative flex justify-center items-center"
         >
           <span
@@ -69,7 +70,7 @@ function MainSearch() {
           )}
         </li>
       </ul>
-      <SearcHome />
+      <SearcHome  regions={regions}/>
     </div>
   );
 }

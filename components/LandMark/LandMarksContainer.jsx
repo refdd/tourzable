@@ -9,7 +9,7 @@ import trip3 from "../../public/assets/images/eastern-province.jpg";
 import { useStateContext } from "@/contexts/ContextProvider";
 import axios from "axios";
 
-function LandMarksContainer() {
+function LandMarksContainer({allregions}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [landmarks, setlandmarks] = useState(null);
   const open = Boolean(anchorEl);
@@ -59,102 +59,19 @@ function LandMarksContainer() {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem
+          {allregions?.map(item=>(
+            <MenuItem
+            key={item.id}
             onClick={() => {
               handleClose();
               setDestination(15);
             }}
           >
-            Eastern Province
+            {item.desc}
           </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(1);
-            }}
-          >
-            Riyadh
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(14);
-            }}
-          >
-            Al-Qassim
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(14);
-            }}
-          >
-            northern borders
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(14);
-            }}
-          >
-            Al-jawf
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(6);
-            }}
-          >
-            Ha'll
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(4);
-            }}
-          >
-            Tabuk
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(22);
-            }}
-          >
-            Medina
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(3);
-            }}
-          >
-            Mecca
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(13);
-            }}
-          >
-            Albahah
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(3);
-            }}
-          >
-            Asir
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              setDestination(3);
-            }}
-          >
-            Nayjran
-          </MenuItem>
+          ))}
+          
+       
         </Menu>
       </div>
       <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2">

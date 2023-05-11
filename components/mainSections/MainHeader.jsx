@@ -4,7 +4,7 @@ import HeaderVideo from "../parts/HeaderVideo";
 import MainSearch from "../parts/MainSearch";
 import MainNavBar from "./MainNavBar";
 
-function MainHeader() {
+function MainHeader({regions}) {
   return (
     <div className="relative ">
       <HeaderVideo />
@@ -18,7 +18,7 @@ function MainHeader() {
         <p className=" text-sm text-center text-white font-sans mt-2 md:mt-5 md:text-xl mb-10 md:mb-0">
           Discover amzaing places at exclusive deals
         </p>
-        <MainSearch />
+        <MainSearch regions={regions} />
       </div>
     </div>
   );

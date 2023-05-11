@@ -1,10 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import partenersImage1 from "../../public/assets/images/partners/1 (1).svg";
-import partenersImage2 from "../../public/assets/images/partners/2 (1).svg";
-import partenersImage4 from "../../public/assets/images/partners/3.svg";
-import partenersImage5 from "../../public/assets/images/partners/4.svg";
-import partenersImage6 from "../../public/assets/images/partners/5.svg";
 function Partners({ allPartners }) {
   return (
     <div className="mt-5">

@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { AiFillPhone } from "react-icons/ai";
 import {
   BsApple,
@@ -11,7 +11,7 @@ import {
   BsLinkedin,
   BsTwitter,
 } from "react-icons/bs";
-import { GrLocationPin } from "react-icons/gr";
+import { useForm, FormProvider } from "react-hook-form";
 import { MdLocationPin } from "react-icons/md";
 import footerLoge from "../../public/assets/images/The-Logo.png";
 import mada from "../../public/assets/images/mada.webp";
@@ -20,9 +20,56 @@ import master from "../../public/assets/images/visa.png";
 import ma3rof from "../../public/assets/images/ma3rof.png";
 import min from "../../public/assets/images/min.png";
 import Link from "next/link";
+import axios from "axios";
+import AlertSuccess from "../hleper/AlertSuccess";
 function Footer() {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    axios
+    .post(
+      "https://new.tourzable.com/api/mails",
+      {
+        ...data,
+      },
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    )
+    .then((res) => {
+      console.log(res);
+      setOpen(true );
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    // router.push("/Thank_you");
+
+  };
   return (
     <div className="container mx-auto px-4 md:px-10 bg-mainColor">
+        <AlertSuccess
+        handleClose={handleClose}
+        handleClick={handleClick}
+        open={open}
+      />
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-6 pb-4 md:pt-11">
         <div className=" flex flex-col space-y-16 py-7">
           {/*  */}
@@ -116,20 +163,24 @@ function Footer() {
             <p className="text-white text-[16px] font-sans font-medium capitalize border-white">
               Get Updates & More
             </p>
-            <div className="flex items-center border rounded border-white py-2 bg-white">
+            <form 
+             onSubmit={handleSubmit(onSubmit)}
+             className="flex items-center border rounded border-white py-2 bg-white">
               <input
                 className="appearance-none bg-transparent border-none w-full text-gray-950 bg-white mr-3 py-2 rounded px-2 leading-tight focus:outline-none"
                 type="text"
                 placeholder="your Email"
-                aria-label="Full name"
+                aria-label="email"
+                {...register("email", { required: true })}
               />
               <button
+              type="submit"
                 className="flex-shrink-0   text-lg  text-gray-950 py-1 px-4 rounded underline"
-                type="button"
+                
               >
                 subscride
               </button>
-            </div>
+            </form>
           </div>
           {/* Tourzable */}
           <div className="pt-5">

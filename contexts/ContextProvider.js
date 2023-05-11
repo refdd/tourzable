@@ -39,8 +39,8 @@ export const ContextProvider = ({ children }) => {
 
     setnavDashbord(!navDashbord);
   };
-  const handleClick = (clicked) =>
-    setIsClicked({ ...initialState, [clicked]: true });
+  const handleClick = (clicked , vlaue) =>
+    setIsClicked({ ...initialState, [clicked]: true  , typeTour : vlaue} );
   return (
     <StateContext.Provider
       value={{

@@ -28,7 +28,9 @@ export default function Home({
   faqs,
   offers,
   partners,
+  regions
 }) {
+  // console.log(regions);
   return (
     <>
       <Head>
@@ -37,7 +39,7 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainHeader />
+      <MainHeader regions={regions} />
       <WhyChooseUs homepage />
       <HeaderSections
         titel={"Most Popular Saudi Tours"}
@@ -53,7 +55,7 @@ export default function Home({
         }
       />
       <ActivitiesRow Activities={Activities} />
-      <LandMarkSection />
+      <LandMarkSection  regions={regions}/>
       <Reviews reviews={reviews} allPartners={partners} />
       <OfferSection offers={offers} />
       {/* <NextTrip posts={posts} /> */}
@@ -74,6 +76,7 @@ export async function getStaticProps() {
   const faqs = await fetchApi(`${baseUrl}/faqs?limit=4`);
   const offers = await fetchApi(`${baseUrl}/offers?limit=1`);
   const partners = await fetchApi(`${baseUrl}/partners`);
+  const regions = await fetchApi(`${baseUrl}/regions`);
 
   return {
     props: {
@@ -84,6 +87,7 @@ export async function getStaticProps() {
       faqs: faqs.data,
       offers: offers.data,
       partners: partners.data,
+      regions: regions.data,
     },
     revalidate: 10,
   };
