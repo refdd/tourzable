@@ -54,7 +54,9 @@ function Subscribe() {
       <div className="flex flex-col md:flex-row">
         {/* image */}
         <div className=" group relative w-full h-[200px] rounded-t-md  md:h-[390px] overflow-hidden md:w-[500px] ">
-          <Image src={subsribe} fill loading="lazy" alt="" className="t" />
+          <Image src={subsribe} fill loading="lazy"     sizes="(max-width: 768px) 100vw,
+             (max-width: 1200px) 50vw,
+             33vw" alt="" className="t" />
         </div>
         {/* contnet */}
         <div className="flex flex-col space-y-4 p-8 bg-[#f5f5f5] md:flex-1 md:px-10 md:space-y-14">

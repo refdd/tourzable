@@ -28,8 +28,10 @@ export default function Home({
   faqs,
   offers,
   partners,
-  regions
+  regions,
+  snippets
 }) {
+  console.log(snippets);
   return (
     <>
       <Head>
@@ -39,7 +41,7 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainHeader regions={regions} />
-      <WhyChooseUs homepage />
+      <WhyChooseUs homepage snippets={snippets} />
       <HeaderSections
         titel={"Most Popular Saudi Tours"}
         desc={
@@ -76,6 +78,7 @@ export async function getStaticProps() {
   const offers = await fetchApi(`${baseUrl}/offers?limit=1`);
   const partners = await fetchApi(`${baseUrl}/partners`);
   const regions = await fetchApi(`${baseUrl}/regions`);
+  const snippets = await fetchApi(`${baseUrl}/snippets`);
 
   return {
     props: {
@@ -87,6 +90,7 @@ export async function getStaticProps() {
       offers: offers.data,
       partners: partners.data,
       regions: regions.data,
+      snippets: snippets.data,
     },
     revalidate: 10,
   };

@@ -1,8 +1,6 @@
 import React from "react";
 import CardListTour from "../cards/CardListTour";
-import Hotel from "../../public/assets/images/3.png";
-import Hotel2 from "../../public/assets/images/2.png";
-import Hotel3 from "../../public/assets/images/4.png";
+
 import { useStateContext } from "@/contexts/ContextProvider";
 function ListTourcontainer({ tours, pageType }) {
   const { ViewTours, setViewTours } = useStateContext();

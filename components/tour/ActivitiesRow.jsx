@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Hotel from "../../public/assets/images/3.png";
-import Hotel2 from "../../public/assets/images/2.png";
-import Hotel3 from "../../public/assets/images/4.png";
+
 import CardTour from "../cards/CardTour";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";

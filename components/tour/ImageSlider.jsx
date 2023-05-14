@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import Hotel from "../../public/assets/images/3.png";
 
 // Import Swiper styles
 import "swiper/css";

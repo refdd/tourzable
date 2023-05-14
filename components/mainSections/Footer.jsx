@@ -159,7 +159,7 @@ function Footer() {
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 ">
           {/* subsctibe */}
-          <div className=" md:col-span-3 flex flex-col space-y-2">
+          {/* <div className=" md:col-span-3 flex flex-col space-y-2">
             <p className="text-white text-[16px] font-sans font-medium capitalize border-white">
               Get Updates & More
             </p>
@@ -181,7 +181,7 @@ function Footer() {
                 subscride
               </button>
             </form>
-          </div>
+          </div> */}
           {/* Tourzable */}
           <div className="pt-5">
             <p className="text-white text-[16px] font-sans font-medium capitalize border-white">

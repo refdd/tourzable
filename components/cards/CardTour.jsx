@@ -18,7 +18,7 @@ function CardTour({
   homepage,
 }) {
   return (
-    <div className=" tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] ">
+    <div className=" relative tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] ">
       {/* image card */}
       <div className=" overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
@@ -79,7 +79,7 @@ function CardTour({
           Excaptional
         </span>
         <span className="text-[#697488] text-sm font-sans font-medium ">
-          3,014 reviews
+        {   price - 1013 } sreviews
         </span>
       </div>
       {/* price */}

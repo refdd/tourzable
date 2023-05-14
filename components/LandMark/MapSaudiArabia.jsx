@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Tooltip } from "@mui/material";
 import saudiArabia from "../../public/assets/images/country.svg";
+import { useStateContext } from "@/contexts/ContextProvider";
 
 function MapSaudiArabia() {
+  const { setDestination } = useStateContext();
+
   return (
     <div className="py-6 col-span-3 md:flex md:justify-center md:items-center">
       <div
@@ -19,6 +22,9 @@ function MapSaudiArabia() {
                 color: "#5C2D90",
                 fontWeight: "bold",
               }}
+              onClick={()=>{
+                setDestination(4)
+              }}
             >
               Eastern Province
             </Button>
@@ -33,6 +39,9 @@ function MapSaudiArabia() {
                 textTransform: "capitalize ",
                 color: "#5C2D90",
                 fontWeight: "bold",
+              }}
+              onClick={()=>{
+                setDestination(1)
               }}
             >
               Riyadh
@@ -49,6 +58,9 @@ function MapSaudiArabia() {
                 color: "#5C2D90",
                 fontWeight: "bold",
               }}
+              onClick={()=>{
+                setDestination(7)
+              }}
             >
               Al-Qassim
             </Button>
@@ -63,6 +75,9 @@ function MapSaudiArabia() {
                 textTransform: "capitalize ",
                 color: "#5C2D90",
                 fontWeight: "bold",
+              }}
+              onClick={()=>{
+                setDestination(13)
               }}
             >
               northern borders
@@ -79,6 +94,9 @@ function MapSaudiArabia() {
                 color: "#5C2D90",
                 fontWeight: "bold",
               }}
+              onClick={()=>{
+                setDestination(11)
+              }}
             >
               Al-jawf
             </Button>
@@ -93,6 +111,9 @@ function MapSaudiArabia() {
                 textTransform: "capitalize ",
                 color: "#5C2D90",
                 fontWeight: "bold",
+              }}
+              onClick={()=>{
+                setDestination(9)
               }}
             >
               Ha'll
@@ -109,6 +130,9 @@ function MapSaudiArabia() {
                 color: "#5C2D90",
                 fontWeight: "bold",
               }}
+              onClick={()=>{
+                setDestination(8)
+              }}
             >
               Tabuk
             </Button>
@@ -123,6 +147,9 @@ function MapSaudiArabia() {
                 textTransform: "capitalize ",
                 color: "#5C2D90",
                 fontWeight: "bold",
+              }}
+              onClick={()=>{
+                setDestination(3)
               }}
             >
               Medina
@@ -139,6 +166,9 @@ function MapSaudiArabia() {
                 color: "#5C2D90",
                 fontWeight: "bold",
               }}
+              onClick={()=>{
+                setDestination(2)
+              }}
             >
               Mecca
             </Button>
@@ -154,8 +184,11 @@ function MapSaudiArabia() {
                 color: "#5C2D90",
                 fontWeight: "bold",
               }}
+              onClick={()=>{
+                setDestination(12)
+              }}
             >
-              Albahah
+              Al bahah
             </Button>
           </Tooltip>
         </div>
@@ -168,6 +201,9 @@ function MapSaudiArabia() {
                 textTransform: "capitalize ",
                 color: "#5C2D90",
                 fontWeight: "bold",
+              }}
+              onClick={()=>{
+                setDestination(5)
               }}
             >
               Asir
@@ -183,6 +219,9 @@ function MapSaudiArabia() {
                 textTransform: "capitalize ",
                 color: "#5C2D90",
                 fontWeight: "bold",
+              }}
+              onClick={()=>{
+                setDestination(10)
               }}
             >
               Nayjran

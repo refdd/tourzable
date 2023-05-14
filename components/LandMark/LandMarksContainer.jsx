@@ -8,6 +8,7 @@ import trip2 from "../../public/assets/images/Tarot Island.jpg";
 import trip3 from "../../public/assets/images/eastern-province.jpg";
 import { useStateContext } from "@/contexts/ContextProvider";
 import axios from "axios";
+import NoDataFounded from "../hleper/NoDataFounded";
 
 function LandMarksContainer({allregions}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -20,7 +21,6 @@ function LandMarksContainer({allregions}) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log(destination);
   useEffect(() => {
     axios
       .get(
@@ -33,7 +33,7 @@ function LandMarksContainer({allregions}) {
         console.log(error);
       });
   }, [destination]);
-
+ 
   return (
     <div className="container mx-auto px-4 md:px-0 md:col-span-5 py-6">
       <div className=" flex justify-end">
@@ -76,7 +76,7 @@ function LandMarksContainer({allregions}) {
         </Menu>
       </div>
       <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2">
-        {landmarks?.map((landmark) => (
+        {landmarks?.length == 0 ? <NoDataFounded/> : landmarks?.map((landmark) => (
           <LandMarksCard
             key={landmark.id}
             imaga={landmark.image}
@@ -84,6 +84,7 @@ function LandMarksContainer({allregions}) {
             destination={landmark.city.title}
           />
         ))}
+        {}
       </div>
     </div>
   );

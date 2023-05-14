@@ -3,13 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
-import Hotel from "../../public/assets/images/3.png";
-import Hotel2 from "../../public/assets/images/2.png";
-import Hotel3 from "../../public/assets/images/4.png";
+import Hotel from "../../public/assets/images/QaisariahSouq.jpg";
+import Hotel2 from "../../public/assets/images/gallery2.png";
+import Hotel3 from "../../public/assets/images/Tarot Island.jpg";
 import HeaderSections from "../parts/HeaderSections";
 import CardTour from "../cards/CardTour";
 
-function RelatedTours({ blog }) {
+function RelatedTours({ blog , packages }) {
   return (
     <>
       <div
@@ -136,53 +136,21 @@ function RelatedTours({ blog }) {
         <HeaderSections titel={"Related Tours"} />
 
         <div className="grid grid-cols-1 gap-4">
-          <CardTour
-            image={[Hotel, Hotel2, Hotel3]}
-            location="jeddah"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-            duration={7}
-            blog
-          />
+          {packages?.map(item=>(
+        <CardTour
+        key={item.id}
+        sigleImage={item?.image}
+        image={item?.images}
+        location={item?.city?.desc}
+        title={item.title}
+        description={item.short_desc.substring(0, 90)}
+        price={item.best_price}
+        duration={item.duration}
+        ratingNumber={item.package_rating}
+            />
+          ))}
 
-          <CardTour
-            image={[Hotel, Hotel2, Hotel3]}
-            location="jeddah"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-            duration={7}
-            blog
-          />
-
-          <CardTour
-            image={[Hotel, Hotel2, Hotel3]}
-            location="jeddah"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-            duration={7}
-            blog
-          />
-
-          <CardTour
-            image={[Hotel, Hotel2, Hotel3]}
-            location="jeddah"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-            duration={7}
-            blog
-          />
+        
         </div>
       </div>
     </>

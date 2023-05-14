@@ -10,6 +10,7 @@ import Footer from "@/components/mainSections/Footer";
 import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
 import { baseUrl, fetchApi } from "@/utils/ferchApi"
+import From from "@/components/single/From";
 
 function Results({tours}) {
     console.log(tours);
@@ -24,11 +25,11 @@ function Results({tours}) {
           <MainHeaderList title={"SAUDI ARABIA TOURS"} />
     
           <div className="py-2 bg-[#f5f5f5]"> </div>
-          <div className=" grid grid-cols-1 gap-5  md:grid-cols-5">
-            <div className="hidden md:block col-span-1">
-              <FilterDesktop />
+          <div className=" grid grid-cols-1 gap-5  md:grid-cols-3">
+            <div className="hidden md:block col-span-1 mt-5">
+              <From idPackage={"list Search"}/>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-2">
               <HeaderList />
               <ListTourcontainer
                 pageType={"list-Popular-Saudi-Tours"}

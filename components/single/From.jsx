@@ -6,7 +6,7 @@ function From({ idPackage }) {
   const [openFrom, setOpenFrom] = useState(false);
   return (
     <div className="container mx-auto px-4 pb-8 h-full ">
-      <div className=" bg-gray-50 rounded py-4 sticky top-14 ">
+      <div className=" bg-gray-50 rounded py-4 md:sticky md:top-14 ">
         <div className="flex items-center space-x-2 py-2 px-4 border-b-2  ">
           <div
             onClick={() => {

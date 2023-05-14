@@ -7,7 +7,6 @@ function MainSearch({regions}) {
   useEffect(() => {
     setIsClicked({ Packages: true });
   }, []);
-  console.log(isClicked);
   return (
     <div className="flex flex-col items-center justify-center mt-5 md:mt-20 ">
       {/* search types */}

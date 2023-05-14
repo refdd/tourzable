@@ -6,9 +6,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import HeaderSections from "../parts/HeaderSections";
 import FraturedIcon1 from "../../public/assets/images/1.svg";
-import FraturedIcon2 from "../../public/assets/images/2.svg";
-import FraturedIcon3 from "../../public/assets/images/3.svg";
-function WhyChooseUs({ homepage }) {
+function WhyChooseUs({ homepage , snippets }) {
   return (
     <div
       className={
@@ -43,82 +41,37 @@ function WhyChooseUs({ homepage }) {
             },
           }}
         >
-          <SwiperSlide>
-            <div className="flex flex-col space-y-3  ">
-              <div className=" flex max-w-full w-full  justify-center items-center">
-                <Image
-                  width="0"
-                  height="0"
-                  sizes="100vw"
-                  className="w-[100] h-[90]"
-                  src={FraturedIcon1}
-                  static
-                  alt="features"
-                  loading="lazy"
-                />
-              </div>
-              {/* content */}
-              <div className="flex flex-col space-y-2  ">
-                <p className="text-lg font-medium  text-[#051036] font-sans capitalize text-center ">
-                  Best Price Guarantee
-                </p>
-                <p className="text-sm text-gray-600 font-normal font-sans capitalize text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="flex flex-col space-y-3  ">
-              <div className=" flex max-w-full w-full  justify-center items-center">
-                <Image
-                  width="0"
-                  height="0"
-                  sizes="100vw"
-                  className="w-[100] h-[90]"
-                  src={FraturedIcon2}
-                  static
-                  alt="features"
-                  loading="lazy"
-                />
-              </div>
-              {/* content */}
-              <div className="flex flex-col space-y-2  ">
-                <p className="text-lg font-medium  text-[#051036] font-sans capitalize text-center ">
-                  Easy & Quick Booking
-                </p>
-                <p className="text-sm text-gray-600 font-normal font-sans capitalize text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col space-y-3  ">
-              <div className=" flex max-w-full w-full  justify-center items-center">
-                <Image
-                  width="0"
-                  height="0"
-                  sizes="100vw"
-                  className="w-[100] h-[90]"
-                  src={FraturedIcon3}
-                  static
-                  alt="features"
-                  loading="lazy"
-                />
-              </div>
-              {/* content */}
-              <div className="flex flex-col space-y-2  ">
-                <p className="text-lg font-medium  text-[#051036] font-sans capitalize text-center ">
-                  Customer Care 24/7
-                </p>
-                <p className="text-sm text-gray-600 font-normal font-sans capitalize text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
+          {snippets?.map(snippet =>(
+                <SwiperSlide key={snippet.id}>
+                <div className="flex flex-col space-y-3  ">
+                  <div className=" flex max-w-full w-full  justify-center items-center">
+                    <Image
+                      width="0"
+                      height="0"
+                      sizes="100vw"
+                      className="w-[100px] h-[90px]"
+                      loader={() => {
+                        return `${snippet.icon}`;
+                      }}
+                      unoptimized={true}
+                      src={snippet.icon}
+                      static
+                      alt="features"
+                      loading="lazy"
+                    />
+                  </div>
+                  {/* content */}
+                  <div className="flex flex-col space-y-2  ">
+                    <p className="text-lg font-medium  text-[#051036] font-sans capitalize text-center ">
+                     {snippet?.title}
+                    </p>
+                    <p className="text-sm text-gray-600 font-normal font-sans capitalize text-center">
+                        {snippet?.desc}
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>

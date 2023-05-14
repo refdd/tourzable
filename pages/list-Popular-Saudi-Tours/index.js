@@ -48,7 +48,7 @@ export default ListTour;
 export async function getServerSideProps({ query }) {
   const place = query.search;
   const tours = await fetchApi(
-    `${baseUrl}/packages?type_id=1&limit=20&search=['title'=>${place} , 'desc'=>${place}]`
+    `${baseUrl}/packages?type_id=1&limit=20`
   );
 
   return {
