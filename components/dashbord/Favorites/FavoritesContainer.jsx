@@ -1,8 +1,8 @@
 import CardListTour from "@/components/cards/CardListTour";
 import React from "react";
-import Hotel from "../../../public/assets/images/3.png";
-import Hotel2 from "../../../public/assets/images/2.png";
-import Hotel3 from "../../../public/assets/images/4.png";
+import Hotel from "../../../public/assets/images/QaisariahSouq.jpg";
+import Hotel2 from "../../../public/assets/images/QaisariahSouq.jpg";
+import Hotel3 from "../../../public/assets/images/QaisariahSouq.jpg";
 function FavoritesContainer() {
   return (
     <div className="flex flex-col  gap-6">
