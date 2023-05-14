@@ -2,6 +2,7 @@ import React from "react";
 import CardListTour from "../cards/CardListTour";
 
 import { useStateContext } from "@/contexts/ContextProvider";
+import SeeMore from "../hleper/SeeMore";
 function ListTourcontainer({ tours, pageType }) {
   const { ViewTours, setViewTours } = useStateContext();
   return (
@@ -30,6 +31,7 @@ function ListTourcontainer({ tours, pageType }) {
           </div>
         ))}
       </div>
+      <SeeMore />
     </div>
   );
 }

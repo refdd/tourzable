@@ -4,17 +4,17 @@ import blogimage from "../../public/assets/images/singleBlog.png";
 import bog1 from "../../public/assets/images/bog1.png";
 import bog2 from "../../public/assets/images/blog2.png";
 import ShareBlog from "./ShareBlog";
-function OverViewSingleBlog({blogImage , description}) {
+function OverViewSingleBlog({ blogImage, description, blogSlug }) {
   return (
     <div className="md:col-span-2">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 ">
         <div className="relative w-full h-[200px] md:h-[400px] md:col-span-2 ">
           <Image
-         loader={() => {
-          return `${blogImage}`;
-        }}
-        unoptimized={true}
-        src={blogImage}
+            loader={() => {
+              return `${blogImage}`;
+            }}
+            unoptimized={true}
+            src={blogImage}
             fill
             loading="lazy"
             alt="single blog imag"
@@ -25,10 +25,12 @@ function OverViewSingleBlog({blogImage , description}) {
         <p className=" text-xl font-medium font-sans capitalize text-mainColor md:col-span-2">
           What makes a good brand book?
         </p>
-        <div className="col-span-2"
+        <div
+          className="col-span-2"
           dangerouslySetInnerHTML={{
             __html: description,
-          }}></div>
+          }}
+        ></div>
         {/* desc */}
         {/* <p className="text-[15px] text-[#051036]  capitalize leading-7 md:col-span-2">
           Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Diam
@@ -131,7 +133,7 @@ function OverViewSingleBlog({blogImage , description}) {
           Erat lacus, amet quisque urna faucibus. Rhoncus praesent faucibus
           rhoncus nec adipiscing tristique sed facilisis velit.
         </p> */}
-        <ShareBlog />
+        <ShareBlog blogSlug={blogSlug} />
       </div>
     </div>
   );

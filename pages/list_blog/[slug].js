@@ -12,9 +12,9 @@ import RelatedTours from "@/components/single/RelatedTours";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import React from "react";
 
-function singelBlog({singletBlog}) {
-  const {image , desc ,packages} = singletBlog
-  console.log(packages);
+function singelBlog({ singletBlog, readAlso }) {
+  const { image, desc, packages, slug } = singletBlog;
+  // console.log(singletBlog);
   return (
     <div>
       <NormailNavBar />
@@ -34,12 +34,16 @@ function singelBlog({singletBlog}) {
         desc={"April 06, 2022"}
       />
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3 container mx-auto px-4">
-        <OverViewSingleBlog blogImage={image} description={desc} />
+        <OverViewSingleBlog
+          blogImage={image}
+          description={desc}
+          blogSlug={slug}
+        />
         <div>
-               <RelatedTours blog packages={packages} />
+          <RelatedTours blog packages={packages} />
         </div>
       </div>
-      <ReadAlso />
+      <ReadAlso readAlsoBlog={readAlso} />
       {/* <FaQSection /> */}
       <Subscribe />
       <DownLoadApp />
@@ -52,10 +56,12 @@ function singelBlog({singletBlog}) {
 export default singelBlog;
 export async function getServerSideProps({ params }) {
   const singletBlog = await fetchApi(`${baseUrl}/posts/${params.slug}`);
+  const readAlso = await fetchApi(`${baseUrl}/posts?limit=9`);
 
   return {
     props: {
       singletBlog: singletBlog.data,
+      readAlso: readAlso.data,
     }, // will be passed to the page component as props
   };
 }

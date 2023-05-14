@@ -9,12 +9,15 @@ import Hotel3 from "../../public/assets/images/Tarot Island.jpg";
 import HeaderSections from "../parts/HeaderSections";
 import CardTour from "../cards/CardTour";
 
-function RelatedTours({ blog , packages }) {
+function RelatedTours({ blog, packages }) {
+  console.log(blog);
   return (
     <>
       <div
         className={
-          blog ? "container mx-auto px-4 md:hidden" : "container mx-auto px-4"
+          blog
+            ? "container mx-auto px-4 md:hidden block"
+            : "container mx-auto px-4 "
         }
       >
         <HeaderSections titel={"Related Tours"} />
@@ -39,118 +42,46 @@ function RelatedTours({ blog , packages }) {
             },
           }}
         >
-          <SwiperSlide>
-            <CardTour
-              image={[Hotel, Hotel2, Hotel3]}
-              location="jeddah"
-              title={"Explore Alula Tour Package"}
-              description={
-                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-              }
-              price={999}
-              duration={7}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardTour
-              image={[Hotel, Hotel2, Hotel3]}
-              location="jeddah"
-              title={"Explore Alula Tour Package"}
-              description={
-                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-              }
-              price={999}
-              duration={7}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardTour
-              image={[Hotel, Hotel2, Hotel3]}
-              location="jeddah"
-              title={"Explore Alula Tour Package"}
-              description={
-                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-              }
-              price={999}
-              duration={7}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardTour
-              image={[Hotel, Hotel2, Hotel3]}
-              location="jeddah"
-              title={"Explore Alula Tour Package"}
-              description={
-                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-              }
-              price={999}
-              duration={7}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardTour
-              image={[Hotel, Hotel2, Hotel3]}
-              location="jeddah"
-              title={"Explore Alula Tour Package"}
-              description={
-                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-              }
-              price={999}
-              duration={7}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardTour
-              image={[Hotel, Hotel2, Hotel3]}
-              location="jeddah"
-              title={"Explore Alula Tour Package"}
-              description={
-                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-              }
-              price={999}
-              duration={7}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardTour
-              image={[Hotel, Hotel2, Hotel3]}
-              location="jeddah"
-              title={"Explore Alula Tour Package"}
-              description={
-                "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-              }
-              price={999}
-              duration={7}
-            />
-          </SwiperSlide>
+          {packages?.map((item) => (
+            <SwiperSlide key={item.id}>
+              <CardTour
+                sigleImage={item?.image}
+                image={item?.images}
+                location={item?.city?.desc}
+                title={item.title}
+                description={item.short_desc.substring(0, 90)}
+                price={item.best_price}
+                duration={item.duration}
+                ratingNumber={item.package_rating}
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       {/* in deskTop in blog single */}
       <div
         className={
           blog
-            ? "container mx-auto px-4 block "
-            : "container mx-auto px-4 hidden"
+            ? "container mx-auto px-4 hidden md:block "
+            : "container mx-auto px-4 block"
         }
       >
         <HeaderSections titel={"Related Tours"} />
 
         <div className="grid grid-cols-1 gap-4">
-          {packages?.map(item=>(
-        <CardTour
-        key={item.id}
-        sigleImage={item?.image}
-        image={item?.images}
-        location={item?.city?.desc}
-        title={item.title}
-        description={item.short_desc.substring(0, 90)}
-        price={item.best_price}
-        duration={item.duration}
-        ratingNumber={item.package_rating}
+          {packages?.map((item) => (
+            <CardTour
+              key={item.id}
+              sigleImage={item?.image}
+              image={item?.images}
+              location={item?.city?.desc}
+              title={item.title}
+              description={item.short_desc.substring(0, 90)}
+              price={item.best_price}
+              duration={item.duration}
+              ratingNumber={item.package_rating}
             />
           ))}
-
-        
         </div>
       </div>
     </>

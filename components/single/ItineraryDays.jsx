@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { FaAngleUp } from "react-icons/fa";
 import landmark from "../../public/assets/images/listtour.webp";
+import { useLayoutEffect } from "react";
 const questions = [
   {
     id: 1,
@@ -30,7 +31,7 @@ const questions = [
 ];
 
 function ItineraryDays({ daysItinerary }) {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handleClick = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
