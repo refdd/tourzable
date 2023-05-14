@@ -1,8 +1,8 @@
 import React from "react";
 import CardOffer from "../../cards/CardOffer";
-import Hotel from "../../../public/assets/images/3.png";
-import Hotel2 from "../../../public/assets/images/2.png";
-import Hotel3 from "../../../public/assets/images/4.png";
+import Hotel from "../../../public/assets/images/QaisariahSouq.jpg";
+import Hotel2 from "../../../public/assets/images/QaisariahSouq.jpg";
+import Hotel3 from "../../../public/assets/images/QaisariahSouq.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
