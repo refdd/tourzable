@@ -85,7 +85,7 @@ function SingleTour({ singletour }) {
             includes={includes}
             unincludes={unincludes}
             board={board}
-            hotel_rate={hotel_rate.title}
+            hotel_rate={hotel_rate?.title}
           />
           <Itinerary daysItinerary={days} />
           <AdditionalInfo noteContent={note} />

@@ -11,8 +11,10 @@ import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
 import LandMarksContainer from "@/components/LandMark/LandMarksContainer";
 import ListLnadMarkContainer from "@/components/LandMark/ListLnadMarkContainer";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 
-function Landmarks() {
+function Landmarks({ landmarks, regions }) {
+  console.log(landmarks);
   return (
     <>
       <Head>
@@ -31,7 +33,7 @@ function Landmarks() {
         <div className="col-span-4">
           {/* <HeaderList /> */}
           {/* <ListTourcontainer /> */}
-          <ListLnadMarkContainer />
+          <ListLnadMarkContainer regions={regions} landmarks={landmarks} />
           {/* <LandMarksContainer /> */}
         </div>
       </div>
@@ -45,3 +47,17 @@ function Landmarks() {
 }
 
 export default Landmarks;
+export async function getServerSideProps({ query }) {
+  const region_id = query.region;
+  const landmarks = await fetchApi(
+    `${baseUrl}/landmarks?region_id=${region_id}&limit=20`
+  );
+  const regions = await fetchApi(`${baseUrl}/regions`);
+
+  return {
+    props: {
+      landmarks: landmarks.data,
+      regions: regions.data,
+    },
+  };
+}

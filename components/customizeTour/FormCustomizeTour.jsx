@@ -40,7 +40,7 @@ const labels = {
 function getLabelText(value) {
   return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
 }
-function FormCustomizeTour() {
+function FormCustomizeTour({ blog }) {
   const [number, setnumber] = useState("+1");
   const [counter, setCounter] = useState("");
   const [Destination, setDestination] = useState("");
@@ -125,10 +125,20 @@ function FormCustomizeTour() {
   };
   return (
     <div
-      style={{ backgroundImage: `url(${bg.src})` }}
-      className=" relative overflow-hidden   w-full bg-no-repeat  bg-cover bg-top  py-20 mt-10"
+      style={{ backgroundImage: blog ? `none` : `url(${bg.src})` }}
+      className={
+        blog
+          ? " relative overflow-hidden   w-full bg-no-repeat  bg-cover bg-top  py-20 mt-10  "
+          : " relative overflow-hidden   w-full bg-no-repeat  bg-cover bg-top  py-20 mt-10"
+      }
     >
-      <div className="container mx-auto px-4 md:w-[50%] ">
+      <div
+        className={
+          blog
+            ? "container mx-auto px-4 md:w-[100%] "
+            : "container mx-auto px-4 md:w-[50%] "
+        }
+      >
         <FormProvider {...methods}>
           <form
             onSubmit={methods.handleSubmit(onSubmit)}

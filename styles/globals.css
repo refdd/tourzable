@@ -108,6 +108,12 @@ html {
     bottom: -8px;
     border-bottom: 1px solid #e5e7eb;
   }
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 40% !important;
+    visibility: visible;
+    transition: visibility ease-in 0.3s;
+  }
 }
 @media only screen and (min-width: 786px) {
   .css-1hj5xsr-MuiInputBase-root-MuiInput-root-MuiSelect-root:before {

@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import Image from "next/image";
 
-export default function ImageSlider({ arrayOfImages, homepage }) {
+export default function ImageLandMarkSlider({ arrayOfImages }) {
   return (
     <>
       <Swiper
@@ -28,9 +28,7 @@ export default function ImageSlider({ arrayOfImages, homepage }) {
         {arrayOfImages?.map((img, index) => (
           <SwiperSlide key={index}>
             <div
-              className={`hoverArrows relative w-full h-[180px] ${
-                homepage ? "md:h-[180px]" : "md:h-[320px]"
-              } group/imagcard overflow-hidden`}
+              className={`hoverArrows relative w-full h-[300px] md:h-[320px] group/imagcard overflow-hidden`}
             >
               <Image
                 loader={() => {

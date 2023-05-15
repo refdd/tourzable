@@ -20,11 +20,11 @@ function ListTourcontainer({ tours, pageType }) {
               image={tour?.images}
               location={tour?.city?.title}
               title={tour.title}
-              description={tour?.short_desc}
+              description={tour?.short_desc?.substring(0, 90)}
               price={tour?.best_price}
               slug={tour.slug}
               sigleImage={tour?.image}
-              duration={tour?.duration_to_book}
+              duration={tour?.duration}
               reatingNumber={tour?.package_rating}
               pageType={pageType}
             />

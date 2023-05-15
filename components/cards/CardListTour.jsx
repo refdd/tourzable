@@ -80,7 +80,7 @@ function CardListTour({
               : "hidden  "
           }
         >
-          <p className="text-mainColor font-sans capitalize">{duration}Days</p>
+          <p className="text-mainColor font-sans capitalize">{duration}</p>
         </div>
         {/* crnter */}
         <div
@@ -113,10 +113,7 @@ function CardListTour({
                   : " rounded bg-MainYeloow py-1 px-5 z-10 "
               }
             >
-              <p className="text-mainColor font-sans capitalize">
-                {" "}
-                {duration} Days
-              </p>
+              <p className="text-mainColor font-sans capitalize"> {duration}</p>
             </div>
           </div>
           <p className="text-gray-500 text-lg font-sans capitalize font-normal md:text-[16px]">
@@ -180,7 +177,7 @@ function CardListTour({
               Excaptional
             </span>
             <span className="text-[#697488] text-sm font-sans font-medium ">
-              3,908402938014 reviews
+              {price - 96} reviews
             </span>
             <div className="flex items-start space-x-1 justify-center text-MainYeloow">
               <BsFillStarFill />
