@@ -18,7 +18,7 @@ import TermsAndConditions from "@/components/single/TermsAndConditions";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import React, { useEffect, useState } from "react";
 
-function singleActivties({ singletour }) {
+function SingleActivties({ singletour }) {
   const [isTop, setIsTop] = useState(true);
   useEffect(() => {
     document.addEventListener("scroll", () => {
@@ -105,7 +105,7 @@ function singleActivties({ singletour }) {
   );
 }
 
-export default singleActivties;
+export default SingleActivties;
 export async function getServerSideProps({ params }) {
   const singletour = await fetchApi(`${baseUrl}/packages/${params.slug}`);
 
