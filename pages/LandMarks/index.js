@@ -14,7 +14,6 @@ import ListLnadMarkContainer from "@/components/LandMark/ListLnadMarkContainer";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 
 function Landmarks({ landmarks, regions }) {
-  console.log(landmarks);
   return (
     <>
       <Head>
@@ -48,7 +47,7 @@ function Landmarks({ landmarks, regions }) {
 
 export default Landmarks;
 export async function getServerSideProps({ query }) {
-  const region_id = query.region;
+  const region_id = query.region || "1";
   const landmarks = await fetchApi(
     `${baseUrl}/landmarks?region_id=${region_id}&limit=20`
   );

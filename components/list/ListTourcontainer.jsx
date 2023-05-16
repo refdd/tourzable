@@ -4,7 +4,7 @@ import CardListTour from "../cards/CardListTour";
 import { useStateContext } from "@/contexts/ContextProvider";
 import SeeMore from "../hleper/SeeMore";
 function ListTourcontainer({ tours, pageType }) {
-  const { ViewTours, setViewTours } = useStateContext();
+  const { ViewTours, setViewTours, loadMore, setLoadMore } = useStateContext();
   return (
     <div className="container mx-auto px-4 mt-6">
       <div
@@ -14,24 +14,28 @@ function ListTourcontainer({ tours, pageType }) {
             : "grid grid-cols-1 gap-5 md:gap-7"
         }
       >
-        {tours?.map((tour) => (
-          <div key={tour.id}>
-            <CardListTour
-              image={tour?.images}
-              location={tour?.city?.title}
-              title={tour.title}
-              description={tour?.short_desc?.substring(0, 90)}
-              price={tour?.best_price}
-              slug={tour.slug}
-              sigleImage={tour?.image}
-              duration={tour?.duration}
-              reatingNumber={tour?.package_rating}
-              pageType={pageType}
-            />
-          </div>
+        {tours?.slice(0, loadMore)?.map((tour) => (
+          <>
+            {tour.is_active && (
+              <div key={tour.id}>
+                <CardListTour
+                  image={tour?.images}
+                  location={tour?.city?.title}
+                  title={tour.title}
+                  description={tour?.short_desc?.substring(0, 90)}
+                  price={tour?.best_price}
+                  slug={tour.slug}
+                  sigleImage={tour?.image}
+                  duration={tour?.duration}
+                  reatingNumber={tour?.package_rating}
+                  pageType={pageType}
+                />
+              </div>
+            )}
+          </>
         ))}
       </div>
-      <SeeMore />
+      {tours.length == 0 ? "" : <SeeMore />}
     </div>
   );
 }

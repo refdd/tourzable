@@ -10,9 +10,19 @@ import ReadAlso from "@/components/singelBlog/ReadAlso";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import From from "@/components/single/From";
 import RelatedTours from "@/components/single/RelatedTours";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
+import { format } from "date-fns";
 import React from "react";
 
-function SingleLandmark() {
+function SingleLandmark({ singlelandmark, landmarks }) {
+  console.log(singlelandmark);
+  const { image, desc, slug, title, created_at } = singlelandmark;
+  const formatDate = (dateCurrenity) => {
+    const dateString = dateCurrenity;
+    const date = new Date(dateString);
+    const formattedDate = format(date, "MMMM dd, yyyy");
+    return formattedDate;
+  };
   return (
     <div>
       <NormailNavBar />
@@ -22,23 +32,20 @@ function SingleLandmark() {
         <IconBreadcrumbs
           links={[
             { name: "Home", slug: "/" },
-            { name: "List Blog", slug: "/list_blog" },
+            { name: "LandMarks", slug: "/LandMarks" },
           ]}
-          currentLink={"nside Saudi"}
+          currentLink={title}
         />
       </div>
-      <HeaderPages
-        title={"Top 13 must-see natural wonders in Indonesia"}
-        desc={"April 06, 2022"}
-      />
+      <HeaderPages title={title} desc={formatDate(created_at)} />
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3 container mx-auto px-4">
-        <OverViewSingleBlog />
+        <OverViewSingleBlog image={image} description={desc} Slug={slug} />
         <div>
           {/* <RelatedTours blog /> */}
           <From />
         </div>
       </div>
-      <ReadAlso />
+      <ReadAlso titel={"Show more"} packages={landmarks} />
       {/* <FaQSection /> */}
       <Subscribe />
       <DownLoadApp />
@@ -49,3 +56,14 @@ function SingleLandmark() {
 }
 
 export default SingleLandmark;
+export async function getServerSideProps({ params }) {
+  const singlelandmark = await fetchApi(`${baseUrl}/landmarks/${params.slug}`);
+  const landmarks = await fetchApi(`${baseUrl}/landmarks?limit=8`);
+
+  return {
+    props: {
+      singlelandmark: singlelandmark.data,
+      landmarks: landmarks.data,
+    }, // will be passed to the page component as props
+  };
+}

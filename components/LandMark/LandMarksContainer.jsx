@@ -10,7 +10,7 @@ import { useStateContext } from "@/contexts/ContextProvider";
 import axios from "axios";
 import NoDataFounded from "../hleper/NoDataFounded";
 
-function LandMarksContainer({allregions}) {
+function LandMarksContainer({ allregions }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [landmarks, setlandmarks] = useState(null);
   const open = Boolean(anchorEl);
@@ -33,7 +33,7 @@ function LandMarksContainer({allregions}) {
         console.log(error);
       });
   }, [destination]);
- 
+  // console.log(landmarks);
   return (
     <div className="container mx-auto px-4 md:px-0 md:col-span-5 py-6">
       <div className=" flex justify-end">
@@ -60,30 +60,32 @@ function LandMarksContainer({allregions}) {
             "aria-labelledby": "basic-button",
           }}
         >
-          {allregions?.map(item=>(
+          {allregions?.map((item) => (
             <MenuItem
-            key={item.id}
-            onClick={() => {
-              handleClose();
-              setDestination(item.id);
-            }}
-          >
-            {item.desc}
-          </MenuItem>
+              key={item.id}
+              onClick={() => {
+                handleClose();
+                setDestination(item.id);
+              }}
+            >
+              {item.desc}
+            </MenuItem>
           ))}
-          
-       
         </Menu>
       </div>
       <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2">
-        {landmarks?.length == 0 ? <NoDataFounded/> : landmarks?.map((landmark) => (
-          <LandMarksCard
-            key={landmark.id}
-            imaga={landmark.image}
-            title={landmark.title}
-            destination={landmark.city.title}
-          />
-        ))}
+        {landmarks?.length == 0 ? (
+          <NoDataFounded />
+        ) : (
+          landmarks?.map((landmark) => (
+            <LandMarksCard
+              key={landmark.id}
+              image={landmark.images}
+              title={landmark.title}
+              destination={landmark.city.title}
+            />
+          ))
+        )}
         {}
       </div>
     </div>

@@ -12,7 +12,7 @@ import { BsArrowUpRight } from "react-icons/bs";
 import Link from "next/link";
 import { format } from "date-fns";
 
-function ReadAlso({ readAlsoBlog }) {
+function ReadAlso({ packages, titel }) {
   // console.log(readAlsoBlog);
   const formatDate = (dateCurrenity) => {
     const dateString = dateCurrenity;
@@ -22,7 +22,7 @@ function ReadAlso({ readAlsoBlog }) {
   };
   return (
     <div className="container mx-auto px-4">
-      <HeaderSections titel={"read also"} />
+      <HeaderSections titel={titel} />
       <div className="">
         <Swiper
           modules={[Pagination]}
@@ -45,7 +45,7 @@ function ReadAlso({ readAlsoBlog }) {
             },
           }}
         >
-          {readAlsoBlog?.map((post) => (
+          {packages?.map((post) => (
             <SwiperSlide key={post.id}>
               <div className="flex flex-col space-y-4">
                 {/* image */}

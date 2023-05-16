@@ -29,9 +29,8 @@ export default function Home({
   offers,
   partners,
   regions,
-  snippets
+  snippets,
 }) {
-  console.log(snippets);
   return (
     <>
       <Head>
@@ -56,7 +55,7 @@ export default function Home({
         }
       />
       <ActivitiesRow Activities={Activities} />
-      <LandMarkSection  regions={regions}/>
+      <LandMarkSection regions={regions} />
       <Reviews reviews={reviews} allPartners={partners} />
       <OfferSection offers={offers} />
       <NextTrip posts={posts} />

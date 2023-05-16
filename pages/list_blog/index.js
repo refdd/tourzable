@@ -48,7 +48,7 @@ function listBlog({ posts }) {
 
 export default listBlog;
 export async function getStaticProps() {
-  const posts = await fetchApi(`${baseUrl}/posts?limit=20`);
+  const posts = await fetchApi(`${baseUrl}/posts`);
 
   return {
     props: {

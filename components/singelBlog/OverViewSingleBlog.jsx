@@ -1,20 +1,17 @@
 import Image from "next/image";
 import React from "react";
-import blogimage from "../../public/assets/images/singleBlog.png";
-import bog1 from "../../public/assets/images/bog1.png";
-import bog2 from "../../public/assets/images/blog2.png";
 import ShareBlog from "./ShareBlog";
-function OverViewSingleBlog({ blogImage, description, blogSlug }) {
+function OverViewSingleBlog({ image, description, Slug }) {
   return (
     <div className="md:col-span-2">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 ">
         <div className="relative w-full h-[200px] md:h-[400px] md:col-span-2 ">
           <Image
             loader={() => {
-              return `${blogImage}`;
+              return `${image}`;
             }}
             unoptimized={true}
-            src={blogImage}
+            src={image}
             fill
             loading="lazy"
             alt="single blog imag"
@@ -133,7 +130,7 @@ function OverViewSingleBlog({ blogImage, description, blogSlug }) {
           Erat lacus, amet quisque urna faucibus. Rhoncus praesent faucibus
           rhoncus nec adipiscing tristique sed facilisis velit.
         </p> */}
-        <ShareBlog blogSlug={blogSlug} />
+        <ShareBlog blogSlug={Slug} />
       </div>
     </div>
   );

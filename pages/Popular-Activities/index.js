@@ -48,7 +48,7 @@ function PopularActivities({ Activities }) {
 
 export default PopularActivities;
 export async function getStaticProps() {
-  const Activities = await fetchApi(`${baseUrl}/packages?type_id=2&limit=20`);
+  const Activities = await fetchApi(`${baseUrl}/packages?type_id=2`);
 
   return {
     props: {

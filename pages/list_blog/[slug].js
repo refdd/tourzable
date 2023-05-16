@@ -10,11 +10,18 @@ import ReadAlso from "@/components/singelBlog/ReadAlso";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import RelatedTours from "@/components/single/RelatedTours";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
+import { format } from "date-fns";
 import React from "react";
 
 function singelBlog({ singletBlog, readAlso }) {
-  const { image, desc, packages, slug } = singletBlog;
+  const { image, desc, packages, slug, created_at, title } = singletBlog;
   // console.log(singletBlog);
+  const formatDate = (dateCurrenity) => {
+    const dateString = dateCurrenity;
+    const date = new Date(dateString);
+    const formattedDate = format(date, "MMMM dd, yyyy");
+    return formattedDate;
+  };
   return (
     <div>
       <NormailNavBar />
@@ -26,24 +33,17 @@ function singelBlog({ singletBlog, readAlso }) {
             { name: "Home", slug: "/" },
             { name: "List Blog", slug: "/list_blog" },
           ]}
-          currentLink={"nside Saudi"}
+          currentLink={title}
         />
       </div>
-      <HeaderPages
-        title={"Top 13 must-see natural wonders in Indonesia"}
-        desc={"April 06, 2022"}
-      />
+      <HeaderPages title={title} desc={formatDate(created_at)} />
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3 container mx-auto px-4">
-        <OverViewSingleBlog
-          blogImage={image}
-          description={desc}
-          blogSlug={slug}
-        />
+        <OverViewSingleBlog image={image} description={desc} Slug={slug} />
         <div>
           <RelatedTours blog packages={packages} />
         </div>
       </div>
-      <ReadAlso readAlsoBlog={readAlso} />
+      <ReadAlso packages={readAlso} titel={"read also"} />
       {/* <FaQSection /> */}
       <Subscribe />
       <DownLoadApp />

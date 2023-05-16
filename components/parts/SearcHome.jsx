@@ -6,13 +6,22 @@ import DateRangePicker from "./DateRangePicker";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
-function SearcHome({regions}) {
+function SearcHome({ regions }) {
   const { dateRange, setDateRange } = useStateContext();
   const [location, setLocation] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
   const router = useRouter();
-  const {  isClicked } = useStateContext();
-
+  const { isClicked } = useStateContext();
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+  const dateFormated = selectedDate
+    ? selectedDate.format("DD-MM-YYYY")
+    : selectedDate;
+  console.log(isClicked.typeTour);
   const {
     register,
     handleSubmit,
@@ -20,17 +29,25 @@ function SearcHome({regions}) {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    
-    console.log({ ...data, location })
-  
-    router.push({pathname:"results" , query:{type_id:isClicked.typeTour ,region_id:location , date:"2021-12-12" }});
+    // console.log({ ...data, location });
+
+    router.push({
+      pathname: "results",
+      query: {
+        type_id: !isClicked.typeTour && 1,
+        region_id: location,
+        date: dateFormated,
+      },
+    });
   };
+
+  // function on click eny were closed
   // useEffect(() => {
   //   const handleClick = (event) => {
   //     if (boxRef.current && !boxRef.current.contains(event.target)) {
   //       setOpenDate(false)
   //     }
-      
+
   //   };
 
   //   document.addEventListener('click', handleClick);
@@ -39,17 +56,18 @@ function SearcHome({regions}) {
   //     document.removeEventListener('click', handleClick);
   //   };
   // }, []);
-  const formattedStartDate = format(dateRange.startDate, "EEE dd MMM");
-  const formattedEndDate = format(dateRange.endDate, "EEE dd MMM");
-  // close date range box 
+
+  // close date range box
 
   return (
-    <div className="w-[90%] md:w-[50%] bg-white rounded-md mt-10 mx-auto  md:rounded-[100px] shadow-lg border md:border-0 md:shadow-none md:shadow-xl">
+    <div className="w-[90%] md:w-[70%] bg-white rounded-md mt-10 mx-auto  md:rounded-[100px] shadow-lg border md:border-0  md:py-3 md:shadow-xl">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col md:flex-row  md:divide-x space-y-4 py-5 px-6 md:py-0 md:space-y-0 md:items-center"
+        className="flex flex-col md:flex-row
+                  md:divide-x space-y-4 py-5 px-6 md:py-0
+                  md:space-y-0 md:items-center md:space-x-2"
       >
-        <div className=" md:w-[50%] md:px-3">
+        <div className=" md:w-[35%] md:px-3">
           <div className="felx flex-col justify-center md:mt-2">
             <InputLabel>Location</InputLabel>
             <Select
@@ -65,9 +83,7 @@ function SearcHome({regions}) {
                     </em>
                   );
                 }
-                const reasit = regions.filter(
-                  (item) => item.id == selected
-                );
+                const reasit = regions.filter((item) => item.id == selected);
                 // console.log(reasit[0].title);
                 return reasit[0].title;
               }}
@@ -99,6 +115,23 @@ function SearcHome({regions}) {
           </div>
           {openDate &&<DateRangePicker   /> }
         </div> */}
+        <div className="md:w-[35%] md:px-3">
+          <div className="  md:col-span-2">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                value={selectedDate}
+                onChange={handleDateChange}
+                slotProps={{
+                  textField: {
+                    variant: "standard",
+                    fullWidth: true,
+                    label: "Choose Data",
+                  },
+                }}
+              />
+            </LocalizationProvider>
+          </div>
+        </div>
         <div
           className="  group flex space-x-1 justify-center transition-all items-center bg-secondColor
          hover:md:bg-mainLightColor rounded py-5   md:flex-1  md:px-3 md:h-12 md:rounded-[100px] "

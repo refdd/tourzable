@@ -3,9 +3,6 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import LandMarksCard from "./LandMarksCard";
-import trip1 from "../../public/assets/images/QaisariahSouq.jpg";
-import trip2 from "../../public/assets/images/Tarot Island.jpg";
-import trip3 from "../../public/assets/images/eastern-province.jpg";
 import { useRouter } from "next/router";
 
 function ListLnadMarkContainer({ regions, landmarks }) {
@@ -28,7 +25,7 @@ function ListLnadMarkContainer({ regions, landmarks }) {
       },
     });
   };
-  console.log(regions);
+  console.log(landmarks[0]);
   return (
     <div className="container mx-auto px-4 md:px-0 md:col-span-5 py-6">
       <div className=" flex justify-end">
@@ -75,7 +72,7 @@ function ListLnadMarkContainer({ regions, landmarks }) {
             image={landmark?.images}
             title={landmark?.title}
             destination={landmark?.city?.title}
-            slug={"dumah-al-jandal-city"}
+            slug={landmark?.slug}
           />
         ))}
       </div>
