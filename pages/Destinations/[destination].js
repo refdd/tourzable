@@ -28,7 +28,7 @@ function Destinations() {
         </div>
         <div className="col-span-4">
           <HeaderList />
-          <ListTourcontainer />
+          {/* <ListTourcontainer /> */}
         </div>
       </div>
       {/* <FaQSection /> */}
