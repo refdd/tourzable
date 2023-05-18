@@ -5,6 +5,7 @@ import { useStateContext } from "@/contexts/ContextProvider";
 import SeeMore from "../hleper/SeeMore";
 function ListTourcontainer({ tours, pageType }) {
   const { ViewTours, setViewTours, loadMore, setLoadMore } = useStateContext();
+  console.log(tours[3]);
   return (
     <div className="container mx-auto px-4 mt-6">
       <div
@@ -22,13 +23,14 @@ function ListTourcontainer({ tours, pageType }) {
                   image={tour?.images}
                   location={tour?.city?.title}
                   title={tour.title}
-                  description={tour?.short_desc?.substring(0, 90)}
+                  description={tour?.short_desc?.substring(0, 150)}
                   price={tour?.best_price}
                   slug={tour.slug}
                   sigleImage={tour?.image}
                   duration={tour?.duration}
                   reatingNumber={tour?.package_rating}
                   pageType={pageType}
+                  visitedLocations={tour.visited_locations}
                 />
               </div>
             )}

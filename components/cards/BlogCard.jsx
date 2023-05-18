@@ -4,7 +4,7 @@ import React from "react";
 import avatar from "../../public/assets/images/attractive-g1ed8274c6_640.jpg";
 import blog from "../../public/assets/images/trip1.png";
 import { format } from "date-fns";
-function BlogCard({image , duration , title , desc , author , name , job ,slug }) {
+function BlogCard({ image, duration, title, desc, author, name, job, slug }) {
   const formatDate = (dateCurrenity) => {
     const dateString = dateCurrenity;
     const date = new Date(dateString);
@@ -13,11 +13,11 @@ function BlogCard({image , duration , title , desc , author , name , job ,slug }
   };
   return (
     <Link href={`list_blog/${slug}`}>
-      <div className="border rounded-md shadow-lg shadow-shadowColorMain ">
+      <div className="border rounded-md shadow-lg shadow-shadowColorMain md:py-7 ">
         <div className="grid grid-cols-1 gap-3 p-2 md:grid-cols-3">
-          <div className="relative w-full h-[200px] md:h-full col-span-1 ">
+          <div className="relative w-full h-[200px]  md:h-[220px] col-span-1 ">
             <Image
-               loader={() => {
+              loader={() => {
                 return `${image}`;
               }}
               unoptimized={true}
@@ -34,13 +34,12 @@ function BlogCard({image , duration , title , desc , author , name , job ,slug }
                 {formatDate(duration)}
               </p>
               <p className="text-[22px] text-mainColor font-sans font-semibold capitalize">
-                {title}             
-                </p>
+                {title}
+              </p>
               <p className="text-[#697488] text-[15px] font-sans capitalize">
                 {desc}
-
               </p>
-              <div className="flex items-center space-x-8 border-t pt-4">
+              {/* <div className="flex items-center space-x-8 border-t pt-4">
                 <div className="relative h-16 w-16 ">
                   <Image
                     loading="lazy"
@@ -61,7 +60,7 @@ function BlogCard({image , duration , title , desc , author , name , job ,slug }
                     {job}
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

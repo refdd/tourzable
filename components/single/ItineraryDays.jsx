@@ -42,7 +42,7 @@ function ItineraryDays({ daysItinerary }) {
         {daysItinerary.map((q, index) => (
           <div key={q.id} className=" border mb-4 rounded shadow-lg py-5 px-3 ">
             <button
-              className="flex  items-center justify-between px-3 w-full "
+              className="flex  items-center  space-x-7 px-3 w-full "
               onClick={() => handleClick(index)}
             >
               <div className="flex flex-col items-center justify-center h-[60px] w-[60px]  rounded-full bg-mainColor">
@@ -51,8 +51,8 @@ function ItineraryDays({ daysItinerary }) {
                 </span>
                 <FaAngleUp className="text-[16px] text-white" />
               </div>
-              <span className="text-[16px] font-sans capitalize text-textPurple">
-                (Al-Ula / Madian Saleh)
+              <span className="text-[16px] font-sans font-semibold capitalize text-textPurple">
+                ({q.city.title})
               </span>
             </button>
             {activeIndex === index && (
@@ -63,9 +63,12 @@ function ItineraryDays({ daysItinerary }) {
                 <div className="mt-4 text-base text-gray-500 font-sans capitalize">
                   <div dangerouslySetInnerHTML={{ __html: q.desc }}></div>
                 </div>
-                <p className="text-[16px] font-sans text-textPurple capitalize font-semibold pt-3">
-                  Landmarks
-                </p>
+                {!q?.landmarks?.length == 0 && (
+                  <p className="text-[16px] font-sans text-textPurple capitalize font-semibold pt-3">
+                    Landmarks
+                  </p>
+                )}
+
                 <div className="flex flex-col space-y-3">
                   {q?.landmarks?.map((item) => (
                     <div key={item.id} className="flex items-start space-x-3">

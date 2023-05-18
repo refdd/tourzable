@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import CardTour from "@/components/cards/CardTour";
-function RecommendTourContainers() {
+function RecommendTourContainers({ packages }) {
   return (
     <div>
       <Swiper
@@ -34,105 +34,20 @@ function RecommendTourContainers() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardTour
-            image={[Hotel2, Hotel3, Hotel]}
-            location="Riyadh"
-            title={"Explore Alula Tour Package"}
-            description={
-              "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions"
-            }
-            price={999}
-          />
-        </SwiperSlide>
+        {packages?.map((tour) => (
+          <SwiperSlide key={tour?.id}>
+            <CardTour
+              sigleImage={tour?.image}
+              image={tour?.images}
+              location={tour?.city?.desc}
+              title={tour.title}
+              description={tour.short_desc.substring(0, 150)}
+              price={tour.best_price}
+              duration={tour.duration}
+              ratingNumber={tour.package_rating}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

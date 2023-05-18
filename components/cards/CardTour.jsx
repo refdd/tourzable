@@ -63,11 +63,11 @@ function CardTour({
         <p className="text-[#697488] text-sm font-sans font-normal capitalize mb-1">
           {location}
         </p>
-        <p className="hover-underline-animation text-lg text-[#051036] font-medium font-serif capitalize md:h-[54px]">
+        <p className="hover-underline-animation text-lg text-[#051036] font-medium font-serif capitalize ">
           {title}
         </p>
       </div>
-      <p className="text-gray-500 text-sm md:text-lg font-sans capitalize font-normal">
+      <p className="text-gray-500 text-sm  font-sans capitalize font-normal">
         {description}
       </p>
       {/* rating*/}
@@ -79,7 +79,7 @@ function CardTour({
           Excaptional
         </span>
         <span className="text-[#697488] text-sm font-sans font-medium ">
-        {   price - 1013 } sreviews
+          {price - 1013} sreviews
         </span>
       </div>
       {/* price */}

@@ -67,7 +67,7 @@ function TourRow({ tours }) {
               image={tour?.images}
               location={tour?.city?.desc}
               title={tour.title}
-              description={tour.short_desc.substring(0, 90)}
+              description={tour.short_desc.substring(0, 150)}
               price={tour.best_price}
               duration={tour.duration}
               ratingNumber={tour.package_rating}

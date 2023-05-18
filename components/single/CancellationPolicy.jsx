@@ -24,14 +24,14 @@ function CancellationPolicy({ Cancellation_Policy }) {
           openPlicy ? " block" : "hidden "
         }`}
       >
-        <div className="text-[16px] leading-[28px] md:text-lg font-sans text-textPurple capitalize flex flex-col  ">
+        <div className="text-[16px] leading-[28px] md:text-lg font-sans flex flex-col  ">
           <span className="text-3xl py-5 text-textPurple font-semibold capitalize font-sans ">
             {Cancellation_Policy.title}
           </span>
           <p className="text-[16px] leading-[28px] md:text-lg font-sans text-textPurple capitalize py-1 ">
             Cancellation Policy:{" "}
           </p>
-          <div className="text-[16px] leading-[28px] md:text-lg font-sans text-textPurple capitalize  py-1">
+          <div className="text-[16px] leading-[28px] md:text-lg font-sans  capitalize  py-1">
             <div
               dangerouslySetInnerHTML={{
                 __html: Cancellation_Policy.desc,

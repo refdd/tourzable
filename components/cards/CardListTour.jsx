@@ -18,6 +18,7 @@ function CardListTour({
   duration,
   reatingNumber,
   pageType,
+  visitedLocations,
 }) {
   const { ViewTours } = useStateContext();
   const [reviewNumbers, setReviewNumbers] = useState(null);
@@ -87,7 +88,7 @@ function CardListTour({
           className={
             ViewTours
               ? "flex flex-col space-y-2 "
-              : "flex flex-col space-y-2 md:w-[50%] md:space-y-5"
+              : "flex flex-col space-y-2 md:w-[50%] md:space-y-3s"
           }
         >
           {/* title */}
@@ -121,11 +122,16 @@ function CardListTour({
           </p>
 
           {/* free cancellation */}
-          <div className={ViewTours ? " flex-col hidden  " : "flex flex-col  "}>
-            <span className="text-textPurple font-medium text-sm capitalize font-sans">
-              Visited Locations
-            </span>
-          </div>
+          {!visitedLocations?.length == 0 && (
+            <div
+              className={ViewTours ? " flex-col hidden  " : "flex flex-col  "}
+            >
+              <span className="text-textPurple font-medium text-sm capitalize font-sans">
+                Visited Locations
+              </span>
+            </div>
+          )}
+
           {/* featured */}
           <ul
             className={
@@ -134,26 +140,16 @@ function CardListTour({
                 : "flex gap-3 items-center flex-wrap "
             }
           >
-            <li className="border border-[#dddddd] rounded-full px-5  ">
-              <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
-                Riyadh
-              </span>
-            </li>
-            <li className="border border-[#dddddd] rounded-full px-5  ">
-              <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
-                Jeddah
-              </span>
-            </li>
-            <li className="border border-[#dddddd] rounded-full px-5  ">
-              <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
-                Mecca
-              </span>
-            </li>
-            <li className="border border-[#dddddd] rounded-full px-5  ">
-              <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
-                Medina
-              </span>
-            </li>
+            {visitedLocations?.map((item, index) => (
+              <li
+                key={index}
+                className="border border-[#dddddd] rounded-full px-5  "
+              >
+                <span className="text-sm text-[#051036] font-sans capitalize py-1  ">
+                  {item}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
         {/* right side */}
@@ -170,9 +166,9 @@ function CardListTour({
                 : " flex items-center space-x-2 md:flex-col md:space-x-0 md:space-y-1"
             }
           >
-            <span className="h-[30px] w-[30px] bg-mainColor font-semibold  text-white rounded flex justify-center items-center">
+            {/* <span className="h-[30px] w-[30px] bg-mainColor font-semibold  text-white rounded flex justify-center items-center">
               {reatingNumber}
-            </span>
+            </span> */}
             <span className="text-[#051036] font-medium font-sans text-sm ">
               Excaptional
             </span>
@@ -198,7 +194,7 @@ function CardListTour({
             <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
               Starting form
             </span>
-            <span className="text-mainColor">us ${price}</span>
+            <span className="text-mainColor"> ${price}</span>
           </div>
           {/* button */}
           <div className="flex items-center justify-center py-3 gap-3 bg-mainColor rounded transition-all hover:md:bg-[#051036]">

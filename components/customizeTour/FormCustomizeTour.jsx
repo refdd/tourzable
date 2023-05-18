@@ -26,16 +26,16 @@ import {
 import CustomTextField from "../hleper/CustomTextField";
 import { useRouter } from "next/router";
 const labels = {
-  0.5: "Useless",
-  1: "Useless+",
-  1.5: "Poor",
-  2: "Poor+",
-  2.5: "Ok",
-  3: "Ok+",
-  3.5: "Good",
-  4: "Good+",
-  4.5: "Excellent",
-  5: "Excellent+",
+  0.5: "1 star",
+  1: "1 star",
+  1.5: "2 star",
+  2: "2 star",
+  2.5: "3 star",
+  3: "3 star",
+  3.5: "4 star",
+  4: "4 star",
+  4.5: "5 star",
+  5: "5 star",
 };
 function getLabelText(value) {
   return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
@@ -128,7 +128,7 @@ function FormCustomizeTour({ blog }) {
       style={{ backgroundImage: blog ? `none` : `url(${bg.src})` }}
       className={
         blog
-          ? " relative overflow-hidden   w-full bg-no-repeat  bg-cover bg-top  py-20 mt-10  "
+          ? " relative overflow-hidden   w-full bg-no-repeat  bg-cover bg-top "
           : " relative overflow-hidden   w-full bg-no-repeat  bg-cover bg-top  py-20 mt-10"
       }
     >
@@ -139,6 +139,13 @@ function FormCustomizeTour({ blog }) {
             : "container mx-auto px-4 md:w-[50%] "
         }
       >
+        {blog && (
+          <p className="text-lg font-medium text-mainColor capitalize font-sans py-3">
+            {" "}
+            Coutomize Your Trip
+          </p>
+        )}
+
         <FormProvider {...methods}>
           <form
             onSubmit={methods.handleSubmit(onSubmit)}
@@ -411,10 +418,10 @@ function FormCustomizeTour({ blog }) {
               {/* Rating */}
               <div className="">
                 <p className="text-lg text-mainColor font-semibold font-sans capitalize py-1">
-                  Rating
+                  hotel Rating
                 </p>
 
-                <div className="flex items-center gap-5">
+                <div className="flex items-center w-full gap-5">
                   <Rating
                     name="hover-feedback"
                     value={ratingStar}
@@ -431,9 +438,9 @@ function FormCustomizeTour({ blog }) {
                     }
                   />
                   {ratingStar !== null && (
-                    <span className="text-[16px] text-mainColor font-sans capitalize font-medium">
+                    <p className="text-[16px] text-mainColor font-sans capitalize font-medium w-[150px] ">
                       {labels[hover !== -1 ? hover : ratingStar]}
-                    </span>
+                    </p>
                   )}
                 </div>
               </div>

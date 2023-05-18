@@ -9,9 +9,10 @@ import Subscribe from "@/components/mainSections/Subscribe";
 import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import React from "react";
 
-function Dashboard() {
+function Dashboard({ tours }) {
   const { sideBar } = useStateContext();
   return (
     <div className="bg-[#f5f5f5]">
@@ -39,7 +40,7 @@ function Dashboard() {
         </div>
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
           <DashboarNumbers />
-          <RcommandedTour />
+          <RcommandedTour packages={tours} />
         </div>
       </div>
       <Subscribe />
@@ -51,3 +52,13 @@ function Dashboard() {
 }
 
 export default Dashboard;
+export async function getServerSideProps({ query }) {
+  const place = query.search;
+  const tours = await fetchApi(`${baseUrl}/packages?type_id=1&limit=7`);
+
+  return {
+    props: {
+      tours: tours.data,
+    },
+  };
+}

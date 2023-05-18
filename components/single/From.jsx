@@ -12,7 +12,7 @@ function From({ idPackage }) {
             onClick={() => {
               setOpenFrom(false);
             }}
-            className={`flex items-center justify-center  py-2 px-5 rounded shadow-xl 
+            className={`flex items-center justify-center  py-2 px-5 rounded shadow-xl w-[50%]
              ${
                openFrom
                  ? " bg-white  text-textPurple"

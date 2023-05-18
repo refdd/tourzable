@@ -5,7 +5,7 @@ import { useStateContext } from "@/contexts/ContextProvider";
 
 function ListBlogContainer({ posts }) {
   const { loadMore, setLoadMore } = useStateContext();
-
+  console.log(posts[0]);
   return (
     <div className="container mx-auto px-4  col-span-1 md:col-span-2">
       <div className="grid grid-cols-1 gap-4 md:gap-10">
@@ -15,9 +15,7 @@ function ListBlogContainer({ posts }) {
             image={post.image}
             duration={post.created_at}
             title={post.title}
-            desc={
-              " For decades, travelers have been escaping to the Catskills — amountainous region in upstate New York — whenever they’ve neededa reset"
-            }
+            desc={post.short_desc}
             author={""}
             name={"Mahamed refat"}
             job={"Web designer"}

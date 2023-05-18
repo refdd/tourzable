@@ -3,7 +3,7 @@ import React from "react";
 import TabsType from "../../hleper/TabsType";
 import HeaderSections from "../../parts/HeaderSections";
 
-function RcommandedTour() {
+function RcommandedTour({ packages }) {
   const { sideBar } = useStateContext();
 
   return (
@@ -11,7 +11,7 @@ function RcommandedTour() {
       className={`container mx-auto px-4 ${sideBar ? "md:px-1 " : "md:px-10"}`}
     >
       <HeaderSections titel={"Recommanded With Tourzable"} />
-      <TabsType />
+      <TabsType packages={packages} />
     </div>
   );
 }

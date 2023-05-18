@@ -70,7 +70,7 @@ function Inquery({ idPackage }) {
         console.log(error);
       });
     console.log({ ...data, number, aduits, childs, data: dateFormated });
-    // router.push("/Thank_you");
+    router.push("/Thank_you");
   };
   return (
     <FormProvider {...methods}>

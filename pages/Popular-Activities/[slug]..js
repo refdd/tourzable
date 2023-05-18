@@ -48,6 +48,7 @@ function SingleActivties({ singletour }) {
     id,
     hotel_rate,
     slug,
+    image,
   } = singletour;
   console.log(singletour);
   return (
@@ -75,7 +76,7 @@ function SingleActivties({ singletour }) {
         price={best_price}
         starNumber={package_rating}
       />
-      <SingleGalleryContainer />
+      <SingleGalleryContainer image={image} days={days} />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-1">
         <div className="col-span-2 container mx-auto px-4">
           <OverView

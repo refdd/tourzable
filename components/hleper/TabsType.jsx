@@ -6,7 +6,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import RecommendTourContainers from "../dashbord/homeDashbord/RecommendTourContainers";
 
-function TabsType() {
+function TabsType({ packages }) {
   const [value, setValue] = React.useState("packages");
 
   const handleChange = (event, newValue) => {
@@ -30,19 +30,19 @@ function TabsType() {
             </TabList>
           </Box>
           <TabPanel value="packages">
-            <RecommendTourContainers />
+            <RecommendTourContainers packages={packages} />
           </TabPanel>
           <TabPanel value="activities">
             {" "}
-            <RecommendTourContainers />
+            <RecommendTourContainers packages={packages} />
           </TabPanel>
           <TabPanel value="umrah">
             {" "}
-            <RecommendTourContainers />
+            <RecommendTourContainers packages={packages} />
           </TabPanel>
           <TabPanel value="landmarks">
             {" "}
-            <RecommendTourContainers />
+            <RecommendTourContainers packages={packages} />
           </TabPanel>
         </TabContext>
       </Box>

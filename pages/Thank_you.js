@@ -40,7 +40,7 @@ function Thank_you() {
           {/* buttonsent */}
           <div className=" md:col-span-2 ">
             <button className="flex justify-center items-center py-4 bg-mainColor rounded-md cursor-pointer w-full">
-              <Link href={"/"}>
+              <Link href={"/dashboard"}>
                 <span className="text-[16px] font-medium text-white font-sans capitalize text-center">
                   My Bookings
                 </span>
