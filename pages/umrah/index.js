@@ -30,7 +30,7 @@ function umrah({ umrahs, regions }) {
           <FilterDesktop regions={regions} />
         </div>
         <div className="col-span-3">
-          <HeaderList numberOfPackage={umrahs.length} regions={regions} />
+          <HeaderList numberOfPackage={umrahs?.length} regions={regions} />
           <ListTourcontainer pageType={"umrah"} tours={umrahs} />
         </div>
       </div>

@@ -76,7 +76,7 @@ function SearcHome({ regions }) {
               fullWidth
               onChange={(e) => setLocation(e.target.value)}
               renderValue={(selected) => {
-                if (selected.length === 0) {
+                if (selected?.length === 0) {
                   return (
                     <em className="text-gray-500 my-4 capitalize">
                       tour landmark

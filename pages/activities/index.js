@@ -30,7 +30,7 @@ function PopularActivities({ Activities, regions }) {
           <FilterDesktop regions={regions} />
         </div>
         <div className="col-span-3">
-          <HeaderList numberOfPackage={Activities.length} regions={regions} />
+          <HeaderList numberOfPackage={Activities?.length} regions={regions} />
           <ListTourcontainer pageType={"activities"} tours={Activities} />
         </div>
       </div>

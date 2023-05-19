@@ -49,7 +49,7 @@ function Reviews({ reviews, allPartners }) {
         {/* review Slider */}
         <ReviewsSlider reviews={reviews} />
       </div>
-      {!allPartners.length == 0 && <Partners allPartners={allPartners} />}
+      {!allPartners?.length == 0 && <Partners allPartners={allPartners} />}
     </div>
   );
 }

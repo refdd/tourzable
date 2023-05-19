@@ -84,7 +84,7 @@ function OverView({
               ))}
             </ul>
           </div>
-          {!unincludes.length == 0 && (
+          {!unincludes?.length == 0 && (
             <div className="p-3 bg-gray-50 rounded shadow-md md:flex-1">
               <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
                 NOT Includes

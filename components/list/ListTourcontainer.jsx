@@ -66,7 +66,7 @@ function ListTourcontainer({ tours, pageType }) {
           );
         })}
       </div>
-      {!sortedItems.length == 0 && <SeeMore />}
+      {!sortedItems?.length == 0 && <SeeMore />}
     </div>
   );
 }

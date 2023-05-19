@@ -30,7 +30,7 @@ function Results({ tours }) {
           <From idPackage={"list Search"} />
         </div>
         <div className="col-span-2">
-          <HeaderList numberOfPackage={tours.length} regions={regions} />
+          <HeaderList numberOfPackage={tours?.length} regions={regions} />
           {/* <ListTourcontainer pageType={"packages"} tours={tours} /> */}
         </div>
       </div>

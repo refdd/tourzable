@@ -17,7 +17,7 @@ function CardOffer({
       {/* image card */}
       <div className=" w-full h-[180px] relative overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
-        {image.length == 0 ? (
+        {image?.length == 0 ? (
           <div className=" hoverArrows relative w-full h-[180px] group/imagcard overflow-hidden">
             <Image
               loader={() => {

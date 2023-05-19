@@ -14,7 +14,9 @@ function SingleGalleryContainer({ image, days }) {
     const lanmarks = days?.map((item) => {
       return item.landmarks;
     });
-    const filterLandMarkIsEmpty = lanmarks?.filter((item) => !item.length == 0);
+    const filterLandMarkIsEmpty = lanmarks?.filter(
+      (item) => !item?.length == 0
+    );
     const alllImage = () => {
       filterLandMarkIsEmpty.map((item) => {
         item.map((i) => {
