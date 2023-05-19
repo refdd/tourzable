@@ -4,6 +4,7 @@ import Partners from "../parts/Partners";
 import ReviewsSlider from "../parts/ReviewsSlider";
 
 function Reviews({ reviews, allPartners }) {
+  // console.log(allPartners);
   return (
     <div className=" container mx-auto px-4 bg-mainColor py-10">
       <div className="flex flex-col space-y-5 md:flex-row">
@@ -48,7 +49,7 @@ function Reviews({ reviews, allPartners }) {
         {/* review Slider */}
         <ReviewsSlider reviews={reviews} />
       </div>
-      <Partners allPartners={allPartners} />
+      {!allPartners.length == 0 && <Partners allPartners={allPartners} />}
     </div>
   );
 }

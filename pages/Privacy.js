@@ -28,7 +28,7 @@ function Privacy() {
       </div>
       <OverViewTerms />
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </>

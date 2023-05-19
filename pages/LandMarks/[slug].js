@@ -48,7 +48,7 @@ function SingleLandmark({ singlelandmark, landmarks }) {
       <ReadAlso titel={"Show more"} packages={landmarks} />
       {/* <FaQSection /> */}
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </div>

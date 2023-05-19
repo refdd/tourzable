@@ -53,10 +53,10 @@ function FormSignUp() {
         console.log(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data.message);
       });
 
-    router.push("/Login");
+    // router.push("/Login");
   };
   return (
     <div className="bg-[#e5f0fd] py-11 ">

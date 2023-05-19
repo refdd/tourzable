@@ -45,7 +45,7 @@ function Settings() {
         </div>
       </div>
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </div>

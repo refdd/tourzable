@@ -99,7 +99,7 @@ function SingleTour({ singletour }) {
       </div>
       {/* <RelatedTours /> */}
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </div>

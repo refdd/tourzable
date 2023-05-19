@@ -30,7 +30,7 @@ function FAQ() {
         <FandQcontainer />
       </div>
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </>

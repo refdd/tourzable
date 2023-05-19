@@ -44,28 +44,27 @@ function Footer() {
   } = useForm();
   const onSubmit = (data) => {
     axios
-    .post(
-      "https://new.tourzable.com/api/mails",
-      {
-        ...data,
-      },
-      {
-        headers: { "Content-Type": "application/json" },
-      }
-    )
-    .then((res) => {
-      console.log(res);
-      setOpen(true );
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .post(
+        "https://new.tourzable.com/api/mails",
+        {
+          ...data,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        setOpen(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // router.push("/Thank_you");
-
   };
   return (
     <div className="container mx-auto px-4 md:px-10 bg-mainColor">
-        <AlertSuccess
+      <AlertSuccess
         handleClose={handleClose}
         handleClick={handleClick}
         open={open}
@@ -112,12 +111,11 @@ function Footer() {
             </div>
           </div>
           {/*  */}
-          <div className="flex flex-col space-y-2 md:space-y-6 ">
+          {/* <div className="flex flex-col space-y-2 md:space-y-6 ">
             <p className="text-white text-[16px] font-sans font-medium capitalize">
               Your all-in-one travel app
             </p>
 
-            {/* buttons */}
             <div className="flex   flex-row  space-x-3 ">
               <div className="flex items-center space-x-1 bg-MainYeloow rounded-lg  w-fit px-4 py-3">
                 <BsApple className="text-mainColor text-2xl" />
@@ -142,7 +140,7 @@ function Footer() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/*  */}
           <div className="flex flex-col space-y-3">
             <p className="text-white text-[16px] font-sans font-medium capitalize">

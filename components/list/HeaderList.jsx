@@ -4,16 +4,16 @@ import { AiOutlineClose, AiOutlineOrderedList } from "react-icons/ai";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { TbArrowsUpDown } from "react-icons/tb";
 import FilterDesktop from "./FilterDesktop";
-function HeaderList() {
+function HeaderList({ numberOfPackage, regions }) {
   const [openFilter, setOpenFilter] = useState(false);
   const [openSort, setOpenSort] = useState(false);
-  const { ViewTours, setViewTours } = useStateContext();
-
+  const { ViewTours, setViewTours, setSortBy } = useStateContext();
+  console.log(openFilter);
   return (
     <div className=" container mx-auto px-4  pt-3 bg-white  ">
       <div className="flex flex-col space-y-3 border-b pb-7 md:flex-row md:items-center md:justify-between md:px-6 ">
         <p className="font-medium text-lg font-sans capitalize text-[#051036]">
-          269 tour In saudi
+          {numberOfPackage} tour In saudi
         </p>
         <div className="flex items-center space-x-7">
           {/* sort */}
@@ -28,12 +28,38 @@ function HeaderList() {
               Sort
             </button>
             {openSort && (
-              <ul className="absolute bottom-[-94px] -0 left-0 flex flex-col space-y-2 bg-white z-50 w-28 border rounded  shadow-lg py-4">
-                <li className="text-[16px] text-mainColor font-semibold font-sans capitalize hover:bg-blue-200 hover:text-white px-3 cursor-pointer">
-                  <span>Price</span>
+              <ul className="absolute bottom-[-152px] -0 left-0 flex flex-col space-y-2 bg-white z-50 w-28 border rounded  shadow-lg py-4">
+                <li
+                  onClick={() => {
+                    setSortBy("maxPrice");
+                  }}
+                  className="text-[16px] text-mainColor font-semibold font-sans capitalize hover:bg-blue-200 hover:text-white px-3 cursor-pointer"
+                >
+                  <span>max price</span>
                 </li>
-                <li className="text-[16px] text-mainColor font-semibold font-sans capitalize hover:bg-blue-200 hover:text-white px-3 cursor-pointer">
-                  <span>Days</span>
+                <li
+                  onClick={() => {
+                    setSortBy("minPrice");
+                  }}
+                  className="text-[16px] text-mainColor font-semibold font-sans capitalize hover:bg-blue-200 hover:text-white px-3 cursor-pointer"
+                >
+                  <span> min Price</span>
+                </li>
+                <li
+                  onClick={() => {
+                    setSortBy("maxDay");
+                  }}
+                  className="text-[16px] text-mainColor font-semibold font-sans capitalize hover:bg-blue-200 hover:text-white px-3 cursor-pointer"
+                >
+                  <span> max day</span>
+                </li>
+                <li
+                  onClick={() => {
+                    setSortBy("minDay");
+                  }}
+                  className="text-[16px] text-mainColor font-semibold font-sans capitalize hover:bg-blue-200 hover:text-white px-3 cursor-pointer"
+                >
+                  <span> min Days</span>
                 </li>
               </ul>
             )}
@@ -67,16 +93,16 @@ function HeaderList() {
         </div>
       </div>
       {openFilter ? (
-        <div
-          onClick={() => {
-            setOpenFilter(false);
-          }}
-          className=" md:hidden block  cursor-pointer fixed top-0 left-0 bg-white py-40 w-full z-50 overflow-y-scroll h-screen overflow-x-hidden"
-        >
-          <div className=" px-4 -mt-10 text-xl shadow-lg h-[50px] w-[50px] flex justify-center items-center rounded-full mx-4">
+        <div className=" md:hidden block  cursor-pointer fixed top-0 left-0 bg-white py-40 w-full z-50 overflow-y-scroll h-screen overflow-x-hidden">
+          <div
+            onClick={() => {
+              setOpenFilter(false);
+            }}
+            className=" px-4 -mt-10 text-xl shadow-lg h-[50px] w-[50px] flex justify-center items-center rounded-full mx-4"
+          >
             <AiOutlineClose />
           </div>
-          <FilterDesktop />
+          <FilterDesktop regions={regions} />
         </div>
       ) : undefined}
     </div>

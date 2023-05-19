@@ -63,7 +63,7 @@ function SingleActivties({ singletour }) {
             { name: "Home", slug: "/" },
             {
               name: "Popular Activities",
-              slug: "/Popular-Activities",
+              slug: "/activities",
             },
           ]}
           currentLink={slug}
@@ -99,7 +99,7 @@ function SingleActivties({ singletour }) {
       </div>
       {/* <RelatedTours /> */}
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </div>

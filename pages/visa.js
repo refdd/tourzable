@@ -29,7 +29,7 @@ function Visa() {
       </div>
       <VisaSection />
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </>

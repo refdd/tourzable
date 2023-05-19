@@ -1,5 +1,7 @@
 import Head from "next/head";
 import React from "react";
+import MainHeader from "@/components/mainSections/MainHeader";
+import NormailNavBar from "@/components/mainSections/NormailNavBar";
 import HeaderList from "@/components/list/HeaderList";
 import ListTourcontainer from "@/components/list/ListTourcontainer";
 import FilterDesktop from "@/components/list/FilterDesktop";
@@ -10,7 +12,8 @@ import Footer from "@/components/mainSections/Footer";
 import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
-function ListTour({ tours }) {
+function PopularActivities({ Activities, regions }) {
+  console.log(Activities[0]);
   return (
     <>
       <Head>
@@ -19,39 +22,42 @@ function ListTour({ tours }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainHeaderList title={"SAUDI ARABIA TOURS"} />
+      <MainHeaderList title={"SAUDI ARABIA Activities"} />
 
       <div className="py-2 bg-[#f5f5f5]"> </div>
-      <div className=" grid grid-cols-1 gap-5  md:grid-cols-5">
+      <div className=" grid grid-cols-1 gap-5 md:grid-cols-4">
         <div className="hidden md:block col-span-1">
-          <FilterDesktop />
+          <FilterDesktop regions={regions} />
         </div>
-        <div className="col-span-4">
-          <HeaderList />
-          <ListTourcontainer
-            pageType={"list-Popular-Saudi-Tours"}
-            tours={tours}
-          />
+        <div className="col-span-3">
+          <HeaderList numberOfPackage={Activities.length} regions={regions} />
+          <ListTourcontainer pageType={"activities"} tours={Activities} />
         </div>
       </div>
       {/* <FaQSection /> */}
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </>
   );
 }
 
-export default ListTour;
-
+export default PopularActivities;
 export async function getServerSideProps({ query }) {
-  const place = query.search;
-  const tours = await fetchApi(`${baseUrl}/packages?type_id=1`);
+  const nameOfTour = query.search || null;
+  const days = query.days_count || null;
+  const min = query.price_range_from || null;
+  const max = query.price_range_to || null;
+  const Activities = await fetchApi(
+    `${baseUrl}/packages?type_id=2&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
+  );
+  const regions = await fetchApi(`${baseUrl}/regions`);
 
   return {
     props: {
-      tours: tours.data,
+      Activities: Activities.data,
+      regions: regions.data,
     },
   };
 }

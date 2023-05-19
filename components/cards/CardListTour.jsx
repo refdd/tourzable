@@ -94,7 +94,7 @@ function CardListTour({
           {/* title */}
           <div className="">
             {/* location */}
-            <p className=" text-lg text-[#051036] font-medium font-serif capitalize">
+            <p className=" text-lg md:text-[20px] text-[#051036] font-medium font-serif capitalize">
               {title}
             </p>
           </div>

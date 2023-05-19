@@ -60,7 +60,7 @@ function OverView({
               duration
             </span>
             <span className="text-[15px] text-gray-500 font-sans capitalize">
-              {duration} days
+              {duration}
             </span>
           </div>
         </div>

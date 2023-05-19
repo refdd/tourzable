@@ -17,6 +17,7 @@ function TourRow({ tours }) {
     const activeElement = locationTour.find((id) => id === id);
     activeElement && setActiveId(id);
   };
+  console.log(tours[0]);
   return (
     <div className="container mx-auto px-4 mb-11 z-40">
       <ul className="flex pa justify-start items-start gap-2 mb-6 flex-wrap md:justify-center">
@@ -67,10 +68,12 @@ function TourRow({ tours }) {
               image={tour?.images}
               location={tour?.city?.desc}
               title={tour.title}
-              description={tour.short_desc.substring(0, 150)}
+              description={tour.short_desc.substring(0, 90)}
               price={tour.best_price}
               duration={tour.duration}
               ratingNumber={tour.package_rating}
+              typePackage={tour.type.slug}
+              slug={tour.slug}
             />
           </SwiperSlide>
         ))}

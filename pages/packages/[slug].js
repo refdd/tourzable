@@ -62,7 +62,7 @@ function SingleTour({ singletour }) {
             { name: "Home", slug: "/" },
             {
               name: "List Popular Saudi Tours",
-              slug: "/list-Popular-Saudi-Tours",
+              slug: "/packages",
             },
           ]}
           currentLink={"Taif City Tour Cable Car Ride3"}
@@ -98,7 +98,7 @@ function SingleTour({ singletour }) {
       </div>
       {/* <RelatedTours /> */}
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </div>

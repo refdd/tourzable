@@ -44,7 +44,7 @@ function Dashboard({ tours }) {
         </div>
       </div>
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </div>

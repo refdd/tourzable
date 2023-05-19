@@ -28,7 +28,7 @@ function TermsConditions() {
       </div>
       <OverViewTerms />
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </>

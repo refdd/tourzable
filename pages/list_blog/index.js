@@ -39,7 +39,7 @@ function listBlog({ posts, recentPosts }) {
       </div>
       {/* <FaQSection /> */}
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </>

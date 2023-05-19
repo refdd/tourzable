@@ -25,7 +25,7 @@ function AboutUs() {
       <NumberOfTourzable />
       <Reviews />
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </div>

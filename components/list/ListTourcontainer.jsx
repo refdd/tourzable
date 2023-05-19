@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardListTour from "../cards/CardListTour";
 
 import { useStateContext } from "@/contexts/ContextProvider";
 import SeeMore from "../hleper/SeeMore";
 function ListTourcontainer({ tours, pageType }) {
-  const { ViewTours, setViewTours, loadMore, setLoadMore } = useStateContext();
-  console.log(tours[3]);
+  const { ViewTours, loadMore, sortBy, setSortBy } = useStateContext();
+  const [sortedItems, setSortedItems] = useState([]);
+  // const [sortBy, setSortBy] = useState("price");
+  useEffect(() => {
+    const sortItems = () => {
+      switch (sortBy) {
+        case "minDay":
+          return [...tours]?.sort((a, b) => {
+            const dayA = parseInt(a.duration.split(" ")[0]);
+            const dayB = parseInt(b.duration.split(" ")[0]);
+            return dayA - dayB;
+          });
+        case "maxPrice":
+          return [...tours]?.sort((a, b) => a.best_price - b.best_price);
+        case "minPrice":
+          return [...tours]?.sort((a, b) => b.best_price - a.best_price);
+        case "maxDay":
+          return [...tours]?.sort((a, b) => {
+            const dayA = parseInt(a.duration.split(" ")[0]);
+            const dayB = parseInt(b.duration.split(" ")[0]);
+            return dayB - dayA;
+          });
+        default:
+          return tours;
+      }
+    };
+
+    setSortedItems(sortItems());
+  }, [sortBy, setSortBy]);
+  console.log(sortedItems);
+
   return (
     <div className="container mx-auto px-4 mt-6">
       <div
@@ -15,9 +44,9 @@ function ListTourcontainer({ tours, pageType }) {
             : "grid grid-cols-1 gap-5 md:gap-7"
         }
       >
-        {tours?.slice(0, loadMore)?.map((tour) => (
-          <>
-            {tour.is_active && (
+        {sortedItems?.slice(0, loadMore)?.map((tour) => {
+          return (
+            tour.is_active && (
               <div key={tour.id}>
                 <CardListTour
                   image={tour?.images}
@@ -33,11 +62,11 @@ function ListTourcontainer({ tours, pageType }) {
                   visitedLocations={tour.visited_locations}
                 />
               </div>
-            )}
-          </>
-        ))}
+            )
+          );
+        })}
       </div>
-      {tours.length == 0 ? "" : <SeeMore />}
+      {!sortedItems.length == 0 && <SeeMore />}
     </div>
   );
 }

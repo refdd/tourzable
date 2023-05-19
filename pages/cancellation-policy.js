@@ -28,7 +28,7 @@ function CancellationPolicy() {
       </div>
       <OverViewTerms />
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </>

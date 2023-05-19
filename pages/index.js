@@ -55,14 +55,20 @@ export default function Home({
         }
       />
       <ActivitiesRow Activities={Activities} />
+      <HeaderSections
+        titel={"landMarks"}
+        desc={
+          "Best Offers Of Package Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Booking And Enjoy."
+        }
+      />
       <LandMarkSection regions={regions} />
       <Reviews reviews={reviews} allPartners={partners} />
       <OfferSection offers={offers} />
       <NextTrip posts={posts} />
       <FaQSection faqs={faqs} />
       <Subscribe />
-      <DownLoadApp />
-      <NotMember />
+      {/* <DownLoadApp /> */}
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

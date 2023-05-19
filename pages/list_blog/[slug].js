@@ -46,7 +46,7 @@ function singelBlog({ singletBlog, readAlso }) {
       <ReadAlso packages={readAlso} titel={"read also"} />
       {/* <FaQSection /> */}
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </div>

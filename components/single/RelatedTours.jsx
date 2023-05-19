@@ -53,6 +53,8 @@ function RelatedTours({ blog, packages }) {
                 price={item.best_price}
                 duration={item.duration}
                 ratingNumber={item.package_rating}
+                typePackage={item.type.slug}
+                slug={item.slug}
               />
             </SwiperSlide>
           ))}
@@ -80,6 +82,8 @@ function RelatedTours({ blog, packages }) {
               price={item.best_price}
               duration={item.duration}
               ratingNumber={item.package_rating}
+              typePackage={item.type.slug}
+              slug={item.slug}
             />
           ))}
         </div>

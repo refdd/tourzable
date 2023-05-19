@@ -24,16 +24,16 @@ function Destinations() {
       <div className="py-2 bg-[#f5f5f5]"> </div>
       <div className=" grid grid-cols-1 gap-5  md:grid-cols-5">
         <div className="hidden md:block col-span-1">
-          <FilterDesktop />
+          <FilterDesktop regions={regions} />
         </div>
         <div className="col-span-4">
-          <HeaderList />
+          {/* <HeaderList /> */}
           {/* <ListTourcontainer /> */}
         </div>
       </div>
       {/* <FaQSection /> */}
       <Subscribe />
-      <DownLoadApp />
+      {/* <DownLoadApp /> */}
       <NotMember />
       <Footer />
     </>

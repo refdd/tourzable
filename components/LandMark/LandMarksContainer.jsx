@@ -33,7 +33,7 @@ function LandMarksContainer({ allregions }) {
         console.log(error);
       });
   }, [destination]);
-  // console.log(landmarks);
+  console.log(landmarks);
   return (
     <div className="container mx-auto px-4 md:px-0 md:col-span-5 py-6">
       <div className=" flex justify-end">
@@ -83,6 +83,7 @@ function LandMarksContainer({ allregions }) {
               image={landmark.images}
               title={landmark.title}
               destination={landmark.city.title}
+              slug={landmark.slug}
             />
           ))
         )}

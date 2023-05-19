@@ -25,27 +25,26 @@ function Subscribe() {
   const methods = useForm();
   const onSubmit = (data) => {
     axios
-    .post(
-      "https://new.tourzable.com/api/mails",
-      {
-        ...data,
-      },
-      {
-        headers: { "Content-Type": "application/json" },
-      }
-    )
-    .then((res) => {
-      console.log(res);
-      setOpen(true );
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .post(
+        "https://new.tourzable.com/api/mails",
+        {
+          ...data,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        setOpen(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // router.push("/Thank_you");
-
   };
   return (
-    <div className="container mx-auto px-4 mt-10 md:px-10">
+    <div className="container mx-auto px-4 mt-10 md:px-10 pb-6">
       <AlertSuccess
         handleClose={handleClose}
         handleClick={handleClick}
@@ -54,9 +53,16 @@ function Subscribe() {
       <div className="flex flex-col md:flex-row">
         {/* image */}
         <div className=" group relative w-full h-[200px] rounded-t-md  md:h-[390px] overflow-hidden md:w-[500px] ">
-          <Image src={subsribe} fill loading="lazy"     sizes="(max-width: 768px) 100vw,
+          <Image
+            src={subsribe}
+            fill
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw,
              (max-width: 1200px) 50vw,
-             33vw" alt="" className="t" />
+             33vw"
+            alt=""
+            className="t"
+          />
         </div>
         {/* contnet */}
         <div className="flex flex-col space-y-4 p-8 bg-[#f5f5f5] md:flex-1 md:px-10 md:space-y-14">

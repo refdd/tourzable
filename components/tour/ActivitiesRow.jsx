@@ -71,6 +71,8 @@ function ActivitiesRow({ Activities }) {
               duration={activitie.duration}
               ratingNumber={4}
               activitiey
+              typePackage={activitie.type.slug}
+              slug={activitie.slug}
             />
           </SwiperSlide>
         ))}

@@ -35,7 +35,7 @@ function FaQSection({ faqs }) {
     setActiveIndex(activeIndex === index ? null : index);
   };
   return (
-    <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8 pb-5">
       <HeaderSections
         titel={"Frequently Asked Questions"}
         desc="Saudi Travel FAQ"
