@@ -12,7 +12,7 @@ import MainHeaderList from "@/components/list/MainHeaderList";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import From from "@/components/single/From";
 
-function Results({ tours }) {
+function Results({ tours, regions }) {
   // console.log(tours);
   return (
     <>
@@ -50,10 +50,12 @@ export async function getServerSideProps({ query }) {
   const tours = await fetchApi(
     `${baseUrl}/packages?type_id=${type_id}&region_id=${region_id}&date=${date}`
   );
+  const regions = await fetchApi(`${baseUrl}/regions`);
 
   return {
     props: {
       tours: tours.data,
+      regions: regions.data,
     },
   };
 }

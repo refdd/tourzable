@@ -24,6 +24,7 @@ export const ContextProvider = ({ children }) => {
   const [sideBar, setSideBar] = useState(true);
   const [loadMore, setLoadMore] = useState(12);
   const [sortBy, setSortBy] = useState("");
+  const [direction, setDirection] = useState(1);
   const [destination, setDestination] = useState(1);
   const [dateRange, setDateRange] = useState({
     startDate: new Date(),
@@ -64,6 +65,8 @@ export const ContextProvider = ({ children }) => {
         setLoadMore,
         sortBy,
         setSortBy,
+        direction,
+        setDirection,
       }}
     >
       {children}

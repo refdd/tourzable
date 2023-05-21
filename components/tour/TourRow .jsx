@@ -39,6 +39,7 @@ function TourRow({ tours }) {
       </ul>
 
       <Swiper
+        dir="rtl"
         slidesPerView={1}
         spaceBetween={10}
         pagination={{

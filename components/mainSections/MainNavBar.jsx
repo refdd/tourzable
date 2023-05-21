@@ -7,10 +7,17 @@ import { CgMenuLeftAlt } from "react-icons/cg";
 import Link from "next/link";
 import DestinationsBox from "../hleper/DestinationsBox";
 import DestinationsTree from "../hleper/DestinationsTree";
+import { useTranslation, useSSR } from "react-i18next";
+import { useStateContext } from "@/contexts/ContextProvider";
+import SlectedLanguage from "../hleper/SlectedLanguage";
+
 function MainNavBar() {
   const [menuBar, setMenuBar] = useState(false);
   const [disableScroll, setDisableScroll] = useState(false);
   const [isTop, setIsTop] = useState(true);
+  const { setDirection } = useStateContext();
+  const { t, i18n } = useTranslation();
+
   function toggleScroll() {
     const body = document.querySelector("body");
 
@@ -36,6 +43,30 @@ function MainNavBar() {
       }
     });
   }, []);
+
+  // const MyComponent = () => {
+  //   const { t, i18n } = useTranslation();
+  //   const changeLanguage = (language) => {
+  //     i18n.changeLanguage(language);
+  //   };
+  //   useSSR(); // Ensure translations are preloaded during server-side rendering
+
+  //   useEffect(() => {
+  //     document.body.dir = i18n.dir();
+  //     setDirection(document.body.dir);
+  //   });
+  //   return (
+  //     <div>
+  //       <h1>{t("home:home.hello")}</h1>
+  //       <p>{t("home:home.welcome")}</p>
+
+  //       <button onClick={() => changeLanguage("en")}>English</button>
+  //       <button onClick={() => changeLanguage("ar")}>Arabic</button>
+  //       <button onClick={() => changeLanguage("zh")}>chanibbe</button>
+  //     </div>
+  //   );
+  // };
+
   return (
     <div className="fixed top-0 left-0  w-full z-[10000]">
       <div className="flex flex-col">
@@ -69,6 +100,7 @@ function MainNavBar() {
                 />
               )}
             </div>
+            {/* <MyComponent /> */}
             {/* links desktop */}
             <ul className={` hidden  md:flex items-center  `}>
               <li
@@ -77,7 +109,7 @@ function MainNavBar() {
                 } `}
               >
                 <Link legacyBehavior href={"/"}>
-                  Home
+                  {t("common:home.home")}
                 </Link>
               </li>
               <li
@@ -85,21 +117,21 @@ function MainNavBar() {
                   !isTop ? "text-[#051036]" : "text-[#fff]"
                 } `}
               >
-                <Link href={"/packages"}>Packages</Link>
+                <Link href={"/packages"}>{t("common:home.package")}</Link>
               </li>
               <li
                 className={` text-sm   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
                   !isTop ? "text-[#051036]" : "text-[#fff]"
                 } `}
               >
-                <Link href={"/activities"}> Activities</Link>
+                <Link href={"/activities"}> {t("common:home.actives")}</Link>
               </li>
               <li
                 className={` text-sm   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
                   !isTop ? "text-[#051036]" : "text-[#fff]"
                 } `}
               >
-                <Link href={"/umrah"}> Umrah Plus</Link>
+                <Link href={"/umrah"}>{t("common:home.umrah")}</Link>
               </li>
               <li
                 className={` text-sm   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
@@ -107,7 +139,7 @@ function MainNavBar() {
                 } `}
               >
                 <Link href={"/LandMarks"}>
-                  <span>Landmarks</span>
+                  <span>{t("common:home.landMarks")}</span>
                 </Link>
               </li>
               <li
@@ -115,7 +147,7 @@ function MainNavBar() {
                   !isTop ? "text-[#051036]" : "text-[#fff]"
                 } `}
               >
-                <span> Destinations</span>
+                <span>{t("common:home.destinations")}</span>
                 <DestinationsBox />
               </li>
               <li
@@ -123,9 +155,9 @@ function MainNavBar() {
                   !isTop ? "text-[#051036]" : "text-[#fff]"
                 } `}
               >
-                <Link href={"list_blog"}>Saudi Travel Blog</Link>
+                <Link href={"list_blog"}>{t("common:home.blog")}</Link>
               </li>
-              <li
+              {/* <li
                 className={` text-sm   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
                   !isTop ? "text-[#051036]" : "text-[#fff]"
                 } `}
@@ -133,13 +165,16 @@ function MainNavBar() {
                 <Link href={"/visa"}>
                   <span>E-Visa</span>
                 </Link>
-              </li>
+              </li> */}
               <li className=" text-sm   font-semibold font-sans   hover:bg-[#3554d10d] px-2">
                 <Link href={"/customize-your-trip"}>
                   <span className="py-1 px-1 rounded-lg flex items-center justify-center bg-MainYeloow">
                     customize-your-trip
                   </span>
                 </Link>
+              </li>
+              <li className=" text-sm   font-semibold font-sans   hover:bg-[#3554d10d] px-2">
+                <SlectedLanguage isTop={isTop} />
               </li>
             </ul>
           </div>
