@@ -24,7 +24,7 @@ function LandMarksContainer({ allregions }) {
   useEffect(() => {
     axios
       .get(
-        `http://new.tourzable.com/api/landmarks?region_id=${destination}&limit=4`
+        `https://new.tourzable.com/api/landmarks?region_id=${destination}&limit=4`
       )
       .then((response) => {
         setlandmarks(response.data.data);
@@ -33,7 +33,7 @@ function LandMarksContainer({ allregions }) {
         console.log(error);
       });
   }, [destination]);
-  console.log(landmarks);
+  // console.log(landmarks);
   return (
     <div className="container mx-auto px-4 md:px-0 md:col-span-5 py-6">
       <div className=" flex justify-end">

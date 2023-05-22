@@ -7,10 +7,13 @@ import { CgMenuLeftAlt } from "react-icons/cg";
 import Link from "next/link";
 import IconDaskbord from "./IconDaskbord";
 import { useStateContext } from "@/contexts/ContextProvider";
+import UserNav from "@/components/hleper/UserNav";
+import { useSession } from "next-auth/react";
 
 function DashbordNavBar() {
   const [menuBar, setMenuBar] = useState(false);
   const { sideBar, setSideBar } = useStateContext();
+  const { data: session } = useSession();
   const handelMenubar = () => {
     setMenuBar(!menuBar);
   };
@@ -100,25 +103,33 @@ function DashbordNavBar() {
           </div>
           {/* button distop */}
           <div className=" hidden md:flex items-center space-x-3">
-            <div className=" group h-[50px] border transition-all hover:bg-white border-white px-7 rounded-md flex items-center justify-cente ">
-              <Link href={"/sign-up"}>
-                <p className="text-[#fff] transition-all group-hover:text-[#051036]   text-sm cursor-pointer">
-                  Sign In / Register
-                </p>
-              </Link>
-            </div>
+            {session ? (
+              <UserNav />
+            ) : (
+              <div className=" group h-[50px] border transition-all hover:bg-white border-white px-7 rounded-md flex items-center justify-cente ">
+                <Link href={"/sign-up"}>
+                  <p className="text-[#fff] transition-all group-hover:text-[#051036]   text-sm cursor-pointer">
+                    Sign In / Register
+                  </p>
+                </Link>
+              </div>
+            )}
           </div>
           {/* user and menu bar */}
           <div className="flex md:hidden items-center space-x-2">
             {/* icon user */}
-            <Link href={"/sign-up"}>
-              <BiUserCircle
-                size={30}
-                className={` transition-all hover:text-[#0a58ca] cursor-pointer ${
-                  menuBar ? "text-gray-700 " : "text-white"
-                }`}
-              />{" "}
-            </Link>
+            {session ? (
+              <UserNav />
+            ) : (
+              <Link href={"/sign-up"}>
+                <BiUserCircle
+                  size={30}
+                  className={` transition-all hover:text-[#0a58ca] cursor-pointer ${
+                    menuBar ? "text-gray-700 " : "text-white"
+                  }`}
+                />{" "}
+              </Link>
+            )}
             <CgMenuLeftAlt
               onClick={handelMenubar}
               size={30}

@@ -2,7 +2,14 @@ import React from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import { Input, TextField, Grid } from "@mui/material";
 
-function CustomTextField({ name, label, required, type }) {
+function CustomTextField({
+  name,
+  label,
+  required,
+  type,
+  textErroe,
+  erroStatus,
+}) {
   const { control } = useFormContext();
   const isError = false;
 
@@ -14,6 +21,8 @@ function CustomTextField({ name, label, required, type }) {
         defaultValue=""
         render={({ field }) => (
           <TextField
+            error={erroStatus}
+            helperText={textErroe}
             type={type}
             {...field}
             label={label}

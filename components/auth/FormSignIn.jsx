@@ -1,6 +1,6 @@
 import { InputAdornment, TextField } from "@mui/material";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import CustomTextField from "../hleper/CustomTextField";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -12,11 +12,13 @@ import { useSession, signIn, signOut } from "next-auth/react";
 function FormSignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const { email } = router.query;
   const { data: session } = useSession();
   console.log(session);
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
+  console.log(email);
   const methods = useForm();
   const onSubmit = (data) => {
     // console.log({
@@ -25,9 +27,21 @@ function FormSignIn() {
     signIn("credentials", {
       redirect: false,
       ...data,
-    });
-    // router.push("/dashboard");
+    })
+      .then((res) => {
+        console.log(res);
+        router.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+  //  remove email query parma
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", "/Login");
+    }
+  });
   return (
     <div className="bg-[#e5f0fd] py-11 ">
       <div className="container mx-auto px-4 md:w-[35%]  bg-white shadow-lg rounded-md md:py-9">
@@ -53,11 +67,26 @@ function FormSignIn() {
             >
               {/* frist name  */}
               <div className=" md:col-span-2">
-                <CustomTextField
+                {/* <CustomTextField
                   required
                   name="email"
-                  label="Frist Name "
+                  label="email address"
                   type={"text"}
+                /> */}
+                <Controller
+                  name={"email"}
+                  control={methods.control}
+                  defaultValue={email}
+                  render={({ field }) => (
+                    <TextField
+                      type={"text"}
+                      {...field}
+                      label="email address"
+                      fullWidth
+                      variant="standard"
+                      id="outlined-required"
+                    />
+                  )}
                 />
               </div>
 

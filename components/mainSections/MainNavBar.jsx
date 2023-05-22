@@ -10,6 +10,8 @@ import DestinationsTree from "../hleper/DestinationsTree";
 import { useTranslation, useSSR } from "react-i18next";
 import { useStateContext } from "@/contexts/ContextProvider";
 import SlectedLanguage from "../hleper/SlectedLanguage";
+import { useSession } from "next-auth/react";
+import UserNav from "../hleper/UserNav";
 
 function MainNavBar() {
   const [menuBar, setMenuBar] = useState(false);
@@ -17,7 +19,7 @@ function MainNavBar() {
   const [isTop, setIsTop] = useState(true);
   const { setDirection } = useStateContext();
   const { t, i18n } = useTranslation();
-
+  const { data: session } = useSession();
   function toggleScroll() {
     const body = document.querySelector("body");
 
@@ -180,37 +182,45 @@ function MainNavBar() {
           </div>
           {/* button distop */}
           <div className=" hidden md:flex items-center space-x-3">
-            <div
-              className={`group h-[50px] border transition-all  px-7 rounded-md flex items-center justify-cente ${
-                !isTop
-                  ? " border-[#051036] hover:bg-[#3554d1] "
-                  : "hover:bg-white border-white"
-              }  `}
-            >
-              <Link href={"/sign-up"}>
-                <p
-                  className={` transition-all   text-sm cursor-pointer ${
-                    !isTop
-                      ? "text-[#051036] group-hover:text-[#FFFF]  "
-                      : "text-white group-hover:text-[#051036] "
-                  } `}
-                >
-                  Sign In / Register
-                </p>
-              </Link>
-            </div>
+            {session ? (
+              <UserNav />
+            ) : (
+              <div
+                className={`group h-[50px] border transition-all  px-7 rounded-md flex items-center justify-cente ${
+                  !isTop
+                    ? " border-[#051036] hover:bg-[#3554d1] "
+                    : "hover:bg-white border-white"
+                }  `}
+              >
+                <Link href={"/sign-up"}>
+                  <p
+                    className={` transition-all   text-sm cursor-pointer ${
+                      !isTop
+                        ? "text-[#051036] group-hover:text-[#FFFF]  "
+                        : "text-white group-hover:text-[#051036] "
+                    } `}
+                  >
+                    Sign In / Register
+                  </p>
+                </Link>
+              </div>
+            )}
           </div>
           {/* user and menu bar */}
           <div className="flex md:hidden items-center space-x-2">
             {/* icon user */}
-            <Link href={"/sign-up"}>
-              <BiUserCircle
-                size={30}
-                className={` transition-all hover:text-[#0a58ca] cursor-pointer
-              
-              ${menuBar || !isTop ? "text-gray-700 " : "text-white"}`}
-              />
-            </Link>
+            {session ? (
+              <UserNav />
+            ) : (
+              <Link href={"/sign-up"}>
+                <BiUserCircle
+                  size={30}
+                  className={` transition-all hover:text-[#0a58ca] cursor-pointer ${
+                    menuBar ? "text-gray-700 " : "text-white"
+                  }`}
+                />{" "}
+              </Link>
+            )}
             <CgMenuLeftAlt
               onClick={handelMenubar}
               size={30}

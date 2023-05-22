@@ -26,7 +26,9 @@ const resolver = yupResolver(schema);
 function FormSignUp() {
   const [number, setnumber] = useState("+1");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState();
   const router = useRouter();
+  const { query } = router;
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
@@ -51,12 +53,19 @@ function FormSignUp() {
       )
       .then((response) => {
         console.log(response.data);
+        setError(false);
+        // router.push("/Login", { query: { email: data.email } });
+        router.push({
+          pathname: "/Login",
+          query: {
+            email: data.email,
+          },
+        });
       })
       .catch((error) => {
-        console.log(error.response.data.message);
+        console.log(error);
+        setError(error.response.data.message);
       });
-
-    // router.push("/Login");
   };
   return (
     <div className="bg-[#e5f0fd] py-11 ">
@@ -102,11 +111,14 @@ function FormSignUp() {
               {/*email address */}
               <div className=" ">
                 <CustomTextField
+                  erroStatus={error?.email ? true : false}
+                  textErroe={error?.email ? error?.email[0] : ""}
                   required
                   name="email"
                   label="Email Address"
                   type="email"
                 />
+                {/* {error?.email[0]} */}
               </div>
               {/*code andnumber */}
               <div className=" mt-2 ">
@@ -121,7 +133,10 @@ function FormSignUp() {
                   variant="standard"
                   defaultCountry="us"
                   onChange={handleOnChange}
+                  error={error?.phone ? true : false}
+                  helperText={error?.phone ? error?.phone[0] : ""}
                 />
+                {/* {error?.phone[0]} */}
               </div>
               {/* password */}
               <div className="">
