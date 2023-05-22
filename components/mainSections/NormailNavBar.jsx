@@ -5,11 +5,14 @@ import DarkLogo from "../../public/assets/images/logo-dark.svg";
 import { BiUserCircle } from "react-icons/bi";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import UserNav from "../hleper/UserNav";
 function NormailNavBar() {
   const [menuBar, setMenuBar] = useState(false);
   const handelMenubar = () => {
     setMenuBar(!menuBar);
   };
+  const { data: session } = useSession();
 
   return (
     <div className="fixed top-0 left-0  w-full z-[10000]">
@@ -95,14 +98,18 @@ function NormailNavBar() {
           {/* user and menu bar */}
           <div className="flex md:hidden items-center space-x-2">
             {/* icon user */}
-            <Link href={"/sign-up"}>
-              <BiUserCircle
-                size={30}
-                className={` transition-all hover:text-[#0a58ca] cursor-pointer ${
-                  menuBar ? "text-gray-700 " : "text-white"
-                }`}
-              />{" "}
-            </Link>
+            {session ? (
+              <UserNav />
+            ) : (
+              <Link href={"/sign-up"}>
+                <BiUserCircle
+                  size={30}
+                  className={` transition-all hover:text-[#0a58ca] cursor-pointer ${
+                    menuBar ? "text-gray-700 " : "text-white"
+                  }`}
+                />{" "}
+              </Link>
+            )}
             <CgMenuLeftAlt
               onClick={handelMenubar}
               size={30}

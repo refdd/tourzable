@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  i18n: {
+    locales: ["en", "ar", "zh"],
+    defaultLocale: "en",
+  },
   reactStrictMode: true,
   experimental: {
     images: {
@@ -9,6 +13,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-const withVideos = require("next-videos");
-
-module.exports = withVideos();

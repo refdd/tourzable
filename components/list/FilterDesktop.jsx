@@ -1,9 +1,11 @@
 import {
   Box,
   Checkbox,
+  FormControl,
   FormControlLabel,
   InputAdornment,
   InputLabel,
+  ListItemText,
   MenuItem,
   Rating,
   Select,
@@ -15,17 +17,34 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
-
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 function FilterDesktop({ regions }) {
   const [priceRang, setpriceRang] = useState([0, 100]);
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState([]);
   const [nameOfpackage, setnameOfpackage] = useState();
   const [starNumber, setstarNumber] = React.useState(4);
   const router = useRouter();
   const path = router.pathname;
   const { query } = router;
   const methods = useForm();
-
+  const handleDestination = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setLocation(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
   const handleChange = (event, newValue) => {
     setpriceRang(newValue);
   };
@@ -86,34 +105,41 @@ function FilterDesktop({ regions }) {
             <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
               Your Start Point
             </p>
-            <Select
-              variant="outlined"
-              value={location}
-              fullWidth
-              onChange={(e) => setLocation(e.target.value)}
-              renderValue={(selected) => {
-                if (selected?.length === 0) {
-                  return (
-                    <em className="text-gray-500 my-4 capitalize">
-                      tour location
-                    </em>
-                  );
-                }
-                const reasit = regions.filter((item) => item.id == selected);
-                // console.log(reasit[0].title);
-                return reasit[0].title;
-              }}
-              displayEmpty
-            >
-              <MenuItem disabled value="">
-                <em>tour landmark</em>
-              </MenuItem>
-              {regions.map((item) => (
-                <MenuItem key={item.id} value={item.id}>
-                  {item.title}
-                </MenuItem>
-              ))}
-            </Select>
+            <div className="">
+              <FormControl variant="standard" fullWidth sx={{}}>
+                <InputLabel id="demo-multiple-checkbox-label">
+                  Destination
+                </InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={location}
+                  onChange={handleDestination}
+                  renderValue={(selected) => {
+                    const result = [];
+
+                    for (let i = 0; i < selected.length; i++) {
+                      for (let j = 0; j < regions.length; j++) {
+                        if (selected[i] === regions[j].id) {
+                          result.push(regions[i].title);
+                        }
+                      }
+                    }
+                    // console.log(result?.join(", "));
+                    return result?.join(", ");
+                  }}
+                  MenuProps={MenuProps}
+                >
+                  {regions.map((des) => (
+                    <MenuItem key={des.id} value={des.id}>
+                      <Checkbox checked={location.indexOf(des.id) > -1} />
+                      <ListItemText primary={des.title} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </div>
           </div>
           {/* Popular Filters */}
           <div className="">

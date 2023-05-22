@@ -2,7 +2,9 @@ import {
   Checkbox,
   FormControl,
   InputLabel,
+  ListItemText,
   MenuItem,
+  OutlinedInput,
   Rating,
   Select,
   TextField,
@@ -25,6 +27,7 @@ import {
 } from "react-icons/md";
 import CustomTextField from "../hleper/CustomTextField";
 import { useRouter } from "next/router";
+import axios from "axios";
 const labels = {
   0.5: "1 star",
   1: "1 star",
@@ -40,10 +43,20 @@ const labels = {
 function getLabelText(value) {
   return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
 }
-function FormCustomizeTour({ blog }) {
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+function FormCustomizeTour({ blog, cities }) {
   const [number, setnumber] = useState("+1");
-  const [counter, setCounter] = useState("");
-  const [Destination, setDestination] = useState("");
+  const [startPoint, setstartPoint] = useState("");
+  const [Destination, setDestination] = useState([]);
   const [StartDate, setStartDate] = useState(null);
   const [EndDate, setEndDate] = useState(null);
   const [aduits, setAduits] = useState(0);
@@ -60,11 +73,14 @@ function FormCustomizeTour({ blog }) {
   const handleOnChange = (value) => {
     setnumber(value);
   };
-  const handleCountersChange = (event) => {
-    setCounter(event.target.value);
-  };
-  const handlesetDestinationChange = (event) => {
-    setDestination(event.target.value);
+  const handleDestination = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setDestination(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
   };
   const handlesetStartDateChange = (date) => {
     setStartDate(date);
@@ -107,10 +123,36 @@ function FormCustomizeTour({ blog }) {
   const methods = useForm();
   const router = useRouter();
   const onSubmit = (data) => {
+    axios
+      .post(
+        "https://new.tourzable.com/api/customize-your-trip",
+        {
+          ...data,
+          phone: number,
+          adult: aduits,
+          kid: childs,
+          infant: infant,
+          room: room,
+          start_date: startDayFormate,
+          end_date: endDayFormate,
+          package_id: 2,
+          city_id: 46,
+          hotel_rate_id: ratingStar,
+          cities: Destination,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log({
       ...data,
       number,
-      counter,
       Destination,
       startdate: startDayFormate,
       enddate: endDayFormate,
@@ -121,8 +163,9 @@ function FormCustomizeTour({ blog }) {
       ratingStar,
       checked,
     });
-    router.push("/Thank_you");
+    // router.push("/Thank_you");
   };
+  console.log(Destination);
   return (
     <div
       style={{ backgroundImage: blog ? `none` : `url(${bg.src})` }}
@@ -156,7 +199,7 @@ function FormCustomizeTour({ blog }) {
               <div className="">
                 <CustomTextField
                   required
-                  name="firstName "
+                  name="first_name"
                   label="Frist Name "
                   type={"text"}
                 />
@@ -165,7 +208,7 @@ function FormCustomizeTour({ blog }) {
               <div className="">
                 <CustomTextField
                   required
-                  name="lastName "
+                  name="last_name"
                   label="Last Name "
                   type={"text"}
                 />
@@ -197,42 +240,72 @@ function FormCustomizeTour({ blog }) {
               {/* start point */}
               <div className="">
                 <FormControl variant="standard" fullWidth sx={{}}>
-                  <InputLabel id="demo-simple-select-filled-label">
-                    Your Start Point
-                  </InputLabel>
+                  {/* <InputLabel>Location</InputLabel> */}
                   <Select
-                    labelId="demo-simple-select-filled-label"
-                    id="demo-simple-select-filled"
-                    value={counter}
-                    onChange={handleCountersChange}
+                    variant="standard"
+                    value={startPoint}
+                    fullWidth
+                    onChange={(e) => setstartPoint(e.target.value)}
+                    renderValue={(selected) => {
+                      if (selected?.length === 0) {
+                        return (
+                          <em className="text-gray-500 my-4 capitalize">
+                            start point selected
+                          </em>
+                        );
+                      }
+                      const reasit = cities.filter(
+                        (item) => item.id == selected
+                      );
+                      // console.log(reasit[0].title);
+                      return reasit[0].title;
+                    }}
+                    displayEmpty
                   >
-                    <MenuItem value="">
-                      <em>None</em>
+                    <MenuItem disabled value="">
+                      <em>tour landmark</em>
                     </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {cities.map((item) => (
+                      <MenuItem key={item.id} value={item.id}>
+                        {item.title}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </div>
               {/*Destination */}
               <div className="">
                 <FormControl variant="standard" fullWidth sx={{}}>
-                  <InputLabel id="demo-simple-select-filled-label">
-                    Your Destination/S
+                  <InputLabel id="demo-multiple-checkbox-label">
+                    Destination
                   </InputLabel>
                   <Select
-                    labelId="demo-simple-select-filled-label"
-                    id="demo-simple-select-filled"
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    multiple
                     value={Destination}
-                    onChange={handlesetDestinationChange}
+                    onChange={handleDestination}
+                    renderValue={(selected) => {
+                      const result = [];
+
+                      for (let i = 0; i < selected.length; i++) {
+                        for (let j = 0; j < cities.length; j++) {
+                          if (selected[i] === cities[j].id) {
+                            result.push(cities[i].title);
+                          }
+                        }
+                      }
+                      // console.log(result?.join(", "));
+                      return result?.join(", ");
+                    }}
+                    MenuProps={MenuProps}
                   >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {cities.map((des) => (
+                      <MenuItem key={des.id} value={des.id}>
+                        <Checkbox checked={Destination.indexOf(des.id) > -1} />
+                        <ListItemText primary={des.title} />
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </div>
@@ -451,7 +524,7 @@ function FormCustomizeTour({ blog }) {
                   rows="4"
                   className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  "
                   placeholder="Add your suggestions to modify the itinerary or add other features or any additional special request"
-                  {...methods.register("message", { required: true })}
+                  {...methods.register("comment", { required: true })}
                 ></textarea>
               </div>
               {/* check box */}

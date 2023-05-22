@@ -14,7 +14,7 @@ import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
 
-function listBlog({ posts, recentPosts }) {
+function listBlog({ posts, recentPosts, cities }) {
   console.log(recentPosts);
   return (
     <>
@@ -34,7 +34,7 @@ function listBlog({ posts, recentPosts }) {
         <div className=" col-span-1">
           <ReactPost recentPosts={recentPosts} />
           {/* <From /> */}
-          <FormCustomizeTour blog />
+          <FormCustomizeTour blog cities={cities} />
         </div>
       </div>
       {/* <FaQSection /> */}
@@ -50,11 +50,13 @@ export default listBlog;
 export async function getStaticProps() {
   const posts = await fetchApi(`${baseUrl}/posts`);
   const recentPosts = await fetchApi(`${baseUrl}/posts?limit=5`);
+  const cities = await fetchApi(`${baseUrl}/cities`);
 
   return {
     props: {
       posts: posts.data,
       recentPosts: recentPosts.data,
+      cities: cities.data,
     },
     revalidate: 10,
   };

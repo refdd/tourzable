@@ -79,7 +79,7 @@ export default NextAuth({
         token.email = user.email;
         token.name = user.name;
         token.phone = user.phone;
-        token.logo = user.logo;
+        token.image = user.logo;
         token.accessToken = user.token;
         token.userId = user.id;
         token.errorResData = user.success;
@@ -93,7 +93,7 @@ export default NextAuth({
         session.user.email = token.email;
         session.user.name = token.name;
         session.user.phone = token.phone;
-        session.user.logo = token.logo;
+        session.user.image = token.image;
         session.user.accessToken = token.accessToken;
         session.user.userId = token.userId;
         session.user.errorResData = token.errorResData;

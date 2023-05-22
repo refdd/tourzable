@@ -5,10 +5,12 @@ import Footer from "@/components/mainSections/Footer";
 import Subscribe from "@/components/mainSections/Subscribe";
 import WhyChooseUs from "@/components/mainSections/WhyChooseUs";
 import HeaderSections from "@/components/parts/HeaderSections";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
 
-function coustomizeYourTrip() {
+function coustomizeYourTrip({ cities }) {
+  // console.log(cities);
   return (
     <>
       <Head>
@@ -22,7 +24,7 @@ function coustomizeYourTrip() {
         titel={"CUSTOMIZE YOUR TRIP"}
         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       />
-      <FormCustomizeTour />
+      <FormCustomizeTour cities={cities} />
       <WhyChooseUs />
       <Subscribe />
       <Footer />
@@ -31,3 +33,13 @@ function coustomizeYourTrip() {
 }
 
 export default coustomizeYourTrip;
+export async function getStaticProps() {
+  const cities = await fetchApi(`${baseUrl}/cities`);
+
+  return {
+    props: {
+      cities: cities.data,
+    },
+    revalidate: 10,
+  };
+}

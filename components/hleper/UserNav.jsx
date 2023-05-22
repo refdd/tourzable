@@ -1,17 +1,22 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import { BsGlobe } from "react-icons/bs";
-import { useSSR, useTranslation } from "react-i18next";
-import { useStateContext } from "@/contexts/ContextProvider";
-import { useRouter } from "next/router";
+import PersonAdd from "@mui/icons-material/PersonAdd";
+import Settings from "@mui/icons-material/Settings";
+import Logout from "@mui/icons-material/Logout";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import { HiOutlinePresentationChartBar } from "react-icons/hi";
+import { BsFillBookmarkCheckFill } from "react-icons/bs";
 
-export default function SlectedLanguage({ isTop }) {
-  const { setDirection } = useStateContext();
+export default function UserNav() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -20,24 +25,12 @@ export default function SlectedLanguage({ isTop }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const { t, i18n } = useTranslation();
-  const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
-    // router.push(router.pathname, router.asPath, { locale });
-  };
-  useSSR(); // Ensure translations are preloaded during server-side rendering
-
-  React.useEffect(() => {
-    document.body.dir = i18n.dir();
-    setDirection(document.body.dir);
-  });
-  const router = useRouter();
-  const { locale, locales } = router;
-  // console.log(locale);
+  const { data: session } = useSession();
+  console.log(session);
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Tooltip title="language">
+        <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
             size="small"
@@ -46,7 +39,11 @@ export default function SlectedLanguage({ isTop }) {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <BsGlobe onClose={handleClose} className="text-mainColor text-xl" />
+            <Avatar
+              alt="Remy Sharp"
+              src={session.user.image}
+              sx={{ width: 56, height: 56 }}
+            />
           </IconButton>
         </Tooltip>
       </Box>
@@ -57,9 +54,8 @@ export default function SlectedLanguage({ isTop }) {
         onClose={handleClose}
         onClick={handleClose}
         PaperProps={{
-          elevation: 1,
+          elevation: 0,
           sx: {
-            bgcolor: isTop ? "background.paper" : "#d3d3d3",
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
@@ -69,7 +65,6 @@ export default function SlectedLanguage({ isTop }) {
               ml: -0.5,
               mr: 1,
             },
-            zIndex: 100000,
             "&:before": {
               content: '""',
               display: "block",
@@ -78,7 +73,7 @@ export default function SlectedLanguage({ isTop }) {
               right: 14,
               width: 10,
               height: 10,
-              bgcolor: isTop ? "background.paper" : "#d3d3d3",
+              bgcolor: "background.paper",
               transform: "translateY(-50%) rotate(45deg)",
               zIndex: 0,
             },
@@ -87,47 +82,44 @@ export default function SlectedLanguage({ isTop }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem
-          onClick={() => {
-            handleClose;
-            changeLanguage("ar");
-          }}
-          sx={{ textTransform: "capitalize" }}
-        >
-          arabic
+        <MenuItem onClick={handleClose}>
+          <Link href={"/dashboard/Settings"} className="flex items-center">
+            <Avatar /> Profile
+          </Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Link href={"/dashboard"} className="flex items-center">
+            <Avatar /> My account
+          </Link>
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Link href={"/dashboard/MyBooking"}>
+              <HiOutlinePresentationChartBar className="text-xl" />
+            </Link>
+          </ListItemIcon>
+          My booking
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Link href={"/dashboard/MyBooking"}>
+              <BsFillBookmarkCheckFill className="text-xl" />
+            </Link>
+          </ListItemIcon>
+          Favorites
         </MenuItem>
         <MenuItem
           onClick={() => {
             handleClose;
-            changeLanguage("en");
+            signOut();
           }}
-          sx={{ textTransform: "capitalize" }}
         >
-          english
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Logout
         </MenuItem>
-        <MenuItem
-          onClick={() => {
-            handleClose;
-            changeLanguage("zh");
-          }}
-          sx={{ textTransform: "capitalize" }}
-        >
-          chinese
-        </MenuItem>
-        {/* <MenuItem
-          onClick={() => {
-            handleClose;
-          }}
-          sx={{ textTransform: "capitalize" }}
-        >
-          {locales.map((lng) => {
-            return (
-              <Link href="/" locale={lng} className="flex flex-col space-y-4">
-                {lng}
-              </Link>
-            );
-          })}
-        </MenuItem> */}
       </Menu>
     </React.Fragment>
   );

@@ -9,27 +9,24 @@ const zh_home = require("./public/locales/zh/common.json");
 
 const availableLanguages = ["en", "ar", "zh"]; // List of available languages
 
-i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: "en",
-    debug: false,
-    whitelist: availableLanguages,
-    interpolation: {
-      escapeValue: false,
+i18n.use(initReactI18next).init({
+  fallbackLng: "en",
+  debug: false,
+  whitelist: availableLanguages,
+  interpolation: {
+    escapeValue: false,
+  },
+  resources: {
+    en: {
+      common: en_home,
     },
-    resources: {
-      en: {
-        common: en_home,
-      },
-      ar: {
-        common: ar_home,
-      },
-      zh: {
-        common: zh_home,
-      },
+    ar: {
+      common: ar_home,
     },
-  });
+    zh: {
+      common: zh_home,
+    },
+  },
+});
 
 export default i18n;
