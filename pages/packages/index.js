@@ -42,16 +42,16 @@ function ListTour({ tours, regions }) {
 
 export default ListTour;
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, locale }) {
   const nameOfTour = query.search || null;
   const days = query.days_count || 1;
   const min = query.price_range_from || 0;
   const max = query.price_range_to || 66790;
 
   const tours = await fetchApi(
-    `${baseUrl}/packages?type_id=1&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
+    `${baseUrl}/${locale}/packages?type_id=1&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
   );
-  const regions = await fetchApi(`${baseUrl}/regions`);
+  const regions = await fetchApi(`${baseUrl}/${locale}/regions`);
 
   return {
     props: {

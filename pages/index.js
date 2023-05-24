@@ -79,15 +79,19 @@ export default function Home({
 }
 
 export async function getStaticProps({ locale }) {
-  const posts = await fetchApi(`${baseUrl}/posts?limit=9`);
-  const tours = await fetchApi(`${baseUrl}/packages?type_id=1&limit=9`);
-  const Activities = await fetchApi(`${baseUrl}/packages?type_id=2&limit=9`);
-  const reviews = await fetchApi(`${baseUrl}/reviews?limit=6`);
-  const faqs = await fetchApi(`${baseUrl}/faqs?limit=4`);
-  const offers = await fetchApi(`${baseUrl}/offers?limit=1`);
-  const partners = await fetchApi(`${baseUrl}/partners`);
-  const regions = await fetchApi(`${baseUrl}/regions`);
-  const snippets = await fetchApi(`${baseUrl}/snippets`);
+  const posts = await fetchApi(`${baseUrl}/${locale}/posts?limit=9`);
+  const tours = await fetchApi(
+    `${baseUrl}/${locale}/packages?type_id=1&limit=9&?currency=USD`
+  );
+  const Activities = await fetchApi(
+    `${baseUrl}/${locale}/packages?type_id=2&limit=9`
+  );
+  const reviews = await fetchApi(`${baseUrl}/${locale}/reviews?limit=6`);
+  const faqs = await fetchApi(`${baseUrl}/${locale}/faqs?limit=4`);
+  const offers = await fetchApi(`${baseUrl}/${locale}/offers?limit=1`);
+  const partners = await fetchApi(`${baseUrl}/${locale}/partners`);
+  const regions = await fetchApi(`${baseUrl}/${locale}/regions`);
+  const snippets = await fetchApi(`${baseUrl}/${locale}/snippets`);
 
   return {
     props: {

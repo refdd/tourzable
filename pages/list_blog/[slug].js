@@ -54,7 +54,11 @@ function singelBlog({ singletBlog, readAlso }) {
 }
 
 export default singelBlog;
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, locale }) {
+  // const singletBlog = await fetchApi(
+  //   `${baseUrl}/${locale}/posts/${params.slug}`
+  // );
+  // const readAlso = await fetchApi(`${baseUrl}/${locale}/posts?limit=9`);
   const singletBlog = await fetchApi(`${baseUrl}/posts/${params.slug}`);
   const readAlso = await fetchApi(`${baseUrl}/posts?limit=9`);
 

@@ -9,11 +9,12 @@ import Subscribe from "@/components/mainSections/Subscribe";
 import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
-function Inquiries() {
+function Inquiries({ Inquiries }) {
   const { sideBar } = useStateContext();
   const { data: session } = useSession();
   const router = useRouter();
@@ -57,7 +58,7 @@ function Inquiries() {
         </div>
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
           {/* <TableData /> */}
-          <TableBooking dataTable={[]} />
+          <TableBooking dataTable={Inquiries} />
         </div>
       </div>
       <Subscribe />
@@ -69,3 +70,17 @@ function Inquiries() {
 }
 
 export default Inquiries;
+export async function getServerSideProps({ locale, query }) {
+  const token = query.token || null;
+
+  const Inquiries = await fetchApi(
+    `${baseUrl}/${locale}/bookings?type_id=4`,
+    token
+  );
+
+  return {
+    props: {
+      Inquiries: Inquiries.data,
+    },
+  };
+}

@@ -9,12 +9,15 @@ import trip3 from "../../public/assets/images/eastern-province.jpg";
 import { useStateContext } from "@/contexts/ContextProvider";
 import axios from "axios";
 import NoDataFounded from "../hleper/NoDataFounded";
+import { useRouter } from "next/router";
 
 function LandMarksContainer({ allregions }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [landmarks, setlandmarks] = useState(null);
   const open = Boolean(anchorEl);
   const { destination, setDestination } = useStateContext();
+  const router = useRouter();
+  const { locale } = router;
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -24,7 +27,7 @@ function LandMarksContainer({ allregions }) {
   useEffect(() => {
     axios
       .get(
-        `https://new.tourzable.com/api/landmarks?region_id=${destination}&limit=4`
+        `https://new.tourzable.com/api/${locale}/landmarks?region_id=${destination}&limit=4`
       )
       .then((response) => {
         setlandmarks(response.data.data);
@@ -32,7 +35,7 @@ function LandMarksContainer({ allregions }) {
       .catch((error) => {
         console.log(error);
       });
-  }, [destination]);
+  }, [destination, locale]);
   // console.log(landmarks);
   return (
     <div className="container mx-auto px-4 md:px-0 md:col-span-5 py-6">

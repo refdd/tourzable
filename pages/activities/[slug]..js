@@ -107,8 +107,11 @@ function SingleActivties({ singletour }) {
 }
 
 export default SingleActivties;
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, locale }) {
   const singletour = await fetchApi(`${baseUrl}/packages/${params.slug}`);
+  // const singletour = await fetchApi(
+  //   `${baseUrl}/${locale}/packages/${params.slug}`
+  // );
 
   return {
     props: {

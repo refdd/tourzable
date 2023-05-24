@@ -56,7 +56,11 @@ function SingleLandmark({ singlelandmark, landmarks }) {
 }
 
 export default SingleLandmark;
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, locale }) {
+  // const singlelandmark = await fetchApi(
+  //   `${baseUrl}/${locale}/landmarks/${params.slug}`
+  // );
+  // const landmarks = await fetchApi(`${baseUrl}/${locale}/landmarks?limit=8`);
   const singlelandmark = await fetchApi(`${baseUrl}/landmarks/${params.slug}`);
   const landmarks = await fetchApi(`${baseUrl}/landmarks?limit=8`);
 

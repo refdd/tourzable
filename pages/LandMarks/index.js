@@ -46,12 +46,12 @@ function Landmarks({ landmarks, regions }) {
 }
 
 export default Landmarks;
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, locale }) {
   const region_id = query.region || "1";
   const landmarks = await fetchApi(
-    `${baseUrl}/landmarks?region_id=${region_id}&limit=20`
+    `${baseUrl}/${locale}/landmarks?region_id=${region_id}&limit=20`
   );
-  const regions = await fetchApi(`${baseUrl}/regions`);
+  const regions = await fetchApi(`${baseUrl}/${locale}/regions`);
 
   return {
     props: {

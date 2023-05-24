@@ -50,7 +50,9 @@ function PersonalInformation() {
           "https://www.svgrepo.com/show/382693/user-account-person-avatar.svg"
         );
       }
-      setSelectedImage(session.user.image);
+      setSelectedImage(
+        "https://www.svgrepo.com/show/382693/user-account-person-avatar.svg"
+      );
     }
   }, [session]);
   return (

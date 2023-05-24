@@ -33,8 +33,8 @@ function coustomizeYourTrip({ cities }) {
 }
 
 export default coustomizeYourTrip;
-export async function getStaticProps() {
-  const cities = await fetchApi(`${baseUrl}/cities`);
+export async function getStaticProps({ locale }) {
+  const cities = await fetchApi(`${baseUrl}/${locale}/cities`);
 
   return {
     props: {

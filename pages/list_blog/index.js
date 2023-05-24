@@ -47,10 +47,10 @@ function listBlog({ posts, recentPosts, cities }) {
 }
 
 export default listBlog;
-export async function getStaticProps() {
-  const posts = await fetchApi(`${baseUrl}/posts`);
-  const recentPosts = await fetchApi(`${baseUrl}/posts?limit=5`);
-  const cities = await fetchApi(`${baseUrl}/cities`);
+export async function getStaticProps({ locale }) {
+  const posts = await fetchApi(`${baseUrl}/${locale}/posts`);
+  const recentPosts = await fetchApi(`${baseUrl}/${locale}/posts?limit=5`);
+  const cities = await fetchApi(`${baseUrl}/${locale}/cities`);
 
   return {
     props: {
