@@ -21,7 +21,7 @@ function SearcHome({ regions }) {
   const dateFormated = selectedDate
     ? selectedDate.format("DD-MM-YYYY")
     : selectedDate;
-  console.log(isClicked.typeTour);
+  // console.log(isClicked.typeTour);
   const {
     register,
     handleSubmit,

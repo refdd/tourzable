@@ -15,7 +15,7 @@ import { format } from "date-fns";
 import React from "react";
 
 function SingleLandmark({ singlelandmark, landmarks }) {
-  console.log(singlelandmark);
+  // console.log(singlelandmark);
   const { image, desc, slug, title, created_at } = singlelandmark;
   const formatDate = (dateCurrenity) => {
     const dateString = dateCurrenity;

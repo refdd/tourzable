@@ -33,7 +33,7 @@ export default function Home({
   snippets,
 }) {
   const { locales, locale, push } = useRouter();
-  console.log(locales);
+  // console.log(locales);
   return (
     <>
       <Head>

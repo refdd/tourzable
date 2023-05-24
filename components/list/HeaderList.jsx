@@ -8,7 +8,7 @@ function HeaderList({ numberOfPackage, regions }) {
   const [openFilter, setOpenFilter] = useState(false);
   const [openSort, setOpenSort] = useState(false);
   const { ViewTours, setViewTours, setSortBy } = useStateContext();
-  console.log(openFilter);
+  // console.log(openFilter);
   return (
     <div className=" container mx-auto px-4  pt-3 bg-white  ">
       <div className="flex flex-col space-y-3 border-b pb-7 md:flex-row md:items-center md:justify-between md:px-6 ">

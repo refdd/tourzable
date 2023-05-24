@@ -41,13 +41,13 @@ function CheckAvailability({ idPackage }) {
     }
   };
   const onSubmit = (data) => {
-    console.log({
-      ...data,
-      aduits,
-      childs,
-      startDay: startDayFormate,
-      endDay: endDayFormate,
-    });
+    // console.log({
+    //   ...data,
+    //   aduits,
+    //   childs,
+    //   startDay: startDayFormate,
+    //   endDay: endDayFormate,
+    // });
     router.push({
       pathname: "/Checkout",
       query: {

@@ -13,7 +13,7 @@ import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 function PopularActivities({ Activities, regions }) {
-  console.log(Activities[0]);
+  // console.log(Activities[0]);
   return (
     <>
       <Head>

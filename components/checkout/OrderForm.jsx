@@ -26,7 +26,7 @@ function OrderForm({
   };
 
   const onSubmit = (data) => {
-    console.log({ ...data, number, aduits, childs });
+    // console.log({ ...data, number, aduits, childs });
     router.push("/Thank_you");
   };
   return (

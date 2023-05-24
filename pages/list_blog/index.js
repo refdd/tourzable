@@ -15,7 +15,7 @@ import Head from "next/head";
 import React from "react";
 
 function listBlog({ posts, recentPosts, cities }) {
-  console.log(recentPosts);
+  // console.log(recentPosts);
   return (
     <>
       <Head>

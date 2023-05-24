@@ -69,7 +69,7 @@ function Inquery({ idPackage }) {
       .catch((error) => {
         console.log(error);
       });
-    console.log({ ...data, number, aduits, childs, data: dateFormated });
+    // console.log({ ...data, number, aduits, childs, data: dateFormated });
     router.push("/Thank_you");
   };
   return (

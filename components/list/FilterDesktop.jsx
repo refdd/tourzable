@@ -62,13 +62,13 @@ function FilterDesktop({ regions }) {
         price_range_to: priceRang[1],
       },
     });
-    console.log({
-      ...data,
-      location,
-      minPrice: priceRang[0],
-      maxPrice: priceRang[1],
-      starNumber,
-    });
+    // console.log({
+    //   ...data,
+    //   location,
+    //   minPrice: priceRang[0],
+    //   maxPrice: priceRang[1],
+    //   starNumber,
+    // });
   };
   return (
     <div className="container mx-auto px-4 pt-7">

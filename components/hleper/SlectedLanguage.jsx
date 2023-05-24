@@ -38,7 +38,7 @@ export default function SlectedLanguage({ isTop }) {
     setDirection(document.body.dir);
   });
 
-  console.log(locale);
+  // console.log(locale);
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>

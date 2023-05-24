@@ -55,7 +55,7 @@ function Checkout() {
 
     bookingPrices();
   }, [infant, childs, aduits]);
-  console.log(prices);
+  // console.log(prices);
   return (
     <div>
       <NormailNavBar />

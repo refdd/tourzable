@@ -32,7 +32,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
       router.push("/Login");
     }
   }, [session]);
-  console.log(profileData);
+  // console.log(profileData);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />

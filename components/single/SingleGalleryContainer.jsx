@@ -29,7 +29,7 @@ function SingleGalleryContainer({ image, days }) {
     alllImage();
     setAllGallery(newArray);
   }, []);
-  console.log(allGallery);
+  // console.log(allGallery);
   return (
     <div className="container mx-auto px-4 md:px-10 my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -50,7 +50,7 @@ function SingleActivties({ singletour }) {
     slug,
     image,
   } = singletour;
-  console.log(singletour);
+  // console.log(singletour);
   return (
     <div className="">
       {isTop ? <NormailNavBar /> : <TapsTour />}

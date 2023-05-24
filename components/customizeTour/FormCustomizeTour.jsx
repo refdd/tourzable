@@ -150,22 +150,22 @@ function FormCustomizeTour({ blog, cities }) {
       .catch((error) => {
         console.log(error);
       });
-    console.log({
-      ...data,
-      number,
-      Destination,
-      startdate: startDayFormate,
-      enddate: endDayFormate,
-      room,
-      aduits,
-      childs,
-      infant,
-      ratingStar,
-      checked,
-    });
+    // console.log({
+    //   ...data,
+    //   number,
+    //   Destination,
+    //   startdate: startDayFormate,
+    //   enddate: endDayFormate,
+    //   room,
+    //   aduits,
+    //   childs,
+    //   infant,
+    //   ratingStar,
+    //   checked,
+    // });
     // router.push("/Thank_you");
   };
-  console.log(Destination);
+  // console.log(Destination);
   return (
     <div
       style={{ backgroundImage: blog ? `none` : `url(${bg.src})` }}

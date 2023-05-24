@@ -25,7 +25,7 @@ function ListLnadMarkContainer({ regions, landmarks }) {
       },
     });
   };
-  console.log(landmarks[0]);
+  // console.log(landmarks[0]);
   return (
     <div className="container mx-auto px-4 md:px-0 md:col-span-5 py-6">
       <div className=" flex justify-end">

@@ -23,11 +23,11 @@ function LeaveReview() {
     setOpertion(event.target.value);
   };
   const onSubmit = (data) => {
-    console.log({
-      ...data,
-      operator_review: opertion,
-      package_review: packageReview,
-    });
+    // console.log({
+    //   ...data,
+    //   operator_review: opertion,
+    //   package_review: packageReview,
+    // });
   };
   return (
     <div id="Reviews" className="container mx-auto px-4 mt-5">

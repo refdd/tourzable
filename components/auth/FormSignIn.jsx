@@ -15,11 +15,11 @@ function FormSignIn() {
   const router = useRouter();
   const { email } = router.query;
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
-  console.log(errorSignIn);
+  // console.log(errorSignIn);
   const methods = useForm();
   const onSubmit = (data) => {
     // console.log({

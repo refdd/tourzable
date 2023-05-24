@@ -33,7 +33,7 @@ function Wishlist({ favoritesPackages, favoritesLandmarks }) {
       router.push("/Login");
     }
   }, [session]);
-  console.log(favoritesPackages);
+  // console.log(favoritesPackages);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />

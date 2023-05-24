@@ -49,7 +49,7 @@ function SingleTour({ singletour }) {
     hotel_rate,
     image,
   } = singletour;
-  console.log(singletour);
+  // console.log(singletour);
   return (
     <div className="">
       {isTop ? <NormailNavBar /> : <TapsTour />}
