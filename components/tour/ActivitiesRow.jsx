@@ -73,6 +73,8 @@ function ActivitiesRow({ Activities }) {
               activitiey
               typePackage={activitie.type.slug}
               slug={activitie.slug}
+              tourType={activitie.type.title}
+              tourId={activitie.id}
             />
           </SwiperSlide>
         ))}

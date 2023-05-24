@@ -11,6 +11,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 function FormSignIn() {
   const [showPassword, setShowPassword] = useState(false);
+  const [errorSignIn, seterrorSignIn] = useState();
   const router = useRouter();
   const { email } = router.query;
   const { data: session } = useSession();
@@ -18,7 +19,7 @@ function FormSignIn() {
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
-  console.log(email);
+  console.log(errorSignIn);
   const methods = useForm();
   const onSubmit = (data) => {
     // console.log({
@@ -27,14 +28,15 @@ function FormSignIn() {
     signIn("credentials", {
       redirect: false,
       ...data,
-    })
-      .then((res) => {
-        console.log(res);
+    }).then((res) => {
+      console.log(res);
+
+      if (!res.ok) {
+        seterrorSignIn(res.error);
+      } else {
         router.push("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      }
+    });
   };
   //  remove email query parma
   useEffect(() => {
@@ -85,6 +87,7 @@ function FormSignIn() {
                       fullWidth
                       variant="standard"
                       id="outlined-required"
+                      required
                     />
                   )}
                 />
@@ -108,8 +111,9 @@ function FormSignIn() {
                       type={showPassword ? "text" : "password"}
                       value={value}
                       onChange={onChange}
-                      error={!!error}
-                      helperText={error ? error.message : ""}
+                      error={errorSignIn ? true : false}
+                      required
+                      helperText={errorSignIn ? errorSignIn : ""}
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">

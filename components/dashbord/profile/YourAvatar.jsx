@@ -1,42 +1,14 @@
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { BsCloudUpload, BsFillTrashFill } from "react-icons/bs";
 
-function YourAvatar() {
-  const [selectedImage, setSelectedImage] = useState(
-    "https://www.svgrepo.com/show/382693/user-account-person-avatar.svg"
-  );
-  const inputFileRef = useRef(null);
-
-  const handleFileSelect = (event) => {
-    const file = event.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setSelectedImage(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setSelectedImage(
-        "https://www.svgrepo.com/show/382693/user-account-person-avatar.svg"
-      );
-    }
-  };
-
-  const handleButtonClick = () => {
-    inputFileRef.current.click();
-  };
-
-  const handleDeleteButtonClick = () => {
-    setSelectedImage(
-      "https://www.svgrepo.com/show/382693/user-account-person-avatar.svg"
-    );
-  };
-
-  useEffect(() => {
-    // Clear the file input value on mount
-    // inputFileRef.current.value = "";
-  }, []);
+function YourAvatar({
+  selectedImage,
+  handleFileSelect,
+  handleDeleteButtonClick,
+  inputFileRef,
+}) {
   return (
     <div className=" py-4 border-b">
       <div className="flex flex-col gap-4">
@@ -51,6 +23,10 @@ function YourAvatar() {
         {/* image */}
         <div className="relative  w-[160px] h-[180px] rounded-md">
           <Image
+            loader={() => {
+              return `${selectedImage}`;
+            }}
+            unoptimized={true}
             src={selectedImage}
             fill
             sizes="(max-width: 768px) 100vw,

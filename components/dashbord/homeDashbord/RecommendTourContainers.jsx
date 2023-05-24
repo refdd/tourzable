@@ -8,7 +8,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import CardTour from "@/components/cards/CardTour";
-function RecommendTourContainers({ packages }) {
+import LandMarksCard from "@/components/LandMark/LandMarksCard";
+function RecommendTourContainers({ packages, landmarks }) {
   return (
     <div>
       <Swiper
@@ -36,16 +37,30 @@ function RecommendTourContainers({ packages }) {
       >
         {packages?.map((tour) => (
           <SwiperSlide key={tour?.id}>
-            <CardTour
-              sigleImage={tour?.image}
-              image={tour?.images}
-              location={tour?.city?.desc}
-              title={tour.title}
-              description={tour.short_desc.substring(0, 150)}
-              price={tour.best_price}
-              duration={tour.duration}
-              ratingNumber={tour.package_rating}
-            />
+            {landmarks ? (
+              <LandMarksCard
+                key={tour.id}
+                image={tour.images}
+                title={tour.title}
+                destination={tour.city.title}
+                slug={tour.slug}
+              />
+            ) : (
+              <CardTour
+                sigleImage={tour?.image}
+                image={tour?.images}
+                location={tour?.city?.desc}
+                title={tour.title}
+                // description={tour.short_desc.substring(0, 150)}
+                price={tour.best_price}
+                duration={tour.duration}
+                ratingNumber={tour.package_rating}
+                typePackage={tour.type.slug}
+                // slug={tour.slug}
+                tourType={tour.type.title}
+                tourId={tour.id}
+              />
+            )}
           </SwiperSlide>
         ))}
       </Swiper>

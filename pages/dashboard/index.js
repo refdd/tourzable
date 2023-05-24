@@ -10,10 +10,29 @@ import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
-import React from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
-function Dashboard({ tours }) {
+function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
   const { sideBar } = useStateContext();
+  const { data: session } = useSession();
+  const router = useRouter();
+  const { query, pathname } = router;
+  useEffect(() => {
+    if (session) {
+      router.push({
+        pathname: pathname,
+        query: {
+          token: session.user.accessToken,
+        },
+      });
+    }
+    if (!session) {
+      router.push("/Login");
+    }
+  }, [session]);
+  console.log(profileData);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -39,8 +58,13 @@ function Dashboard({ tours }) {
           <SideBArDashbord />
         </div>
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
-          <DashboarNumbers />
-          <RcommandedTour packages={tours} />
+          <DashboarNumbers profileData={profileData} />
+          <RcommandedTour
+            packages={tours}
+            activitys={activitys}
+            umrah={umrah}
+            landmarks={landmarks}
+          />
         </div>
       </div>
       <Subscribe />
@@ -53,12 +77,20 @@ function Dashboard({ tours }) {
 
 export default Dashboard;
 export async function getServerSideProps({ query }) {
-  const place = query.search;
+  const token = query.token;
   const tours = await fetchApi(`${baseUrl}/packages?type_id=1&limit=7`);
+  const activitys = await fetchApi(`${baseUrl}/packages?type_id=2&limit=7`);
+  const umrah = await fetchApi(`${baseUrl}/packages?type_id=3&limit=7`);
+  const landmarks = await fetchApi(`${baseUrl}/landmarks?limit=7`);
+  const profileData = await fetchApi(`${baseUrl}/profile`, token);
 
   return {
     props: {
       tours: tours.data,
+      activitys: activitys.data,
+      umrah: umrah.data,
+      landmarks: landmarks.data,
+      profileData: profileData.data,
     },
   };
 }

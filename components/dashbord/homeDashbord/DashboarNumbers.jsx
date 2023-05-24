@@ -4,7 +4,7 @@ import { FaHandHoldingUsd } from "react-icons/fa";
 import { GiSandsOfTime } from "react-icons/gi";
 import { MdFavorite } from "react-icons/md";
 
-function DashboarNumbers() {
+function DashboarNumbers({ profileData }) {
   const { sideBar } = useStateContext();
 
   return (
@@ -19,7 +19,7 @@ function DashboarNumbers() {
               My Bookings
             </span>
             <span className="font-semibold font-sans text-[26px] text-mainColor ">
-              $12,800
+              $ {profileData.bookings_total}
             </span>
             <span className="text-[#697488] text-sm font-sans capitalize">
               Total Bookings
@@ -38,7 +38,7 @@ function DashboarNumbers() {
               Custom Bookings
             </span>
             <span className="font-semibold font-sans text-[26px] text-mainColor ">
-              $12,800
+              ${profileData.custom_bookings_total}
             </span>
             <span className="text-[#697488] text-sm font-sans capitalize">
               Total Custom
@@ -56,7 +56,7 @@ function DashboarNumbers() {
               Favorites{" "}
             </span>
             <span className="font-semibold font-sans text-[26px] text-mainColor ">
-              $12,800
+              {profileData.favorites}
             </span>
             <span className="text-[#697488] text-sm font-sans capitalize">
               Total Favorites

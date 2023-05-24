@@ -192,7 +192,7 @@ function MainNavBar() {
                     : "hover:bg-white border-white"
                 }  `}
               >
-                <Link href={"/sign-up"}>
+                <Link href={"/Login"}>
                   <p
                     className={` transition-all   text-sm cursor-pointer ${
                       !isTop
@@ -212,7 +212,7 @@ function MainNavBar() {
             {session ? (
               <UserNav />
             ) : (
-              <Link href={"/sign-up"}>
+              <Link href={"/Login"}>
                 <BiUserCircle
                   size={30}
                   className={` transition-all hover:text-[#0a58ca] cursor-pointer ${

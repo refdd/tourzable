@@ -55,6 +55,8 @@ function RelatedTours({ blog, packages }) {
                 ratingNumber={item.package_rating}
                 typePackage={item.type.slug}
                 slug={item.slug}
+                tourType={item.type.title}
+                tourId={item.id}
               />
             </SwiperSlide>
           ))}
@@ -84,6 +86,8 @@ function RelatedTours({ blog, packages }) {
               ratingNumber={item.package_rating}
               typePackage={item.type.slug}
               slug={item.slug}
+              tourType={item.type.title}
+              tourId={item.id}
             />
           ))}
         </div>

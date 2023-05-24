@@ -5,30 +5,57 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { InputAdornment, TextField } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import axios from "axios";
+import { useSession, signOut } from "next-auth/react";
 const schema = yup.object().shape({
-  email: yup.string().email("Invalid email").required("Email is required"),
-  password: yup
+  new_password: yup
     .string()
     .min(8, "Password must be at least 8 characters")
-    .required("Password is required"),
-  confirmPassword: yup
+    .required("new password is required"),
+  confirm_password: yup
     .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .oneOf([yup.ref("new_password"), null], "Passwords must match")
     .required("Confirm password is required"),
 });
 function PasswordChange() {
   const [showPassword, setShowPassword] = useState(false);
-
   const resolver = yupResolver(schema);
-  const { handleSubmit, control } = useForm({ resolver });
-
+  const methods = useForm({ resolver });
+  const { handleSubmit, control } = methods;
+  const { data: session } = useSession();
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
   const onSubmit = (data) => {
-    console.log({
-      ...data,
-    });
+    axios
+      .post(
+        "https://new.tourzable.com/api/change_password",
+        {
+          ...data,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + session.user.accessToken,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        // setError(false);
+        // router.push("/Login", { query: { email: data.email } });
+        // router.push({
+        //   pathname: "/Login",
+        //   query: {
+        //     email: data.email,
+        //   },
+        // });
+        signOut();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(data);
     // router.push("/dashboard");
   };
   return (
@@ -41,7 +68,41 @@ function PasswordChange() {
           defaultValue=""
           render={({ field: { onChange, value }, fieldState: { error } }) => (
             <TextField
-              label="Password"
+              label="old Password"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              type={showPassword ? "text" : "password"}
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : ""}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <div onClick={handleTogglePasswordVisibility}>
+                      {showPassword ? (
+                        <VisibilityIcon className="cursor-pointer" />
+                      ) : (
+                        <VisibilityOffIcon className="cursor-pointer" />
+                      )}
+                    </div>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          )}
+        />
+      </div>
+      {/* password */}
+      <div className="">
+        <Controller
+          name="new_password"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label=" new Password"
               variant="outlined"
               fullWidth
               margin="normal"
@@ -70,7 +131,7 @@ function PasswordChange() {
       {/* confirm password */}
       <div className="">
         <Controller
-          name="confirmPassword"
+          name="confirm_password"
           control={control}
           defaultValue=""
           render={({ field: { onChange, value }, fieldState: { error } }) => (

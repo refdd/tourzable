@@ -46,18 +46,19 @@ export default NextAuth({
         const user = await res.json();
 
         // if credentials are valid
-        if (user) {
+        if (user.success) {
           const data = user.data;
           const result = {
             ...data,
             success: user.success,
             message: user.message,
           };
+          console.log("ok");
           return result;
         } else {
-          // if not
-          console.log("check your credentials");
-          return null;
+          let message =
+            "Something went wrong maybe you passwords  or email address";
+          throw new Error(message);
         }
       },
     }),
@@ -75,6 +76,7 @@ export default NextAuth({
   callbacks: {
     jwt: async ({ token, user }) => {
       console.log(user);
+
       if (user) {
         token.email = user.email;
         token.name = user.name;
@@ -89,6 +91,7 @@ export default NextAuth({
       return token;
     },
     session: ({ session, token, user }) => {
+      console.log(token);
       if (token) {
         session.user.email = token.email;
         session.user.name = token.name;
@@ -98,6 +101,8 @@ export default NextAuth({
         session.user.userId = token.userId;
         session.user.errorResData = token.errorResData;
         session.user.message = token.message;
+        session.user.googleToken = token.jti;
+        session.user.picture = token.picture;
       }
       return session;
     },

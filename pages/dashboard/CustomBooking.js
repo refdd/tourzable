@@ -9,11 +9,28 @@ import Subscribe from "@/components/mainSections/Subscribe";
 import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
-import React from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
 function CustomBooking() {
   const { sideBar } = useStateContext();
-
+  const { data: session } = useSession();
+  const router = useRouter();
+  const { query, pathname } = router;
+  useEffect(() => {
+    if (session) {
+      router.push({
+        pathname: pathname,
+        query: {
+          token: session.user.accessToken,
+        },
+      });
+    }
+    if (!session) {
+      router.push("/Login");
+    }
+  }, [session]);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -40,7 +57,7 @@ function CustomBooking() {
         </div>
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
           {/* <TableData /> */}
-          <TableBooking />
+          <TableBooking dataTable={[]} />
         </div>
       </div>
       <Subscribe />

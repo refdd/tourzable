@@ -10,11 +10,30 @@ import Subscribe from "@/components/mainSections/Subscribe";
 import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
-import React from "react";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
+import { useSession } from "next-auth/react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 
-function Wishlist() {
+function Wishlist({ favoritesPackages, favoritesLandmarks }) {
   const { sideBar } = useStateContext();
-
+  const { data: session } = useSession();
+  const router = useRouter();
+  const { query, pathname } = router;
+  useEffect(() => {
+    if (session) {
+      router.push({
+        pathname: pathname,
+        query: {
+          token: session.user.accessToken,
+        },
+      });
+    }
+    if (!session) {
+      router.push("/Login");
+    }
+  }, [session]);
+  console.log(favoritesPackages);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -42,7 +61,10 @@ function Wishlist() {
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
           {/* <TableData /> */}
           {/* <TableBooking /> */}
-          <FavoritesTour />
+          <FavoritesTour
+            favoritesPackages={favoritesPackages}
+            favoritesLandmarks={favoritesLandmarks}
+          />
         </div>
       </div>
       <Subscribe />
@@ -54,3 +76,22 @@ function Wishlist() {
 }
 
 export default Wishlist;
+export async function getServerSideProps({ locale, query }) {
+  const token = query.token || null;
+
+  const favoritesPackages = await fetchApi(
+    `${baseUrl}/favorites_packages`,
+    token
+  );
+  const favoritesLandmarks = await fetchApi(
+    `${baseUrl}/favorites_landmarks`,
+    token
+  );
+
+  return {
+    props: {
+      favoritesPackages: favoritesPackages.data,
+      favoritesLandmarks: favoritesLandmarks.data,
+    },
+  };
+}

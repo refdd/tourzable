@@ -26,7 +26,7 @@ export default function UserNav() {
     setAnchorEl(null);
   };
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -94,19 +94,19 @@ export default function UserNav() {
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Link href={"/dashboard/MyBooking"}>
+          <Link href={"/dashboard/MyBooking"}>
+            <ListItemIcon>
               <HiOutlinePresentationChartBar className="text-xl" />
-            </Link>
-          </ListItemIcon>
+            </ListItemIcon>
+          </Link>
           My booking
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Link href={"/dashboard/MyBooking"}>
+          <Link href={"/dashboard/wishlist"}>
+            <ListItemIcon>
               <BsFillBookmarkCheckFill className="text-xl" />
-            </Link>
-          </ListItemIcon>
+            </ListItemIcon>
+          </Link>
           Favorites
         </MenuItem>
         <MenuItem

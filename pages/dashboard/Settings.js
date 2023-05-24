@@ -10,10 +10,20 @@ import Subscribe from "@/components/mainSections/Subscribe";
 import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
-import React from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
 function Settings() {
   const { sideBar } = useStateContext();
+  const { data: session } = useSession();
+  const router = useRouter();
+  const { query } = router;
+  useEffect(() => {
+    if (!session) {
+      router.push("/Login");
+    }
+  }, []);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />

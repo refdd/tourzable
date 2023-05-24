@@ -197,7 +197,7 @@ function FilterDesktop({ regions }) {
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"
                 min={0}
-                max={1000}
+                max={840}
                 sx={{
                   "& .MuiSlider-thumb": {
                     color: "#5C2D90",

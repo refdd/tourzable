@@ -16,6 +16,8 @@ import {
 import { MdLogout } from "react-icons/md";
 import { AiFillSetting } from "react-icons/ai";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
+
 function SideBArDashbord() {
   return (
     <div className=" flex flex-col items-center bg-white sticky top-16 rounded-r-lg">
@@ -80,15 +82,17 @@ function SideBArDashbord() {
             </ListItemButton>
           </Link>
         </ListItem>
-        <ListItem>
-          <Link href={"/"}>
-            <ListItemButton>
-              <ListItemIcon>
-                <MdLogout className="text-2xl text-mainColor" />
-              </ListItemIcon>
-              <ListItemText primary={"  Logout "} />
-            </ListItemButton>
-          </Link>
+        <ListItem
+          onClick={() => {
+            signOut();
+          }}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <MdLogout className="text-2xl text-mainColor" />
+            </ListItemIcon>
+            <ListItemText primary={"  Logout "} />
+          </ListItemButton>
         </ListItem>
       </List>
     </div>

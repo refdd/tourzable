@@ -9,11 +9,30 @@ import Subscribe from "@/components/mainSections/Subscribe";
 import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
-import React from "react";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
-function MyBooking() {
+function MyBooking({ customBookings }) {
   const { sideBar } = useStateContext();
-
+  const { data: session } = useSession();
+  const router = useRouter();
+  const { query, pathname } = router;
+  console.log(customBookings);
+  useEffect(() => {
+    if (session) {
+      router.push({
+        pathname: pathname,
+        query: {
+          token: session.user.accessToken,
+        },
+      });
+    }
+    if (!session) {
+      router.push("/Login");
+    }
+  }, [session]);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -40,7 +59,7 @@ function MyBooking() {
         </div>
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
           {/* <TableData /> */}
-          <TableBooking />
+          <TableBooking dataTable={customBookings} />
         </div>
       </div>
       <Subscribe />
@@ -52,3 +71,14 @@ function MyBooking() {
 }
 
 export default MyBooking;
+export async function getServerSideProps({ locale, query }) {
+  const token = query.token || null;
+
+  const customBookings = await fetchApi(`${baseUrl}/bookings?type_id=4`, token);
+
+  return {
+    props: {
+      customBookings: customBookings.data,
+    },
+  };
+}

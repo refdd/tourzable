@@ -90,14 +90,23 @@ function NormailNavBar() {
             {session ? (
               <UserNav />
             ) : (
-              <Link href={"/sign-up"}>
-                <BiUserCircle
-                  size={30}
-                  className={` transition-all hover:text-[#0a58ca] cursor-pointer ${
-                    menuBar ? "text-gray-700 " : "text-white"
-                  }`}
-                />{" "}
-              </Link>
+              <div
+                className={`group h-[50px] border transition-all  px-7 rounded-md flex items-center justify-cente 
+                    
+                hover:bg-white border-white
+                `}
+              >
+                <Link href={"/Login"}>
+                  <p
+                    className={` transition-all   text-sm cursor-pointer 
+                        
+                       text-white group-hover:text-[#051036] 
+                 `}
+                  >
+                    Sign In / Register
+                  </p>
+                </Link>
+              </div>
             )}
           </div>
           {/* user and menu bar */}
@@ -106,7 +115,7 @@ function NormailNavBar() {
             {session ? (
               <UserNav />
             ) : (
-              <Link href={"/sign-up"}>
+              <Link href={"/Login"}>
                 <BiUserCircle
                   size={30}
                   className={` transition-all hover:text-[#0a58ca] cursor-pointer ${

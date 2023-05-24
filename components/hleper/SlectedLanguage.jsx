@@ -14,6 +14,8 @@ export default function SlectedLanguage({ isTop }) {
   const { setDirection } = useStateContext();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const router = useRouter();
+  const { locale, locales, pathname } = router;
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -21,9 +23,13 @@ export default function SlectedLanguage({ isTop }) {
     setAnchorEl(null);
   };
   const { t, i18n } = useTranslation();
+  const changeLocale = (language) => {
+    router.push(router.pathname, router.asPath, { locale: language });
+  };
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
-    // router.push(router.pathname, router.asPath, { locale });
+    // router.push(router.pathname, router.asPath, { language });
+    changeLocale(language);
   };
   useSSR(); // Ensure translations are preloaded during server-side rendering
 
@@ -31,9 +37,8 @@ export default function SlectedLanguage({ isTop }) {
     document.body.dir = i18n.dir();
     setDirection(document.body.dir);
   });
-  const router = useRouter();
-  const { locale, locales } = router;
-  // console.log(locale);
+
+  console.log(locale);
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>

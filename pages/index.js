@@ -78,7 +78,7 @@ export default function Home({
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   const posts = await fetchApi(`${baseUrl}/posts?limit=9`);
   const tours = await fetchApi(`${baseUrl}/packages?type_id=1&limit=9`);
   const Activities = await fetchApi(`${baseUrl}/packages?type_id=2&limit=9`);

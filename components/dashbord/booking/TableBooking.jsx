@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useStateContext } from "@/contexts/ContextProvider";
+import { format } from "date-fns";
 
 const columns = [
   { id: "type", label: "Type", minWidth: 170 },
@@ -48,134 +49,16 @@ function createData(type, name, date, time, total, paid) {
   return { type, name, date, time, total, density, paid };
 }
 
-const rows = [
-  createData(
-    "tour",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "tour",
-    "Name Tour",
-    "04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "active",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "umrah",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "umrah",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "tour",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "active",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "Ireland",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "umrah",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "Japan",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "tour",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "United Kingdom",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "active",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "active",
-    "Name Tour",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-  createData(
-    "tour",
-    "Name TourBR",
-    " 04/04/2022",
-    "Check in : 05/14/2022Check out : 05/29/2022",
-    "$222",
-    "$0"
-  ),
-];
-
-export default function TableBooking() {
+export default function TableBooking({ dataTable }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const { sideBar } = useStateContext();
-
+  const formatDate = (dateCurrenity) => {
+    const dateString = dateCurrenity;
+    const date = new Date(dateString);
+    const formattedDate = format(date, "MMMM dd, yyyy");
+    return formattedDate;
+  };
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -185,6 +68,18 @@ export default function TableBooking() {
     setPage(0);
   };
 
+  const rows = dataTable.map((row) =>
+    createData(
+      "tour",
+      row.title,
+      formatDate(row.created_at),
+      `Check in : ${row.start_date} Check out :${row.end_date}`,
+      `$${row.total}`,
+      "$0"
+    )
+  );
+
+  // console.log(dataTable);
   return (
     <div
       className={`container mx-auto px-4 ${sideBar ? "md:px-1 " : "md:px-10"}`}

@@ -38,7 +38,11 @@ function From({ idPackage }) {
             </button>
           </div>
         </div>
-        {openFrom ? <CheckAvailability /> : <Inquery idPackage={idPackage} />}
+        {openFrom ? (
+          <CheckAvailability idPackage={idPackage} />
+        ) : (
+          <Inquery idPackage={idPackage} />
+        )}
       </div>
     </div>
   );

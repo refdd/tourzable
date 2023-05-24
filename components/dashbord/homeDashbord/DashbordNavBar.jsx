@@ -107,7 +107,7 @@ function DashbordNavBar() {
               <UserNav />
             ) : (
               <div className=" group h-[50px] border transition-all hover:bg-white border-white px-7 rounded-md flex items-center justify-cente ">
-                <Link href={"/sign-up"}>
+                <Link href={"/Login"}>
                   <p className="text-[#fff] transition-all group-hover:text-[#051036]   text-sm cursor-pointer">
                     Sign In / Register
                   </p>
@@ -121,7 +121,7 @@ function DashbordNavBar() {
             {session ? (
               <UserNav />
             ) : (
-              <Link href={"/sign-up"}>
+              <Link href={"/Login"}>
                 <BiUserCircle
                   size={30}
                   className={` transition-all hover:text-[#0a58ca] cursor-pointer ${

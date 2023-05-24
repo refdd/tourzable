@@ -32,7 +32,7 @@ function a11yProps(index) {
   };
 }
 
-function FavoritesTour() {
+function FavoritesTour({ favoritesPackages, favoritesLandmarks }) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -43,6 +43,7 @@ function FavoritesTour() {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
+  console.log(favoritesLandmarks);
   return (
     <div className="container mx-auto px-4 md:px-10">
       <Box
@@ -79,10 +80,10 @@ function FavoritesTour() {
         </AppBar>
 
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <FavoritesContainer />
+          <FavoritesContainer packages={favoritesPackages} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <FavoritesContainer />
+          <FavoritesContainer packages={favoritesLandmarks} />
         </TabPanel>
       </Box>
     </div>

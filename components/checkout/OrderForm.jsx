@@ -9,39 +9,22 @@ import { MdChildFriendly, MdOutlinePersonRemoveAlt1 } from "react-icons/md";
 import { FaChild } from "react-icons/fa";
 import { useRouter } from "next/router";
 
-function OrderForm() {
+function OrderForm({
+  aduits,
+  childs,
+  infant,
+  handleAddCounter,
+  handleremoveCounter,
+}) {
   const [number, setnumber] = useState("+1");
-  const [aduits, setAduits] = useState(0);
-  const [childs, setChilds] = useState(0);
-  const [infant, setinfant] = useState(0);
+
   const methods = useForm();
   const router = useRouter();
 
   const handleOnChange = (value) => {
     setnumber(value);
   };
-  const handleAddCounter = (type) => {
-    if (type == "adults") {
-      setAduits(aduits + 1);
-    }
-    if (type == "childs") {
-      setChilds(childs + 1);
-    }
-    if (type == "infant") {
-      setinfant(infant + 1);
-    }
-  };
-  const handleremoveCounter = (type) => {
-    if (type == "adults" && aduits > 0) {
-      setAduits(aduits - 1);
-    }
-    if (type == "childs" && childs > 0) {
-      setChilds(childs - 1);
-    }
-    if (type == "infant" && infant > 0) {
-      setinfant(infant - 1);
-    }
-  };
+
   const onSubmit = (data) => {
     console.log({ ...data, number, aduits, childs });
     router.push("/Thank_you");
@@ -103,6 +86,24 @@ function OrderForm() {
                 variant="standard"
                 defaultCountry="us"
                 onChange={handleOnChange}
+              />
+            </div>
+            {/* last name */}
+            <div className="">
+              <CustomTextField
+                required
+                name="address"
+                label="address"
+                type={"text"}
+              />
+            </div>
+            {/* last name */}
+            <div className="">
+              <CustomTextField
+                required
+                name="postal code"
+                label="Postal Code"
+                type={"number"}
               />
             </div>
             {/* counter */}

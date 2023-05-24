@@ -3,39 +3,30 @@ import React from "react";
 import Hotel from "../../../public/assets/images/QaisariahSouq.jpg";
 import Hotel2 from "../../../public/assets/images/QaisariahSouq.jpg";
 import Hotel3 from "../../../public/assets/images/QaisariahSouq.jpg";
-function FavoritesContainer() {
+function FavoritesContainer({ packages }) {
   return (
     <div className="flex flex-col  gap-6">
-      <CardListTour
-        image={[Hotel2, Hotel3, Hotel]}
-        location="Riyadh"
-        title={"Explore Alula Tour Package"}
-        description={
-          "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
-        }
-        price={999}
-        slug={"taif-city-tour-cable-car-ride3"}
-      />
-      <CardListTour
-        image={[Hotel2, Hotel3, Hotel]}
-        location="Riyadh"
-        title={"Explore Alula Tour Package"}
-        description={
-          "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
-        }
-        price={999}
-        slug={"taif-city-tour-cable-car-ride3"}
-      />
-      <CardListTour
-        image={[Hotel2, Hotel3, Hotel]}
-        location="Riyadh"
-        title={"Explore Alula Tour Package"}
-        description={
-          "Two days of fun in AlUla's history, civilization, beauty and visiting its attractions history, civilization, beauty and visiting its attractions "
-        }
-        price={999}
-        slug={"taif-city-tour-cable-car-ride3"}
-      />
+      {packages?.map((tour) => {
+        return (
+          tour.is_active && (
+            <div key={tour.id}>
+              <CardListTour
+                image={tour?.images}
+                location={tour?.city?.title}
+                title={tour.title}
+                description={tour?.short_desc?.substring(0, 150)}
+                price={tour?.best_price}
+                slug={tour.slug}
+                sigleImage={tour?.image}
+                duration={tour?.duration}
+                reatingNumber={tour?.package_rating}
+                // pageType={pageType}
+                visitedLocations={tour.visited_locations}
+              />
+            </div>
+          )
+        );
+      })}
     </div>
   );
 }
