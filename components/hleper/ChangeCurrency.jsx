@@ -1,36 +1,48 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
-import { useSession, signOut } from "next-auth/react";
+import { BsGlobe } from "react-icons/bs";
+import { useSSR, useTranslation } from "react-i18next";
+import { useStateContext } from "@/contexts/ContextProvider";
+import { useRouter } from "next/router";
 import Link from "next/link";
-import { HiOutlinePresentationChartBar } from "react-icons/hi";
-import { BsFillBookmarkCheckFill } from "react-icons/bs";
-
-export default function UserNav() {
+import { RiCurrencyLine } from "react-icons/ri";
+export default function ChangeCurrency({ isTop, InSinglePage }) {
+  const { setDirection } = useStateContext();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [currency, setCurrency] = React.useState("USD");
   const open = Boolean(anchorEl);
+  const router = useRouter();
+  const { locale, locales } = router;
+  const path = router.pathname;
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const { data: session } = useSession();
-  // console.log(session);
+
+  const HandleChangeCurrnecy = () => {
+    if (InSinglePage) {
+      if (router.query.slug) {
+        router.replace({
+          pathname: `${router.query.slug}`,
+          query: { currency: currency },
+        });
+      }
+    } else {
+      console.log("router.query.slug");
+
+      router.push({ pathname: path, query: { currency: currency } });
+    }
+  };
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Tooltip title="Account settings">
+        <Tooltip title="language">
           <IconButton
             onClick={handleClick}
             size="small"
@@ -39,10 +51,9 @@ export default function UserNav() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar
-              alt="Remy Sharp"
-              src={session.user.image}
-              sx={{ width: 56, height: 56 }}
+            <RiCurrencyLine
+              onClose={handleClose}
+              className="text-MainYeloow text-xl"
             />
           </IconButton>
         </Tooltip>
@@ -54,8 +65,9 @@ export default function UserNav() {
         onClose={handleClose}
         onClick={handleClose}
         PaperProps={{
-          elevation: 0,
+          elevation: 1,
           sx: {
+            bgcolor: isTop ? "background.paper" : "#d3d3d3",
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
@@ -65,6 +77,7 @@ export default function UserNav() {
               ml: -0.5,
               mr: 1,
             },
+            zIndex: 100000,
             "&:before": {
               content: '""',
               display: "block",
@@ -73,7 +86,7 @@ export default function UserNav() {
               right: 14,
               width: 10,
               height: 10,
-              bgcolor: "background.paper",
+              bgcolor: isTop ? "background.paper" : "#d3d3d3",
               transform: "translateY(-50%) rotate(45deg)",
               zIndex: 0,
             },
@@ -82,46 +95,41 @@ export default function UserNav() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
-          <Link href={"/dashboard/Settings"} className="flex items-center">
-            <Avatar /> Profile
-          </Link>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Link href={"/dashboard"} className="flex items-center">
-            <Avatar /> My account
-          </Link>
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
-          <Link href={"/dashboard/MyBooking"}>
-            <ListItemIcon>
-              <HiOutlinePresentationChartBar className="text-xl" />
-            </ListItemIcon>
-          </Link>
-          My booking
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Link href={"/dashboard/wishlist"}>
-            <ListItemIcon>
-              <BsFillBookmarkCheckFill className="text-xl" />
-            </ListItemIcon>
-          </Link>
-          Favorites
+        <MenuItem
+          onClick={() => {
+            setCurrency("USD");
+            handleClose;
+            HandleChangeCurrnecy();
+          }}
+          sx={{ textTransform: "capitalize" }}
+        >
+          USD
         </MenuItem>
         <MenuItem
           onClick={() => {
+            setCurrency("SAR");
             handleClose;
-            signOut({
-              callbackUrl: `${window.location.origin}/Login`,
-            });
+            HandleChangeCurrnecy();
           }}
+          sx={{ textTransform: "capitalize" }}
         >
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
+          SAR
         </MenuItem>
+
+        {/* <MenuItem
+          onClick={() => {
+            handleClose;
+          }}
+          sx={{ textTransform: "capitalize" }}
+        >
+          {locales.map((lng) => {
+            return (
+              <Link href="/" locale={lng} className="flex flex-col space-y-4">
+                {lng}
+              </Link>
+            );
+          })}
+        </MenuItem> */}
       </Menu>
     </React.Fragment>
   );

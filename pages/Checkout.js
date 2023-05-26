@@ -17,7 +17,10 @@ function Checkout() {
   const [childs, setChilds] = useState(childsNumber);
   const [infant, setinfant] = useState(0);
   const [prices, setPrices] = useState();
-  // console.log(typeof childsNumber);
+  const [cobone, setCodone] = useState();
+  const handleChangeCodone = (event) => {
+    setCodone(event.target.value);
+  };
   const handleAddCounter = (type) => {
     if (type == "adults") {
       setAduits(aduits + 1);
@@ -56,6 +59,10 @@ function Checkout() {
     bookingPrices();
   }, [infant, childs, aduits]);
   // console.log(prices);
+  const addCobone = async (data) => {
+    // const response = await axios.post()
+    console.log(data);
+  };
   return (
     <div>
       <NormailNavBar />
@@ -72,11 +79,17 @@ function Checkout() {
           infant={infant}
           childs={childs}
           aduits={aduits}
+          cobone={cobone}
+          handleChangeCobone={handleChangeCodone}
+          addCobone={addCobone}
         />
         <OrderForm
           aduits={aduits}
           childs={childs}
           infant={infant}
+          idPackage={query.idPackage}
+          startDate={query.startDay}
+          endDate={query.endDay}
           handleAddCounter={handleAddCounter}
           handleremoveCounter={handleremoveCounter}
         />

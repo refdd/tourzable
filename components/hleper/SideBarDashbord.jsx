@@ -84,7 +84,9 @@ function SideBArDashbord() {
         </ListItem>
         <ListItem
           onClick={() => {
-            signOut();
+            signOut({
+              callbackUrl: `${window.location.origin}/Login`,
+            });
           }}
         >
           <ListItemButton>

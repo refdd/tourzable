@@ -46,7 +46,9 @@ function USerForm({ selectedImag }) {
       )
       .then((res) => {
         console.log(res);
-        signOut();
+        signOut({
+          callbackUrl: `${window.location.origin}/Login`,
+        });
       })
       .catch((error) => {
         console.log(error);

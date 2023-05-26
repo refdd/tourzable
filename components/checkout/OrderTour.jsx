@@ -3,7 +3,15 @@ import React from "react";
 import imageTour from "../../public/assets/images/gallery2.png";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-function OrderTour({ prices, infant, childs, aduits }) {
+function OrderTour({
+  prices,
+  infant,
+  childs,
+  aduits,
+  cobone,
+  handleChangeCobone,
+  addCobone,
+}) {
   // console.log(prices.adult_price, aduits);
   return (
     <div className="container mx-auto px-4 py-3">
@@ -146,10 +154,16 @@ function OrderTour({ prices, infant, childs, aduits }) {
                 label="add cobone price"
                 variant="standard"
                 fullWidth
+                value={cobone}
+                onChange={handleChangeCobone}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton color="primary" aria-label="add">
+                      <IconButton
+                        onClick={addCobone}
+                        color="primary"
+                        aria-label="add"
+                      >
                         <AddBoxIcon className="text-mainColor text-xl" />
                       </IconButton>
                     </InputAdornment>

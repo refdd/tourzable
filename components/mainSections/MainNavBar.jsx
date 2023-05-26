@@ -12,6 +12,7 @@ import { useStateContext } from "@/contexts/ContextProvider";
 import SlectedLanguage from "../hleper/SlectedLanguage";
 import { useSession } from "next-auth/react";
 import UserNav from "../hleper/UserNav";
+import ChangeCurrency from "../hleper/ChangeCurrency";
 
 function MainNavBar() {
   const [menuBar, setMenuBar] = useState(false);
@@ -177,6 +178,9 @@ function MainNavBar() {
               </li>
               <li className=" text-sm   font-semibold font-sans   hover:bg-[#3554d10d] px-2">
                 <SlectedLanguage isTop={isTop} />
+              </li>
+              <li className=" text-sm text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">
+                <ChangeCurrency isTop={isTop} />
               </li>
             </ul>
           </div>

@@ -24,7 +24,7 @@ function singelBlog({ singletBlog, readAlso }) {
   };
   return (
     <div>
-      <NormailNavBar />
+      <NormailNavBar InSinglePage />
       <div className="pt-16 bg-[#f5f5f5]"></div>
 
       <div className="flex flex-wrap items-center justify-between py-4 bg-[#f5f5f5] container mx-auto px-4">

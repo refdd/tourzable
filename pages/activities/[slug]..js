@@ -53,7 +53,7 @@ function SingleActivties({ singletour }) {
   // console.log(singletour);
   return (
     <div className="">
-      {isTop ? <NormailNavBar /> : <TapsTour />}
+      {isTop ? <NormailNavBar InSinglePage /> : <TapsTour />}
 
       {/*  */}
       <div className="pt-28 bg-[#f5f5f5]"></div>

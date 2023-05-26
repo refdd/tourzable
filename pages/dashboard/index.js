@@ -28,10 +28,10 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
         },
       });
     }
-    if (!session) {
-      router.push("/Login");
-    }
   }, [session]);
+  if (!query.token) {
+    return;
+  }
   // console.log(profileData);
   return (
     <div className="bg-[#f5f5f5]">
@@ -77,7 +77,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
 
 export default Dashboard;
 export async function getServerSideProps({ query, locale }) {
-  const token = query.token;
+  const token = query.token || "";
   const tours = await fetchApi(
     `${baseUrl}/${locale}/packages?type_id=1&limit=7`
   );

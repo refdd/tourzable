@@ -30,13 +30,13 @@ function SignInBY() {
           Google
         </button>
       </div>
-      <button
+      {/* <button
         onClick={() => {
           signOut();
         }}
       >
         logout
-      </button>
+      </button> */}
       <p className="text-sm text-gray-950 font-sans capitalize">
         By signing in, I agree to GoTrip Terms of Use and Privacy Policy.
       </p>

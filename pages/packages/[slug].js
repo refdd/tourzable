@@ -52,7 +52,7 @@ function SingleTour({ singletour }) {
   // console.log(singletour);
   return (
     <div className="">
-      {isTop ? <NormailNavBar /> : <TapsTour />}
+      {isTop ? <NormailNavBar InSinglePage /> : <TapsTour />}
 
       {/*  */}
       <div className="pt-28 bg-[#f5f5f5]"></div>
@@ -106,11 +106,16 @@ function SingleTour({ singletour }) {
 }
 
 export default SingleTour;
-export async function getServerSideProps({ params, locale }) {
+export async function getServerSideProps({ params, locale, query }) {
+  const currency = query.currency || "USD";
+  const slug = params?.slug || "";
+
   // const singletour = await fetchApi(
   //   `${baseUrl}/${locale}/packages/${params.slug}`
   // );
-  const singletour = await fetchApi(`${baseUrl}/packages/${params.slug}`);
+  const singletour = await fetchApi(
+    `${baseUrl}/packages/${slug}?currency=${currency}`
+  );
   return {
     props: {
       singletour: singletour.data,

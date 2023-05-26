@@ -8,6 +8,7 @@ import { TextField } from "@mui/material";
 import { MdChildFriendly, MdOutlinePersonRemoveAlt1 } from "react-icons/md";
 import { FaChild } from "react-icons/fa";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 function OrderForm({
   aduits,
@@ -15,6 +16,9 @@ function OrderForm({
   infant,
   handleAddCounter,
   handleremoveCounter,
+  idPackage,
+  startDate,
+  endDate,
 }) {
   const [number, setnumber] = useState("+1");
 
@@ -26,8 +30,31 @@ function OrderForm({
   };
 
   const onSubmit = (data) => {
+    axios
+      .post(
+        "https://new.tourzable.com/api/bookings",
+        {
+          ...data,
+          phone: number,
+          adult: aduits,
+          kid: childs,
+          start_date: startDate,
+          end_date: endDate,
+          package_id: idPackage,
+          quotation: 1,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        router.push("/Thank_you");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // console.log({ ...data, number, aduits, childs });
-    router.push("/Thank_you");
   };
   return (
     <div className="container mx-auto px-4 py-3">
@@ -50,7 +77,7 @@ function OrderForm({
             <div className="">
               <CustomTextField
                 required
-                name="firstName "
+                name="first_name"
                 label="Frist Name "
                 type={"text"}
               />
@@ -59,7 +86,7 @@ function OrderForm({
             <div className="">
               <CustomTextField
                 required
-                name="lastName "
+                name="lastName"
                 label="Last Name "
                 type={"text"}
               />
@@ -225,7 +252,7 @@ function OrderForm({
                 rows="5"
                 className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  "
                 placeholder="Add your suggestions to modify the itinerary or add other features or any additional special request"
-                {...methods.register("message", { required: true })}
+                {...methods.register("comment", { required: true })}
               ></textarea>
             </div>
             {/* buttonsent */}

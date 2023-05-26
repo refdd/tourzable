@@ -78,17 +78,20 @@ export default function Home({
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale, query }) {
+  const currency = query.currency || "USD";
   const posts = await fetchApi(`${baseUrl}/${locale}/posts?limit=9`);
   const tours = await fetchApi(
-    `${baseUrl}/${locale}/packages?type_id=1&limit=9&?currency=USD`
+    `${baseUrl}/${locale}/packages?type_id=1&limit=9&currency=${currency}`
   );
   const Activities = await fetchApi(
-    `${baseUrl}/${locale}/packages?type_id=2&limit=9`
+    `${baseUrl}/${locale}/packages?type_id=2&limit=9&currency=${currency}`
   );
   const reviews = await fetchApi(`${baseUrl}/${locale}/reviews?limit=6`);
   const faqs = await fetchApi(`${baseUrl}/${locale}/faqs?limit=4`);
-  const offers = await fetchApi(`${baseUrl}/${locale}/offers?limit=1`);
+  const offers = await fetchApi(
+    `${baseUrl}/${locale}/offers?limit=1&currency=${currency}`
+  );
   const partners = await fetchApi(`${baseUrl}/${locale}/partners`);
   const regions = await fetchApi(`${baseUrl}/${locale}/regions`);
   const snippets = await fetchApi(`${baseUrl}/${locale}/snippets`);
@@ -105,6 +108,5 @@ export async function getStaticProps({ locale }) {
       regions: regions.data,
       snippets: snippets.data,
     },
-    revalidate: 10,
   };
 }

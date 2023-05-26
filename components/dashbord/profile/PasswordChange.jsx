@@ -50,7 +50,9 @@ function PasswordChange() {
         //     email: data.email,
         //   },
         // });
-        signOut();
+        signOut({
+          callbackUrl: `${window.location.origin}/Login`,
+        });
       })
       .catch((error) => {
         console.log(error);
