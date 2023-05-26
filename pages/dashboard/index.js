@@ -19,6 +19,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
   const { data: session } = useSession();
   const router = useRouter();
   const { query, pathname } = router;
+  console.log(query.token);
   useEffect(() => {
     if (session) {
       router.push({
@@ -58,7 +59,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
           <SideBArDashbord />
         </div>
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
-          <DashboarNumbers profileData={profileData} />
+          {/* <DashboarNumbers profileData={profileData} /> */}
           <RcommandedTour
             packages={tours}
             activitys={activitys}
@@ -78,6 +79,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
 export default Dashboard;
 export async function getServerSideProps({ query, locale }) {
   const token = query.token || "";
+  // const profileData = await fetchApi(`${baseUrl}/${locale}/profile`, token);
   const tours = await fetchApi(
     `${baseUrl}/${locale}/packages?type_id=1&limit=7`
   );
@@ -88,15 +90,14 @@ export async function getServerSideProps({ query, locale }) {
     `${baseUrl}/${locale}/packages?type_id=3&limit=7`
   );
   const landmarks = await fetchApi(`${baseUrl}/${locale}/landmarks?limit=7`);
-  const profileData = await fetchApi(`${baseUrl}/${locale}/profile`, token);
 
   return {
     props: {
+      // profileData: profileData.data,
       tours: tours.data,
       activitys: activitys.data,
       umrah: umrah.data,
       landmarks: landmarks.data,
-      profileData: profileData.data,
     },
   };
 }
