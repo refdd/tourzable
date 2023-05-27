@@ -18,6 +18,7 @@ import FaQSection from "@/components/mainSections/FaQSection";
 import LandMarkSection from "@/components/mainSections/LandMarkSection";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +34,7 @@ export default function Home({
   snippets,
 }) {
   const { locales, locale, push } = useRouter();
-  // console.log(locales);
+
   return (
     <>
       <Head>

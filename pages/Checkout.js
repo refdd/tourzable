@@ -13,6 +13,7 @@ function Checkout() {
   const { query } = router;
   const aduitsNumber = parseInt(query.aduits);
   const childsNumber = parseInt(query.childs);
+
   const [aduits, setAduits] = useState(aduitsNumber);
   const [childs, setChilds] = useState(childsNumber);
   const [infant, setinfant] = useState(0);
@@ -92,6 +93,7 @@ function Checkout() {
           endDate={query.endDay}
           handleAddCounter={handleAddCounter}
           handleremoveCounter={handleremoveCounter}
+          prices={prices}
         />
       </div>
       <Footer />

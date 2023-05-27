@@ -9,7 +9,15 @@ import { MdOutlinePersonRemoveAlt1 } from "react-icons/md";
 import { useForm, Controller } from "react-hook-form";
 import { useRouter } from "next/router";
 
-function CheckAvailability({ idPackage }) {
+function CheckAvailability({
+  idPackage,
+  image,
+  title,
+  tourCode,
+  best_price,
+  min,
+  max,
+}) {
   const [startDay, setStartDay] = useState(null);
   const [endDay, setEndDay] = useState(null);
   const [aduits, setAduits] = useState(0);
@@ -56,6 +64,12 @@ function CheckAvailability({ idPackage }) {
         aduits,
         childs,
         idPackage,
+        image,
+        title,
+        tourCode,
+        best_price,
+        min,
+        max,
       },
     });
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomTextField from "../hleper/CustomTextField";
 import { useForm, FormProvider } from "react-hook-form";
 import MuiPhoneNumber from "material-ui-phone-number-2";
@@ -9,6 +9,7 @@ import { MdChildFriendly, MdOutlinePersonRemoveAlt1 } from "react-icons/md";
 import { FaChild } from "react-icons/fa";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { useStateContext } from "@/contexts/ContextProvider";
 
 function OrderForm({
   aduits,
@@ -17,18 +18,22 @@ function OrderForm({
   handleAddCounter,
   handleremoveCounter,
   idPackage,
-  startDate,
-  endDate,
+
+  prices,
 }) {
   const [number, setnumber] = useState("+1");
-
+  const { setPricesPayment } = useStateContext();
   const methods = useForm();
   const router = useRouter();
-
+  const { startDay, endDay, image, title, tourCode, best_price, min, max } =
+    router.query;
   const handleOnChange = (value) => {
     setnumber(value);
   };
-
+  // console.log(prices);
+  useEffect(() => {
+    setPricesPayment(prices);
+  }, [prices]);
   const onSubmit = (data) => {
     axios
       .post(
@@ -38,8 +43,8 @@ function OrderForm({
           phone: number,
           adult: aduits,
           kid: childs,
-          start_date: startDate,
-          end_date: endDate,
+          start_date: startDay,
+          end_date: endDay,
           package_id: idPackage,
           quotation: 1,
         },
@@ -49,7 +54,22 @@ function OrderForm({
       )
       .then((res) => {
         console.log(res);
-        router.push("/Thank_you");
+        router.push({
+          pathname: "/Payment",
+          query: {
+            startDay: startDay,
+            endDay: endDay,
+            idPackage,
+            image,
+            title,
+            tourCode,
+            best_price,
+            min,
+            max,
+            aduits,
+            childs,
+          },
+        });
       })
       .catch((error) => {
         console.log(error);

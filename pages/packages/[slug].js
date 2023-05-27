@@ -48,6 +48,7 @@ function SingleTour({ singletour }) {
     id,
     hotel_rate,
     image,
+    code,
   } = singletour;
   // console.log(singletour);
   return (
@@ -94,7 +95,15 @@ function SingleTour({ singletour }) {
           <TermsAndConditions />
           <LeaveReview />
         </div>
-        <From idPackage={id} />
+        <From
+          idPackage={id}
+          image={image}
+          title={title}
+          tourCode={code}
+          best_price={best_price}
+          min={min}
+          max={max}
+        />
       </div>
       {/* <RelatedTours /> */}
       <Subscribe />

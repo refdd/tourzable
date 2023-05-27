@@ -26,6 +26,7 @@ export const ContextProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState("");
   const [direction, setDirection] = useState(1);
   const [destination, setDestination] = useState(1);
+  const [pricesPayment, setPricesPayment] = useState();
   const [dateRange, setDateRange] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -67,6 +68,8 @@ export const ContextProvider = ({ children }) => {
         setSortBy,
         direction,
         setDirection,
+        pricesPayment,
+        setPricesPayment,
       }}
     >
       {children}

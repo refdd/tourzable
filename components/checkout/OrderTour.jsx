@@ -3,6 +3,7 @@ import React from "react";
 import imageTour from "../../public/assets/images/gallery2.png";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import { useRouter } from "next/router";
 function OrderTour({
   prices,
   infant,
@@ -12,6 +13,10 @@ function OrderTour({
   handleChangeCobone,
   addCobone,
 }) {
+  const router = useRouter();
+  const { startDay, endDay, image, title, tourCode, best_price, min, max } =
+    router.query;
+  // console.log(title);
   // console.log(prices.adult_price, aduits);
   return (
     <div className="container mx-auto px-4 py-3">
@@ -22,7 +27,11 @@ function OrderTour({
           <div className="flex items-center space-x-3">
             <div className="relative w-[150px] h-[90px] md:w-[240px] md:h-[120px] ">
               <Image
-                src={imageTour}
+                loader={() => {
+                  return `${image}`;
+                }}
+                unoptimized={true}
+                src={image}
                 fill
                 alt="tour Image"
                 className="rounded-xl object-fill"
@@ -30,10 +39,10 @@ function OrderTour({
             </div>
             <div className="flex flex-col space-y-1">
               <span className="text-sm text-gray-900 font-sans capitalize font-medium ">
-                Tabuk & Al Disah
+                {title}
               </span>
               <span className="text-sm text-textPurple font-sans capitalize font-normal ">
-                Code : 42677961
+                Code : {tourCode}
               </span>
             </div>
           </div>
@@ -44,7 +53,7 @@ function OrderTour({
                 Tour Date
               </span>
               <span className="text-sm text-gray-600 font-sans font-normal">
-                2023-04-19
+                {startDay}
               </span>
             </div>
             <div className="flex flex-col space-y-1">
@@ -52,7 +61,7 @@ function OrderTour({
                 end Date
               </span>
               <span className="text-sm text-gray-600 font-sans font-normal">
-                2023-04-20
+                {endDay}
               </span>
             </div>
           </div>
@@ -69,7 +78,7 @@ function OrderTour({
               </span>
               <span className="text-[20px] text-textPurple font-bold uppercase">
                 {" "}
-                733
+                {best_price}
               </span>
               <span className="text-xs font-sans text-mainLightColor capitalize font-thin">
                 /Person
@@ -81,7 +90,7 @@ function OrderTour({
               Price For Group
             </span>
             <span className="text-sm text-MainYeloow font-sans font-normal">
-              [25 - 30]
+              [{min} - {max}]
             </span>
           </div>
         </div>
