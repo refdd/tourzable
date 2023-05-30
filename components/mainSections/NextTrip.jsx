@@ -15,6 +15,7 @@ function NextTrip({ posts }) {
     const formattedDate = format(date, "MMMM dd, yyyy");
     return formattedDate;
   };
+  // console.log(posts[0]);
   return (
     <div className="container mx-auto px-4">
       <HeaderSections
@@ -63,6 +64,9 @@ function NextTrip({ posts }) {
                 <div className="flex flex-col space-y-1">
                   <p className="text-[#051036] text-lg font-medium font-sans capitalize cursor-pointer">
                     {post.title}
+                  </p>
+                  <p className="text-gray-500 text-sm md:text-lg font-sans capitalize font-normal">
+                    {post.short_desc}
                   </p>
                   <span className="text-MainYeloow text-[15px] font-sans capitalize">
                     {formatDate(post.created_at)}

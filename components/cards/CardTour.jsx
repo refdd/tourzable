@@ -6,6 +6,7 @@ import ImageSlider from "../tour/ImageSlider";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 function CardTour({
   image,
@@ -26,6 +27,9 @@ function CardTour({
 }) {
   const [favoriteIcon, setFavoriteIcon] = useState(false);
   const { data: session } = useSession();
+  const router = useRouter();
+  const { currency } = router.query;
+  console.log(currency);
   const addToFavorite = async () => {
     await axios
       .post(
@@ -49,7 +53,7 @@ function CardTour({
       });
   };
   return (
-    <div className=" relative tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] md:h-[429px] ">
+    <div className=" relative tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] md:h-[490px] ">
       {/* image card */}
       <div className=" overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
@@ -134,7 +138,7 @@ function CardTour({
           Excaptional
         </span>
         <span className="text-[#697488] text-sm font-sans font-medium ">
-          {price - 1013} sreviews
+          {Math.floor(price) - 15} sreviews
         </span>
       </div>
       {/* price */}
@@ -142,7 +146,10 @@ function CardTour({
         <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
           Starting form
         </span>
-        <span className="text-mainColor">${price}</span>
+        <span className="text-mainColor">
+          {currency ? (currency == "SAR" ? "SAR" : "$") : "$"}{" "}
+          {Math.floor(price)}
+        </span>
       </div>
     </div>
   );

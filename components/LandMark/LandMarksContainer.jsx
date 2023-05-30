@@ -52,7 +52,7 @@ function LandMarksContainer({ allregions }) {
           }
           //   sx={{ fontSize: "17px" , textTransform:"capitalize" , color:"" }}
         >
-          Destinations
+          Location
         </Button>
         <Menu
           id="basic-menu"
@@ -76,7 +76,7 @@ function LandMarksContainer({ allregions }) {
           ))}
         </Menu>
       </div>
-      <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-4">
         {landmarks?.length == 0 ? (
           <NoDataFounded />
         ) : (

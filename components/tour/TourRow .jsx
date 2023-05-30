@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import { useStateContext } from "@/contexts/ContextProvider";
 const locationTour = [
   { id: 1, title: "Saudi" },
   { id: 2, title: "Dubai" },
@@ -12,12 +13,12 @@ const locationTour = [
 ];
 function TourRow({ tours }) {
   const [activeId, setActiveId] = useState(null);
-  const [toursall, settoursall] = useState([]);
+  const { direction } = useStateContext();
   const handleClick = (id) => () => {
     const activeElement = locationTour.find((id) => id === id);
     activeElement && setActiveId(id);
   };
-  // console.log(tours[0]);
+  console.log(direction);
   return (
     <div className="container mx-auto px-4 mb-11 z-40">
       <ul className="flex pa justify-start items-start gap-2 mb-6 flex-wrap md:justify-center">
@@ -39,7 +40,6 @@ function TourRow({ tours }) {
       </ul>
 
       <Swiper
-        dir="rtl"
         slidesPerView={1}
         spaceBetween={10}
         pagination={{

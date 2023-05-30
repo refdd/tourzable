@@ -136,7 +136,7 @@ function FormSignIn() {
               <div className=" md:col-span-2 ">
                 <button className="flex justify-center items-center py-4 bg-mainColor rounded-md cursor-pointer w-full">
                   <span className="text-[16px] font-medium text-white font-sans capitalize text-center">
-                    Register
+                    Login
                   </span>
                 </button>
               </div>

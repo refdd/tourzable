@@ -16,6 +16,7 @@ import SingleGalleryContainer from "@/components/single/SingleGalleryContainer";
 import TapsTour from "@/components/single/TapsTour";
 import TermsAndConditions from "@/components/single/TermsAndConditions";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
+import Head from "next/head";
 import React, { useEffect, useState } from "react";
 
 function SingleTour({ singletour }) {
@@ -49,68 +50,76 @@ function SingleTour({ singletour }) {
     hotel_rate,
     image,
     code,
+    meta_desc,
+    meta_title,
   } = singletour;
-  // console.log(singletour);
+  console.log(singletour);
   return (
-    <div className="">
-      {isTop ? <NormailNavBar InSinglePage /> : <TapsTour />}
+    <>
+      <Head>
+        <meta name="description" content={meta_desc} />
+        <title>{meta_title} </title>
+      </Head>
+      <div className="">
+        {isTop ? <NormailNavBar InSinglePage /> : <TapsTour />}
 
-      {/*  */}
-      <div className="pt-28 bg-[#f5f5f5]"></div>
-      <div className="flex flex-wrap items-center justify-between py-4 bg-[#f5f5f5] container mx-auto px-4">
-        <IconBreadcrumbs
-          links={[
-            { name: "Home", slug: "/" },
-            {
-              name: "List Popular Saudi Tours",
-              slug: "/packages",
-            },
-          ]}
-          currentLink={"Taif City Tour Cable Car Ride3"}
+        {/*  */}
+        <div className="pt-28 bg-[#f5f5f5]"></div>
+        <div className="flex flex-wrap items-center justify-between py-4 bg-[#f5f5f5] container mx-auto px-4">
+          <IconBreadcrumbs
+            links={[
+              { name: "Home", slug: "/" },
+              {
+                name: "List Popular Saudi Tours",
+                slug: "/packages",
+              },
+            ]}
+            currentLink={"Taif City Tour Cable Car Ride3"}
+          />
+        </div>
+        <HeaderSingle
+          title={title}
+          ratingNumber={package_rating}
+          location={city?.title}
+          price={best_price}
+          starNumber={package_rating}
         />
-      </div>
-      <HeaderSingle
-        title={title}
-        ratingNumber={package_rating}
-        location={city?.title}
-        price={best_price}
-        starNumber={package_rating}
-      />
-      <SingleGalleryContainer image={image} days={days} />
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-1">
-        <div className="col-span-2 container mx-auto px-4">
-          <OverView
+        <SingleGalleryContainer image={image} days={days} />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-1">
+          <div className="col-span-2 container mx-auto px-4">
+            <OverView
+              min={min}
+              max={max}
+              duration={duration}
+              desc={desc}
+              includes={includes}
+              unincludes={unincludes}
+              board={board}
+              hotel_rate={hotel_rate?.title}
+            />
+            <Itinerary daysItinerary={days} />
+            <AdditionalInfo noteContent={note} />
+            <CancellationPolicy Cancellation_Policy={policy} />
+            <TermsAndConditions />
+            <LeaveReview />
+          </div>
+          <From
+            idPackage={id}
+            image={image}
+            title={title}
+            tourCode={code}
+            best_price={best_price}
             min={min}
             max={max}
-            duration={duration}
-            desc={desc}
-            includes={includes}
-            unincludes={unincludes}
-            board={board}
-            hotel_rate={hotel_rate?.title}
           />
-          <Itinerary daysItinerary={days} />
-          <AdditionalInfo noteContent={note} />
-          <CancellationPolicy Cancellation_Policy={policy} />
-          <TermsAndConditions />
-          <LeaveReview />
         </div>
-        <From
-          idPackage={id}
-          image={image}
-          title={title}
-          tourCode={code}
-          best_price={best_price}
-          min={min}
-          max={max}
-        />
+        {/* <RelatedTours /> */}
+        <Subscribe />
+        {/* <DownLoadApp /> */}
+        <NotMember />
+        <Footer />
       </div>
-      {/* <RelatedTours /> */}
-      <Subscribe />
-      {/* <DownLoadApp /> */}
-      <NotMember />
-      <Footer />
-    </div>
+    </>
   );
 }
 

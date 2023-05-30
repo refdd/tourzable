@@ -29,7 +29,7 @@ export default function ImageSlider({ arrayOfImages, homepage }) {
           <SwiperSlide key={index}>
             <div
               className={`hoverArrows relative w-full h-[180px] ${
-                homepage ? "md:h-[180px]" : "md:h-[320px]"
+                homepage ? "md:h-[221px]" : "md:h-[320px]"
               } group/imagcard overflow-hidden`}
             >
               <Image

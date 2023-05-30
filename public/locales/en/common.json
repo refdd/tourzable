@@ -1,11 +1,11 @@
 {
     "home":{
-        "home": "home",
-        "package": "package",
-        "actives": "actives",
-        "umrah": "umrah Plus",
-        "landMarks": "landMarks",
-        "destinations": "destinations",
-        "blog": "saudi Travel Blog"
+        "home": "Home",
+        "package": "Package",
+        "actives": "Actives",
+        "umrah": "Umrah Plus",
+        "landMarks": "LandMarks",
+        "destinations": "Destinations",
+        "blog": "Saudi Travel Blog"
       }
 }

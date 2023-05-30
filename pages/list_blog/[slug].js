@@ -11,10 +11,20 @@ import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import RelatedTours from "@/components/single/RelatedTours";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import { format } from "date-fns";
+import Head from "next/head";
 import React from "react";
 
 function singelBlog({ singletBlog, readAlso }) {
-  const { image, desc, packages, slug, created_at, title } = singletBlog;
+  const {
+    image,
+    desc,
+    packages,
+    slug,
+    created_at,
+    title,
+    meta_desc,
+    meta_title,
+  } = singletBlog;
   // console.log(singletBlog);
   const formatDate = (dateCurrenity) => {
     const dateString = dateCurrenity;
@@ -23,33 +33,39 @@ function singelBlog({ singletBlog, readAlso }) {
     return formattedDate;
   };
   return (
-    <div>
-      <NormailNavBar InSinglePage />
-      <div className="pt-16 bg-[#f5f5f5]"></div>
+    <>
+      <Head>
+        <meta name="description" content={meta_desc} />
+        <title>{meta_title} </title>
+      </Head>
+      <div>
+        <NormailNavBar InSinglePage />
+        <div className="pt-16 bg-[#f5f5f5]"></div>
 
-      <div className="flex flex-wrap items-center justify-between py-4 bg-[#f5f5f5] container mx-auto px-4">
-        <IconBreadcrumbs
-          links={[
-            { name: "Home", slug: "/" },
-            { name: "List Blog", slug: "/list_blog" },
-          ]}
-          currentLink={title}
-        />
-      </div>
-      <HeaderPages title={title} desc={formatDate(created_at)} />
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3 container mx-auto px-4">
-        <OverViewSingleBlog image={image} description={desc} Slug={slug} />
-        <div>
-          <RelatedTours blog packages={packages} />
+        <div className="flex flex-wrap items-center justify-between py-4 bg-[#f5f5f5] container mx-auto px-4">
+          <IconBreadcrumbs
+            links={[
+              { name: "Home", slug: "/" },
+              { name: "List Blog", slug: "/list_blog" },
+            ]}
+            currentLink={title}
+          />
         </div>
+        <HeaderPages title={title} desc={formatDate(created_at)} />
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 container mx-auto px-4">
+          <OverViewSingleBlog image={image} description={desc} Slug={slug} />
+          <div>
+            <RelatedTours blog packages={packages} />
+          </div>
+        </div>
+        <ReadAlso packages={readAlso} titel={"read also"} />
+        {/* <FaQSection /> */}
+        <Subscribe />
+        {/* <DownLoadApp /> */}
+        <NotMember />
+        <Footer />
       </div>
-      <ReadAlso packages={readAlso} titel={"read also"} />
-      {/* <FaQSection /> */}
-      <Subscribe />
-      {/* <DownLoadApp /> */}
-      <NotMember />
-      <Footer />
-    </div>
+    </>
   );
 }
 

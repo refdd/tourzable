@@ -4,11 +4,11 @@ import React from "react";
 import { BsArrowUpRight } from "react-icons/bs";
 import LandMarksContainer from "../LandMark/LandMarksContainer";
 import MapSaudiArabia from "../LandMark/MapSaudiArabia";
-function LandMarkSection({regions}) {
+function LandMarkSection({ regions }) {
   return (
     <div className="container mx-auto px-4 md:px-10">
-      <div className=" grid grid-cols-1 gap-5 md:grid-cols-8">
-        <MapSaudiArabia />
+      <div className=" grid grid-cols-1 gap-5 ">
+        {/* <MapSaudiArabia /> */}
         <LandMarksContainer allregions={regions} />
       </div>
       <Link href={"/LandMarks"}>
