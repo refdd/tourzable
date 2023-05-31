@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { BiHeart } from "react-icons/bi";
 import ImageSlider from "../tour/ImageSlider";
+import { useRouter } from "next/router";
 function CardOffer({
   image,
   location,
@@ -12,6 +13,8 @@ function CardOffer({
   discount,
   ratingNumber,
 }) {
+  const router = useRouter();
+  const { currency } = router.query;
   return (
     <div className=" tourcard group flex flex-col space-y-3 p-2 border bg-white z-40 rounded-md ">
       {/* image card */}
@@ -88,9 +91,13 @@ function CardOffer({
           Starting form
         </span>
         <span className="text-mainColor ">
-          ${price - (discount / 100) * price}
+          {currency ? (currency == "SAR" ? "SAR" : "$") : "$"}{" "}
+          {Math.floor(price) - (discount / 100) * Math.floor(price)}
         </span>
-        <span className="text-gray-500  line-through text-sm">${price}</span>
+        <span className="text-gray-500  line-through text-sm">
+          {currency ? (currency == "SAR" ? "SAR" : "$") : "$"}{" "}
+          {Math.floor(price)}
+        </span>
       </div>
     </div>
   );

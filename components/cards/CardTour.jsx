@@ -29,7 +29,7 @@ function CardTour({
   const { data: session } = useSession();
   const router = useRouter();
   const { currency } = router.query;
-  console.log(currency);
+  // console.log(currency);
   const addToFavorite = async () => {
     await axios
       .post(

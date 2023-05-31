@@ -42,7 +42,7 @@ function CardListTour({
         >
           {/* <Image src={image} fill className="rounded" alt="tour" /> */}
           {image?.length == 0 ? (
-            <div className=" hoverArrows relative w-full h-[180px] md:h-[320px]  group/imagcard overflow-hidden">
+            <div className=" hoverArrows relative w-full h-[250px] md:h-[320px]  group/imagcard overflow-hidden">
               <Image
                 loader={() => {
                   return `${sigleImage}`;

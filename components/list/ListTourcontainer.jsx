@@ -46,23 +46,21 @@ function ListTourcontainer({ tours, pageType }) {
       >
         {sortedItems?.slice(0, loadMore)?.map((tour) => {
           return (
-            tour.is_active && (
-              <div key={tour.id}>
-                <CardListTour
-                  image={tour?.images}
-                  location={tour?.city?.title}
-                  title={tour.title}
-                  description={tour?.short_desc?.substring(0, 150)}
-                  price={tour?.best_price}
-                  slug={tour.slug}
-                  sigleImage={tour?.image}
-                  duration={tour?.duration}
-                  reatingNumber={tour?.package_rating}
-                  pageType={pageType}
-                  visitedLocations={tour.visited_locations}
-                />
-              </div>
-            )
+            <div key={tour.id}>
+              <CardListTour
+                image={tour?.images}
+                location={tour?.city?.title}
+                title={tour.title}
+                description={tour?.short_desc?.substring(0, 150)}
+                price={tour?.best_price}
+                slug={tour.slug}
+                sigleImage={tour?.image}
+                duration={tour?.duration}
+                reatingNumber={tour?.package_rating}
+                pageType={pageType}
+                visitedLocations={tour.visited_locations}
+              />
+            </div>
           );
         })}
       </div>

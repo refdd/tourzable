@@ -5,7 +5,7 @@ import Inquery from "./Inquery";
 function From({ idPackage, image, title, tourCode, best_price, min, max }) {
   const [openFrom, setOpenFrom] = useState(false);
   return (
-    <div className="container mx-auto px-4 pb-8 h-full ">
+    <div className="container mx-auto px-4 pb-8 h-full " id="InquireFrom">
       <div className=" bg-gray-50 rounded py-4 md:sticky md:top-14 ">
         <div className="flex items-center space-x-2 py-2 px-4 border-b-2  ">
           <div

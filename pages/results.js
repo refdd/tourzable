@@ -31,7 +31,7 @@ function Results({ tours, regions }) {
         </div>
         <div className="col-span-2">
           <HeaderList numberOfPackage={tours?.length} regions={regions} />
-          {/* <ListTourcontainer pageType={"packages"} tours={tours} /> */}
+          <ListTourcontainer pageType={"packages"} tours={tours} />
         </div>
       </div>
       {/* <FaQSection /> */}

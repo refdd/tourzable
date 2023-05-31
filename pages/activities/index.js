@@ -45,10 +45,10 @@ function PopularActivities({ Activities, regions }) {
 
 export default PopularActivities;
 export async function getServerSideProps({ query, locale }) {
-  const nameOfTour = query.search || null;
-  const days = query.days_count || null;
-  const min = query.price_range_from || null;
-  const max = query.price_range_to || null;
+  const nameOfTour = query.search || "";
+  const days = query.days_count || "";
+  const min = query.price_range_from || 0;
+  const max = query.price_range_to || 6666790;
   const Activities = await fetchApi(
     `${baseUrl}/${locale}/packages?type_id=2&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
   );

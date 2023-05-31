@@ -10,7 +10,12 @@ function SignInBY() {
         or sign in with
       </p>
       {/* facebook */}
-      <div className=" group transition-all  flex items-center py-5 border w-full justify-center space-x-3 border-[#3554d1] hover:md:bg-mainColor rounded-2xl ">
+      <div
+        onClick={() => {
+          signIn("facebook");
+        }}
+        className=" group transition-all  flex items-center py-5 border w-full justify-center space-x-3 border-[#3554d1] hover:md:bg-mainColor rounded-2xl "
+      >
         <FaFacebook className="text-xl transition-all text-mainColor group-hover:md:text-white " />
         <button className="text-lg transition-all font-medium text-mainColor font-sans capitalize group-hover:md:text-white">
           {" "}

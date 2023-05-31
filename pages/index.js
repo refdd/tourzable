@@ -19,6 +19,7 @@ import LandMarkSection from "@/components/mainSections/LandMarkSection";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import BottonInquire from "@/components/hleper/BottonInquire";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -32,9 +33,11 @@ export default function Home({
   partners,
   regions,
   snippets,
+  destinations,
+  settings,
 }) {
   const { locales, locale, push } = useRouter();
-
+  // console.log(settings);
   return (
     <>
       <Head>
@@ -43,6 +46,8 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <BottonInquire title={"customize your trip"} goToCustomize />
+
       <MainHeader regions={regions} />
       <WhyChooseUs homepage snippets={snippets} />
       <HeaderSections
@@ -51,14 +56,14 @@ export default function Home({
           "Best Offers Of Package Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Booking And Enjoy."
         }
       />
-      <TourRow tours={tours} />
+      <TourRow tours={tours} destinations={destinations} />
       <HeaderSections
         titel={"Most Popular Activities"}
         desc={
           "Best Offers Of Activity Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Activity And Enjoy."
         }
       />
-      <ActivitiesRow Activities={Activities} />
+      <ActivitiesRow Activities={Activities} destinations={destinations} />
       <HeaderSections
         titel={"landMarks"}
         desc={
@@ -68,7 +73,7 @@ export default function Home({
 
       <LandMarkSection regions={regions} />
       <Reviews reviews={reviews} allPartners={partners} />
-      <OfferSection offers={offers} />
+      <OfferSection offers={offers} settingsOffer={settings} />
       <NextTrip posts={posts} />
       <FaQSection faqs={faqs} />
       <Subscribe />
@@ -96,6 +101,8 @@ export async function getServerSideProps({ locale, query }) {
   const partners = await fetchApi(`${baseUrl}/${locale}/partners`);
   const regions = await fetchApi(`${baseUrl}/${locale}/regions`);
   const snippets = await fetchApi(`${baseUrl}/${locale}/snippets`);
+  const destinations = await fetchApi(`${baseUrl}/${locale}/destinations`);
+  const settings = await fetchApi(`${baseUrl}/${locale}/settings`);
 
   return {
     props: {
@@ -108,6 +115,8 @@ export async function getServerSideProps({ locale, query }) {
       partners: partners.data,
       regions: regions.data,
       snippets: snippets.data,
+      destinations: destinations.data,
+      settings: settings,
     },
   };
 }

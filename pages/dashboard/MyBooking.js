@@ -74,10 +74,7 @@ export default MyBooking;
 export async function getServerSideProps({ locale, query }) {
   const token = query.token || null;
 
-  const customBookings = await fetchApi(
-    `${baseUrl}/${locale}/bookings?type_id=4`,
-    token
-  );
+  const customBookings = await fetchApi(`${baseUrl}/${locale}/bookings`, token);
 
   return {
     props: {

@@ -1,3 +1,4 @@
+import BottonInquire from "@/components/hleper/BottonInquire";
 import DownLoadApp from "@/components/mainSections/DownLoadApp";
 import Footer from "@/components/mainSections/Footer";
 import NormailNavBar from "@/components/mainSections/NormailNavBar";
@@ -53,13 +54,14 @@ function SingleTour({ singletour }) {
     meta_desc,
     meta_title,
   } = singletour;
-  console.log(singletour);
+  // console.log(singletour);
   return (
     <>
       <Head>
         <meta name="description" content={meta_desc} />
         <title>{meta_title} </title>
       </Head>
+      <BottonInquire title={"inquire now"} />
       <div className="">
         {isTop ? <NormailNavBar InSinglePage /> : <TapsTour />}
 

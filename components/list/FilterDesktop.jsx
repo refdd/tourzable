@@ -58,6 +58,8 @@ function FilterDesktop({ regions }) {
       query: {
         search: data.search,
         days_count: data.days,
+        location: location,
+        rating: 4,
         price_range_from: priceRang[0],
         price_range_to: priceRang[1],
       },
@@ -70,6 +72,7 @@ function FilterDesktop({ regions }) {
     //   starNumber,
     // });
   };
+  console.log(location);
   return (
     <div className="container mx-auto px-4 pt-7">
       <FormProvider {...methods}>

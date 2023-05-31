@@ -3,13 +3,36 @@ import bg from "../../public/assets/images/contactUs.webp";
 import CustomTextField from "../hleper/CustomTextField";
 import { useForm, FormProvider } from "react-hook-form";
 import MuiPhoneNumber from "material-ui-phone-number-2";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 function ContactUsForm() {
   const [number, setnumber] = useState("+1");
-
+  const router = useRouter();
   const methods = useForm();
   const handleOnChange = (value) => {
     setnumber(value);
+  };
+  const onSubmit = (data) => {
+    axios
+      .post(
+        "https://new.tourzable.com/api/contact_us",
+        {
+          ...data,
+          phone: number,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // console.log({ ...data, number, aduits, childs, data: dateFormated });
+    router.push("/Thank_you");
   };
   return (
     <div
@@ -19,7 +42,10 @@ function ContactUsForm() {
       <div className="container mx-auto px-4 md:px-8 ">
         <div className="flex items-start  md:justify-end ">
           <FormProvider {...methods}>
-            <form className="px-5 py-7 bg-white rounded-md shadow-lg w-full md:w-[400px] ">
+            <form
+              onSubmit={methods.handleSubmit(onSubmit)}
+              className="px-5 py-7 bg-white rounded-md shadow-lg w-full md:w-[400px] "
+            >
               <p className="text-lg md:text-2xl text-mainColor font-sans font-semibold capitalize">
                 Send a message
               </p>
@@ -28,7 +54,7 @@ function ContactUsForm() {
                 <div className="">
                   <CustomTextField
                     required
-                    name="fullname "
+                    name="name"
                     label="full Name "
                     type={"text"}
                   />

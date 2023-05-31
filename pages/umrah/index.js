@@ -45,10 +45,10 @@ function umrah({ umrahs, regions }) {
 
 export default umrah;
 export async function getServerSideProps({ query }) {
-  const nameOfTour = query.search || null;
-  const days = query.days_count || null;
-  const min = query.price_range_from || null;
-  const max = query.price_range_to || null;
+  const nameOfTour = query.search || "";
+  const days = query.days_count || "";
+  const min = query.price_range_from || 0;
+  const max = query.price_range_to || 6666790;
   const umrahs = await fetchApi(
     `${baseUrl}/packages?type_id=3&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
   );

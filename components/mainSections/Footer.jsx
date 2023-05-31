@@ -147,10 +147,20 @@ function Footer() {
               Your all-in-one travel app
             </p>
             <div className="flex items-center space-x-5 text-white text-lg">
-              <BsFacebook />
-              <BsTwitter />
-              <BsInstagram />
-              <BsLinkedin />
+              <Link href={"https://www.facebook.com/tourzable"}>
+                <BsFacebook />
+              </Link>
+              <Link href={"https://twitter.com/tourzableksa"}>
+                <BsTwitter />
+              </Link>
+              <Link href={"https://www.instagram.com/tourzable/"}>
+                <BsInstagram />
+              </Link>
+              <Link
+                href={"https://www.linkedin.com/in/tourzable-ksa-13b4a7201/"}
+              >
+                <BsLinkedin />
+              </Link>
             </div>
           </div>
           {/*  */}

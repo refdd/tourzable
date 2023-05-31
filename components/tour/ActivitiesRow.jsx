@@ -5,12 +5,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import Link from "next/link";
+import { BsArrowUpRight } from "react-icons/bs";
 const locationTour = [
   { id: 1, title: "Saudi" },
   { id: 2, title: "Dubai" },
   { id: 3, title: "Qatar" },
 ];
-function ActivitiesRow({ Activities }) {
+function ActivitiesRow({ Activities, destinations }) {
   const [activeId, setActiveId] = useState(null);
   const handleClick = (id) => () => {
     const activeElement = locationTour.find((id) => id === id);
@@ -20,7 +22,7 @@ function ActivitiesRow({ Activities }) {
   return (
     <div className="container mx-auto px-4 mb-11 z-40">
       <ul className="flex pa justify-start items-start gap-2 mb-6 flex-wrap md:justify-center">
-        {locationTour?.map(({ id, title }) => (
+        {destinations?.map(({ id, title }) => (
           <li
             onClick={handleClick(id)}
             key={id}
@@ -79,6 +81,14 @@ function ActivitiesRow({ Activities }) {
           </SwiperSlide>
         ))}
       </Swiper>
+      <Link href={"activities"}>
+        <div className="  group flex items-center mx-auto  space-x-2 w-fit rounded transition-all hover:md:bg-MainYeloow bg-mainColor h-16 px-5  mt-10 md:px-10 cursor-pointer  ">
+          <button className=" font-medium font-sans text-[15px] text-white md:font-semibold md:text-lg">
+            See More
+          </button>
+          <BsArrowUpRight className=" text-lg  text-white " />
+        </div>
+      </Link>
     </div>
   );
 }

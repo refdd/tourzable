@@ -2,10 +2,11 @@ import React from "react";
 import bg from "../../public/assets/images/parallax.jpg";
 import TimerDown from "../hleper/TimerDown";
 import OfferSlider from "../parts/OfferSlider";
-const endDate = new Date();
-endDate.setDate(endDate.getDate() + 10);
-endDate.setHours(23, 9, 59, 0);
-function OfferSection({ offers }) {
+
+function OfferSection({ offers, settingsOffer }) {
+  const endDate = new Date();
+  endDate.setDate(endDate.getDate() + parseInt(settingsOffer?.discount_days));
+  endDate.setHours(23, 9, 59, 0);
   return (
     <div className="container mx-auto px-4 mt-10">
       <div className="grid grid-cols-1 md:grid-cols-3">
@@ -17,16 +18,16 @@ function OfferSection({ offers }) {
             {/*  */}
             <div className="flex flex-col space-y-2 z-40">
               <p className=" relative text-center text-7xl text-white font-sans capitalize">
-                discover
+                {settingsOffer?.discount_title}
               </p>
               <p className="text-center text-white text-2xl font-semibold capitalize">
-                New Experiences in Dubai
+                {settingsOffer?.discount_desc}
               </p>
             </div>
             {/*  */}
             <div className="flex space-x-1 z-40 justify-center items-center">
               <span className="text-8xl font-semibold font-sans text-MainYeloow">
-                50
+                {settingsOffer?.discount_number}
               </span>
               <div className="flex flex-col justify-center ">
                 <span className=" leading-[40px] text-MainYeloow text-[55px] font-semibold ">

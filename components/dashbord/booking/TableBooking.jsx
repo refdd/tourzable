@@ -48,7 +48,7 @@ function createData(type, name, date, time, total, paid) {
   const density = "";
   return { type, name, date, time, total, density, paid };
 }
-
+// console.log(total);
 export default function TableBooking({ dataTable }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -62,7 +62,7 @@ export default function TableBooking({ dataTable }) {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
+  // console.log(dataTable);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
