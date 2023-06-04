@@ -24,12 +24,13 @@ function CardTour({
   slug,
   tourType,
   tourId,
+  is_requested,
 }) {
   const [favoriteIcon, setFavoriteIcon] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
   const { currency } = router.query;
-  // console.log(currency);
+  console.log(is_requested);
   const addToFavorite = async () => {
     await axios
       .post(
@@ -122,6 +123,11 @@ function CardTour({
           </p>
           <p className="hover-underline-animation text-lg text-[#051036] font-medium font-serif capitalize ">
             {title}
+          </p>
+          <p className=" bg-mainColor rounded-lg w-fit px-2 mt-3">
+            <span className="text-[12px] text-white font-medium font-serif capitalize">
+              {is_requested ? "payment" : ""}
+            </span>
           </p>
         </div>
       </Link>

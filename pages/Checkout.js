@@ -19,6 +19,7 @@ function Checkout() {
   const [infant, setinfant] = useState(0);
   const [prices, setPrices] = useState();
   const [cobone, setCodone] = useState();
+  const [discount, setDiscount] = useState(0);
   const handleChangeCodone = (event) => {
     setCodone(event.target.value);
   };
@@ -59,11 +60,18 @@ function Checkout() {
 
     bookingPrices();
   }, [infant, childs, aduits]);
-  // console.log(prices);
   const addCobone = async (data) => {
-    // const response = await axios.post()
     console.log(data);
+    await axios
+      .get(`https://new.tourzable.com/api/coupons/${data}`)
+      .then((response) => {
+        // console.log(response.data.data);
+        setDiscount(response.data.data.discount);
+      })
+      .catch((error) => setDiscount(0));
   };
+  // console.log(discount);
+
   return (
     <div>
       <NormailNavBar />
@@ -83,6 +91,7 @@ function Checkout() {
           cobone={cobone}
           handleChangeCobone={handleChangeCodone}
           addCobone={addCobone}
+          discount={discount}
         />
         <OrderForm
           aduits={aduits}

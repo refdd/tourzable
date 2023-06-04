@@ -12,12 +12,12 @@ function OrderTour({
   cobone,
   handleChangeCobone,
   addCobone,
+  discount,
 }) {
+  const discountAmount = (prices?.total * discount) / 100;
   const router = useRouter();
   const { startDay, endDay, image, title, tourCode, best_price, min, max } =
     router.query;
-  // console.log(title);
-  // console.log(prices.adult_price, aduits);
   return (
     <div className="container mx-auto px-4 py-3">
       <div className=" flex flex-col space-y-6 divide-y-2 border p-3 rounded shadow-lg shadow-shadowColorMain">
@@ -154,7 +154,7 @@ function OrderTour({
                 Total Final Price
               </p>
               <p className="text-center text-xl font-medium text-[#28a745]">
-                {prices?.total} USD
+                {discount ? Math.floor(discountAmount) : prices?.total} USD
               </p>
             </div>
             {/* cobone */}
@@ -169,7 +169,9 @@ function OrderTour({
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
-                        onClick={addCobone}
+                        onClick={() => {
+                          addCobone(cobone);
+                        }}
                         color="primary"
                         aria-label="add"
                       >
