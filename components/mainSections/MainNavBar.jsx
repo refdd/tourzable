@@ -154,6 +154,15 @@ function MainNavBar() {
                 <DestinationsBox />
               </li>
               <li
+                className={`  group/des  text-sm   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
+                  !isTop ? "text-[#051036]" : "text-[#fff]"
+                } `}
+              >
+                <Link href={"tour_guides"}>tour guides</Link>
+
+                <DestinationsBox />
+              </li>
+              <li
                 className={` text-sm   font-semibold font-sans py-4  hover:bg-[#3554d10d] px-2  ${
                   !isTop ? "text-[#051036]" : "text-[#fff]"
                 } `}

@@ -265,7 +265,7 @@ function FormCustomizeTour({ blog, cities }) {
                     <MenuItem disabled value="">
                       <em>tour landmark</em>
                     </MenuItem>
-                    {cities.map((item) => (
+                    {cities?.map((item) => (
                       <MenuItem key={item.id} value={item.id}>
                         {item.title}
                       </MenuItem>
@@ -300,7 +300,7 @@ function FormCustomizeTour({ blog, cities }) {
                     }}
                     MenuProps={MenuProps}
                   >
-                    {cities.map((des) => (
+                    {cities?.map((des) => (
                       <MenuItem key={des.id} value={des.id}>
                         <Checkbox checked={Destination.indexOf(des.id) > -1} />
                         <ListItemText primary={des.title} />
