@@ -15,7 +15,7 @@ import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import ListTourGuides from "@/components/tourGuides/ListTourGuides";
 
 function TourGuides({ allTourGuides, regions }) {
-  console.log(allTourGuides);
+  // console.log(allTourGuides);
   return (
     <>
       <Head>

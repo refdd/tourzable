@@ -239,7 +239,7 @@ function FromTourGuides({ cities }) {
                 />
               </div>
               {/* Cities  */}
-              <div className="">
+              {/* <div className="">
                 <FormControl variant="standard" fullWidth sx={{}}>
                   <InputLabel id="demo-multiple-checkbox-label">
                     Cities
@@ -273,7 +273,8 @@ function FromTourGuides({ cities }) {
                     ))}
                   </Select>
                 </FormControl>
-              </div>
+              </div> */}
+              <div className=""></div>
               {/*  */}
               <p className="text-lg text-mainColor font-sans capitalize font-bold md:col-span-2">
                 Contact Person

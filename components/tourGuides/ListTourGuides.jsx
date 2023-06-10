@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import CardTourGuide from "../cards/CardTourGuide";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 function ListTourGuides({ allTourGuides }) {
   const [selectedIndices, setSelectedIndices] = useState([]);
-
+  const { data: session } = useSession();
+  const router = useRouter();
+  console.log(session);
   const handleSelect = (index, isSelected) => {
     if (isSelected) {
       setSelectedIndices([...selectedIndices, index]);
@@ -11,7 +16,25 @@ function ListTourGuides({ allTourGuides }) {
       setSelectedIndices(selectedIndices.filter((i) => i !== index));
     }
   };
-  //   console.log(selectedIndices);
+
+  const handelGuideREquest = async () => {
+    if (!session) {
+      router.push("/Login");
+    } else {
+      await axios
+        .get("https://new.tourzable.com/api/operator_profile", {
+          headers: {
+            Authorization: "Bearer " + session.user.accessToken,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          logger.error(error);
+        });
+    }
+  };
   return (
     <div className="container mx-auto px-4  ">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3 ">
@@ -28,7 +51,10 @@ function ListTourGuides({ allTourGuides }) {
         ))}
       </div>
       <div className=" mt-8 ">
-        <button className="flex justify-center items-center py-4 bg-mainColor rounded-md cursor-pointer w-full">
+        <button
+          onClick={handelGuideREquest}
+          className="flex justify-center items-center py-4 bg-mainColor rounded-md cursor-pointer w-full"
+        >
           <span className="text-[16px] font-medium text-white font-sans capitalize text-center">
             tour guide request
           </span>
