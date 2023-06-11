@@ -18,6 +18,8 @@ import { useForm, FormProvider, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CustomTextField from "./CustomTextField";
+import axios from "axios";
+import MuiPhoneNumber from "material-ui-phone-number-2";
 const languages = [
   { id: 1, title: "Arabic" },
   { id: 2, title: "English" },
@@ -36,7 +38,7 @@ const schema = yup.object().shape({
     .string()
     .min(8, "Password must be at least 8 characters")
     .required("new password is required"),
-  confirm_password: yup
+  password_confirmation: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match")
     .required("Confirm password is required"),
@@ -62,10 +64,31 @@ function FromTourGuides({ cities }) {
   const [lisense, setLisense] = useState();
   const [qualification, setQualification] = React.useState("");
   const [isAgree, setIsAgree] = useState(false);
+  const [number, setnumber] = useState("+1");
   const onSubmit = (data) => {
-    console.log({
-      ...data,
-    });
+    axios
+      .post(
+        "https://new.tourzable.com/api/tour_guide_register",
+        {
+          ...data,
+          phone: number,
+          logo: profilePicture,
+          tour_guide_license: lisense,
+          languages: ["ar", "en"],
+          qualification: "Tour_trainer",
+          bio: "test",
+          cities: [1, 10, 20],
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // router.push("/Thank_you");
   };
   const handlepPicture = (event) => {
@@ -97,6 +120,10 @@ function FromTourGuides({ cities }) {
   const handleIsAgree = (event) => {
     setIsAgree(event.target.isAgree);
   };
+  const handlePhoneNumber = (value) => {
+    setnumber(value);
+  };
+  console.log(profilePicture);
   return (
     <div
       style={{ backgroundImage: `url(${bg.src})` }}
@@ -197,7 +224,7 @@ function FromTourGuides({ cities }) {
               <div className="">
                 <CustomTextField
                   required
-                  name="Other_Languages"
+                  name="another_languages"
                   label="Other Languages"
                   type={"text"}
                 />
@@ -224,7 +251,7 @@ function FromTourGuides({ cities }) {
               <div className="">
                 <CustomTextField
                   required
-                  name="approved_path"
+                  name="qualification_path"
                   label="Approved Path"
                   type={"text"}
                 />
@@ -301,9 +328,24 @@ function FromTourGuides({ cities }) {
               <div className="">
                 <CustomTextField
                   required
-                  name="Email"
+                  name="email"
                   label="username@email.com"
                   type={"text"}
+                />
+              </div>
+              {/* phone number */}
+              <div className=" md:mt-2 ">
+                <MuiPhoneNumber
+                  sx={{ "& svg": { height: "0.7em" } }}
+                  // slot={{}}
+                  label="Persons Number"
+                  value={number}
+                  autoFormat={true}
+                  fullWidth
+                  required
+                  variant="standard"
+                  defaultCountry="us"
+                  onChange={handlePhoneNumber}
                 />
               </div>
               {/* password */}
@@ -346,7 +388,7 @@ function FromTourGuides({ cities }) {
               {/* confirm password */}
               <div className="">
                 <Controller
-                  name="confirm_password"
+                  name="password_confirmation"
                   control={control}
                   defaultValue=""
                   render={({

@@ -8,7 +8,7 @@ function ListTourGuides({ allTourGuides }) {
   const [selectedIndices, setSelectedIndices] = useState([]);
   const { data: session } = useSession();
   const router = useRouter();
-  console.log(session);
+  // console.log(session);
   const handleSelect = (index, isSelected) => {
     if (isSelected) {
       setSelectedIndices([...selectedIndices, index]);
@@ -29,9 +29,10 @@ function ListTourGuides({ allTourGuides }) {
         })
         .then((response) => {
           console.log(response);
+          router.push("/tour_order");
         })
         .catch((error) => {
-          logger.error(error);
+          console.log(error);
         });
     }
   };
