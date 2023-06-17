@@ -16,7 +16,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
-function calenderGuide({ profileData }) {
+function CalenderGuide({ profileData }) {
   const { sideBar } = useStateContext();
   const { data: session } = useSession();
   const router = useRouter();
@@ -36,7 +36,7 @@ function calenderGuide({ profileData }) {
     return;
   }
   const { tour_orders } = profileData;
-  console.log(tour_orders);
+  //   console.log(tour_orders);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -69,7 +69,7 @@ function calenderGuide({ profileData }) {
             umrah={umrah}
             landmarks={landmarks}
           /> */}
-          <CalenderTourGuide />
+          <CalenderTourGuide tourOrders={tour_orders} />
         </div>
       </div>
       <Subscribe />
@@ -80,7 +80,7 @@ function calenderGuide({ profileData }) {
   );
 }
 
-export default calenderGuide;
+export default CalenderGuide;
 export async function getServerSideProps({ query, locale }) {
   // const token = query.token || "";
   const token =
