@@ -20,6 +20,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import CustomTextField from "./CustomTextField";
 import axios from "axios";
 import MuiPhoneNumber from "material-ui-phone-number-2";
+import { useRouter } from "next/router";
 const languages = [
   { id: 1, title: "Arabic" },
   { id: 2, title: "English" },
@@ -57,6 +58,7 @@ function FromTourGuides({ cities }) {
   const resolver = yupResolver(schema);
   const methods = useForm({ resolver });
   const { handleSubmit, control } = methods;
+  const router = useRouter();
   const [profilePicture, setProfilePicture] = useState();
   const [language, setLanguage] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
@@ -65,35 +67,61 @@ function FromTourGuides({ cities }) {
   const [qualification, setQualification] = React.useState("");
   const [isAgree, setIsAgree] = useState(false);
   const [number, setnumber] = useState("+1");
-  const onSubmit = (data) => {
-    axios
-      .post(
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append("first_name", data.first_name);
+    formData.append("email", data.email);
+    formData.append("last_name", data.last_name);
+    formData.append("phone", number);
+    formData.append("password", data.password);
+    formData.append("password_confirmation", data.password_confirmation);
+    formData.append("qualification_path", data.qualification_path);
+    formData.append("another_languages", data.another_languages);
+    formData.append("logo", profilePicture);
+    formData.append("tour_guide_license", profilePicture);
+    formData.append("bio", "Tour_trainer");
+    formData.append("qualification", "test");
+    formData.append("languages", JSON.stringify(["ar", "en"]));
+    formData.append("cities", JSON.stringify([1, 10, 20]));
+    try {
+      const response = await axios.post(
         "https://new.tourzable.com/api/tour_guide_register",
+        formData,
         {
-          ...data,
-          phone: number,
-          logo: profilePicture,
-          tour_guide_license: lisense,
-          languages: ["ar", "en"],
-          qualification: "Tour_trainer",
-          bio: "test",
-          cities: [1, 10, 20],
-        },
-        {
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
+      );
+
+      console.log(response);
+      router.push({
+        pathname: "/Login",
+        query: {
+          email: data.email,
+        },
       });
-    // router.push("/Thank_you");
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log(data);
   };
   const handlepPicture = (event) => {
-    // Handle file upload logic here
-    setProfilePicture(event.target.value);
+    // way one
+    // const file = event.target.files[0];
+    // if (file && file.type.startsWith("image/")) {
+    //   const reader = new FileReader();
+    //   reader.onload = (e) => {
+    //     setProfilePicture(e.target.result);
+    //   };
+    //   reader.readAsDataURL(file);
+    // } else {
+    //   setProfilePicture(
+    //     "https://www.svgrepo.com/show/382693/user-account-person-avatar.svg"
+    //   );
+    // }
+    setProfilePicture(event.target.files[0]);
+    // setProfilePicture(event.target.value);
   };
   const handleplisense = (event) => {
     // Handle file upload logic here
@@ -156,15 +184,14 @@ function FromTourGuides({ cities }) {
                   Upload Profile Picture
                 </p>
                 <TextField
-                  value={profilePicture}
                   id="outlined-basic"
-                  variant="standard"
-                  fullWidth
+                  label="Outlined"
+                  variant="outlined"
                   type="file"
-                  onChange={handlepPicture}
                   inputProps={{
                     multiple: true,
                   }}
+                  onChange={handlepPicture}
                 />
               </div>
               {/*Upload Tour Guide License */}

@@ -12,6 +12,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { prefixer } from "stylis";
 import React from "react";
 import * as locales from "@mui/material/locale";
+
 const cacheLtr = createCache({
   key: "muiltr",
 });

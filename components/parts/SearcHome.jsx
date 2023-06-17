@@ -92,7 +92,7 @@ function SearcHome({ regions }) {
               <MenuItem disabled value="">
                 <em>tour landmark</em>
               </MenuItem>
-              {regions.map((item) => (
+              {regions?.map((item) => (
                 <MenuItem key={item.id} value={item.id}>
                   {item.title}
                 </MenuItem>
