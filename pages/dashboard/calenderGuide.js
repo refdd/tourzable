@@ -36,7 +36,7 @@ function CalenderGuide({ profileData }) {
     return;
   }
   const { tour_orders } = profileData;
-  //   console.log(tour_orders);
+  console.log(tour_orders);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />

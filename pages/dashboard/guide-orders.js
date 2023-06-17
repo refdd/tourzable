@@ -34,8 +34,8 @@ function GuideOrders({ profileData }) {
   if (!query.token) {
     return;
   }
-  const { tour_orders } = profileData;
-  console.log(tour_orders);
+  const { tour_orders_requests } = profileData;
+  // console.log(tour_orders_requests[0]);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -68,7 +68,7 @@ function GuideOrders({ profileData }) {
             umrah={umrah}
             landmarks={landmarks}
           /> */}
-          <GuideOrdersSection tourOrders={tour_orders} />
+          <GuideOrdersSection tourOrdersRequests={tour_orders_requests} />
         </div>
       </div>
       <Subscribe />

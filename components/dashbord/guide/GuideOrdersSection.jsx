@@ -11,7 +11,7 @@ import AcceptForm from "./AcceptForm";
 import RejectForm from "./RejectForm";
 import SendInquiryForm from "./SendInquiryForm";
 
-function GuideOrdersSection({ tourOrders }) {
+function GuideOrdersSection({ tourOrdersRequests }) {
   const [activeIndex, setActiveIndex] = useState(null);
   const [accept, setAccept] = React.useState(false);
   const [reject, setReject] = React.useState(false);
@@ -40,14 +40,14 @@ function GuideOrdersSection({ tourOrders }) {
           orders Tour guide
         </p>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          {tourOrders?.map((order) => (
+          {tourOrdersRequests?.map((order) => (
             <div key={order?.id} className="bg-slate-200 rounded-lg p-3 h-fit">
               <ul className="flex flex-col space-y-3">
                 <li className="">
                   <p className="text-[16px] font-sans  capitalize text-gray-600  file:">
                     name :
                     <span className="font-bold text-gray-800">
-                      {order?.title}
+                      {order?.tour_order?.title}
                     </span>
                   </p>
                 </li>
@@ -55,7 +55,7 @@ function GuideOrdersSection({ tourOrders }) {
                   <p className="text-[16px] font-sans  capitalize text-gray-600  file:">
                     start date :
                     <span className="font-bold text-gray-800">
-                      {order?.start_date}
+                      {order?.tour_order?.start_date}
                     </span>
                   </p>
                 </li>
@@ -63,7 +63,7 @@ function GuideOrdersSection({ tourOrders }) {
                   <p className="text-[16px] font-sans  capitalize text-gray-600  file:">
                     end date :
                     <span className="font-bold text-gray-800">
-                      {order?.end_date}
+                      {order?.tour_order?.end_date}
                     </span>
                   </p>
                 </li>
@@ -71,7 +71,7 @@ function GuideOrdersSection({ tourOrders }) {
                   <p className="text-[16px] font-sans  capitalize text-gray-600  file:">
                     transportation type :
                     <span className="font-bold text-gray-800">
-                      {order?.transportation_type}
+                      {order?.tour_order?.transportation_type}
                     </span>
                   </p>
                 </li>
@@ -79,7 +79,7 @@ function GuideOrdersSection({ tourOrders }) {
                   <p className="text-[16px] font-sans  capitalize text-gray-600  file:">
                     group nationality :
                     <span className="font-bold text-gray-800">
-                      {order?.group_nationality}
+                      {order?.tour_order?.group_nationality}
                     </span>
                   </p>
                 </li>
