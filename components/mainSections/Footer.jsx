@@ -240,7 +240,7 @@ function Footer() {
             </p>
             <ul className="flex flex-col space-y-7 pt-2 text-white text-[16px] font-sans capitalize">
               <li className=" hover:text-[#3554d1] transition-all">
-                <Link href={"tour_guides_register"}>
+                <Link href={"/tour_guides_register"}>
                   <span>Tour Guide Registration</span>
                 </Link>
               </li>

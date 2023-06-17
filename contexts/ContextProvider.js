@@ -27,6 +27,8 @@ export const ContextProvider = ({ children }) => {
   const [direction, setDirection] = useState(1);
   const [destination, setDestination] = useState(1);
   const [pricesPayment, setPricesPayment] = useState();
+  const [selectTourGuide, setSelectTourGuide] = useState([]);
+
   const [dateRange, setDateRange] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -70,6 +72,8 @@ export const ContextProvider = ({ children }) => {
         setDirection,
         pricesPayment,
         setPricesPayment,
+        selectTourGuide,
+        setSelectTourGuide,
       }}
     >
       {children}

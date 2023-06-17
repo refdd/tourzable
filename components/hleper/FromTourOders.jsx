@@ -27,6 +27,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import MuiPhoneNumber from "material-ui-phone-number-2";
+import { useStateContext } from "@/contexts/ContextProvider";
 const languages = [
   { id: 1, title: "Arabic" },
   { id: 2, title: "English" },
@@ -52,6 +53,7 @@ const MenuProps = {
   },
 };
 function FromTourOders({ cities }) {
+  const { selectTourGuide, setSelectTourGuide } = useStateContext();
   const methods = useForm();
   const [StartDate, setStartDate] = useState(null);
   const [EndDate, setEndDate] = useState(null);
@@ -81,7 +83,9 @@ function FromTourOders({ cities }) {
         await axios
           .get("https://new.tourzable.com/api/operator_profile", {
             headers: {
-              Authorization: "Bearer " + session.user.accessToken,
+              // Authorization: "Bearer " + session.user.accessToken,
+              Authorization:
+                "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5OGViOTc5Ny0xZTFiLTRmZDctYWM5Mi03Yjg1ZWNiOGVmZmIiLCJqdGkiOiI0ZWNjYTc1NmMzY2YzYWM1ZWY5NWJiZjQxYjVjMTcxYmExNTVlNGI0OGUzZjUyMDBiYjQ3MDM1NDQ2OTBiMzFhZmM2YmM5NjRjNDQ3ZDRkMiIsImlhdCI6MTY4NDg0MjQzOS4xMDA2NzI5NjAyODEzNzIwNzAzMTI1LCJuYmYiOjE2ODQ4NDI0MzkuMTAwNjc1MTA2MDQ4NTgzOTg0Mzc1LCJleHAiOjE3MDA3NDAwMzkuMDk3NDY5MDkxNDE1NDA1MjczNDM3NSwic3ViIjoiMTAiLCJzY29wZXMiOltdfQ.S90q1NdZTtp7jvtWsFjMrNa1hawJh9eLIHSPdMT4V6oK2_98DA-UknQoXQEe8v-tIFiNPrD7i4Ez6NNRzMhXN67OIMG8X2d9XcztWQNlANSUDe1MNx9Uu7Y3JkRH1zzG7iKEMQBOWi3MLy-EGNXg4I_zfCehyceSzZcX4j4tAqHZAXbJADeIJEl-u6Pe8gKg3Nn5udjSA-ZIpBqn5pjbSmlvmjXc9UcXjSyi2ZaIbcEA9yndgKy_F7zpOeV7j3CLZLGBmin0bLzVCoSz3LXJzTzbhvzgaKA1ACqW1SBdBxXQg8R3qjZyJAE3GJfpaBdkQrVfvxwischjpCFJlrQ3Bnhj0Nl_itLlvEmN0ZRHYnJkkEiil7gAl4u53xyIRWFQtync0meDkMkom7hOJpZu7oPfmyUkAalAQG_MNrJbp8eX3_75gz5lh0-uub98W4eOdyPuiaFTUBziMB7ZnsBv2ah6IurEyDuRaGsCQTOo2Jk_MS4XQz3cOweN78dRvL2tAGrsoX1zb2Rjl6WDVEwNhDhHKCfEM5bkaVgbGbQHwcXI8PsiExnOOBgmi58xXV-0i9Pymu5a78EoXYRXIU-1FB9EjvSf_DTrGj1tIEqGkbHYmMm4C75KEN17M068yT2O-korlZc0-hj38lAXB0Pu_nj5O_xBCHwOl_28jx2-s78",
             },
           })
           .then((response) => {
@@ -96,41 +100,6 @@ function FromTourOders({ cities }) {
     };
     getpackegesOperator();
   }, []);
-  const onSubmit = (data) => {
-    axios
-      .post(
-        "https://new.tourzable.com/api/tour_orders",
-        {
-          ...data,
-          operator_id: operatorId,
-          tour_guide_id: 1,
-          city_id: guideCities,
-          start_date: startDayFormate,
-          end_date: endDayFormate,
-          start_time: startTimeFormate,
-          end_time: endTimeFormate,
-          transportation_type: transportation,
-          group_nationality: nationality,
-          trip_type: tripType,
-          persons_no: 20,
-          package_id: packagesOpertaorId,
-          program_file: uploadItinerary,
-        },
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    console.log({
-      ...data,
-    });
-    // router.push("/Thank_you");
-  };
 
   const handlesetStartDateChange = (date) => {
     setStartDate(date);
@@ -138,15 +107,43 @@ function FromTourOders({ cities }) {
   const handlesetEndDateChange = (date) => {
     setEndDate(date);
   };
-  const handleUploadItinerary = (event) => {
-    // Handle file upload logic here
-    setUploadItinerary(event.target.value);
+  const handlepPicture = (event) => {
+    setUploadItinerary(event.target.files[0]);
   };
   const handlePhoneNumber = (value) => {
     setnumber(value);
   };
   const handleIsAgree = (event) => {
-    setIsAgree(event.target.isAgree);
+    setIsAgree(!isAgree);
+  };
+  const onSubmit = (data) => {
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("operator_id", operatorId);
+    formData.append("program_file", uploadItinerary);
+    formData.append("package_id", 5);
+    formData.append("persons_no", 20);
+    formData.append("trip_type", tripType);
+    formData.append("group_nationality", nationality);
+    formData.append("transportation_type", transportation);
+    formData.append("end_time", endTimeFormate);
+    formData.append("start_time", startTimeFormate);
+    formData.append("end_date", endDayFormate);
+    formData.append("start_date", startDayFormate);
+    formData.append("city_id", guideCities);
+    formData.append("tour_guide_id", JSON.stringify(selectTourGuide));
+    axios
+      .post("https://new.tourzable.com/api/tour_orders", formData, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // router.push("/Thank_you");
   };
   return (
     <div
@@ -303,18 +300,18 @@ function FromTourOders({ cities }) {
               {/* Or Upload Itinerary File */}
               <div className="">
                 <p className="text-sm font-sans capitalize text-gray-700">
-                  Upload Tour Guide License
+                  Upload tour information
                 </p>
                 <TextField
-                  value={uploadItinerary}
                   id="outlined-basic"
+                  label="Outlined"
                   variant="standard"
-                  fullWidth
                   type="file"
-                  onChange={handleUploadItinerary}
+                  fullWidth
                   inputProps={{
                     multiple: true,
                   }}
+                  onChange={handlepPicture}
                 />
               </div>
               {/* Persons Number*/}

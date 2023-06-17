@@ -22,17 +22,16 @@ import axios from "axios";
 import MuiPhoneNumber from "material-ui-phone-number-2";
 import { useRouter } from "next/router";
 const languages = [
-  { id: 1, title: "Arabic" },
-  { id: 2, title: "English" },
-  { id: 3, title: "Chinese" },
-  { id: 4, title: "French" },
-  { id: 5, title: "German" },
-  { id: 6, title: "Spanish" },
-  { id: 7, title: "Portuguese" },
-  { id: 8, title: "Hindi" },
-  { id: 9, title: "Japanese" },
-  { id: 10, title: "Russian" },
-  { id: 10, title: "Japanese" },
+  { id: 1, title: "Arabic", value: "ar" },
+  { id: 2, title: "English", value: "en" },
+  { id: 3, title: "Chinese", value: "zh" },
+  { id: 4, title: "French", value: "fr" },
+  { id: 5, title: "German", value: "de" },
+  { id: 6, title: "Spanish", value: "es" },
+  { id: 7, title: "Portuguese", value: "pt" },
+  { id: 8, title: "Hindi", value: "hi" },
+  { id: 9, title: "Japanese", value: "ja" },
+  { id: 10, title: "Russian", value: "ru" },
 ];
 const schema = yup.object().shape({
   password: yup
@@ -59,6 +58,7 @@ function FromTourGuides({ cities }) {
   const methods = useForm({ resolver });
   const { handleSubmit, control } = methods;
   const router = useRouter();
+  const [error, setError] = useState();
   const [profilePicture, setProfilePicture] = useState();
   const [language, setLanguage] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
@@ -67,6 +67,7 @@ function FromTourGuides({ cities }) {
   const [qualification, setQualification] = React.useState("");
   const [isAgree, setIsAgree] = useState(false);
   const [number, setnumber] = useState("+1");
+  // console.log(language);
   const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append("first_name", data.first_name);
@@ -78,11 +79,11 @@ function FromTourGuides({ cities }) {
     formData.append("qualification_path", data.qualification_path);
     formData.append("another_languages", data.another_languages);
     formData.append("logo", profilePicture);
-    formData.append("tour_guide_license", profilePicture);
+    formData.append("tour_guide_license", lisense);
     formData.append("bio", "Tour_trainer");
-    formData.append("qualification", "test");
-    formData.append("languages", JSON.stringify(["ar", "en"]));
-    formData.append("cities", JSON.stringify([1, 10, 20]));
+    formData.append("qualification", qualification);
+    formData.append("languages", JSON.stringify(language));
+    formData.append("cities", JSON.stringify(guideCities));
     try {
       const response = await axios.post(
         "https://new.tourzable.com/api/tour_guide_register",
@@ -103,29 +104,15 @@ function FromTourGuides({ cities }) {
       });
     } catch (error) {
       console.log(error);
+      setError(error.response.data.message);
     }
     // console.log(data);
   };
   const handlepPicture = (event) => {
-    // way one
-    // const file = event.target.files[0];
-    // if (file && file.type.startsWith("image/")) {
-    //   const reader = new FileReader();
-    //   reader.onload = (e) => {
-    //     setProfilePicture(e.target.result);
-    //   };
-    //   reader.readAsDataURL(file);
-    // } else {
-    //   setProfilePicture(
-    //     "https://www.svgrepo.com/show/382693/user-account-person-avatar.svg"
-    //   );
-    // }
     setProfilePicture(event.target.files[0]);
-    // setProfilePicture(event.target.value);
   };
   const handleplisense = (event) => {
-    // Handle file upload logic here
-    setLisense(event.target.value);
+    setLisense(event.target.files[0]);
   };
   const handleDestination = (event) => {
     const {
@@ -146,12 +133,12 @@ function FromTourGuides({ cities }) {
     setShowPassword((prev) => !prev);
   };
   const handleIsAgree = (event) => {
-    setIsAgree(event.target.isAgree);
+    setIsAgree(!isAgree);
   };
   const handlePhoneNumber = (value) => {
     setnumber(value);
   };
-  console.log(profilePicture);
+  // console.log(profilePicture);
   return (
     <div
       style={{ backgroundImage: `url(${bg.src})` }}
@@ -186,8 +173,9 @@ function FromTourGuides({ cities }) {
                 <TextField
                   id="outlined-basic"
                   label="Outlined"
-                  variant="outlined"
+                  variant="standard"
                   type="file"
+                  fullWidth
                   inputProps={{
                     multiple: true,
                   }}
@@ -200,7 +188,6 @@ function FromTourGuides({ cities }) {
                   Upload Tour Guide License
                 </p>
                 <TextField
-                  value={lisense}
                   id="outlined-basic"
                   variant="standard"
                   fullWidth
@@ -228,7 +215,7 @@ function FromTourGuides({ cities }) {
 
                       for (let i = 0; i < selected.length; i++) {
                         for (let j = 0; j < languages.length; j++) {
-                          if (selected[i] === languages[j].id) {
+                          if (selected[i] === languages[j].value) {
                             result.push(languages[i].title);
                           }
                         }
@@ -239,8 +226,8 @@ function FromTourGuides({ cities }) {
                     MenuProps={MenuProps}
                   >
                     {languages.map((des) => (
-                      <MenuItem key={des.id} value={des.id}>
-                        <Checkbox checked={language.indexOf(des.id) > -1} />
+                      <MenuItem key={des.id} value={des.value}>
+                        <Checkbox checked={language.indexOf(des.value) > -1} />
                         <ListItemText primary={des.title} />
                       </MenuItem>
                     ))}
@@ -270,7 +257,7 @@ function FromTourGuides({ cities }) {
                     onChange={handleQualification}
                   >
                     <MenuItem value={"Tour"}>Tour</MenuItem>
-                    <MenuItem value={"Tour Traniner"}>Tour Traniner</MenuItem>
+                    <MenuItem value={"Tour_trainer"}>Tour Traniner</MenuItem>
                   </Select>
                 </FormControl>
               </div>
@@ -293,7 +280,7 @@ function FromTourGuides({ cities }) {
                 />
               </div>
               {/* Cities  */}
-              {/* <div className="">
+              <div className="">
                 <FormControl variant="standard" fullWidth sx={{}}>
                   <InputLabel id="demo-multiple-checkbox-label">
                     Cities
@@ -327,7 +314,7 @@ function FromTourGuides({ cities }) {
                     ))}
                   </Select>
                 </FormControl>
-              </div> */}
+              </div>
               <div className=""></div>
               {/*  */}
               <p className="text-lg text-mainColor font-sans capitalize font-bold md:col-span-2">
@@ -354,6 +341,8 @@ function FromTourGuides({ cities }) {
               {/* Email Address  */}
               <div className="">
                 <CustomTextField
+                  erroStatus={error?.email ? true : false}
+                  textErroe={error?.email ? error?.email[0] : ""}
                   required
                   name="email"
                   label="username@email.com"
@@ -373,6 +362,8 @@ function FromTourGuides({ cities }) {
                   variant="standard"
                   defaultCountry="us"
                   onChange={handlePhoneNumber}
+                  error={error?.phone ? true : false}
+                  helperText={error?.phone ? error?.phone[0] : ""}
                 />
               </div>
               {/* password */}

@@ -7,12 +7,39 @@ import {
 } from "@mui/material";
 // import { Input } from "postcss";
 import Input from "@mui/material/Input";
-import React from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-function AcceptForm() {
+function AcceptForm({ idOrder, handleCloseAccept }) {
+  const [cost, setConst] = useState();
+  const router = useRouter();
+  const { token } = router.query;
   const methods = useForm();
+  // console.log(token);
   const onSubmit = (data) => {
-    console.log(data);
+    axios
+      .post(
+        `https://new.tourzable.com/api/accept_tour_order/${idOrder}`,
+        {
+          ...data,
+          cost,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        handleCloseAccept();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(data, cost);
   };
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-4 px-8 bg-white w-[400px] md:w-[600px] rounded-md shadow-sm shadow-white">
@@ -29,6 +56,10 @@ function AcceptForm() {
                   Cost
                 </InputLabel>
                 <Input
+                  value={cost}
+                  onChange={(event) => {
+                    setConst(event.target.value);
+                  }}
                   id="standard-adornment-amount"
                   startAdornment={
                     <InputAdornment position="start">$</InputAdornment>

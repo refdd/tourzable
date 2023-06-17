@@ -107,14 +107,6 @@ function GuideOrdersSection({ tourOrdersRequests }) {
                       accept
                     </button>
                     <AiFillCheckCircle className="text-white text-[20px]" />
-                    <Modal
-                      open={accept}
-                      onClose={handleCloseAccept}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <AcceptForm />
-                    </Modal>
                   </div>
                   <div className="bg-MainYeloow py-3 px-7 rounded-lg  cursor-pointer flex items-center space-x-3">
                     <button
@@ -124,14 +116,6 @@ function GuideOrdersSection({ tourOrdersRequests }) {
                       reject
                     </button>
                     <AiFillCloseCircle className="text-gray-900 text-[20px]" />
-                    <Modal
-                      open={reject}
-                      onClose={handleCloseReject}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <RejectForm />
-                    </Modal>
                   </div>
                   <div className=" border border-mainColor py-3 px-7 rounded-lg  cursor-pointer flex items-center space-x-3">
                     <button
@@ -141,17 +125,27 @@ function GuideOrdersSection({ tourOrdersRequests }) {
                       send inquiry
                     </button>
                     <AiFillQuestionCircle className="text-gray-700 text-[20px]" />
-                    <Modal
-                      open={inquery}
-                      onClose={handleCloseInquery}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <SendInquiryForm />
-                    </Modal>
                   </div>
                 </div>
               )}
+              <Modal open={accept} onClose={handleCloseAccept}>
+                <AcceptForm
+                  handleCloseAccept={handleCloseAccept}
+                  idOrder={order?.id}
+                />
+              </Modal>
+              <Modal open={reject} onClose={handleCloseReject}>
+                <RejectForm
+                  handleCloseReject={handleCloseReject}
+                  idOrder={order?.id}
+                />
+              </Modal>
+              <Modal open={inquery} onClose={handleCloseInquery}>
+                <SendInquiryForm
+                  handleCloseInquery={handleCloseInquery}
+                  idOrder={order?.id}
+                />
+              </Modal>
             </div>
           ))}
         </div>

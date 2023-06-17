@@ -7,11 +7,35 @@ import {
 } from "@mui/material";
 // import { Input } from "postcss";
 import Input from "@mui/material/Input";
+import axios from "axios";
+import { useRouter } from "next/router";
 import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
-function SendInquiryForm() {
+function SendInquiryForm({ idOrder, handleCloseInquery }) {
   const methods = useForm();
+  const router = useRouter();
+  const { token } = router.query;
   const onSubmit = (data) => {
+    axios
+      .post(
+        `https://new.tourzable.com/api/send_inquiry_tour_order/${idOrder}`,
+        {
+          ...data,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        handleCloseInquery();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log(data);
   };
   return (
