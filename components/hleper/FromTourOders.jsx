@@ -99,7 +99,7 @@ function FromTourOders({ cities }) {
       }
     };
     getpackegesOperator();
-  }, []);
+  }, [session]);
 
   const handlesetStartDateChange = (date) => {
     setStartDate(date);
@@ -116,7 +116,7 @@ function FromTourOders({ cities }) {
   const handleIsAgree = (event) => {
     setIsAgree(!isAgree);
   };
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("operator_id", operatorId);
@@ -131,19 +131,24 @@ function FromTourOders({ cities }) {
     formData.append("end_date", endDayFormate);
     formData.append("start_date", startDayFormate);
     formData.append("city_id", guideCities);
-    formData.append("tour_guide_id", JSON.stringify(selectTourGuide));
-    axios
-      .post("https://new.tourzable.com/api/tour_orders", formData, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    formData.append("tour_guide_id", selectTourGuide);
+    try {
+      const response = await axios.post(
+        "https://new.tourzable.com/api/tour_orders",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-    // router.push("/Thank_you");
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // router.push("/");
   };
   return (
     <div

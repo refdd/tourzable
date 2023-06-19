@@ -94,7 +94,7 @@ export default function UserNav() {
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
-          <Link href={"/dashboard/MyBooking"}>
+          <Link href={"/dashboard/mybooking"}>
             <ListItemIcon>
               <HiOutlinePresentationChartBar className="text-xl" />
             </ListItemIcon>

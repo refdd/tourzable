@@ -20,7 +20,7 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 
 function SideBArDashbord() {
-  const [guide, setGuide] = useState(true);
+  const [guide, setGuide] = useState(false);
   return (
     <div className=" flex flex-col items-center bg-white sticky top-16 rounded-r-lg">
       {guide ? (
@@ -83,7 +83,7 @@ function SideBArDashbord() {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href={"/dashboard/MyBooking"}>
+            <Link href={"/dashboard/mybooking"}>
               <ListItemButton>
                 <ListItemIcon>
                   <FaCalendar className="text-2xl text-mainColor" />

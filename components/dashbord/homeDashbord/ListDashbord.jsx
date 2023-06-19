@@ -38,7 +38,7 @@ function ListDashbord() {
           </Link>
         </ListItem>
         <ListItem>
-          <Link href={"/dashboard/MyBooking"}>
+          <Link href={"/dashboard/mybooking"}>
             <ListItemButton>
               <ListItemIcon>
                 <FaCalendar className="text-2xl text-mainColor" />

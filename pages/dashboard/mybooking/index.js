@@ -1,3 +1,4 @@
+import BookingContainer from "@/components/dashbord/booking/BookingContainer";
 import TableBooking from "@/components/dashbord/booking/TableBooking";
 import TableData from "@/components/dashbord/booking/TableData";
 import DashbordNavBar from "@/components/dashbord/homeDashbord/DashbordNavBar";
@@ -60,7 +61,7 @@ function MyBooking({ customBookings }) {
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
           {/* <TableData /> */}
           {/* <TableBooking dataTable={customBookings} /> */}
-          {/* <BookingContainer/> */}
+          <BookingContainer dataBooking={customBookings} />
         </div>
       </div>
       <Subscribe />
