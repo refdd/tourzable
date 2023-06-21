@@ -1,0 +1,87 @@
+import React, { useState } from "react";
+import { FiChevronDown } from "react-icons/fi";
+function ListPersonBooking({ bookingPeople, traveler }) {
+  const [personidActive, setpersonidActive] = useState(null);
+  const handleClick = (index) => {
+    setpersonidActive(personidActive === index ? null : index);
+  };
+  return (
+    <div>
+      <div className="bg-white p-5 rounded-lg">
+        <p className="text-lg font-sans font-medium text-mainColor capitalize">
+          people registered
+        </p>
+        {bookingPeople.length == 0 ? (
+          <p className="text-lg text-red-600 font-medium capitalize font-sans my-4">
+            {" "}
+            no people registered{" "}
+          </p>
+        ) : (
+          <ul className="">
+            {bookingPeople?.map((person, index) => (
+              <li
+                key={person.id}
+                className="flex flex-col space-y-3 mt-4 py-2 px-4 border rounded-lg"
+              >
+                <div
+                  onClick={() => {
+                    handleClick(person.id);
+                  }}
+                  className={` flex items-center justify-between cursor-pointer  rounded-lg  ${
+                    personidActive == person.id
+                      ? "bg-white text-gray-900"
+                      : "bg-mainColor text-white py-2 px-3"
+                  }`}
+                >
+                  <p
+                    className={`  text-[17px] font-bold font-sans capitalize  `}
+                  >
+                    traveler {index + 1}
+                  </p>
+                  <FiChevronDown
+                    className={`text-2xl  ${
+                      personidActive == person.id
+                        ? "text-gray-900 rotate-180"
+                        : "text-white"
+                    }`}
+                  />
+                </div>
+                {personidActive == person.id && (
+                  <div className="grid grid-cols-1 gap-3">
+                    <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
+                      name :
+                      <span className=" text-smtext-gray-500">
+                        {person?.name}
+                      </span>
+                    </p>
+                    <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
+                      email :
+                      <span className=" text-smtext-gray-500">
+                        {person?.email}
+                      </span>
+                    </p>
+                    <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
+                      id number :
+                      <span className=" text-smtext-gray-500">
+                        {person?.id_number}
+                      </span>
+                    </p>
+                    <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
+                      passport number :
+                      <span className=" text-smtext-gray-500">
+                        {" "}
+                        {person?.passport}
+                      </span>
+                    </p>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default ListPersonBooking;

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { AiFillClockCircle, AiFillQuestionCircle } from "react-icons/ai";
 import CancelForm from "./CancelForm";
 import HaveQuestion from "./HaveQuestion";
+import Link from "next/link";
 
 function BookingContainer({ dataBooking }) {
   const [cancel, setCancel] = useState(false);
@@ -103,9 +104,15 @@ function BookingContainer({ dataBooking }) {
                     </button>
                   </div>
                   <div className="py-2 px-6 cursor-pointer bg-MainYeloow rounded-lg">
-                    <button className="text-gray-900 text-sm font-semibold capitalize font-sans">
-                      add info Persons
-                    </button>
+                    <Link
+                      href={`/dashboard/mybooking/${item.id}/?traveler=${
+                        item?.adult + item?.kid
+                      }`}
+                    >
+                      <button className="text-gray-900 text-sm font-semibold capitalize font-sans">
+                        add Persons info
+                      </button>
+                    </Link>
                   </div>
                   <div
                     onClick={handleOpen}
