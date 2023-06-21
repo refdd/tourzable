@@ -17,7 +17,6 @@ function SingelTourGuide({ SingelGuide }) {
     cities,
     slug,
   } = SingelGuide;
-  console.log(logo, tour_guide_license);
   return (
     <div>
       <Head>

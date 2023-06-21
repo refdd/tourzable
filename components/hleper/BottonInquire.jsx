@@ -8,7 +8,6 @@ function BottonInquire({ title, goToCustomize }) {
   const router = useRouter();
   const handleShowBottom = () => {
     if (goToCustomize) {
-      console.log("sdddfsdfsd");
       router.push("/customize-your-trip");
     } else {
       const FormInquire = document.getElementById("InquireFrom");

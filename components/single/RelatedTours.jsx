@@ -10,7 +10,6 @@ import HeaderSections from "../parts/HeaderSections";
 import CardTour from "../cards/CardTour";
 
 function RelatedTours({ blog, packages }) {
-  console.log(blog);
   return (
     <>
       <div
