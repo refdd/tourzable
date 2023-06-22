@@ -28,9 +28,6 @@ function CustomBooking({ customBookings }) {
         },
       });
     }
-    if (!session) {
-      router.push("/Login");
-    }
   }, [session]);
   return (
     <div className="bg-[#f5f5f5]">

@@ -9,6 +9,7 @@ import Link from "next/link";
 
 function BookingContainer({ dataBooking }) {
   const [cancel, setCancel] = useState(false);
+  const [idBooking, setIdBooking] = useState();
   const [question, setQuestion] = useState(false);
   const handleOpenQuestion = () => setQuestion(true);
   const handleCloseQuestion = () => setQuestion(false);
@@ -52,6 +53,13 @@ function BookingContainer({ dataBooking }) {
                   alt="bokking"
                   className=" rounded-lg object-cover"
                 />
+                {/* status */}
+                <div className="absolute -bottom-3 right-3 bg-mainColor py-2 px-4 rounded-lg md:hidden">
+                  <span className="text-white text-sm font-sans font-medium capitalize">
+                    {" "}
+                    {item.status?.title}
+                  </span>
+                </div>
               </div>
               <div className="flex flex-col gap-3 md:justify-evenly md:col-span-2">
                 {/* titel */}
@@ -115,7 +123,10 @@ function BookingContainer({ dataBooking }) {
                     </Link>
                   </div>
                   <div
-                    onClick={handleOpen}
+                    onClick={() => {
+                      handleOpen();
+                      setIdBooking(item.id);
+                    }}
                     className="py-2 px-6 cursor-pointer border border-red-700 rounded-lg"
                   >
                     <button className="text-red-400 text-sm font-semibold capitalize font-sans">
@@ -134,7 +145,7 @@ function BookingContainer({ dataBooking }) {
                 </div>
               </div>
               <Modal open={cancel} onClose={handleClose}>
-                <CancelForm handleClose={handleClose} />
+                <CancelForm handleClose={handleClose} bookingId={idBooking} />
               </Modal>
               <Modal open={question} onClose={handleCloseQuestion}>
                 <HaveQuestion handleClose={handleCloseQuestion} />

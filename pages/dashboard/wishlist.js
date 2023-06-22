@@ -29,9 +29,6 @@ function Wishlist({ favoritesPackages, favoritesLandmarks }) {
         },
       });
     }
-    if (!session) {
-      router.push("/Login");
-    }
   }, [session]);
   // console.log(query.token);
   return (

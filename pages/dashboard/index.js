@@ -1,6 +1,7 @@
 import DashboarNumbers from "@/components/dashbord/homeDashbord/DashboarNumbers";
 import DashbordNavBar from "@/components/dashbord/homeDashbord/DashbordNavBar";
 import RcommandedTour from "@/components/dashbord/homeDashbord/RcommandedTour";
+import Loading from "@/components/hleper/Loading";
 import SideBArDashbord from "@/components/hleper/SideBarDashbord";
 import DownLoadApp from "@/components/mainSections/DownLoadApp";
 import Footer from "@/components/mainSections/Footer";
@@ -19,7 +20,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
   const { data: session } = useSession();
   const router = useRouter();
   const { query, pathname } = router;
-  console.log(query.token);
+  // console.log(query.token);
   useEffect(() => {
     if (session) {
       router.push({
@@ -31,7 +32,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
     }
   }, [session]);
   if (!query.token) {
-    return;
+    return <Loading />;
   }
   // console.log(profileData);
   return (

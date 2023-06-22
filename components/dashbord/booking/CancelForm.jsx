@@ -1,18 +1,25 @@
 import axios from "axios";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-function CancelForm({ handleClose }) {
+function CancelForm({ handleClose, bookingId }) {
   const methods = useForm();
+  const router = useRouter();
+  const { query, pathname } = router;
   const onSubmit = (data) => {
     axios
       .post(
-        "https://new.tourzable.com/api/people/2",
+        `https://new.tourzable.com/api/cancel_booking}`,
         {
           ...data,
+          booking_id: bookingId,
         },
         {
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + query.token,
+          },
         }
       )
       .then((res) => {
@@ -22,7 +29,6 @@ function CancelForm({ handleClose }) {
       .catch((error) => {
         console.log(error);
       });
-    // console.log({ ...data, number, aduits, childs, data: dateFormated });
     // router.push("/Thank_you");
   };
   return (
@@ -40,7 +46,7 @@ function CancelForm({ handleClose }) {
           required
           className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  "
           placeholder="Reason For cansellation"
-          {...methods.register("comment", { required: true })}
+          {...methods.register("cancel_reason", { required: true })}
         ></textarea>
         {/* buttonsent */}
         <div className=" mt-4  ">
