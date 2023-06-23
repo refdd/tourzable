@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
+import QRCode from "react-qr-code";
 function ListPersonBooking({ bookingPeople, traveler }) {
   const [personidActive, setpersonidActive] = useState(null);
   const handleClick = (index) => {
@@ -47,32 +48,51 @@ function ListPersonBooking({ bookingPeople, traveler }) {
                   />
                 </div>
                 {personidActive == person.id && (
-                  <div className="grid grid-cols-1 gap-3">
-                    <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
-                      name :
-                      <span className=" text-smtext-gray-500">
-                        {person?.name}
-                      </span>
-                    </p>
-                    <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
-                      email :
-                      <span className=" text-smtext-gray-500">
-                        {person?.email}
-                      </span>
-                    </p>
-                    <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
-                      id number :
-                      <span className=" text-smtext-gray-500">
-                        {person?.id_number}
-                      </span>
-                    </p>
-                    <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
-                      passport number :
-                      <span className=" text-smtext-gray-500">
-                        {" "}
-                        {person?.passport}
-                      </span>
-                    </p>
+                  <div className="grid grid-cols-1 gap-3  md:grid-cols-2">
+                    {/* data list */}
+                    <div className=" ">
+                      <div className="grid grid-cols-1 gap-3">
+                        <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
+                          name :
+                          <span className=" text-smtext-gray-500">
+                            {person?.name}
+                          </span>
+                        </p>
+                        <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
+                          email :
+                          <span className=" text-smtext-gray-500">
+                            {person?.email}
+                          </span>
+                        </p>
+                        <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
+                          id number :
+                          <span className=" text-smtext-gray-500">
+                            {person?.id_number}
+                          </span>
+                        </p>
+                        <p className="text-gray-800 text-[15] font-medium capitalize font-sans">
+                          passport number :
+                          <span className=" text-smtext-gray-500">
+                            {" "}
+                            {person?.passport}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="">
+                      <div className="h-auto mx-auto w-max-[64px] w-[200px]">
+                        <QRCode
+                          size={300}
+                          style={{
+                            height: "auto",
+                            maxWidth: "100%",
+                            width: "100%",
+                          }}
+                          value={`name: ${person.name}  email : ${person.email}   id number : ${person?.id_number}  passport number :${person?.passport}`}
+                          viewBox={`0 0 256 256`}
+                        />
+                      </div>
+                    </div>
                   </div>
                 )}
               </li>
