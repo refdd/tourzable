@@ -8,6 +8,7 @@ import { Pagination } from "swiper";
 import { useStateContext } from "@/contexts/ContextProvider";
 import Link from "next/link";
 import { BsArrowUpRight } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
 const locationTour = [
   { id: 1, title: "Saudi" },
   { id: 2, title: "Dubai" },
@@ -15,6 +16,8 @@ const locationTour = [
 ];
 function TourRow({ tours, destinations }) {
   const [activeId, setActiveId] = useState(null);
+  const { t, i18n } = useTranslation();
+
   const { direction } = useStateContext();
   const handleClick = (id) => () => {
     const activeElement = locationTour.find((id) => id === id);
@@ -86,7 +89,7 @@ function TourRow({ tours, destinations }) {
       <Link href={"packages"}>
         <div className="  group flex items-center mx-auto  space-x-2 w-fit rounded transition-all hover:md:bg-MainYeloow bg-mainColor h-16 px-5  mt-10 md:px-10 cursor-pointer  ">
           <button className=" font-medium font-sans text-[15px] text-white md:font-semibold md:text-lg">
-            See More
+            {t("common:home.See_More")}
           </button>
           <BsArrowUpRight className=" text-lg  text-white " />
         </div>

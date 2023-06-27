@@ -19,7 +19,7 @@ function DashboarNumbers({ profileData }) {
               My Bookings
             </span>
             <span className="font-semibold font-sans text-[26px] text-mainColor ">
-              $ {profileData.bookings_total}
+              $ {profileData?.bookings_total}
             </span>
             <span className="text-[#697488] text-sm font-sans capitalize">
               Total Bookings
@@ -38,7 +38,7 @@ function DashboarNumbers({ profileData }) {
               Custom Bookings
             </span>
             <span className="font-semibold font-sans text-[26px] text-mainColor ">
-              ${profileData.custom_bookings_total}
+              ${profileData?.custom_bookings_total}
             </span>
             <span className="text-[#697488] text-sm font-sans capitalize">
               Total Custom
@@ -56,7 +56,7 @@ function DashboarNumbers({ profileData }) {
               Favorites{" "}
             </span>
             <span className="font-semibold font-sans text-[26px] text-mainColor ">
-              {profileData.favorites}
+              {profileData?.favorites}
             </span>
             <span className="text-[#697488] text-sm font-sans capitalize">
               Total Favorites

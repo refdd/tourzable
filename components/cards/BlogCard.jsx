@@ -12,7 +12,7 @@ function BlogCard({ image, duration, title, desc, author, name, job, slug }) {
     return formattedDate;
   };
   return (
-    <Link href={`list_blog/${slug}`}>
+    <Link href={`Saudi-travel-blog/${slug}`}>
       <div className="border rounded-md shadow-lg shadow-shadowColorMain md:py-7 ">
         <div className="grid grid-cols-1 gap-3 p-2 md:grid-cols-3">
           <div className="relative w-full h-[200px]  md:h-[220px] col-span-1 ">

@@ -20,6 +20,7 @@ import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import BottonInquire from "@/components/hleper/BottonInquire";
+import { useTranslation } from "react-i18next";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +38,8 @@ export default function Home({
   settings,
 }) {
   const { locales, locale, push } = useRouter();
-  // console.log(settings);
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <Head>
@@ -51,24 +53,18 @@ export default function Home({
       <MainHeader regions={regions} />
       <WhyChooseUs homepage snippets={snippets} />
       <HeaderSections
-        titel={"Most Popular Saudi Tours"}
-        desc={
-          "Best Offers Of Package Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Booking And Enjoy."
-        }
+        titel={t("common:home.headPackages")}
+        desc={t("common:home.packageDesc")}
       />
       <TourRow tours={tours} destinations={destinations} />
       <HeaderSections
-        titel={"Most Popular Activities"}
-        desc={
-          "Best Offers Of Activity Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Activity And Enjoy."
-        }
+        titel={t("common:home.headActivites")}
+        desc={t("common:home.ActivitesDesc")}
       />
       <ActivitiesRow Activities={Activities} destinations={destinations} />
       <HeaderSections
-        titel={"landMarks"}
-        desc={
-          "Best Offers Of Package Programs In Kingdom Of Saudi Arabia. Save Your Time And Effort. Book Your Booking And Enjoy."
-        }
+        titel={t("common:home.LandmarkHeader")}
+        desc={t("common:home.Landmarkdesc")}
       />
 
       <LandMarkSection regions={regions} />

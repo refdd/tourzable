@@ -16,6 +16,7 @@ import {
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm, FormProvider, Controller } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { BiSearch } from "react-icons/bi";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -32,6 +33,7 @@ function FilterDesktop({ regions }) {
   const [location, setLocation] = useState([]);
   const [nameOfpackage, setnameOfpackage] = useState();
   const [starNumber, setstarNumber] = React.useState(4);
+  const { t, i18n } = useTranslation();
   const router = useRouter();
   const path = router.pathname;
   const { query } = router;
@@ -72,7 +74,7 @@ function FilterDesktop({ regions }) {
     //   starNumber,
     // });
   };
-  console.log(location);
+  // console.log(location);
   return (
     <div className="container mx-auto px-4 pt-7">
       <FormProvider {...methods}>
@@ -83,7 +85,7 @@ function FilterDesktop({ regions }) {
           {/* search */}
           <div className="">
             <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
-              Search by tour name
+              {t("common:list.searchList")}
             </p>
             <div className=" py-6 border-b">
               <Controller
@@ -106,7 +108,7 @@ function FilterDesktop({ regions }) {
           {/* deals */}
           <div className=" flex flex-col space-y-3">
             <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
-              Your Start Point
+              {t("common:list.Start_Point")}
             </p>
             <div className="">
               <FormControl variant="standard" fullWidth sx={{}}>
@@ -147,7 +149,7 @@ function FilterDesktop({ regions }) {
           {/* Popular Filters */}
           <div className="">
             <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
-              number of Days
+              {t("common:list.Number_Days")}
             </p>
             <ul className=" flex flex-col space-y-1  py-5  border-b">
               <li className="flex items-center justify-between">
@@ -188,7 +190,7 @@ function FilterDesktop({ regions }) {
           {/* Nightly Price */}
           <div className="">
             <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
-              Price Range
+              {t("common:list.Price_Range")}
             </p>
             <div className="flex flex-col space-y-1  py-5  border-b">
               <Typography id="range-slider" gutterBottom>
@@ -222,7 +224,7 @@ function FilterDesktop({ regions }) {
           {/* Nightly Price */}
           <div className=" flex flex-col space-y-3">
             <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
-              Star Rating
+              {t("common:list.Star_Rating")}
             </p>
 
             <Rating

@@ -6,6 +6,44 @@
       "umrah": "副朝加",
       "landMarks": "地标",
       "destinations": "目的地",
-      "blog": "沙特旅遊博客"
+      "blog": "沙特旅遊博客",
+      "HeaderHome": "探索沙特阿拉伯的精彩",
+      "homeDesc" : "以獨家優惠發現令人驚嘆的地方",
+      "Location" : "地點",
+      "tour_landmark" : "旅遊地標",
+      "choose_date"   : "選擇日期",
+      "Search" : "搜索" ,
+      "Why_Choose" : "為什麼選擇我們",
+      "headPackages" :  "最受歡迎的沙特旅遊" ,
+      "packageDesc" : "“沙特阿拉伯王國套餐計劃的最佳優惠。節省您的時間和精力。預訂您的旅行並享受。",
+      "Exceptional" : "卓越的",
+      "Starting_from" : "從...開始",
+      "headActivites" :  "最受歡迎的活動" ,
+      "ActivitesDesc" : "沙特阿拉伯王國活動計劃的最佳優惠。 節省您的時間和精力。 預訂您的活動並享受。",
+      "See_More" : "查看更多",
+      "LandmarkHeader" : "地標",
+      "Landmarkdesc" : "了解沙特頂級地標" ,
+      "reviewsHeader" : "我們的客戶對我們的評價如何？",
+      "reviewsDesc" : "客戶滿意度對我們來說非常重要。 查看我們最新的調查，了解客戶對我們的評價。",
+      "Happy_People" : "開心的人" ,
+      "Overall_rating" : "總體評價",
+      "Trusted_By" : "值得信賴",
+      "OffersHeader" : "沙特旅遊優惠",
+      "Blogheader" : "為您的下一次旅行獲取靈感",
+      "blogDesc" : "了解可做的事情、可去的地方，以幫助您規劃旅行",
+      "F&QHeader" : "經常問的問題" ,
+      "supScribtheader": "您的旅行之旅從這裡開始" ,
+      "supScribtDesc": "註冊，我們將向您發送最優惠的價格" ,
+      "Subscribe" : "訂閱"
+
+
+      },
+      "list" : {
+        "View Details":"查看詳情" ,
+        "searchList" : "按旅遊名稱搜索" ,
+        "Start_Point" : "您的起點" ,
+        "Number_Days" : "天數" ,
+        "Price_Range" : "價格範圍" ,
+        "Star_Rating" : "Star Rating"
       }
 }

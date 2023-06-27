@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BiPlus } from "react-icons/bi";
 import HeaderSections from "../parts/HeaderSections";
+import { useTranslation } from "react-i18next";
 
 const questions = [
   {
@@ -30,16 +31,13 @@ const questions = [
 ];
 function FaQSection({ faqs }) {
   const [activeIndex, setActiveIndex] = useState(null);
-
+  const { t, i18n } = useTranslation();
   const handleClick = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8 pb-5">
-      <HeaderSections
-        titel={"Frequently Asked Questions"}
-        desc="Saudi Travel FAQ"
-      />
+      <HeaderSections titel={t("common:home.F&QHeader")} desc={""} />
       <div className="mt-12">
         {faqs?.map((q, index) => (
           <div key={q.id} className=" border mb-8 rounded shadow-lg py-5 px-3 ">

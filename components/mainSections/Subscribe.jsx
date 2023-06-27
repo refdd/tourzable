@@ -7,14 +7,14 @@ import { useForm, FormProvider } from "react-hook-form";
 import CustomTextField from "../hleper/CustomTextField";
 import AlertSuccess from "../hleper/AlertSuccess";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 function Subscribe() {
   const [open, setOpen] = useState(false);
-
+  const { t, i18n } = useTranslation();
   const handleClick = () => {
     setOpen(true);
   };
-
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -70,10 +70,10 @@ function Subscribe() {
           <BsEnvelopePaper className="text-[#051036] text-5xl" />
           <div className="flex flex-col space-y-2 md:space-y-8">
             <p className="text-[24px] text-[#051036] font-semibold font-sans capitalize">
-              Your Travel Journey Starts Here
+              {t("common:home.supScribtheader")}
             </p>
             <p className="font-sans text-[#051036] capitalize ">
-              Sign up and we'll send the best deals to you
+              {t("common:home.supScribtDesc")}
             </p>
             <FormProvider {...methods}>
               <form
@@ -88,7 +88,7 @@ function Subscribe() {
                 />
                 <div className=" group flex justify-start items-center transition-all py-3 px-7 hover:md:bg-[#3554d1] bg-[#f8d448] rounded">
                   <button className="text-[15px] font-medium  transition-all group-hover:md:text-white font-sans text-[#051036]  ">
-                    Subscribe
+                    {t("common:home.Subscribe")}
                   </button>
                 </div>
               </form>

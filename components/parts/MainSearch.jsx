@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { Button } from "@mui/material";
 import SearcHome from "./SearcHome";
-function MainSearch({regions}) {
+import { useTranslation } from "react-i18next";
+function MainSearch({ regions }) {
+  const { t, i18n } = useTranslation();
   const { handleClick, isClicked, setIsClicked } = useStateContext();
   useEffect(() => {
     setIsClicked({ Packages: true });
@@ -12,7 +14,7 @@ function MainSearch({regions}) {
       {/* search types */}
       <ul className="flex items-center space-x-8 md:space-x-10 ">
         <li
-          onClick={() => handleClick("Packages" , 1)}
+          onClick={() => handleClick("Packages", 1)}
           className="relative flex justify-center items-center"
         >
           <span
@@ -22,7 +24,7 @@ function MainSearch({regions}) {
                 : " text-mainColor md:text-white"
             } font-sans text-[15px] font-medium cursor-pointer capitalize md:text-xl`}
           >
-            Packages
+            {t("common:home.package")}
           </span>
           {isClicked.Packages ? (
             <span className="absolute -bottom-2 left-0 h-[1px] w-full md:bg-white  bg-mainLightColor " />
@@ -31,7 +33,7 @@ function MainSearch({regions}) {
           )}
         </li>
         <li
-          onClick={() => handleClick("Activities" , 2)}
+          onClick={() => handleClick("Activities", 2)}
           className="relative flex justify-center items-center"
         >
           <span
@@ -41,7 +43,7 @@ function MainSearch({regions}) {
                 : " text-mainColor md:text-white"
             } font-sans text-[15px] font-medium cursor-pointer capitalize md:text-xl`}
           >
-            Activities
+            {t("common:home.actives")}
           </span>
           {isClicked.Activities ? (
             <span className="absolute -bottom-2 left-0 h-[1px] w-full md:bg-white  bg-mainLightColor " />
@@ -50,7 +52,7 @@ function MainSearch({regions}) {
           )}
         </li>
         <li
-          onClick={() => handleClick("UmrahPlus" , 3)}
+          onClick={() => handleClick("UmrahPlus", 3)}
           className="relative flex justify-center items-center"
         >
           <span
@@ -60,7 +62,7 @@ function MainSearch({regions}) {
                 : " text-mainColor md:text-white"
             } font-sans text-[15px] font-medium cursor-pointer capitalize md:text-xl`}
           >
-            Umrah Plus
+            {t("common:home.umrah")}
           </span>
           {isClicked.UmrahPlus ? (
             <span className="absolute -bottom-2 left-0 h-[1px] w-full md:bg-white  bg-mainLightColor " />
@@ -69,7 +71,7 @@ function MainSearch({regions}) {
           )}
         </li>
       </ul>
-      <SearcHome  regions={regions}/>
+      <SearcHome regions={regions} />
     </div>
   );
 }

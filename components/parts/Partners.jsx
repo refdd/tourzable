@@ -1,10 +1,13 @@
 import Image from "next/image";
 import React from "react";
+import { useTranslation } from "react-i18next";
 function Partners({ allPartners }) {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="mt-5">
       <p className="text-white text-[15px] capitalize text-center">
-        Trusted by the world’s best
+        {t("common:home.Trusted_By")}
       </p>
       <div className="grid grid-cols-3 gap-4 mt-5 md:grid-cols-6 md:gap-6 md:mt-7 ">
         {allPartners?.map((item) => (

@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import { useRouter } from "next/router";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { useTranslation } from "react-i18next";
 
 function SearcHome({ regions }) {
   const { dateRange, setDateRange } = useStateContext();
@@ -15,6 +16,8 @@ function SearcHome({ regions }) {
   const [selectedDate, setSelectedDate] = useState(null);
   const router = useRouter();
   const { isClicked } = useStateContext();
+  const { t, i18n } = useTranslation();
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -79,7 +82,7 @@ function SearcHome({ regions }) {
                 if (selected?.length === 0) {
                   return (
                     <em className="text-gray-500 my-4 capitalize">
-                      tour landmark
+                      {t("common:home.Location")}
                     </em>
                   );
                 }
@@ -90,7 +93,7 @@ function SearcHome({ regions }) {
               displayEmpty
             >
               <MenuItem disabled value="">
-                <em>tour landmark</em>
+                <em>{t("common:home.Location")}</em>
               </MenuItem>
               {regions?.map((item) => (
                 <MenuItem key={item.id} value={item.id}>
@@ -138,7 +141,7 @@ function SearcHome({ regions }) {
         >
           <BiSearch className="text-white text-lg" />
           <button className="text-lg text-white font-sans  font-medium">
-            Search
+            {t("common:home.Search")}
           </button>
         </div>
       </form>

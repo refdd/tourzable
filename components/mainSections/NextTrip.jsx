@@ -8,7 +8,9 @@ import HeaderSections from "../parts/HeaderSections";
 import { BsArrowUpRight } from "react-icons/bs";
 import { format } from "date-fns";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 function NextTrip({ posts }) {
+  const { t, i18n } = useTranslation();
   const formatDate = (dateCurrenity) => {
     const dateString = dateCurrenity;
     const date = new Date(dateString);
@@ -19,8 +21,8 @@ function NextTrip({ posts }) {
   return (
     <div className="container mx-auto px-4">
       <HeaderSections
-        titel={"Get inspiration for your next trip"}
-        desc={"Interdum et malesuada fames"}
+        titel={t("common:home.Blogheader")}
+        desc={t("common:home.blogDesc")}
       />
       <div className="">
         <Swiper
@@ -77,10 +79,10 @@ function NextTrip({ posts }) {
           ))}
         </Swiper>
       </div>
-      <Link href={"list_blog"}>
+      <Link href={"Saudi-travel-blog"}>
         <div className=" group flex items-center mx-auto  space-x-2 w-fit rounded transition-all hover:md:bg-MainYeloow bg-mainColor h-16 px-5 md:px-10 cursor-pointer  ">
           <button className=" font-medium font-sans text-[15px] text-white md:font-semibold md:text-lg">
-            See More
+            {t("common:home.See_More")}
           </button>
           <BsArrowUpRight className=" text-lg  text-white " />
         </div>

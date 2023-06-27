@@ -9,13 +9,13 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper";
+import { useTranslation } from "react-i18next";
 function OfferSlider({ offers }) {
+  const { t, i18n } = useTranslation();
+
   return (
     <div>
-      <HeaderSections
-        titel={"Last Minute Travel Deals"}
-        desc="BOOK NOW AND SAVE"
-      />
+      <HeaderSections titel={t("common:home.OffersHeader")} desc={""} />
       <Swiper
         slidesPerView={1}
         spaceBetween={10}

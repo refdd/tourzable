@@ -90,7 +90,7 @@ function Footer() {
               {/* coll and support */}
               <div className="flex flex-col space-y-1 ">
                 <span className="text-white text-[14px] capitalize font-sans">
-                  Toll Free Customer Care
+                  call us
                 </span>
                 <span className="text-lg text-white font-medium  ">
                   2050129551
@@ -105,7 +105,7 @@ function Footer() {
                   Need live support?
                 </span>
                 <span className="text-lg text-white font-medium  ">
-                  hi@tourzable.com
+                  Sales@Tourzable.Coms
                 </span>
               </div>
             </div>

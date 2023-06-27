@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 function CardTour({
   image,
@@ -28,9 +29,10 @@ function CardTour({
 }) {
   const [favoriteIcon, setFavoriteIcon] = useState(false);
   const { data: session } = useSession();
+  const { t, i18n } = useTranslation();
   const router = useRouter();
   const { currency } = router.query;
-  console.log(is_requested);
+  // console.log(is_requested);
   const addToFavorite = async () => {
     await axios
       .post(
@@ -141,7 +143,7 @@ function CardTour({
           {ratingNumber}
         </span>
         <span className="text-[#051036] font-medium font-sans text-sm ">
-          Excaptional
+          {t("common:home.Exceptional")}
         </span>
         <span className="text-[#697488] text-sm font-sans font-medium ">
           {Math.floor(price) - 15} sreviews
@@ -150,7 +152,7 @@ function CardTour({
       {/* price */}
       <div className=" flex items-center space-x-1 text-lg font-sans font-medium ">
         <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
-          Starting form
+          {t("common:home.Starting_from")}
         </span>
         <span className="text-mainColor">
           {currency ? (currency == "SAR" ? "SAR" : "$") : "$"}{" "}

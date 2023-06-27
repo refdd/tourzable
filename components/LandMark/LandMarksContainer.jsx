@@ -10,10 +10,13 @@ import { useStateContext } from "@/contexts/ContextProvider";
 import axios from "axios";
 import NoDataFounded from "../hleper/NoDataFounded";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 function LandMarksContainer({ allregions }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [landmarks, setlandmarks] = useState(null);
+  const { t, i18n } = useTranslation();
+
   const open = Boolean(anchorEl);
   const { destination, setDestination } = useStateContext();
   const router = useRouter();
@@ -52,7 +55,7 @@ function LandMarksContainer({ allregions }) {
           }
           //   sx={{ fontSize: "17px" , textTransform:"capitalize" , color:"" }}
         >
-          Location
+          {t("common:home.Location")}
         </Button>
         <Menu
           id="basic-menu"
