@@ -17,6 +17,7 @@ export default function ImageLandMarkSlider({ arrayOfImages }) {
   return (
     <>
       <Swiper
+        dir="ltr"
         cssMode={true}
         navigation={true}
         pagination={false}

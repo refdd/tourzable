@@ -42,6 +42,7 @@ function ActivitiesRow({ Activities, destinations }) {
         ))}
       </ul>
       <Swiper
+        dir="ltr"
         slidesPerView={1}
         spaceBetween={10}
         pagination={{

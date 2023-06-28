@@ -17,6 +17,7 @@ function OfferSlider({ offers }) {
     <div>
       <HeaderSections titel={t("common:home.OffersHeader")} desc={""} />
       <Swiper
+        dir="ltr"
         slidesPerView={1}
         spaceBetween={10}
         pagination={{

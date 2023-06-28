@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   List,
   ListItem,
@@ -20,7 +20,16 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 
 function SideBArDashbord() {
+  const { data: session } = useSession();
+
   const [guide, setGuide] = useState(false);
+  useEffect(() => {
+    if (session?.user?.is_TourGuide) {
+      setGuide(true);
+    } else {
+      setGuide(false);
+    }
+  }, [session]);
   return (
     <div className=" flex flex-col items-center bg-white sticky top-16 rounded-r-lg">
       {guide ? (

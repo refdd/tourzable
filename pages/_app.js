@@ -1,16 +1,16 @@
 import "@/styles/globals.css";
-import { ContextProvider } from "../contexts/ContextProvider";
+import { ContextProvider, useStateContext } from "../contexts/ContextProvider";
 import { SessionProvider } from "next-auth/react";
 import NProgress from "nprogress";
-import Router from "next/router";
-import { I18nextProvider } from "react-i18next";
+import Router, { useRouter } from "next/router";
+import { I18nextProvider, useSSR, useTranslation } from "react-i18next";
 import i18n from "../i18n";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { prefixer } from "stylis";
-import React from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import * as locales from "@mui/material/locale";
 
 const cacheLtr = createCache({
@@ -28,9 +28,17 @@ const cacheRtl = createCache({
 const ltrTheme = createTheme({ direction: "ltr" });
 const rtlTheme = createTheme({ direction: "rtl" });
 export default function App({ Component, pageProps, session }) {
-  const [isRtl, setIsRtl] = React.useState(false);
-  const [value, setValue] = React.useState("initial value");
-  React.useLayoutEffect(() => {
+  const [isRtl, setIsRtl] = useState(false);
+  const [value, setValue] = useState("initial value");
+  const router = useRouter();
+  const { locale, locales } = router;
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
+  useSSR();
+  useLayoutEffect(() => {
     document.body.setAttribute("dir", isRtl ? "rtl" : "ltr");
   }, [isRtl]);
   // console.log(ltrTheme);
@@ -41,6 +49,21 @@ export default function App({ Component, pageProps, session }) {
   Router.events.on("routeChangeComplete", () => {
     NProgress.done();
   });
+
+  useEffect(() => {
+    switch (locale) {
+      case "ar":
+        changeLanguage("ar");
+        break;
+      case "en":
+        changeLanguage("en");
+        break;
+      case "zh":
+        changeLanguage("zh");
+      default:
+        changeLanguage("en");
+    }
+  }, []);
   return (
     <SessionProvider session={session}>
       <ContextProvider>

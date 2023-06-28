@@ -21,6 +21,7 @@ function WhyChooseUs({ homepage, snippets }) {
       <HeaderSections titel={t("common:home.Why_Choose")} desc={""} />
       <div className="">
         <Swiper
+          dir="ltr"
           modules={[Pagination]}
           className="mySwiper"
           pagination={{

@@ -21,6 +21,7 @@ function RelatedTours({ blog, packages }) {
       >
         <HeaderSections titel={"Related Tours"} />
         <Swiper
+          dir="ltr"
           modules={[Pagination]}
           className="mySwiper"
           pagination={{

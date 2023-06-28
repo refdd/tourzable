@@ -13,6 +13,7 @@ function ReviewsSlider({ reviews }) {
     <div className="mt-4 px-6 overflow-hidden md:w-[50%] md:px-10 ">
       <div className=" md:w-[400px] md:mx-auto">
         <Swiper
+          dir="ltr"
           effect={"cards"}
           grabCursor={true}
           modules={[EffectCards, Pagination]}

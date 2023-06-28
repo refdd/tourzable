@@ -9,6 +9,7 @@ import { useSSR, useTranslation } from "react-i18next";
 import { useStateContext } from "@/contexts/ContextProvider";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function SlectedLanguage({ isTop }) {
   const { setDirection } = useStateContext();
@@ -33,7 +34,7 @@ export default function SlectedLanguage({ isTop }) {
   };
   useSSR(); // Ensure translations are preloaded during server-side rendering
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.body.dir = i18n.dir();
     setDirection(document.body.dir);
   });

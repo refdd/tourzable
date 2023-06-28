@@ -25,6 +25,7 @@ function ReadAlso({ packages, titel }) {
       <HeaderSections titel={titel} />
       <div className="">
         <Swiper
+          dir="ltr"
           modules={[Pagination]}
           className="mySwiper"
           pagination={{

@@ -26,6 +26,7 @@ function NextTrip({ posts }) {
       />
       <div className="">
         <Swiper
+          dir="ltr"
           modules={[Pagination]}
           className="mySwiper"
           pagination={{

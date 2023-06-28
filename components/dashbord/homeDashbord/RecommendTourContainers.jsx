@@ -13,6 +13,7 @@ function RecommendTourContainers({ packages, landmarks }) {
   return (
     <div>
       <Swiper
+        dir="ltr"
         slidesPerView={1}
         spaceBetween={10}
         pagination={{

@@ -17,6 +17,7 @@ export default function ImageSlider({ arrayOfImages, homepage }) {
   return (
     <>
       <Swiper
+        dir="ltr"
         cssMode={true}
         navigation={true}
         pagination={false}

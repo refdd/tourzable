@@ -48,6 +48,9 @@ export default NextAuth({
         // if credentials are valid
         if (user.success) {
           const data = user.data;
+          console.log("====================================");
+          console.log(data);
+          console.log("====================================");
           const result = {
             ...data,
             success: user.success,
@@ -90,6 +93,8 @@ export default NextAuth({
         token.userId = user.id;
         token.errorResData = user.success;
         token.message = user.message;
+        token.is_operator = user.is_operator;
+        token.is_TourGuide = user.is_TourGuide;
       }
 
       return token;
@@ -107,6 +112,8 @@ export default NextAuth({
         session.user.message = token.message;
         session.user.googleToken = token.jti;
         session.user.picture = token.picture;
+        session.user.is_operator = token.is_operator;
+        session.user.is_TourGuide = token.is_TourGuide;
       }
       return session;
     },

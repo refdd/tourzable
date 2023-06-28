@@ -27,7 +27,12 @@ function GallerySlider({ openGallery, setOpenGallery, allGallery }) {
         </div>
       </div>
       <div className=" container mx-auto px-44  absolute top-[62%] left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        <Swiper
+          dir="ltr"
+          navigation={true}
+          modules={[Navigation]}
+          className="mySwiper"
+        >
           {allGallery?.map((image) => (
             <SwiperSlide key={image.id}>
               <div className="relative w-full h-[400px] md:h-[600px]  ">
