@@ -80,17 +80,19 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
 export default Dashboard;
 export async function getServerSideProps({ query, locale }) {
   const token = query.token || "";
-  // const profileData = await fetchApi(`${baseUrl}/${locale}/profile`, token);
+
   const tours = await fetchApi(
-    `${baseUrl}/${locale}/packages?type_id=1&limit=7`
+    `${baseUrl}/packages?locale=${locale}&type_id=1&limit=7`
   );
   const activitys = await fetchApi(
-    `${baseUrl}/${locale}/packages?type_id=2&limit=7`
+    `${baseUrl}/packages?locale=${locale}&type_id=2&limit=7`
   );
   const umrah = await fetchApi(
-    `${baseUrl}/${locale}/packages?type_id=3&limit=7`
+    `${baseUrl}/packages?locale=${locale}&type_id=3&limit=7`
   );
-  const landmarks = await fetchApi(`${baseUrl}/${locale}/landmarks?limit=7`);
+  const landmarks = await fetchApi(
+    `${baseUrl}/landmarks?locale=${locale}&limit=7`
+  );
 
   return {
     props: {

@@ -71,7 +71,7 @@ export async function getServerSideProps({ locale, query }) {
   const token = query.token || null;
 
   const Inquiries = await fetchApi(
-    `${baseUrl}/${locale}/bookings?type_id=4`,
+    `${baseUrl}/bookings?locale=${locale}&type_id=4`,
     token
   );
 

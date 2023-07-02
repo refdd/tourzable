@@ -77,11 +77,11 @@ export async function getServerSideProps({ locale, query }) {
   const token = query.token || null;
 
   const favoritesPackages = await fetchApi(
-    `${baseUrl}/${locale}/favorites_packages`,
+    `${baseUrl}/favorites_packages?locale=${locale}`,
     token
   );
   const favoritesLandmarks = await fetchApi(
-    `${baseUrl}/${locale}/favorites_landmarks`,
+    `${baseUrl}/favorites_landmarks?locale=${locale}`,
     token
   );
 

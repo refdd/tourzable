@@ -78,7 +78,7 @@ function TourRow({ tours, destinations }) {
               price={tour.best_price}
               duration={tour.duration}
               ratingNumber={tour.package_rating}
-              typePackage={tour.type.slug}
+              typePackage={"packages"}
               slug={tour.slug}
               tourType={tour.type.title}
               tourId={tour.id}

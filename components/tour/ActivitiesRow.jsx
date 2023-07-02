@@ -77,7 +77,7 @@ function ActivitiesRow({ Activities, destinations }) {
               duration={activitie.duration}
               ratingNumber={4}
               activitiey
-              typePackage={activitie.type.slug}
+              typePackage={"activities"}
               slug={activitie.slug}
               tourType={activitie.type.title}
               tourId={activitie.id}

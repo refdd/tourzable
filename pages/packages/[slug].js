@@ -130,11 +130,8 @@ export async function getServerSideProps({ params, locale, query }) {
   const currency = query.currency || "USD";
   const slug = params?.slug || "";
 
-  // const singletour = await fetchApi(
-  //   `${baseUrl}/${locale}/packages/${params.slug}`
-  // );
   const singletour = await fetchApi(
-    `${baseUrl}/packages/${slug}?currency=${currency}`
+    `${baseUrl}/packages/${slug}?locale=${locale}&currency=${currency}`
   );
   return {
     props: {

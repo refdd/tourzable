@@ -33,7 +33,7 @@ function ListTourcontainer({ tours, pageType }) {
 
     setSortedItems(sortItems());
   }, [sortBy, setSortBy]);
-  // console.log(sortedItems);
+  console.log(tours[0]);
 
   return (
     <div className="container mx-auto px-4 mt-6">

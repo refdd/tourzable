@@ -82,23 +82,25 @@ export default function Home({
 
 export async function getServerSideProps({ locale, query }) {
   const currency = query.currency || "USD";
-  const posts = await fetchApi(`${baseUrl}/${locale}/posts?limit=9`);
+  const posts = await fetchApi(`${baseUrl}/posts?locale=${locale}&limit=9`);
   const tours = await fetchApi(
-    `${baseUrl}/${locale}/packages?type_id=1&limit=9&currency=${currency}`
+    `${baseUrl}/packages?type_id=1&locale=${locale}&limit=9&currency=${currency}`
   );
   const Activities = await fetchApi(
-    `${baseUrl}/${locale}/packages?type_id=2&limit=9&currency=${currency}`
+    `${baseUrl}/packages?type_id=2&locale=${locale}&limit=9&currency=${currency}`
   );
-  const reviews = await fetchApi(`${baseUrl}/${locale}/reviews?limit=6`);
-  const faqs = await fetchApi(`${baseUrl}/${locale}/faqs?limit=4`);
+  const reviews = await fetchApi(`${baseUrl}/reviews?limit=6&locale=${locale}`);
+  const faqs = await fetchApi(`${baseUrl}/faqs?limit=4&locale=${locale}`);
   const offers = await fetchApi(
-    `${baseUrl}/${locale}/offers?limit=1&currency=${currency}`
+    `${baseUrl}/offers?limit=1&locale=${locale}&currency=${currency}`
   );
-  const partners = await fetchApi(`${baseUrl}/${locale}/partners`);
-  const regions = await fetchApi(`${baseUrl}/${locale}/regions`);
-  const snippets = await fetchApi(`${baseUrl}/${locale}/snippets`);
-  const destinations = await fetchApi(`${baseUrl}/${locale}/destinations`);
-  const settings = await fetchApi(`${baseUrl}/${locale}/settings`);
+  const partners = await fetchApi(`${baseUrl}/partners?locale=${locale}`);
+  const regions = await fetchApi(`${baseUrl}/regions?locale=${locale}`);
+  const snippets = await fetchApi(`${baseUrl}/snippets?locale=${locale}`);
+  const destinations = await fetchApi(
+    `${baseUrl}/destinations?locale=${locale}`
+  );
+  const settings = await fetchApi(`${baseUrl}/settings?locale=${locale}`);
 
   return {
     props: {

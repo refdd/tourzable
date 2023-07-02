@@ -11,6 +11,7 @@ import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 function ListTour({ tours, regions }) {
+  console.log(tours);
   return (
     <>
       <Head>
@@ -53,9 +54,9 @@ export async function getServerSideProps({ query, locale }) {
   // const location = query.location || null;
 
   const tours = await fetchApi(
-    `${baseUrl}/${locale}/packages?type_id=1&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
+    `${baseUrl}/packages?locale=${locale}&type_id=1&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
   );
-  const regions = await fetchApi(`${baseUrl}/${locale}/regions`);
+  const regions = await fetchApi(`${baseUrl}/regions?locale=${locale}`);
 
   return {
     props: {

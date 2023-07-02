@@ -1,19 +1,17 @@
 import Head from "next/head";
 import React from "react";
-import MainHeader from "@/components/mainSections/MainHeader";
-import NormailNavBar from "@/components/mainSections/NormailNavBar";
 import HeaderList from "@/components/list/HeaderList";
 import ListTourcontainer from "@/components/list/ListTourcontainer";
 import FilterDesktop from "@/components/list/FilterDesktop";
 import Subscribe from "@/components/mainSections/Subscribe";
-import DownLoadApp from "@/components/mainSections/DownLoadApp";
 import NotMember from "@/components/mainSections/NotMember";
 import Footer from "@/components/mainSections/Footer";
-import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 function PopularActivities({ Activities, regions }) {
   // console.log(Activities[0]);
+  // const { locale } = useRouter();
+  // console.log(locale);
   return (
     <>
       <Head>
@@ -56,9 +54,9 @@ export async function getServerSideProps({ query, locale }) {
   const min = query.price_range_from || 0;
   const max = query.price_range_to || 6666790;
   const Activities = await fetchApi(
-    `${baseUrl}/${locale}/packages?type_id=2&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
+    `${baseUrl}/packages?locale=${locale}&type_id=2&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
   );
-  const regions = await fetchApi(`${baseUrl}/${locale}/regions`);
+  const regions = await fetchApi(`${baseUrl}/regions?locale=${locale}`);
 
   return {
     props: {

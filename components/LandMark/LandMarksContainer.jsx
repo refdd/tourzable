@@ -30,7 +30,7 @@ function LandMarksContainer({ allregions }) {
   useEffect(() => {
     axios
       .get(
-        `https://new.tourzable.com/api/${locale}/landmarks?region_id=${destination}&limit=4`
+        `https://new.tourzable.com/api/landmarks?locale=${locale}&region_id=${destination}&limit=4`
       )
       .then((response) => {
         setlandmarks(response.data.data);

@@ -47,8 +47,8 @@ function TourGuides({ allTourGuides, regions }) {
 export default TourGuides;
 export async function getServerSideProps({ query, locale }) {
   const region_id = query.region || "1";
-  const allTourGuides = await fetchApi(`${baseUrl}/${locale}/tour_guides`);
-  const regions = await fetchApi(`${baseUrl}/${locale}/regions`);
+  const allTourGuides = await fetchApi(`${baseUrl}/tour_guides?locale=en`);
+  const regions = await fetchApi(`${baseUrl}/regions?locale=en`);
 
   return {
     props: {
