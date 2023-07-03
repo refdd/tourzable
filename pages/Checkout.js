@@ -1,26 +1,31 @@
 import OrderForm from "@/components/checkout/OrderForm";
 import OrderTour from "@/components/checkout/OrderTour";
+import Loading from "@/components/hleper/Loading";
 import Footer from "@/components/mainSections/Footer";
 import NormailNavBar from "@/components/mainSections/NormailNavBar";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { use, useEffect } from "react";
 import { useState } from "react";
 
 function Checkout() {
   const router = useRouter();
   const { query } = router;
-  const aduitsNumber = parseInt(query.aduits);
-  const childsNumber = parseInt(query.childs);
-  const best_price = parseInt(query.best_price);
-  if (!query.aduits) return;
-  const [aduits, setAduits] = useState(aduitsNumber);
-  const [childs, setChilds] = useState(childsNumber);
+  const [aduits, setAduits] = useState();
+  const [childs, setChilds] = useState();
   const [infant, setinfant] = useState(0);
-  const [prices, setPrices] = useState(best_price);
+  const [prices, setPrices] = useState();
   const [cobone, setCodone] = useState();
   const [discount, setDiscount] = useState(0);
+  useEffect(() => {
+    if (query.aduits) {
+      setAduits(parseInt(query.aduits));
+      setChilds(parseInt(query.childs));
+      setPrices(query.best_price);
+    }
+    return;
+  }, [query.aduits]);
   const handleChangeCodone = (event) => {
     setCodone(event.target.value);
   };
@@ -74,7 +79,9 @@ function Checkout() {
         console.log(error);
       });
   };
-  // console.log(discount);
+
+  console.log(aduits);
+
   return (
     <div>
       <NormailNavBar />
