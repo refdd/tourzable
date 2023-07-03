@@ -37,7 +37,7 @@ function SearcHome({ regions }) {
     router.push({
       pathname: "results",
       query: {
-        type_id: !isClicked.typeTour && 1,
+        type_id: !isClicked.typeTour ? 1 : isClicked.typeTour,
         region_id: location,
         date: dateFormated,
       },

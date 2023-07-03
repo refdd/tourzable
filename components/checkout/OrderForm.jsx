@@ -10,6 +10,7 @@ import { FaChild } from "react-icons/fa";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useStateContext } from "@/contexts/ContextProvider";
+import { useSession } from "next-auth/react";
 
 function OrderForm({
   aduits,
@@ -22,7 +23,11 @@ function OrderForm({
   prices,
 }) {
   const [number, setnumber] = useState("+1");
+  const [fristName, setFristName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("admin@admin.com");
   const { setPricesPayment } = useStateContext();
+  const { data: session } = useSession();
   const methods = useForm();
   const router = useRouter();
   const { startDay, endDay, image, title, tourCode, best_price, min, max } =
@@ -30,7 +35,15 @@ function OrderForm({
   const handleOnChange = (value) => {
     setnumber(value);
   };
-  // console.log(prices);
+  useEffect(() => {
+    if (session) {
+      setFristName(session.user.name);
+      setLastName("");
+      setEmail(session.user.email);
+      setnumber(session.user.phone);
+    }
+  }, [session]);
+  console.log(fristName);
   useEffect(() => {
     setPricesPayment(prices);
   }, [prices]);
@@ -40,6 +53,9 @@ function OrderForm({
         "https://new.tourzable.com/api/bookings",
         {
           ...data,
+          first_name: fristName,
+          last_name: lastName,
+          email: email,
           phone: number,
           adult: aduits,
           kid: childs,
@@ -70,6 +86,7 @@ function OrderForm({
             childs,
           },
         });
+        // console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -95,29 +112,48 @@ function OrderForm({
           >
             {/* frist name  */}
             <div className="">
-              <CustomTextField
+              <TextField
+                value={fristName}
+                placeholder="Mohamed "
                 required
-                name="first_name"
+                fullWidth
+                variant="standard"
+                name="firstName "
                 label="Frist Name "
-                type={"text"}
+                type="text"
+                onChange={(e) => {
+                  setFristName(e.target.value);
+                }}
               />
             </div>
             {/* last name */}
             <div className="">
-              <CustomTextField
+              <TextField
+                value={lastName}
                 required
-                name="lastName"
-                label="Last Name "
-                type={"text"}
+                fullWidth
+                variant="standard"
+                name="firstName "
+                label="last Name "
+                type="text"
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                }}
               />
             </div>
             {/*email address */}
             <div className=" ">
-              <CustomTextField
+              <TextField
+                value={email}
                 required
-                name="email"
-                label="Email Address"
+                fullWidth
+                variant="standard"
+                name="EmailAddress "
+                label="Email Address "
                 type="email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </div>
             {/* unmber and code  */}
@@ -137,12 +173,7 @@ function OrderForm({
             </div>
             {/* last name */}
             <div className="">
-              <CustomTextField
-                required
-                name="address"
-                label="address"
-                type={"text"}
-              />
+              <CustomTextField name="address" label="address" type={"text"} />
             </div>
             {/* last name */}
             <div className="">

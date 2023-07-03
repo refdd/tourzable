@@ -10,9 +10,9 @@ import { useForm, FormProvider } from "react-hook-form";
 function USerForm({ selectedImag }) {
   const [fristName, setFristName] = useState("Mohamed");
   const [lastName, setLastName] = useState("Refat");
-  const [email, setEmail] = useState("admin@admin.com");
+  const [email, setEmail] = useState("");
   const [number, setnumber] = useState("+966");
-  const { data: session } = useSession();
+  const { data: session, update } = useSession();
   const router = useRouter();
   const { query } = router;
   const handleOnChange = (value) => {
@@ -27,8 +27,20 @@ function USerForm({ selectedImag }) {
       setnumber(session.user.phone);
     }
   }, [session]);
-  const onSubmit = (data) => {
-    axios
+  // console.log(session);
+  async function updataSession(name, email, phone) {
+    await update({
+      ...session,
+      user: {
+        ...session.user,
+        name: name,
+        phone: phone,
+        email: email,
+      },
+    });
+  }
+  const onSubmit = async (data) => {
+    await axios
       .post(
         "https://new.tourzable.com/api/update_profile",
         {
@@ -45,14 +57,20 @@ function USerForm({ selectedImag }) {
         }
       )
       .then((res) => {
-        console.log(res);
-        signOut({
-          callbackUrl: `${window.location.origin}/Login`,
-        });
+        console.log(res.data.data);
+        updataSession(
+          res.data?.data?.name,
+          res.data?.data?.email,
+          res.data?.data?.phone
+        );
+        // signOut({
+        //   callbackUrl: `${window.location.origin}/Login`,
+        // });
       })
       .catch((error) => {
         console.log(error);
       });
+
     // console.log({ ...data, number, aduits, childs, data: dateFormated });
     // router.push("/Thank_you");
 

@@ -20,6 +20,7 @@ function Settings() {
   const router = useRouter();
   const { query } = router;
   useEffect(() => {
+    if (!session) return;
     if (!session) {
       router.push("/Login");
     }

@@ -18,6 +18,7 @@ function OrderTour({
   const router = useRouter();
   const { startDay, endDay, image, title, tourCode, best_price, min, max } =
     router.query;
+  console.log(best_price);
   return (
     <div className="container mx-auto px-4 py-3">
       <div className=" flex flex-col space-y-6 divide-y-2 border p-3 rounded shadow-lg shadow-shadowColorMain">

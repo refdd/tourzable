@@ -81,9 +81,15 @@ export default NextAuth({
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   callbacks: {
-    jwt: async ({ token, user }) => {
+    jwt: async ({ token, user, trigger, session }) => {
       console.log(user);
-
+      if (trigger === "update" && session) {
+        // Note, that `session` can be any arbitrary object, remember to validate it!
+        console.log(session);
+        token.name = session.user.name;
+        token.phone = session.user.phone;
+        token.email = session.user.email;
+      }
       if (user) {
         token.email = user.email;
         token.name = user.name;

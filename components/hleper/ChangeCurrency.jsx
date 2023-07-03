@@ -25,18 +25,18 @@ export default function ChangeCurrency({ isTop, InSinglePage }) {
     setAnchorEl(null);
   };
 
-  const HandleChangeCurrnecy = () => {
+  const HandleChangeCurrnecy = (value) => {
     if (InSinglePage) {
       if (router.query.slug) {
         router.replace({
           pathname: `${router.query.slug}`,
-          query: { currency: currency },
+          query: { currency: value },
         });
       }
     } else {
       console.log("router.query.slug");
 
-      router.push({ pathname: path, query: { currency: currency } });
+      router.push({ pathname: path, query: { currency: value } });
     }
   };
   return (
@@ -97,9 +97,7 @@ export default function ChangeCurrency({ isTop, InSinglePage }) {
       >
         <MenuItem
           onClick={() => {
-            setCurrency("USD");
-            handleClose;
-            HandleChangeCurrnecy();
+            HandleChangeCurrnecy("USD");
           }}
           sx={{ textTransform: "capitalize" }}
         >
@@ -107,9 +105,7 @@ export default function ChangeCurrency({ isTop, InSinglePage }) {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            setCurrency("SAR");
-            handleClose;
-            HandleChangeCurrnecy();
+            HandleChangeCurrnecy("SAR");
           }}
           sx={{ textTransform: "capitalize" }}
         >

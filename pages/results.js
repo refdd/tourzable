@@ -42,13 +42,13 @@ function Results({ tours, regions }) {
     </>
   );
 }
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, locale }) {
   const type_id = query.type_id || "2";
   const region_id = query.region_id || "1";
-  const date = query.date || "2021-12-12";
+  const date = query.date || "";
 
   const tours = await fetchApi(
-    `${baseUrl}/packages?type_id=${type_id}&region_id=${region_id}&date=${date}`
+    `${baseUrl}/packages?locale=${locale}&type_id=${type_id}&region_id=${region_id}&date=${date}`
   );
   const regions = await fetchApi(`${baseUrl}/regions`);
 

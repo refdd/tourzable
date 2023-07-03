@@ -116,8 +116,11 @@ function SingleActivties({ singletour }) {
 }
 
 export default SingleActivties;
-export async function getServerSideProps({ params, locale }) {
-  const singletour = await fetchApi(`${baseUrl}/packages/${params.slug}`);
+export async function getServerSideProps({ params, locale, query }) {
+  const currency = query.currency || "USD";
+  const singletour = await fetchApi(
+    `${baseUrl}/packages/${params.slug}?locale=${locale}&currency=${currency}`
+  );
   // const singletour = await fetchApi(
   //   `${baseUrl}/${locale}/packages/${params.slug}`
   // );

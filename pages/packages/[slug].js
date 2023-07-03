@@ -126,10 +126,13 @@ function SingleTour({ singletour }) {
 }
 
 export default SingleTour;
-export async function getServerSideProps({ params, locale, query }) {
+export async function getServerSideProps({ params, locale, query, res }) {
   const currency = query.currency || "USD";
   const slug = params?.slug || "";
-
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
   const singletour = await fetchApi(
     `${baseUrl}/packages/${slug}?locale=${locale}&currency=${currency}`
   );

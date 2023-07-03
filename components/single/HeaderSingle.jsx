@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { BsArrowUpRight, BsStarFill } from "react-icons/bs";
 import { ImLocation2 } from "react-icons/im";
@@ -7,6 +8,8 @@ function HeaderSingle({ title, ratingNumber, location, price, starNumber }) {
   const stars = Array.from({ length: starNumber }, (_, i) => (
     <BsStarFill key={i} />
   ));
+  const router = useRouter();
+  const { currency } = router.query;
   // __ this way using map function
   // const stars = new Array(numStars).fill().map((_, i) => (
   //   <BsStarFill key={i} />
@@ -45,7 +48,11 @@ function HeaderSingle({ title, ratingNumber, location, price, starNumber }) {
         {/* price */}
         <div className="flex items-center space-x-4 ">
           <p className="text-sm text-[#051036] font-sans uppercase ">
-            From <span className="font-medium text-[22px] ">Us${price}</span>
+            From{" "}
+            <span className="font-medium text-[22px] ">
+              {" "}
+              {currency ? (currency == "SAR" ? "SAR" : "$") : "$"} {price}
+            </span>
           </p>
           {/* <div className="flex justify-start items-center space-x-2 font-medium text-[15px] rounded bg-mainColor text-white h-14 px-6 ">
             <button>Select Room </button>
