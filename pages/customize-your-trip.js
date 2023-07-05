@@ -8,9 +8,11 @@ import HeaderSections from "@/components/parts/HeaderSections";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function coustomizeYourTrip({ cities }) {
   // console.log(cities);
+  const { t, i18n } = useTranslation();
   return (
     <>
       <Head>
@@ -19,9 +21,9 @@ function coustomizeYourTrip({ cities }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainHeaderList title={"CUSTOMIZE YOUR TRIP"} />
+      <MainHeaderList title={t("common:home.Customize_trip")} />
       <HeaderSections
-        titel={"CUSTOMIZE YOUR TRIP"}
+        titel={t("common:home.Customize_trip")}
         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       />
       <FormCustomizeTour cities={cities} />

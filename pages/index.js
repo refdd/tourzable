@@ -48,7 +48,7 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BottonInquire title={"customize your trip"} goToCustomize />
+      <BottonInquire title={t("common:home.Customize_trip")} goToCustomize />
 
       <MainHeader regions={regions} />
       <WhyChooseUs homepage snippets={snippets} />

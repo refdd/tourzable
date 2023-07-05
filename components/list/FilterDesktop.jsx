@@ -96,7 +96,7 @@ function FilterDesktop({ regions }) {
                   <TextField
                     type={"text"}
                     {...field}
-                    label="ex: Al Ula Tour Package"
+                    label={t("common:list.SearchEx")}
                     fullWidth
                     variant="outlined"
                     id="outlined-required"
@@ -113,7 +113,7 @@ function FilterDesktop({ regions }) {
             <div className="">
               <FormControl variant="standard" fullWidth sx={{}}>
                 <InputLabel id="demo-multiple-checkbox-label">
-                  Destination
+                  {t("common:home.Location")}
                 </InputLabel>
                 <Select
                   labelId="demo-multiple-checkbox-label"
@@ -176,7 +176,7 @@ function FilterDesktop({ regions }) {
                       <TextField
                         type={"number"}
                         {...field}
-                        label="Days number"
+                        label={t("common:list.days_Number")}
                         fullWidth
                         variant="outlined"
                         id="outlined-required"
@@ -241,7 +241,7 @@ function FilterDesktop({ regions }) {
          bg-mainColor rounded py-3 text-white text-lg transition-all hover:bg-[#051036] hover:text-white"
           >
             <BiSearch className="" />
-            <button>search</button>
+            <button>{t("common:home.Search")}</button>
           </div>
         </form>
       </FormProvider>

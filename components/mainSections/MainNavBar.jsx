@@ -181,7 +181,7 @@ function MainNavBar() {
               <li className=" text-sm   font-semibold font-sans   hover:bg-[#3554d10d] px-2">
                 <Link href={"/customize-your-trip"}>
                   <span className="py-1 px-1 rounded-lg flex items-center justify-center bg-MainYeloow">
-                    customize-your-trip
+                    {t("common:home.Customize_trip")}{" "}
                   </span>
                 </Link>
               </li>
@@ -283,7 +283,7 @@ function MainNavBar() {
           <li className=" text-lg text-[#051036]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2 cursor-pointer">
             <Link href={"/customize-your-trip"}>
               <span className="py-1 px-1 rounded-lg flex items-center justify-center bg-MainYeloow">
-                customize-your-trip
+                {t("common:home.Customize_trip")}
               </span>
             </Link>
           </li>

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FaAngleDown } from "react-icons/fa";
 
 function CancellationPolicy({ Cancellation_Policy }) {
   const [openPlicy, setOpenPlicy] = useState(false);
+  const { t, i18n } = useTranslation();
   return (
     <div id="Cancellation" className="container mx-auto px-4  mt-5">
       <div
@@ -12,7 +14,7 @@ function CancellationPolicy({ Cancellation_Policy }) {
         className=" flex items-center gap-4 cursor-pointer"
       >
         <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
-          Cancellation Policy
+          {t("common:single.cancellation_policy")}
         </p>
         <FaAngleDown
           className={`text-lg text-mainColor transition-transform  
@@ -29,7 +31,7 @@ function CancellationPolicy({ Cancellation_Policy }) {
             {Cancellation_Policy.title}
           </span>
           <p className="text-[16px] leading-[28px] md:text-lg font-sans text-textPurple capitalize py-1 ">
-            Cancellation Policy:{" "}
+            {t("common:single.cancellation_policy")}:{" "}
           </p>
           <div className="text-[16px] leading-[28px] md:text-lg font-sans  capitalize  py-1">
             <div

@@ -8,6 +8,7 @@ import { ImMan } from "react-icons/im";
 import { MdOutlinePersonRemoveAlt1 } from "react-icons/md";
 import { useForm, Controller } from "react-hook-form";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 function CheckAvailability({
   idPackage,
@@ -23,7 +24,7 @@ function CheckAvailability({
   const [aduits, setAduits] = useState(0);
   const [childs, setChilds] = useState(0);
   const router = useRouter();
-
+  const { t, i18n } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -89,7 +90,7 @@ function CheckAvailability({
                 textField: {
                   variant: "standard",
                   fullWidth: true,
-                  label: "Start Day",
+                  label: t("common:single.start_ate"),
                   required: true,
                 },
               }}
@@ -107,7 +108,7 @@ function CheckAvailability({
                 textField: {
                   variant: "standard",
                   fullWidth: true,
-                  label: "End Day",
+                  label: t("common:single.end_Date"),
                   required: true,
                 },
               }}
@@ -122,7 +123,7 @@ function CheckAvailability({
                 <ImMan className="text-2xl text-MainYeloow" />
                 <span className="text-sm text-[#555] font-sans capitalize font-medium">
                   {" "}
-                  NO Of Adults
+                  {t("common:single.num_adults")}
                 </span>
               </div>
               <div className="flex items-center px-5">
@@ -156,7 +157,7 @@ function CheckAvailability({
                 <FaChild className="text-2xl text-MainYeloow" />
                 <span className="text-sm text-[#555] font-sans capitalize font-medium">
                   {" "}
-                  NO Of Childs
+                  {t("common:single.num_childs")}
                 </span>
               </div>
               <div className="flex items-center px-5">
@@ -191,7 +192,7 @@ function CheckAvailability({
         <div className=" col-span-2 ">
           <button className="flex justify-center items-center py-4 bg-mainColor rounded-md cursor-pointer w-full">
             <span className="text-[16px] font-medium text-white font-sans capitalize text-center">
-              Check availability
+              {t("common:single.check_availability")}
             </span>
           </button>
         </div>

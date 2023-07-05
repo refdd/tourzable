@@ -5,6 +5,7 @@ import { GiMeal } from "react-icons/gi";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { FcCheckmark } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
+import { useTranslation } from "react-i18next";
 function OverView({
   min,
   max,
@@ -15,11 +16,12 @@ function OverView({
   board,
   hotel_rate,
 }) {
+  const { t, i18n } = useTranslation();
   return (
     <div id="overview" className="">
       <div className=" border-b pb-4">
         <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
-          Property highlights
+          {t("common:single.Overview")}
         </p>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 py-4">
           <div className=" flex justify-center  items-center flex-col">
@@ -73,7 +75,7 @@ function OverView({
         <div className="flex flex-col gap-4 pt-4 md:flex-row">
           <div className="p-3 bg-gray-50 rounded shadow-md md:flex-1">
             <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
-              Price Includes
+              {t("common:single.Includes")}
             </p>
             <ul className="flex flex-col space-y-3 py-4">
               {includes?.map((item) => (
@@ -87,7 +89,7 @@ function OverView({
           {!unincludes?.length == 0 && (
             <div className="p-3 bg-gray-50 rounded shadow-md md:flex-1">
               <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
-                NOT Includes
+                {t("common:single.excludes")}
               </p>
               <ul className="flex flex-col space-y-3 py-4">
                 {unincludes?.map((item) => (

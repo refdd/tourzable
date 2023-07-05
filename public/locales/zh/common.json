@@ -34,16 +34,51 @@
       "F&QHeader" : "經常問的問題" ,
       "supScribtheader": "您的旅行之旅從這裡開始" ,
       "supScribtDesc": "註冊，我們將向您發送最優惠的價格" ,
-      "Subscribe" : "訂閱"
-
-
+      "Subscribe" : "訂閱",
+      "Customize_trip" : "定制您的旅行" ,
+      "signIn_register" : "登入 / 登記 "
       },
       "list" : {
-        "View Details":"查看詳情" ,
+        "View_Details":"查看詳情" ,
         "searchList" : "按旅遊名稱搜索" ,
         "Start_Point" : "您的起點" ,
         "Number_Days" : "天數" ,
         "Price_Range" : "價格範圍" ,
-        "Star_Rating" : "Star Rating"
-      }
+        "Star_Rating" : "Star Rating",
+        "Choose_Date" : "選擇日期" ,
+        "SearchEx" : "示例：埃爾奧拉旅遊套餐",
+        "days_Number" :"天數",
+        "reviews" : "評論" ,
+        "visited_Locations" : "訪問地點" 
+      } ,
+      "single" : {
+        "Overview":"概述" ,
+        "Includes" : "價格包含" ,
+        "excludes" : "不包括" ,
+        "Itinerary" : "行程" ,
+        "day" : "天" ,
+        "additional_info" : "附加信息",
+        "cancellation_policy" : "取消政策" ,
+        "term_conditions" : "條款和條件" ,
+        "leave_review" : "留下評論",
+        "email_address" :"電子郵件地址",
+        "name" : "名" ,
+        "first_name" : "名" ,
+        "last_name" : "姓" ,
+        "operator_review" : "運營商審查",
+        "package_review":"旅遊回顧" ,
+        "Comment" : "評論" ,
+        "send" : "發送" ,
+        "reviewsPlaceholder" : "添加您的意見或建議以修改下次行程" ,
+        "Inquiry" : "詢問" ,
+        "code_number" : "國家代碼和電話號碼 ",
+        "num_adults" : "成人人數" ,
+        "travel_dates" : "旅行日期",
+        "num_childs" :"孩子數量",
+        "inqueryPlaceHolder" : "添加您的建議以修改行程或添加任何其他特殊要求" ,
+        "check_availability" : "檢查可用性",
+        "start_ate":"開始日期" ,
+        "end_Date" : "結束日期" 
+        
+      } 
 }

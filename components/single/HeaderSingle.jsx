@@ -1,9 +1,11 @@
 import { useRouter } from "next/router";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { BsArrowUpRight, BsStarFill } from "react-icons/bs";
 import { ImLocation2 } from "react-icons/im";
 
 function HeaderSingle({ title, ratingNumber, location, price, starNumber }) {
+  const { t, i18n } = useTranslation();
   // may useing array from
   const stars = Array.from({ length: starNumber }, (_, i) => (
     <BsStarFill key={i} />
@@ -28,10 +30,10 @@ function HeaderSingle({ title, ratingNumber, location, price, starNumber }) {
             {ratingNumber}
           </span>
           <span className="text-[#051036] font-medium font-sans text-sm ">
-            Excaptional
+            {t("common:home.Exceptional")}
           </span>
           <span className="text-[#697488] text-sm font-sans font-medium ">
-            3,014 reviews
+            3,014 {t("common:list.reviews")}
           </span>
         </div>
       </div>

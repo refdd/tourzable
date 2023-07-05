@@ -13,6 +13,7 @@ import CustomTextField from "../hleper/CustomTextField";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 function Inquery({ idPackage }) {
   const [number, setnumber] = useState("+1");
@@ -21,6 +22,7 @@ function Inquery({ idPackage }) {
   const methods = useForm();
   const [selectedDate, setSelectedDate] = useState(null);
   const router = useRouter();
+  const { t, i18n } = useTranslation();
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -81,7 +83,7 @@ function Inquery({ idPackage }) {
             <CustomTextField
               required
               name="firstName"
-              label="Frist Name "
+              label={t("common:single.first_name")}
               type={"text"}
             />
           </div>
@@ -90,7 +92,7 @@ function Inquery({ idPackage }) {
             <CustomTextField
               required
               name="lastName"
-              label="Last Name "
+              label={t("common:single.last_name")}
               type={"text"}
             />
           </div>
@@ -99,7 +101,7 @@ function Inquery({ idPackage }) {
             <CustomTextField
               required
               name="email"
-              label="Email Address"
+              label={t("common:single.email_address")}
               type="email"
             />
           </div>
@@ -108,7 +110,7 @@ function Inquery({ idPackage }) {
             <MuiPhoneNumber
               sx={{ "& svg": { height: "0.7em" } }}
               // slot={{}}
-              label="Country Code & Phone Num"
+              label={t("common:single.code_number")}
               value={number}
               autoFormat={true}
               fullWidth
@@ -126,7 +128,7 @@ function Inquery({ idPackage }) {
                   <ImMan className="text-2xl text-MainYeloow" />
                   <span className="text-sm text-[#555] font-sans capitalize font-medium">
                     {" "}
-                    NO Of Adults
+                    {t("common:single.num_adults")}
                   </span>
                 </div>
                 <div className="flex items-center px-5">
@@ -160,7 +162,7 @@ function Inquery({ idPackage }) {
                   <FaChild className="text-2xl text-MainYeloow" />
                   <span className="text-sm text-[#555] font-sans capitalize font-medium">
                     {" "}
-                    NO Of Childs
+                    {t("common:single.num_childs")}
                   </span>
                 </div>
                 <div className="flex items-center px-5">
@@ -201,7 +203,7 @@ function Inquery({ idPackage }) {
                   textField: {
                     variant: "standard",
                     fullWidth: true,
-                    label: "Date",
+                    label: t("common:single.travel_dates"),
                   },
                 }}
               />
@@ -213,7 +215,7 @@ function Inquery({ idPackage }) {
               id="message"
               rows="2"
               className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  "
-              placeholder="Add your suggestions to modify the itinerary or add other features or any additional special request"
+              placeholder={t("common:single.inqueryPlaceHolder")}
               {...methods.register("comment", { required: true })}
             ></textarea>
           </div>
@@ -221,7 +223,7 @@ function Inquery({ idPackage }) {
           <div className=" md:col-span-2 ">
             <button className="flex justify-center items-center py-4 bg-mainColor rounded-md cursor-pointer w-full">
               <span className="text-[16px] font-medium text-white font-sans capitalize text-center">
-                send
+                {t("common:single.send")}
               </span>
             </button>
           </div>

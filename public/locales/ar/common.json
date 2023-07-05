@@ -34,15 +34,52 @@
       "F&QHeader" : "الاسئله الاكثر شيوعا" ,
       "supScribtheader": "تبدأ رحلة سفرك من هنا" ,
       "supScribtDesc": "اشترك وسنرسل لك أفضل العروض" ,
-      "Subscribe" : "اشترك"
+      "Subscribe" : "اشترك",
+      "Customize_trip" : "خصص رحلتك" ,
+      "signIn_register" : "تسجيل الدخول / الاشتراك"
       },
       "list" : {
-        "View Details":"عرض التفاصيل" ,
+        "View_Details":"عرض التفاصيل" ,
         "searchList" : "البحث باسم الجولة" ,
         "Start_Point" : "نقطة البداية الخاصة بك" ,
         "Number_Days" : "عدد الأيام" ,
         "Price_Range" : "نطاق السعر" ,
-        "Star_Rating" : "Star Rating"
-      }
+        "Star_Rating" : "Star Rating",
+        "Choose_Date" : "اختر موعدا" ,
+        "SearchEx" : "مثال: رحلة العلا",
+        "days_Number" :"عدد الأيام",
+        "reviews" : "التقييمات" ,
+        "visited_Locations" : "المواقع التي سيتم زيارتها" 
+      } ,
+      "single" : {
+        "Overview":"ملخص الرحله" ,
+        "Includes" : "السعر يشمل" ,
+        "excludes" : "لا يشمل" ,
+        "Itinerary" : "مسار الرحلة" ,
+        "day" : "يوم" ,
+        "additional_info" : "معلومات إضافية",
+        "cancellation_policy" : "سياسة الإلغاء" ,
+        "term_conditions" : "الأحكام والشروط" ,
+        "leave_review" : "ترك تعليق",
+        "email_address" :"البريد الإلكتروني",
+        "name" : "الاسم" ,
+        "first_name" : "الاسم الاول" ,
+        "last_name" : "اسم العائلة" ,
+        "operator_review" : "تقييم المشغل",
+        "package_review":"تقييم الرحله" ,
+        "Comment" : "تعليقك" ,
+        "send" : "ارسل" ,
+        "reviewsPlaceholder" : "أضف تعليقك أو اقتراحاتك لتعديل الرحلة القادمة" ,
+        "Inquiry" : "استفسار" ,
+        "code_number" : "رمز الدولة ورقم الهاتف ",
+        "num_adults" : "عدد البالغين" ,
+        "travel_dates" : "مواعيد السفر",
+        "num_childs" :"عدد الأطفال",
+        "inqueryPlaceHolder" : "أضف اقتراحاتك لتعديل مسار الرحلة أو إضافة أي طلب خاص إضافي" ,
+        "check_availability" : "التحقق من التوفر",
+        "start_ate":"تاريخ البدء" ,
+        "end_Date" : "تاريخ الانتهاء" 
+        
+      } 
 
 }

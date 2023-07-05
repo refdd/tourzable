@@ -6,6 +6,7 @@ import { BiHeart } from "react-icons/bi";
 import { BsArrowUpRight, BsFillStarFill } from "react-icons/bs";
 
 import ImageSlider from "../tour/ImageSlider";
+import { useTranslation } from "react-i18next";
 
 function CardListTour({
   slug,
@@ -22,6 +23,7 @@ function CardListTour({
 }) {
   const { ViewTours } = useStateContext();
   const [reviewNumbers, setReviewNumbers] = useState(null);
+  const { t, i18n } = useTranslation();
   useEffect(() => {});
   return (
     <div
@@ -124,7 +126,7 @@ function CardListTour({
         {!visitedLocations?.length == 0 && (
           <div className={ViewTours ? " flex-col hidden  " : "flex flex-col  "}>
             <span className="text-textPurple font-medium text-sm capitalize font-sans">
-              Visited Locations
+              {t("common:list.visited_Locations")}
             </span>
           </div>
         )}
@@ -167,10 +169,10 @@ function CardListTour({
               {reatingNumber}
             </span> */}
           <span className="text-[#051036] font-medium font-sans text-sm ">
-            Excaptional
+            {t("common:home.Exceptional")}
           </span>
           <span className="text-[#697488] text-sm font-sans font-medium ">
-            {price - 96} reviews
+            {price - 96} {t("common:list.reviews")}
           </span>
           <div className="flex items-start space-x-1 justify-center text-MainYeloow">
             <BsFillStarFill />
@@ -189,14 +191,14 @@ function CardListTour({
           }
         >
           <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
-            Starting form
+            {t("common:home.Starting_from")}
           </span>
           <span className="text-mainColor"> ${price}</span>
         </div>
         {/* button */}
         <div className="flex items-center justify-center py-3 gap-3 bg-mainColor rounded transition-all hover:md:bg-[#051036]">
           <button className="text-[15px] text-white font-sans font-medium capitalize">
-            View Detail
+            {t("common:home.View_Details")}
           </button>
           <BsArrowUpRight className="text-white text-lg" />
         </div>

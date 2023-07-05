@@ -34,14 +34,51 @@
         "F&QHeader" : "Frequently Asked Questions" ,
         "supScribtheader": "Your Travel Journey Starts Here" ,
         "supScribtDesc": "Sign Up And We'll Send The Best Deals To You" ,
-        "Subscribe" : "Subscribe"
+        "Subscribe" : "Subscribe",
+        "Customize_trip" : "Customize your trip" ,
+        "signIn_register" : "Sign In / Register"
       },
       "list" : {
-        "View Details":"View Details" ,
+        "View_Details":"View Details" ,
         "searchList" : "Search By Tour Name" ,
         "Start_Point" : "Your Start Point" ,
         "Number_Days" : "Number of Days" ,
         "Price_Range" : "Price Range" ,
-        "Star_Rating" : "Star Rating"
-      }
+        "Star_Rating" : "Star Rating",
+        "Choose_Date" : "Choose Date" ,
+        "SearchEx" : "Ex: AlUla Tour Package",
+        "days_Number" :"Days Number",
+        "reviews" : "reviews" ,
+        "visited_Locations" : "Visited Locations" 
+      } ,
+      "single" : {
+        "Overview":"Overview" ,
+        "Includes" : "Price Includes" ,
+        "excludes" : "Not Includes" ,
+        "Itinerary" : "Itinerary" ,
+        "day" : "Day" ,
+        "additional_info" : "Additional Info",
+        "cancellation_policy" : "Cancellation Policy" ,
+        "term_conditions" : "Terms And Conditions" ,
+        "leave_review" : "Leave A Review",
+        "email_address" :"Email Address",
+        "name" : "Name" ,
+        "first_name" : "First Name" ,
+        "last_name" : "Last Name" ,
+        "operator_review" : "Operator Review",
+        "package_review":"Package Review" ,
+        "Comment" : "Comment" ,
+        "send" : "send" ,
+        "reviewsPlaceholder" : "Add your suggestions to modify the itinerary or add other features or any additional special request" ,
+        "Inquiry" : "Inquiry" ,
+        "code_number" : "Country Code & Phone Number *",
+        "num_adults" : "Num Of Adults" ,
+        "travel_dates" : "Travel Dates",
+        "num_childs" :"Num Of Childs",
+        "inqueryPlaceHolder" : "Add your suggestions to modify the itinerary or add any additional special request" ,
+        "check_availability" : "Check Availability",
+        "start_ate":"Start Date" ,
+        "end_Date" : "end_Date" 
+        
+      } 
 }

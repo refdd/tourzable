@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FaAngleDown } from "react-icons/fa";
 
 function TermsAndConditions() {
   const [openTaC, setOpenTaC] = useState(false);
+  const { t, i18n } = useTranslation();
   return (
     <div id="Terms" className="container mx-auto px-4 mt-5 ">
       <div
@@ -12,7 +14,7 @@ function TermsAndConditions() {
         className=" flex items-center gap-4 cursor-pointer"
       >
         <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
-          Terms And Conditions
+          {t("common:single.term_conditions")}
         </p>
         <FaAngleDown
           className={`text-lg text-mainColor transition-transform  

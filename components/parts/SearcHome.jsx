@@ -72,7 +72,7 @@ function SearcHome({ regions }) {
       >
         <div className=" md:w-[35%] md:px-3">
           <div className="felx flex-col justify-center md:mt-2">
-            <InputLabel>Location</InputLabel>
+            <InputLabel>{t("common:home.Location")}</InputLabel>
             <Select
               variant="standard"
               value={location}
@@ -128,7 +128,7 @@ function SearcHome({ regions }) {
                   textField: {
                     variant: "standard",
                     fullWidth: true,
-                    label: "Choose Data",
+                    label: t("common:list.Choose_Date"),
                   },
                 }}
               />

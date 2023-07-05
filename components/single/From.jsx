@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import CheckAvailability from "./CheckAvailability";
 import Inquery from "./Inquery";
+import { useTranslation } from "react-i18next";
 
 function From({ idPackage, image, title, tourCode, best_price, min, max }) {
   const [openFrom, setOpenFrom] = useState(false);
+  const { t, i18n } = useTranslation();
   return (
     <div className="container mx-auto px-4 pb-8 h-full " id="InquireFrom">
       <div className=" bg-gray-50 rounded py-4 md:sticky md:top-14 ">
@@ -20,7 +22,7 @@ function From({ idPackage, image, title, tourCode, best_price, min, max }) {
              }`}
           >
             <button className="text-[16px]  font-sans font-medium capitalize">
-              inquiry
+              {t("common:single.Inquiry")}
             </button>
           </div>
           <div
@@ -34,7 +36,7 @@ function From({ idPackage, image, title, tourCode, best_price, min, max }) {
             } `}
           >
             <button className="text-[16px]  font-sans font-medium capitalize">
-              check availability
+              {t("common:single.check_availability")}
             </button>
           </div>
         </div>
