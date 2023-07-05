@@ -10,7 +10,7 @@ import Head from "next/head";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-function coustomizeYourTrip({ cities }) {
+function CoustomizeYourTrip({ cities }) {
   // console.log(cities);
   const { t, i18n } = useTranslation();
   return (
@@ -34,7 +34,7 @@ function coustomizeYourTrip({ cities }) {
   );
 }
 
-export default coustomizeYourTrip;
+export default CoustomizeYourTrip;
 export async function getStaticProps({ locale }) {
   const cities = await fetchApi(`${baseUrl}/cities?locale=${locale}`);
 
