@@ -10,9 +10,11 @@ import HeaderSections from "@/components/parts/HeaderSections";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function TourOders({ cities }) {
   // console.log(cities);
+  const { t, i18n } = useTranslation();
   return (
     <>
       <Head>
