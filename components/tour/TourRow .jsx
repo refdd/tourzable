@@ -22,7 +22,6 @@ function TourRow({ tours, destinations }) {
     activeElement && setActiveId(id);
   };
 
-  // console.log(i18n.dir());
   return (
     <div className="container mx-auto px-4 mb-11 z-40">
       <ul className="flex pa justify-start items-start gap-2 mb-6 flex-wrap md:justify-center">
@@ -82,7 +81,7 @@ function TourRow({ tours, destinations }) {
               slug={tour.slug}
               tourType={tour.type.title}
               tourId={tour.id}
-              is_requested={tour?.is_requested}
+              is_requested={tour?.immediate_booking}
             />
           </SwiperSlide>
         ))}

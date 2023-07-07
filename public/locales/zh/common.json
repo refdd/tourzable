@@ -36,7 +36,9 @@
       "supScribtDesc": "註冊，我們將向您發送最優惠的價格" ,
       "Subscribe" : "訂閱",
       "Customize_trip" : "定制您的旅行" ,
-      "signIn_register" : "登入 / 登記 "
+      "signIn_register" : "登入 / 登記 ",
+      "immediate_booking" : "立即預訂"
+
       },
       "list" : {
         "View_Details":"查看詳情" ,

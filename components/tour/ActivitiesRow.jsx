@@ -21,6 +21,7 @@ function ActivitiesRow({ Activities, destinations }) {
     const activeElement = locationTour.find((id) => id === id);
     activeElement && setActiveId(id);
   };
+  console.log(Activities[0]);
 
   return (
     <div className="container mx-auto px-4 mb-11 z-40">
@@ -81,6 +82,7 @@ function ActivitiesRow({ Activities, destinations }) {
               slug={activitie.slug}
               tourType={activitie.type.title}
               tourId={activitie.id}
+              is_requested={activitie?.immediate_booking}
             />
           </SwiperSlide>
         ))}

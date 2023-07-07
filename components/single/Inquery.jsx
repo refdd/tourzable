@@ -67,12 +67,12 @@ function Inquery({ idPackage }) {
       )
       .then((res) => {
         console.log(res);
+        router.push("/Thank_you");
       })
       .catch((error) => {
         console.log(error);
       });
     // console.log({ ...data, number, aduits, childs, data: dateFormated });
-    router.push("/Thank_you");
   };
   return (
     <FormProvider {...methods}>

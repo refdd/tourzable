@@ -36,7 +36,8 @@
         "supScribtDesc": "Sign Up And We'll Send The Best Deals To You" ,
         "Subscribe" : "Subscribe",
         "Customize_trip" : "Customize your trip" ,
-        "signIn_register" : "Sign In / Register"
+        "signIn_register" : "Sign In / Register",
+        "immediate_booking" : "immediate booking"
       },
       "list" : {
         "View_Details":"View Details" ,

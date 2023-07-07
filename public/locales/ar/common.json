@@ -36,7 +36,8 @@
       "supScribtDesc": "اشترك وسنرسل لك أفضل العروض" ,
       "Subscribe" : "اشترك",
       "Customize_trip" : "خصص رحلتك" ,
-      "signIn_register" : "تسجيل الدخول / الاشتراك"
+      "signIn_register" : "تسجيل الدخول / الاشتراك",
+      "immediate_booking" : "حجز فوري"
       },
       "list" : {
         "View_Details":"عرض التفاصيل" ,

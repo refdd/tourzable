@@ -102,7 +102,7 @@ function CardListTour({
           </div>
         </Link>
         {/* location and rating */}
-        <div className="flex items-center space-x-4 pr-2">
+        <div className="flex items-center gap-4 pr-2">
           {/* location */}
           <div className="flex space-x-3 items-center ">
             <span className="text-lg text-[#051036] font-medium font-serif capitalize underline">
@@ -198,7 +198,7 @@ function CardListTour({
         {/* button */}
         <div className="flex items-center justify-center py-3 gap-3 bg-mainColor rounded transition-all hover:md:bg-[#051036]">
           <button className="text-[15px] text-white font-sans font-medium capitalize">
-            {t("common:home.View_Details")}
+            {t("common:list.View_Details")}
           </button>
           <BsArrowUpRight className="text-white text-lg" />
         </div>

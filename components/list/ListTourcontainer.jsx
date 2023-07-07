@@ -5,7 +5,7 @@ import { useStateContext } from "@/contexts/ContextProvider";
 import SeeMore from "../hleper/SeeMore";
 function ListTourcontainer({ tours, pageType }) {
   const { ViewTours, loadMore, sortBy, setSortBy } = useStateContext();
-  const [sortedItems, setSortedItems] = useState([]);
+  const [sortedItems, setSortedItems] = useState([tours]);
   // const [sortBy, setSortBy] = useState("price");
   useEffect(() => {
     const sortItems = () => {
@@ -32,8 +32,8 @@ function ListTourcontainer({ tours, pageType }) {
     };
 
     setSortedItems(sortItems());
-  }, [sortBy, setSortBy]);
-  console.log(tours[0]);
+  }, [sortBy, setSortBy, tours]);
+  // console.log(tours[0]);
 
   return (
     <div className="container mx-auto px-4 mt-6">

@@ -55,7 +55,7 @@ function CardTour({
         console.log(error);
       });
   };
-  console.log(i18n.dir());
+
   return (
     <div
       dir={i18n.dir()}
@@ -132,7 +132,7 @@ function CardTour({
           </p>
           <p className=" bg-mainColor rounded-lg w-fit px-2 mt-3">
             <span className="text-[12px] text-white font-medium font-serif capitalize">
-              {is_requested ? "payment" : ""}
+              {is_requested ? "Immediate Booking" : ""}
             </span>
           </p>
         </div>

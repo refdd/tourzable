@@ -28,6 +28,7 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import MuiPhoneNumber from "material-ui-phone-number-2";
 import { useStateContext } from "@/contexts/ContextProvider";
+import { useRouter } from "next/router";
 const languages = [
   { id: 1, title: "Arabic" },
   { id: 2, title: "English" },
@@ -71,6 +72,7 @@ function FromTourOders({ cities }) {
   const { data: session } = useSession();
   const [number, setnumber] = useState("+1");
   const [isAgree, setIsAgree] = useState(false);
+  const router = useRouter();
   const startDayFormate = StartDate
     ? StartDate.format("DD-MM-YYYY")
     : StartDate;
@@ -89,12 +91,14 @@ function FromTourOders({ cities }) {
             },
           })
           .then((response) => {
-            // console.log(response.data.data.id);
+            // console.log(response.data.data);
+
             setOperatorId(response.data.data.id);
             setPackagesOpertaor(response.data.data.packages);
           })
           .catch((error) => {
             console.log(error);
+            console.log("lksjflkdsjflk");
           });
       }
     };
@@ -144,6 +148,7 @@ function FromTourOders({ cities }) {
       );
 
       console.log(response);
+      router.push("/Thank_you");
     } catch (error) {
       console.log(error);
     }
