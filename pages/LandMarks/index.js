@@ -25,11 +25,11 @@ function Landmarks({ landmarks, regions }) {
       <MainHeaderList title={"SAUDI ARABIA Landmarks"} />
 
       <div className="py-2 bg-[#f5f5f5]"> </div>
-      <div className=" grid grid-cols-1 gap-5  md:grid-cols-5">
-        <div className="hidden md:block col-span-1">
+      <div className=" grid grid-cols-1 gap-5  md:grid-cols-1">
+        {/* <div className="hidden md:block col-span-1">
           <FilterDesktop regions={regions} />
-        </div>
-        <div className="col-span-4">
+        </div> */}
+        <div className=" container mx-auto px-4 ">
           {/* <HeaderList /> */}
           {/* <ListTourcontainer /> */}
           <ListLnadMarkContainer regions={regions} landmarks={landmarks} />
@@ -39,7 +39,7 @@ function Landmarks({ landmarks, regions }) {
       {/* <FaQSection /> */}
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

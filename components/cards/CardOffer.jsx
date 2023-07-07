@@ -3,6 +3,7 @@ import React from "react";
 import { BiHeart } from "react-icons/bi";
 import ImageSlider from "../tour/ImageSlider";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 function CardOffer({
   image,
   location,
@@ -15,8 +16,13 @@ function CardOffer({
 }) {
   const router = useRouter();
   const { currency } = router.query;
+  const { t, i18n } = useTranslation();
+
   return (
-    <div className=" tourcard group flex flex-col space-y-3 p-2 border bg-white z-40 rounded-md ">
+    <div
+      dir={i18n.dir()}
+      className=" tourcard group flex flex-col space-y-3 p-2 border bg-white z-40 rounded-md "
+    >
       {/* image card */}
       <div className=" w-full h-[180px] relative overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
@@ -79,20 +85,20 @@ function CardOffer({
           {ratingNumber}
         </span>
         <span className="text-mainColor font-medium font-sans text-sm ">
-          Excaptional
+          {t("common:home.Exceptional")}
         </span>
         <span className="text-[#697488] text-sm font-sans font-medium ">
-          3,014 reviews
+          {Math.floor(price) - 15} {t("common:list.reviews")}
         </span>
       </div>
       {/* price */}
       <div className=" flex items-center space-x-1 text-lg font-sans font-medium ">
         <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
-          Starting form
+          {t("common:home.Starting_from")}
         </span>
         <span className="text-mainColor ">
           {currency ? (currency == "SAR" ? "SAR" : "$") : "$"}{" "}
-          {Math.floor(price) - (discount / 100) * Math.floor(price)}
+          {Math.floor(Math.floor(price) - (discount / 100) * Math.floor(price))}
         </span>
         <span className="text-gray-500  line-through text-sm">
           {currency ? (currency == "SAR" ? "SAR" : "$") : "$"}{" "}

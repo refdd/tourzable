@@ -66,7 +66,7 @@ function Wishlist({ favoritesPackages, favoritesLandmarks }) {
       </div>
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </div>
   );

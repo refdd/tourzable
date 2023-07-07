@@ -63,7 +63,7 @@ function SingelBooking() {
       </div>
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </div>
   );

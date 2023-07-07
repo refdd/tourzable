@@ -29,7 +29,7 @@ function CancellationPolicy() {
       <OverViewTerms />
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

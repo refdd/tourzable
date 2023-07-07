@@ -37,7 +37,7 @@ function Results({ tours, regions }) {
       {/* <FaQSection /> */}
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

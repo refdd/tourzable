@@ -17,7 +17,7 @@ function ReactPost({ recentPosts }) {
         Recent Posts
       </p>
       {recentPosts?.map((post) => (
-        <div key={post.id} className="flex items-center space-x-3 py-6">
+        <div key={post.id} className="flex items-center gap-3 py-6">
           <div className="">
             <Image
               loader={() => {
@@ -29,7 +29,7 @@ function ReactPost({ recentPosts }) {
               width={100}
               height={80}
               alt="reated post"
-              className="rounded-lg"
+              className="rounded-lg object-cover"
             />
           </div>
           <div className="flex flex-col space-y-2">

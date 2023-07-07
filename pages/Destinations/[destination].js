@@ -34,7 +34,7 @@ function Destinations() {
       {/* <FaQSection /> */}
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

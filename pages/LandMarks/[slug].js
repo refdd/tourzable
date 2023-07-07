@@ -56,7 +56,7 @@ function SingleLandmark({ singlelandmark, landmarks }) {
         {/* <FaQSection /> */}
         <Subscribe />
         {/* <DownLoadApp /> */}
-        <NotMember />
+        {/* <NotMember /> */}
         <Footer />
       </div>
     </>

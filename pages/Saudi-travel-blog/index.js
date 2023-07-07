@@ -43,7 +43,7 @@ function listBlog({ posts, recentPosts, cities }) {
       {/* <FaQSection /> */}
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

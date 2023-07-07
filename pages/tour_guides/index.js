@@ -27,18 +27,18 @@ function TourGuides({ allTourGuides, regions }) {
       <MainHeaderList title={"Tour Guides"} />
 
       <div className="py-2 bg-[#f5f5f5]"> </div>
-      <div className=" grid grid-cols-1 gap-5  md:grid-cols-5 mt-10 ">
-        <div className="hidden md:block col-span-1">
+      <div className=" grid grid-cols-1 gap-5  md:grid-cols-1 mt-10 ">
+        {/* <div className="hidden md:block col-span-1">
           <FilterDesktop regions={regions} />
-        </div>
-        <div className="col-span-4">
+        </div> */}
+        <div className="container mx-auto px-4 ">
           <ListTourGuides allTourGuides={allTourGuides} />
         </div>
       </div>
       {/* <FaQSection /> */}
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

@@ -29,7 +29,7 @@ function TermsConditions() {
       <OverViewTerms />
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

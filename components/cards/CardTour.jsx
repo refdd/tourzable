@@ -55,8 +55,12 @@ function CardTour({
         console.log(error);
       });
   };
+  console.log(i18n.dir());
   return (
-    <div className=" relative tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] md:h-[490px] ">
+    <div
+      dir={i18n.dir()}
+      className=" relative tourcard group flex flex-col space-y-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] md:h-[490px] "
+    >
       {/* image card */}
       <div className=" overflow-hidden rounded">
         {/* <Image src={image} fill className="rounded" alt="tour" /> */}
@@ -146,7 +150,7 @@ function CardTour({
           {t("common:home.Exceptional")}
         </span>
         <span className="text-[#697488] text-sm font-sans font-medium ">
-          {Math.floor(price) - 15} sreviews
+          {Math.floor(price) - 15} {t("common:list.reviews")}
         </span>
       </div>
       {/* price */}

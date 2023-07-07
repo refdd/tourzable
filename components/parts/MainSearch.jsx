@@ -12,7 +12,7 @@ function MainSearch({ regions }) {
   return (
     <div className="flex flex-col items-center justify-center mt-5 md:mt-20 ">
       {/* search types */}
-      <ul className="flex items-center space-x-8 md:space-x-10 ">
+      <ul className="flex items-center gap-8 md:gap-10">
         <li
           onClick={() => handleClick("Packages", 1)}
           className="relative flex justify-center items-center"

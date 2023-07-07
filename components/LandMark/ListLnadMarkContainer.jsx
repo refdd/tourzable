@@ -41,7 +41,7 @@ function ListLnadMarkContainer({ regions, landmarks }) {
           }
           //   sx={{ fontSize: "17px" , textTransform:"capitalize" , color:"" }}
         >
-          Destinations
+          location
         </Button>
         <Menu
           id="basic-menu"
@@ -65,7 +65,7 @@ function ListLnadMarkContainer({ regions, landmarks }) {
           ))}
         </Menu>
       </div>
-      <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-3">
         {landmarks?.map((landmark) => (
           <LandMarksCard
             key={landmark?.id}

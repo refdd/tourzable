@@ -73,7 +73,7 @@ function CalenderGuide({ profileData }) {
       </div>
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </div>
   );

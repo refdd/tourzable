@@ -60,7 +60,7 @@ function Inquiries({ Inquiries }) {
       </div>
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </div>
   );

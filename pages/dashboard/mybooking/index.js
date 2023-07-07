@@ -63,7 +63,7 @@ function MyBooking({ customBookings }) {
       </div>
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </div>
   );

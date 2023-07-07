@@ -108,7 +108,7 @@ function SingleActivties({ singletour }) {
         {/* <RelatedTours /> */}
         <Subscribe />
         {/* <DownLoadApp /> */}
-        <NotMember />
+        {/* <NotMember /> */}
         <Footer />
       </div>
     </>

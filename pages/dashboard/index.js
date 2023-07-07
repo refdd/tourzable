@@ -71,7 +71,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
       </div>
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </div>
   );

@@ -29,7 +29,7 @@ function Privacy() {
       <OverViewTerms />
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

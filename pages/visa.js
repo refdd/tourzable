@@ -30,7 +30,7 @@ function Visa() {
       <VisaSection />
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </>
   );

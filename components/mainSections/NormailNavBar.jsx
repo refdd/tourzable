@@ -27,29 +27,31 @@ function NormailNavBar({ InSinglePage }) {
         >
           <div className=" flex items-center space-x-5">
             {/* logo */}
-            <div className=" relative w-[134px] h-[34px] md:h-[50px] md:w-[224px] flex items-center ">
-              {menuBar ? (
-                <Image
-                  src={NavLogo}
-                  loading={"lazy"}
-                  alt="logo"
-                  fill
-                  sizes="(max-width: 768px) 100vw,
+            <Link href={"/"}>
+              <div className=" relative w-[134px] h-[34px] md:h-[50px] md:w-[224px] flex items-center ">
+                {menuBar ? (
+                  <Image
+                    src={NavLogo}
+                    loading={"lazy"}
+                    alt="logo"
+                    fill
+                    sizes="(max-width: 768px) 100vw,
                 (max-width: 1200px) 50vw,
                 33vw"
-                />
-              ) : (
-                <Image
-                  src={NavLogo}
-                  fill
-                  loading={"lazy"}
-                  alt="logo"
-                  sizes="(max-width: 768px) 100vw,
+                  />
+                ) : (
+                  <Image
+                    src={NavLogo}
+                    fill
+                    loading={"lazy"}
+                    alt="logo"
+                    sizes="(max-width: 768px) 100vw,
                 (max-width: 1200px) 50vw,
                 33vw"
-                />
-              )}
-            </div>
+                  />
+                )}
+              </div>
+            </Link>
             {/* links desktop */}
             <ul className={` hidden  md:flex items-center  `}>
               <li className=" text-sm text-[#fff]  font-semibold font-sans py-4  hover:text-[#3554d1] hover:bg-[#3554d10d] px-2">

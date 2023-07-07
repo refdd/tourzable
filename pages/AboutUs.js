@@ -20,13 +20,13 @@ function AboutUs() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainHeaderList title={"About us "} />
-      <WhyChooseUs />
+      {/* <WhyChooseUs /> */}
       <AboutUsSection />
-      <NumberOfTourzable />
-      <Reviews />
+      {/* <NumberOfTourzable /> */}
+      {/* <Reviews /> */}
       <Subscribe />
       {/* <DownLoadApp /> */}
-      <NotMember />
+      {/* <NotMember /> */}
       <Footer />
     </div>
   );

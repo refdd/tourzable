@@ -15,13 +15,13 @@ function HeaderList({ numberOfPackage, regions }) {
         <p className="font-medium text-lg font-sans capitalize text-[#051036]">
           {numberOfPackage} tour In saudi
         </p>
-        <div className="flex items-center space-x-7">
+        <div className="flex items-center gap-7">
           {/* sort */}
           <div
             onClick={() => {
               setOpenSort(!openSort);
             }}
-            className=" relative group flex  h-10 px-5 rounded-full bg-MainYeloow  space-x-2 items-center cursor-pointer transition-all hover:md:bg-mainColor "
+            className=" relative group flex  h-10 px-5 rounded-full bg-MainYeloow  gap-2 items-center cursor-pointer transition-all hover:md:bg-mainColor "
           >
             <TbArrowsUpDown className="text-lg text-mainColor group-hover:md:text-white" />
             <button className="font-medium text-[15px] font-sans capitalize text-mainColor  group-hover:md:text-white">
@@ -35,7 +35,7 @@ function HeaderList({ numberOfPackage, regions }) {
                   }}
                   className="text-[16px] text-mainColor font-semibold font-sans capitalize hover:bg-blue-200 hover:text-white px-3 cursor-pointer"
                 >
-                  <span>max price</span>
+                  <span> min Price</span>
                 </li>
                 <li
                   onClick={() => {
@@ -43,7 +43,7 @@ function HeaderList({ numberOfPackage, regions }) {
                   }}
                   className="text-[16px] text-mainColor font-semibold font-sans capitalize hover:bg-blue-200 hover:text-white px-3 cursor-pointer"
                 >
-                  <span> min Price</span>
+                  <span> max price</span>
                 </li>
                 <li
                   onClick={() => {
@@ -64,11 +64,12 @@ function HeaderList({ numberOfPackage, regions }) {
               </ul>
             )}
           </div>
+          {/* view mode */}
           <div
             onClick={() => {
               setViewTours(!ViewTours);
             }}
-            className=" group hidden md:flex  h-10 px-5 rounded-full bg-MainYeloow  space-x-2 items-center cursor-pointer transition-all hover:md:bg-mainColor "
+            className=" group hidden md:flex  h-10 px-5 rounded-full bg-MainYeloow  gap-2 items-center cursor-pointer transition-all hover:md:bg-mainColor "
           >
             {ViewTours ? (
               <BsFillGrid3X3GapFill className="text-lg text-mainColor group-hover:text-white" />

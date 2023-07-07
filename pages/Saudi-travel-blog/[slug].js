@@ -62,7 +62,7 @@ function singelBlog({ singletBlog, readAlso }) {
         {/* <FaQSection /> */}
         <Subscribe />
         {/* <DownLoadApp /> */}
-        <NotMember />
+        {/* <NotMember /> */}
         <Footer />
       </div>
     </>

@@ -30,7 +30,7 @@ function CardListTour({
       className={
         ViewTours
           ? " relative  tourcard group flex flex-col space-y-2 border-b pb-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] "
-          : " relative tourcard group flex flex-col space-y-2 border-b pb-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] md:flex-row  md:space-y-0 md:space-x-2"
+          : " relative tourcard group flex flex-col space-y-2 border-b pb-3 border p-2 rounded-md shadow-lg shadow-[#9e6eae5e] md:flex-row  md:space-y-0 md:gap-3"
       }
     >
       {/* image card */}
@@ -89,7 +89,7 @@ function CardListTour({
         className={
           ViewTours
             ? "flex flex-col space-y-2 "
-            : "flex flex-col space-y-2 md:w-[50%] md:space-y-3s"
+            : "flex flex-col space-y-2 md:w-[50%] md:space-y-3"
         }
       >
         <Link href={`/${pageType}/${slug}`}>
