@@ -51,10 +51,11 @@ export async function getServerSideProps({ query, locale }) {
   const days = query.days_count || "";
   const min = query.price_range_from || 0;
   const max = query.price_range_to || 6666790;
-  // const location = query.location || null;
-
+  const location = JSON.stringify(query.location) || [];
+  const currency = query.currency || "USD";
+  // console.log(min, max);
   const tours = await fetchApi(
-    `${baseUrl}/packages?locale=${locale}&type_id=1&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
+    `${baseUrl}/packages?cities=${location}&days_count=${days}&locale=${locale}&type_id=1&currency=${currency}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
   );
   const regions = await fetchApi(`${baseUrl}/regions?locale=${locale}`);
 

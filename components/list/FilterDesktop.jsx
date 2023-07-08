@@ -29,7 +29,7 @@ const MenuProps = {
   },
 };
 function FilterDesktop({ regions }) {
-  const [priceRang, setpriceRang] = useState([0, 100]);
+  const [priceRang, setpriceRang] = useState([10, 6666790]);
   const [location, setLocation] = useState([]);
   const [nameOfpackage, setnameOfpackage] = useState();
   const [starNumber, setstarNumber] = React.useState(4);
