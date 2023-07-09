@@ -21,17 +21,19 @@ function OrderForm({
   idPackage,
   payMode,
   prices,
+  discountId,
 }) {
   const [number, setnumber] = useState("+1");
   const [fristName, setFristName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("admin@admin.com");
-  const { setPricesPayment } = useStateContext();
+  const { setPricesPayment, pricesPayment } = useStateContext();
   const { data: session } = useSession();
   const methods = useForm();
   const router = useRouter();
   const { startDay, endDay, image, title, tourCode, best_price, min, max } =
     router.query;
+
   const handleOnChange = (value) => {
     setnumber(value);
   };
@@ -43,10 +45,8 @@ function OrderForm({
       setnumber(session.user.phone);
     }
   }, [session]);
-  // console.log(fristName);
-  useEffect(() => {
-    setPricesPayment(prices);
-  }, [prices]);
+  console.log(pricesPayment);
+
   const onSubmit = (data) => {
     axios
       .post(
@@ -63,6 +63,7 @@ function OrderForm({
           end_date: endDay,
           package_id: idPackage,
           quotation: 1,
+          coupon_id: discountId,
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -70,8 +71,9 @@ function OrderForm({
       )
       .then((res) => {
         console.log(res);
-        if (payMode) {
+        if (!payMode) {
           router.push("/Thank_you");
+          console.log(typeof payMode);
         } else {
           router.push({
             pathname: "/Payment",
@@ -89,6 +91,7 @@ function OrderForm({
               childs,
             },
           });
+          console.log("refat");
         }
 
         // console.log(data);

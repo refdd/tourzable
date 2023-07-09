@@ -52,6 +52,8 @@ function SingleActivties({ singletour }) {
     image,
     meta_desc,
     meta_title,
+    immediate_booking,
+    code,
   } = singletour;
   // console.log(singletour);
   return (
@@ -103,7 +105,16 @@ function SingleActivties({ singletour }) {
             <TermsAndConditions />
             <LeaveReview />
           </div>
-          <From idPackage={id} />
+          <From
+            idPackage={id}
+            image={image}
+            title={title}
+            tourCode={code}
+            best_price={best_price}
+            min={min}
+            max={max}
+            payMode={immediate_booking}
+          />
         </div>
         {/* <RelatedTours /> */}
         <Subscribe />

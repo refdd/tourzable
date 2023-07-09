@@ -25,7 +25,7 @@ function BookingContainer({ dataBooking }) {
       },
     });
   };
-  console.log(dataBooking[4]);
+  console.log(parseInt(dataBooking[4].status?.color));
   return (
     <div>
       <div className=" bg-white shadow-lg rounded-lg p-7">
@@ -55,8 +55,11 @@ function BookingContainer({ dataBooking }) {
                   className=" rounded-lg object-cover"
                 />
                 {/* status */}
-                <div className="absolute -bottom-3 right-3 bg-mainColor py-2 px-4 rounded-lg md:hidden">
-                  <span className="text-white text-sm font-sans font-medium capitalize">
+                <div
+                  style={{ background: `${item?.status?.color}` }}
+                  className={`absolute -bottom-3 right-3  py-2 px-4 rounded-lg `}
+                >
+                  <span className="text-mainColor text-sm  font-sans font-medium capitalize">
                     {" "}
                     {item.status?.title}
                   </span>

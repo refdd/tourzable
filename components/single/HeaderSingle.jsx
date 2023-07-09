@@ -53,7 +53,8 @@ function HeaderSingle({ title, ratingNumber, location, price, starNumber }) {
             From{" "}
             <span className="font-medium text-[22px] ">
               {" "}
-              {currency ? (currency == "SAR" ? "SAR" : "$") : "$"} {price}
+              {currency ? (currency == "SAR" ? "SAR" : "$") : "$"}{" "}
+              {Math.floor(price)}
             </span>
           </p>
           {/* <div className="flex justify-start items-center space-x-2 font-medium text-[15px] rounded bg-mainColor text-white h-14 px-6 ">

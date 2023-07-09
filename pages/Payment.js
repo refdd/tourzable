@@ -1,3 +1,4 @@
+import InfoPaymentTour from "@/components/checkout/InfoPaymentTour";
 import OrderTour from "@/components/checkout/OrderTour";
 import PaymentServis from "@/components/hleper/PaymentServis";
 import Footer from "@/components/mainSections/Footer";
@@ -12,11 +13,22 @@ import React, { useEffect, useState } from "react";
 
 function Payment() {
   const [urlData, setUrlData] = useState();
+  const [aduits, setAduits] = useState();
+  const [childs, setChilds] = useState();
   const [isloding, setIsloding] = useState(false);
   const { pricesPayment } = useStateContext();
   const router = useRouter();
-  const { aduits, childs } = router.query;
+  const { query } = router;
   // console.log(aduits, childs);
+  useEffect(() => {
+    if (query.aduits) {
+      setAduits(parseInt(query.aduits));
+      setChilds(parseInt(query.childs));
+    }
+    return;
+  }, [query.aduits]);
+  console.log(pricesPayment);
+
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -38,7 +50,6 @@ function Payment() {
       }, 300);
     }
   }, [urlData]);
-  // console.log(isloding);
   return (
     <>
       {isloding && (
@@ -70,7 +81,7 @@ function Payment() {
             </div>
           </div>
 
-          <OrderTour
+          <InfoPaymentTour
             prices={pricesPayment}
             infant={0}
             childs={childs}

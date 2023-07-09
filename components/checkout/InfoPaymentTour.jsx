@@ -5,7 +5,7 @@ import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { useRouter } from "next/router";
 import { useStateContext } from "@/contexts/ContextProvider";
-function OrderTour({
+function InfoPaymentTour({
   prices,
   infant,
   childs,
@@ -17,16 +17,10 @@ function OrderTour({
 }) {
   const discountAmount = (prices?.total * discount) / 100;
   const router = useRouter();
-  const { setPricesPayment, pricesPayment } = useStateContext();
+
+  const { currency } = router.query;
   const { startDay, endDay, image, title, tourCode, best_price, min, max } =
     router.query;
-  useEffect(() => {
-    setPricesPayment({
-      ...prices,
-      totalPrice: discount ? Math.floor(discountAmount) : prices?.total,
-    });
-  }, [prices]);
-  console.log(pricesPayment);
   return (
     <div className="container mx-auto px-4 py-3">
       <div className=" flex flex-col space-y-6 divide-y-2 border p-3 rounded shadow-lg shadow-shadowColorMain">
@@ -87,7 +81,7 @@ function OrderTour({
               </span>
               <span className="text-[20px] text-textPurple font-bold uppercase">
                 {" "}
-                {best_price}
+                {Math.floor(best_price)}
               </span>
               <span className="text-xs font-sans text-mainLightColor capitalize font-thin">
                 /Person
@@ -103,7 +97,7 @@ function OrderTour({
             </span>
           </div>
         </div>
-        {prices ? (
+        {true ? (
           <div className="border-t flex flex-col space-y-4 pt-5">
             <div className="grid grid-cols-3">
               <p className="text-center text-lg font-medium text-mainColor">
@@ -163,7 +157,7 @@ function OrderTour({
                 Total Final Price
               </p>
               <p className="text-center text-xl font-medium text-[#28a745]">
-                {discount ? Math.floor(discountAmount) : prices?.total} USD
+                {prices?.totalPrice} USD
               </p>
             </div>
             {/* cobone */}
@@ -207,4 +201,4 @@ function OrderTour({
   );
 }
 
-export default OrderTour;
+export default InfoPaymentTour;
