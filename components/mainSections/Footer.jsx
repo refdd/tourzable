@@ -68,6 +68,7 @@ function Footer() {
         handleClose={handleClose}
         handleClick={handleClick}
         open={open}
+        message={"This is a success message!"}
       />
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-6 pb-4 md:pt-11">
         <div className=" flex flex-col space-y-16 py-7">

@@ -47,13 +47,15 @@ function ListTour({ tours, regions }) {
 export default ListTour;
 
 export async function getServerSideProps({ query, locale }) {
+  let location = JSON.stringify(query.location) || [];
+  if (typeof query.location === "string") {
+    location = JSON.stringify([query.location]); // Convert string to array
+  }
   const nameOfTour = query.search || "";
   const days = query.days_count || "";
   const min = query.price_range_from || 0;
   const max = query.price_range_to || 6666790;
-  const location = JSON.stringify(query.location) || [];
   const currency = query.currency || "USD";
-  // console.log(min, max);
   const tours = await fetchApi(
     `${baseUrl}/packages?cities=${location}&days_count=${days}&locale=${locale}&type_id=1&currency=${currency}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
   );

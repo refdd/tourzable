@@ -18,6 +18,7 @@ function CheckAvailability({
   best_price,
   min,
   max,
+  payMode,
 }) {
   const [startDay, setStartDay] = useState(null);
   const [endDay, setEndDay] = useState(null);
@@ -71,6 +72,7 @@ function CheckAvailability({
         best_price,
         min,
         max,
+        payMode,
       },
     });
   };

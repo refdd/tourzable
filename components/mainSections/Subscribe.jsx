@@ -49,6 +49,7 @@ function Subscribe() {
         handleClose={handleClose}
         handleClick={handleClick}
         open={open}
+        message={"This is a success message!"}
       />
       <div className="flex flex-col md:flex-row">
         {/* image */}

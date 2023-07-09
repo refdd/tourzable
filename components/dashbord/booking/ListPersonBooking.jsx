@@ -34,11 +34,25 @@ function ListPersonBooking({ bookingPeople, traveler }) {
                       : "bg-mainColor text-white py-2 px-3"
                   }`}
                 >
-                  <p
-                    className={`  text-[17px] font-bold font-sans capitalize  `}
-                  >
-                    traveler {index + 1}
-                  </p>
+                  <div className="flex flex-1 items-center justify-around">
+                    <p
+                      className={`text-[17px] font-bold font-sans capitalize  `}
+                    >
+                      traveler: {person?.name}{" "}
+                    </p>
+
+                    <div
+                      className={`w-7 h-7 rounded-full flex items-center justify-center ${
+                        personidActive == person.id
+                          ? "bg-mainColor"
+                          : "bg-MainYeloow"
+                      } `}
+                    >
+                      <span className="text-white text-[16px]">
+                        {index + 1}
+                      </span>
+                    </div>
+                  </div>
                   <FiChevronDown
                     className={`text-2xl  ${
                       personidActive == person.id

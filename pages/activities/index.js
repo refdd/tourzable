@@ -49,12 +49,17 @@ function PopularActivities({ Activities, regions }) {
 
 export default PopularActivities;
 export async function getServerSideProps({ query, locale }) {
+  let location = JSON.stringify(query.location) || [];
+  if (typeof query.location === "string") {
+    location = JSON.stringify([query.location]); // Convert string to array
+  }
   const nameOfTour = query.search || "";
   const days = query.days_count || "";
   const min = query.price_range_from || 0;
   const max = query.price_range_to || 6666790;
+  const currency = query.currency || "USD";
   const Activities = await fetchApi(
-    `${baseUrl}/packages?locale=${locale}&type_id=2&days_count=${days}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
+    `${baseUrl}/packages?cities=${location}&days_count=${days}&locale=${locale}&type_id=2&currency=${currency}&search=${nameOfTour}&price_range_from=${min}&price_range_to=${max}`
   );
   const regions = await fetchApi(`${baseUrl}/regions?locale=${locale}`);
 

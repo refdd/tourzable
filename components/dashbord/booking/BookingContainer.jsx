@@ -25,6 +25,7 @@ function BookingContainer({ dataBooking }) {
       },
     });
   };
+  console.log(dataBooking[4]);
   return (
     <div>
       <div className=" bg-white shadow-lg rounded-lg p-7">
@@ -89,28 +90,31 @@ function BookingContainer({ dataBooking }) {
                 </div>
                 {/* buttons */}
                 <div className=" flex flex-wrap items-center gap-2">
-                  <div
-                    onClick={() => {
-                      handlePayment({
-                        start_date: item.start_date,
-                        end_date: item.end_date,
-                        idPackage: item?.package.id,
-                        image: item?.package?.image,
-                        title: item.title,
-                        tourCode: item.package.code,
-                        best_price: item?.package.best_price,
-                        min: item?.package.min,
-                        max: item?.package.max,
-                        aduits: item?.adult,
-                        childs: item?.kid,
-                      });
-                    }}
-                    className="py-2 px-6 cursor-pointer bg-mainColor rounded-lg"
-                  >
-                    <button className="text-white text-sm font-semibold capitalize font-sans">
-                      pay
-                    </button>
-                  </div>
+                  {item?.pay_now && (
+                    <div
+                      onClick={() => {
+                        handlePayment({
+                          start_date: item.start_date,
+                          end_date: item.end_date,
+                          idPackage: item?.package.id,
+                          image: item?.package?.image,
+                          title: item.title,
+                          tourCode: item.package.code,
+                          best_price: item?.package.best_price,
+                          min: item?.package.min,
+                          max: item?.package.max,
+                          aduits: item?.adult,
+                          childs: item?.kid,
+                        });
+                      }}
+                      className="py-2 px-6 cursor-pointer bg-mainColor rounded-lg"
+                    >
+                      <button className="text-white text-sm font-semibold capitalize font-sans">
+                        pay
+                      </button>
+                    </div>
+                  )}
+
                   <div className="py-2 px-6 cursor-pointer bg-MainYeloow rounded-lg">
                     <Link
                       href={`/dashboard/mybooking/${item.id}/?traveler=${

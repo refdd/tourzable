@@ -53,8 +53,9 @@ function SingleTour({ singletour }) {
     code,
     meta_desc,
     meta_title,
+    immediate_booking,
   } = singletour;
-  // console.log(singletour);
+  console.log(singletour);
   return (
     <>
       <Head>
@@ -113,6 +114,7 @@ function SingleTour({ singletour }) {
             best_price={best_price}
             min={min}
             max={max}
+            payMode={immediate_booking}
           />
         </div>
         {/* <RelatedTours /> */}

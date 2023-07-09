@@ -19,7 +19,7 @@ function OrderForm({
   handleAddCounter,
   handleremoveCounter,
   idPackage,
-
+  payMode,
   prices,
 }) {
   const [number, setnumber] = useState("+1");
@@ -37,13 +37,13 @@ function OrderForm({
   };
   useEffect(() => {
     if (session) {
-      setFristName(session.user.name);
-      setLastName("");
+      setFristName(session.user.first_name);
+      setLastName(session.user.last_name);
       setEmail(session.user.email);
       setnumber(session.user.phone);
     }
   }, [session]);
-  console.log(fristName);
+  // console.log(fristName);
   useEffect(() => {
     setPricesPayment(prices);
   }, [prices]);
@@ -70,22 +70,27 @@ function OrderForm({
       )
       .then((res) => {
         console.log(res);
-        router.push({
-          pathname: "/Payment",
-          query: {
-            startDay: startDay,
-            endDay: endDay,
-            idPackage,
-            image,
-            title,
-            tourCode,
-            best_price,
-            min,
-            max,
-            aduits,
-            childs,
-          },
-        });
+        if (payMode) {
+          router.push("/Thank_you");
+        } else {
+          router.push({
+            pathname: "/Payment",
+            query: {
+              startDay: startDay,
+              endDay: endDay,
+              idPackage,
+              image,
+              title,
+              tourCode,
+              best_price,
+              min,
+              max,
+              aduits,
+              childs,
+            },
+          });
+        }
+
         // console.log(data);
       })
       .catch((error) => {

@@ -7,6 +7,7 @@ import { BsArrowUpRight, BsFillStarFill } from "react-icons/bs";
 
 import ImageSlider from "../tour/ImageSlider";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 
 function CardListTour({
   slug,
@@ -24,7 +25,8 @@ function CardListTour({
   const { ViewTours } = useStateContext();
   const [reviewNumbers, setReviewNumbers] = useState(null);
   const { t, i18n } = useTranslation();
-  useEffect(() => {});
+  const router = useRouter();
+  const { currency } = router.query;
   return (
     <div
       className={
@@ -193,7 +195,10 @@ function CardListTour({
           <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
             {t("common:home.Starting_from")}
           </span>
-          <span className="text-mainColor"> ${price}</span>
+          <span className="text-mainColor">
+            {" "}
+            {currency ? (currency == "SAR" ? "SAR" : "$") : "$"} {price}
+          </span>
         </div>
         {/* button */}
         <div className="flex items-center justify-center py-3 gap-3 bg-mainColor rounded transition-all hover:md:bg-[#051036]">

@@ -61,7 +61,6 @@ function FilterDesktop({ regions }) {
         search: data.search,
         days_count: data.days,
         location: location,
-        rating: 4,
         price_range_from: priceRang[0],
         price_range_to: priceRang[1],
       },
@@ -74,7 +73,7 @@ function FilterDesktop({ regions }) {
     //   starNumber,
     // });
   };
-  // console.log(location);
+  console.log(location);
   return (
     <div className="container mx-auto px-4 pt-7">
       <FormProvider {...methods}>
@@ -222,7 +221,7 @@ function FilterDesktop({ regions }) {
           </div>
           {/*  */}
           {/* Nightly Price */}
-          <div className=" flex flex-col space-y-3">
+          {/* <div className=" flex flex-col space-y-3">
             <p className=" font-medium text-lg text-mainColor font-sans capitalize ">
               {t("common:list.Star_Rating")}
             </p>
@@ -234,7 +233,7 @@ function FilterDesktop({ regions }) {
                 setstarNumber(newValue);
               }}
             />
-          </div>
+          </div> */}
           {/* button Search */}
           <div
             className="flex justify-center items-center space-x-1

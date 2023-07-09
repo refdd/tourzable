@@ -3,7 +3,16 @@ import CheckAvailability from "./CheckAvailability";
 import Inquery from "./Inquery";
 import { useTranslation } from "react-i18next";
 
-function From({ idPackage, image, title, tourCode, best_price, min, max }) {
+function From({
+  idPackage,
+  image,
+  title,
+  tourCode,
+  best_price,
+  min,
+  max,
+  payMode,
+}) {
   const [openFrom, setOpenFrom] = useState(false);
   const { t, i18n } = useTranslation();
   return (
@@ -49,6 +58,7 @@ function From({ idPackage, image, title, tourCode, best_price, min, max }) {
             best_price={best_price}
             min={min}
             max={max}
+            payMode={payMode}
           />
         ) : (
           <Inquery idPackage={idPackage} />

@@ -86,13 +86,16 @@ export default NextAuth({
       if (trigger === "update" && session) {
         // Note, that `session` can be any arbitrary object, remember to validate it!
         console.log(session);
-        token.name = session.user.name;
+        token.first_name = session.user.first_name;
+        token.last_name = session.user.last_name;
         token.phone = session.user.phone;
         token.email = session.user.email;
       }
       if (user) {
         token.email = user.email;
         token.name = user.name;
+        token.first_name = user.first_name;
+        token.last_name = user.last_name;
         token.phone = user.phone;
         token.image = user.logo;
         token.accessToken = user.token;
@@ -110,6 +113,8 @@ export default NextAuth({
       if (token) {
         session.user.email = token.email;
         session.user.name = token.name;
+        session.user.first_name = token.first_name;
+        session.user.last_name = token.last_name;
         session.user.phone = token.phone;
         session.user.image = token.image;
         session.user.accessToken = token.accessToken;

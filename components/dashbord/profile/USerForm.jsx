@@ -19,21 +19,23 @@ function USerForm({ selectedImag }) {
     setnumber(value);
   };
   const methods = useForm();
+  // console.log(session.user);
   useEffect(() => {
     if (session) {
-      setFristName(session.user.name);
-      setLastName("");
+      setFristName(session.user.first_name);
+      setLastName(session.user.last_name);
       setEmail(session.user.email);
       setnumber(session.user.phone);
     }
   }, [session]);
   // console.log(session);
-  async function updataSession(name, email, phone) {
+  async function updataSession(first_name, last_name, email, phone) {
     await update({
       ...session,
       user: {
         ...session.user,
-        name: name,
+        first_name: first_name,
+        last_name: last_name,
         phone: phone,
         email: email,
       },
@@ -59,7 +61,8 @@ function USerForm({ selectedImag }) {
       .then((res) => {
         console.log(res.data.data);
         updataSession(
-          res.data?.data?.name,
+          res.data?.data?.first_name,
+          res.data?.data?.last_name,
           res.data?.data?.email,
           res.data?.data?.phone
         );
@@ -91,7 +94,7 @@ function USerForm({ selectedImag }) {
               required
               fullWidth
               variant="standard"
-              name="firstName "
+              name="firstName"
               label="Frist Name "
               type="text"
               onChange={(e) => {
@@ -106,7 +109,7 @@ function USerForm({ selectedImag }) {
               required
               fullWidth
               variant="standard"
-              name="firstName "
+              name="firstName"
               label="last Name "
               type="text"
               onChange={(e) => {

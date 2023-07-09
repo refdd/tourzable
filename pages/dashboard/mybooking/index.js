@@ -20,7 +20,7 @@ function MyBooking({ customBookings }) {
   const { data: session } = useSession();
   const router = useRouter();
   const { query, pathname } = router;
-  console.log(customBookings);
+  // console.log(customBookings);
   useEffect(() => {
     if (session) {
       router.push({

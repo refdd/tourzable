@@ -13,6 +13,7 @@ function Checkout() {
   const router = useRouter();
   const { query } = router;
   const [aduits, setAduits] = useState();
+  const [payMode, setPayMode] = useState();
   const [childs, setChilds] = useState();
   const [infant, setinfant] = useState(0);
   const [prices, setPrices] = useState();
@@ -23,6 +24,7 @@ function Checkout() {
       setAduits(parseInt(query.aduits));
       setChilds(parseInt(query.childs));
       setPrices(query.best_price);
+      setPayMode(query.payMode);
     }
     return;
   }, [query.aduits]);
@@ -80,7 +82,7 @@ function Checkout() {
       });
   };
 
-  console.log(aduits);
+  console.log(payMode);
 
   return (
     <div>
@@ -113,6 +115,7 @@ function Checkout() {
           handleAddCounter={handleAddCounter}
           handleremoveCounter={handleremoveCounter}
           prices={prices}
+          payMode={payMode}
         />
       </div>
       <Footer />

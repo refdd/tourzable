@@ -1,3 +1,4 @@
+import AlertSuccess from "@/components/hleper/AlertSuccess";
 import CustomTextField from "@/components/hleper/CustomTextField";
 import axios from "axios";
 import React, { useState } from "react";
@@ -10,9 +11,24 @@ function FormAddPearsonInfo({
   bookingPeople,
 }) {
   const [showForm, setShowForm] = useState(false);
+  const [open, setOpen] = useState(false);
   const methods = useForm();
   const { reset } = methods;
+  const handleClickAlert = () => {
+    setOpen(true);
+  };
+  const handleCloseAlert = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const onSubmit = (data) => {
+    if (traveler == bookingPeople.length) {
+      handleClickAlert();
+      return;
+    }
     axios
       .post(
         "https://new.tourzable.com/api/people",
@@ -55,7 +71,9 @@ function FormAddPearsonInfo({
           </button>
         </div>
         <p className="text-lg text-mainColor">
-          you have <span className="font-bold">{traveler}</span> travel
+          you have{" "}
+          <span className="font-bold">{traveler - bookingPeople.length}</span>{" "}
+          travel
         </p>
       </div>
       {/* from add P */}
@@ -102,6 +120,12 @@ function FormAddPearsonInfo({
           </form>
         </FormProvider>
       )}
+      <AlertSuccess
+        open={open}
+        handleClick={handleClickAlert}
+        handleClose={handleCloseAlert}
+        message={"no traveler to add "}
+      />
     </div>
   );
 }
