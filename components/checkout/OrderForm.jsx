@@ -45,7 +45,7 @@ function OrderForm({
       setnumber(session.user.phone);
     }
   }, [session]);
-  console.log(pricesPayment);
+  console.log(prices);
 
   const onSubmit = (data) => {
     axios
@@ -64,6 +64,7 @@ function OrderForm({
           package_id: idPackage,
           quotation: 1,
           coupon_id: discountId,
+          quotation: prices ? 0 : 1,
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -71,9 +72,9 @@ function OrderForm({
       )
       .then((res) => {
         console.log(res);
-        if (!payMode) {
+        if (!payMode || !prices) {
           router.push("/Thank_you");
-          console.log(typeof payMode);
+          // console.log("thank you");
         } else {
           router.push({
             pathname: "/Payment",
@@ -91,7 +92,7 @@ function OrderForm({
               childs,
             },
           });
-          console.log("refat");
+          // console.log("refat");
         }
 
         // console.log(data);
