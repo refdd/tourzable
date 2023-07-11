@@ -49,7 +49,6 @@ function FormAddPearsonInfo({
       .catch((error) => {
         console.log(error);
       });
-    // console.log({ ...data });
   };
 
   return (
@@ -97,7 +96,7 @@ function FormAddPearsonInfo({
             <div className="">
               <CustomTextField
                 required
-                name="id Number"
+                name="id_number"
                 label="id_number"
                 type={"number"}
               />

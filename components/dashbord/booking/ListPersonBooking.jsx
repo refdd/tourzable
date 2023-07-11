@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import QRCode from "react-qr-code";
-function ListPersonBooking({ bookingPeople, traveler }) {
+function ListPersonBooking({
+  bookingPeople,
+  traveler,
+  handleOpenEditeBooking,
+  handleEditeBooking,
+}) {
   const [personidActive, setpersonidActive] = useState(null);
   const handleClick = (index) => {
     setpersonidActive(personidActive === index ? null : index);
@@ -106,6 +111,15 @@ function ListPersonBooking({ bookingPeople, traveler }) {
                           viewBox={`0 0 256 256`}
                         />
                       </div>
+                    </div>
+                    <div
+                      onClick={() => {
+                        handleOpenEditeBooking();
+                        handleEditeBooking(person);
+                      }}
+                      className="text-lg underline font-medium text-mainColor capitalize cursor-pointer"
+                    >
+                      <span>edit Traveler</span>
                     </div>
                   </div>
                 )}
