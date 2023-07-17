@@ -2,6 +2,7 @@ import TableBooking from "@/components/dashbord/booking/TableBooking";
 import TableData from "@/components/dashbord/booking/TableData";
 import DashbordNavBar from "@/components/dashbord/homeDashbord/DashbordNavBar";
 import UserFrofile from "@/components/dashbord/profile/UserFrofile";
+import Loading from "@/components/hleper/Loading";
 import SideBArDashbord from "@/components/hleper/SideBarDashbord";
 import DownLoadApp from "@/components/mainSections/DownLoadApp";
 import Footer from "@/components/mainSections/Footer";
@@ -19,7 +20,12 @@ function Settings() {
   const { data: session } = useSession();
   const router = useRouter();
   const { query } = router;
-
+  useEffect(() => {
+    if (!session) {
+      router.push("/Login");
+    }
+  }, []);
+  if (!session) return <Loading />;
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -59,19 +65,19 @@ function Settings() {
 }
 
 export default Settings;
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+// export async function getServerSideProps(context) {
+//   const session = await getSession(context);
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+//   // if (!session) {
+//   //   return {
+//   //     redirect: {
+//   //       destination: "/",
+//   //       permanent: false,
+//   //     },
+//   //   };
+//   // }
 
-  return {
-    props: { session },
-  };
-}
+//   return {
+//     props: {},
+//   };
+// }

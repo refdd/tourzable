@@ -17,11 +17,11 @@ import React, { useEffect } from "react";
 
 function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
   const { sideBar } = useStateContext();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const { query, pathname } = router;
 
-  console.log(profileData);
+  console.log(status);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -71,8 +71,8 @@ export async function getServerSideProps(context) {
   if (!session) {
     return {
       redirect: {
-        destination: `${window.location.origin}/Login`,
-        permanent: false,
+        destination: `/Login`,
+        permanent: true,
       },
     };
   }
