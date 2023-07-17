@@ -17,9 +17,11 @@ import React, { useEffect } from "react";
 
 function CustomBooking({ customBookings }) {
   const { sideBar } = useStateContext();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   useEffect(() => {
+    if (status == "loading") return;
+
     if (!session) {
       router.push("/Login");
     }

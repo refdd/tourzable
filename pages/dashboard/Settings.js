@@ -17,11 +17,13 @@ import React, { useEffect } from "react";
 
 function Settings() {
   const { sideBar } = useStateContext();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const { query } = router;
   useEffect(() => {
     if (!session) {
+      if (status == "loading") return;
+
       router.push("/Login");
     }
   }, []);

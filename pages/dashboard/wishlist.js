@@ -18,9 +18,11 @@ import Loading from "@/components/hleper/Loading";
 
 function Wishlist({ favoritesPackages, favoritesLandmarks }) {
   const { sideBar } = useStateContext();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   useEffect(() => {
+    if (status == "loading") return;
+
     if (!session) {
       router.push("/Login");
     }

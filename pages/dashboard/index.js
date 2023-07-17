@@ -13,17 +13,20 @@ import { useStateContext } from "@/contexts/ContextProvider";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
   const { sideBar } = useStateContext();
+  const [isloadign, setIsloading] = useState(false);
   const { data: session, status } = useSession();
   const router = useRouter();
   const { query, pathname } = router;
-
+  // console.log(status);
   useEffect(() => {
+    if (status == "loading") return;
     if (!session) {
-      router.push("/Login");
+      // router.push("/Login");
+      console.log("jsdflkjdslkfjsdl");
     }
   }, []);
   if (!session) return <Loading />;
@@ -52,7 +55,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
           <SideBArDashbord />
         </div>
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
-          <DashboarNumbers profileData={profileData} />
+          {/* <DashboarNumbers profileData={profileData} /> */}
           <RcommandedTour
             packages={tours}
             activitys={activitys}
@@ -81,10 +84,11 @@ export async function getServerSideProps(context) {
   const tours = await fetchApi(
     `${baseUrl}/packages?locale=${locale}&type_id=1&limit=7`
   );
-  const profileData = await fetchApi(
-    `${baseUrl}/profile?locale=${locale}`,
-    token
-  );
+  // const profileData = await fetchApi(
+  //   `${baseUrl}/profile?locale=${locale}`,
+  //   token
+  // );
+  console.log(token);
   const activitys = await fetchApi(
     `${baseUrl}/packages?locale=${locale}&type_id=2&limit=7`
   );
@@ -97,7 +101,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      profileData: profileData.data,
+      // profileData: profileData.data,
       tours: tours.data,
       activitys: activitys.data,
       umrah: umrah.data,
