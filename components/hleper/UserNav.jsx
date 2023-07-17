@@ -92,7 +92,7 @@ export default function UserNav() {
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Link href={"/dashboard"} className="flex items-center gap-2">
-            <Avatar /> My account
+            <Avatar /> dashboard
           </Link>
         </MenuItem>
         <Divider />

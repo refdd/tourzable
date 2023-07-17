@@ -71,7 +71,7 @@ export async function getServerSideProps(context) {
   if (!session) {
     return {
       redirect: {
-        destination: "/",
+        destination: `${window.location.origin}/Login`,
         permanent: false,
       },
     };
