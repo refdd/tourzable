@@ -66,7 +66,6 @@ function Inquery({ idPackage, min }) {
   const handleOnChange = (value) => {
     setnumber(value);
   };
-  console.log(theme);
   useEffect(() => {
     if (session) {
       setFristName(session.user.first_name);

@@ -84,7 +84,7 @@ function ItineraryDays({ daysItinerary }) {
                             {item.title}
                           </h4>
                           <hr />
-                          <div className="text-xs font-sans capitalize text-[#555]">
+                          <div className="text-xs px-2 font-sans capitalize text-[#555]">
                             <div
                               dangerouslySetInnerHTML={{
                                 __html: item.desc.substring(0, 90),

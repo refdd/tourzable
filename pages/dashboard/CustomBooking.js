@@ -10,7 +10,7 @@ import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
@@ -18,17 +18,7 @@ function CustomBooking({ customBookings }) {
   const { sideBar } = useStateContext();
   const { data: session } = useSession();
   const router = useRouter();
-  const { query, pathname } = router;
-  useEffect(() => {
-    if (session) {
-      router.push({
-        pathname: pathname,
-        query: {
-          token: session.user.accessToken,
-        },
-      });
-    }
-  }, [session]);
+  console.log(customBookings);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -67,9 +57,18 @@ function CustomBooking({ customBookings }) {
 }
 
 export default CustomBooking;
-export async function getServerSideProps({ locale, query }) {
-  const token = query.token || null;
-
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  const locale = context.locale || "en";
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  const token = session.user.accessToken || null;
   const customBookings = await fetchApi(
     `${baseUrl}/bookings?locale=${locale}&type_id=4`,
     token

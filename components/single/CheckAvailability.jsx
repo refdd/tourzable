@@ -9,7 +9,20 @@ import { MdOutlinePersonRemoveAlt1 } from "react-icons/md";
 import { useForm, Controller } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
+const theme = createTheme({
+  direction: "rtl",
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          direction: "ltr",
+        },
+      },
+    },
+  },
+});
 function CheckAvailability({
   idPackage,
   image,
@@ -22,7 +35,7 @@ function CheckAvailability({
 }) {
   const [startDay, setStartDay] = useState(null);
   const [endDay, setEndDay] = useState(null);
-  const [aduits, setAduits] = useState(0);
+  const [aduits, setAduits] = useState(min);
   const [childs, setChilds] = useState(0);
   const router = useRouter();
   const { t, i18n } = useTranslation();
@@ -82,40 +95,44 @@ function CheckAvailability({
       <div className="grid grid-cols-2 gap-4 ">
         {/*date*/}
         <div className=" mt-5 ">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              value={startDay}
-              onChange={(date) => {
-                setStartDay(date);
-              }}
-              slotProps={{
-                textField: {
-                  variant: "standard",
-                  fullWidth: true,
-                  label: t("common:single.start_ate"),
-                  required: true,
-                },
-              }}
-            />
-          </LocalizationProvider>
+          <ThemeProvider theme={theme}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                value={startDay}
+                onChange={(date) => {
+                  setStartDay(date);
+                }}
+                slotProps={{
+                  textField: {
+                    variant: "standard",
+                    fullWidth: true,
+                    label: t("common:single.start_ate"),
+                    required: true,
+                  },
+                }}
+              />
+            </LocalizationProvider>
+          </ThemeProvider>
         </div>
         <div className=" mt-5 ">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              value={endDay}
-              onChange={(date) => {
-                setEndDay(date);
-              }}
-              slotProps={{
-                textField: {
-                  variant: "standard",
-                  fullWidth: true,
-                  label: t("common:single.end_Date"),
-                  required: true,
-                },
-              }}
-            />
-          </LocalizationProvider>
+          <ThemeProvider theme={theme}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                value={endDay}
+                onChange={(date) => {
+                  setEndDay(date);
+                }}
+                slotProps={{
+                  textField: {
+                    variant: "standard",
+                    fullWidth: true,
+                    label: t("common:single.end_Date"),
+                    required: true,
+                  },
+                }}
+              />
+            </LocalizationProvider>
+          </ThemeProvider>
         </div>
         {/* counter */}
         <div className=" col-span-2 border-y-2 py-4">

@@ -32,7 +32,7 @@ function CardTour({
   const { t, i18n } = useTranslation();
   const router = useRouter();
   const { currency } = router.query;
-  // console.log(is_requested);
+  // console.log(session.user.accessToken);
   const addToFavorite = async () => {
     await axios
       .post(

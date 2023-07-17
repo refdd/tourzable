@@ -34,19 +34,12 @@ const columns = [
     align: "right",
     format: (value) => value.toLocaleString("en-US"),
   },
-  {
-    id: "paid",
-    label: "Paid",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toFixed(2),
-  },
 ];
 
-function createData(type, name, date, time, total, paid) {
+function createData(type, name, date, time, total) {
   //   const density = population / size;
   const density = "";
-  return { type, name, date, time, total, density, paid };
+  return { type, name, date, time, total, density };
 }
 // console.log(total);
 export default function TableBooking({ dataTable }) {
@@ -62,7 +55,6 @@ export default function TableBooking({ dataTable }) {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-  // console.log(dataTable);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
@@ -74,8 +66,7 @@ export default function TableBooking({ dataTable }) {
       row.title,
       formatDate(row.created_at),
       `Check in : ${row.start_date} Check out :${row.end_date}`,
-      `$${row.total}`,
-      "$0"
+      `${row?.currency} ${row.total}`
     )
   );
 

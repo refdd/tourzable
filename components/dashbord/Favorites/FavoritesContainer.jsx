@@ -4,6 +4,7 @@ import Hotel from "../../../public/assets/images/QaisariahSouq.jpg";
 import Hotel2 from "../../../public/assets/images/QaisariahSouq.jpg";
 import Hotel3 from "../../../public/assets/images/QaisariahSouq.jpg";
 function FavoritesContainer({ packages }) {
+  console.log(packages[0]);
   return (
     <div className="flex flex-col  gap-6">
       {packages?.map((tour) => {
@@ -20,7 +21,7 @@ function FavoritesContainer({ packages }) {
                 sigleImage={tour?.image}
                 duration={tour?.duration}
                 reatingNumber={tour?.package_rating}
-                pageType={pageType}
+                pageType={tour?.pageType}
                 visitedLocations={tour.visited_locations}
               />
             </div>

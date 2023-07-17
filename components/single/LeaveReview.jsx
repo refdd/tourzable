@@ -5,17 +5,21 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { useForm, FormProvider } from "react-hook-form";
 import CustomTextField from "../hleper/CustomTextField";
 import { useTranslation } from "react-i18next";
+import { useSession } from "next-auth/react";
 
 function LeaveReview() {
   const [openReview, setOpenReview] = useState(false);
   const [packageReview, setPackageReview] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [opertion, setOpertion] = useState("");
   const methods = useForm();
+  const { data: session, update } = useSession();
   const { t, i18n } = useTranslation();
   const handleChangePackageReview = (event) => {
     setPackageReview(event.target.value);
@@ -23,6 +27,12 @@ function LeaveReview() {
   const handleChangeOpertion = (event) => {
     setOpertion(event.target.value);
   };
+  useEffect(() => {
+    if (session) {
+      setName(session.user.name);
+      setEmail(session.user.email);
+    }
+  }, [session]);
   const onSubmit = (data) => {
     // console.log({
     //   ...data,
@@ -56,20 +66,32 @@ function LeaveReview() {
           >
             {/* frist name  */}
             <div className="">
-              <CustomTextField
+              <TextField
+                value={name}
                 required
-                name="firstName"
+                fullWidth
+                variant="standard"
+                name="Name"
                 label={t("common:single.name")}
-                type={"text"}
+                type="text"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
               />
             </div>
             {/*email address */}
             <div className=" md:col-span-1">
-              <CustomTextField
+              <TextField
+                value={email}
                 required
-                name="email"
+                fullWidth
+                variant="standard"
+                name="EmailAddress "
                 label={t("common:single.email_address")}
-                type={"text"}
+                type="email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </div>
             {/* package Review */}
@@ -85,12 +107,11 @@ function LeaveReview() {
                   onChange={handleChangePackageReview}
                   label={t("common:single.package_review")}
                 >
-                  <MenuItem value="">
-                    <em>star</em>
-                  </MenuItem>
                   <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
                 </Select>
               </FormControl>
             </div>
@@ -107,12 +128,11 @@ function LeaveReview() {
                   onChange={handleChangeOpertion}
                   label={t("common:single.operator_review")}
                 >
-                  <MenuItem value="">
-                    <em>star</em>
-                  </MenuItem>
                   <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
                 </Select>
               </FormControl>
             </div>

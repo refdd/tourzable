@@ -10,7 +10,7 @@ import Subscribe from "@/components/mainSections/Subscribe";
 import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
@@ -64,3 +64,19 @@ function Settings() {
 }
 
 export default Settings;
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}

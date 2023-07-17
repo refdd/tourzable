@@ -33,7 +33,7 @@ function ListTourcontainer({ tours, pageType }) {
 
     setSortedItems(sortItems());
   }, [sortBy, setSortBy, tours]);
-  console.log(sortedItems[0]);
+  // console.log(sortedItems[0]);
 
   return (
     <div className="container mx-auto px-4 mt-6">
@@ -58,6 +58,7 @@ function ListTourcontainer({ tours, pageType }) {
                 duration={tour?.duration}
                 reatingNumber={tour?.package_rating}
                 pageType={pageType}
+                tourType={tour?.type?.title}
                 reviewsCount={tour.reviews_count}
                 visitedLocations={tour.visited_locations}
                 tourId={tour.id}

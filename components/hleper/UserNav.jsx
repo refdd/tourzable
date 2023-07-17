@@ -26,7 +26,7 @@ export default function UserNav() {
     setAnchorEl(null);
   };
   const { data: session } = useSession();
-  // console.log(session);
+  console.log(window.location.origin);
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>

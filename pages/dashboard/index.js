@@ -11,7 +11,7 @@ import HeaderPages from "@/components/parts/HeaderPages";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
@@ -20,21 +20,8 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
   const { data: session } = useSession();
   const router = useRouter();
   const { query, pathname } = router;
-  // console.log(query.token);
-  useEffect(() => {
-    if (session) {
-      router.push({
-        pathname: pathname,
-        query: {
-          token: session.user.accessToken,
-        },
-      });
-    }
-  }, [session]);
-  if (!query.token) {
-    return <Loading />;
-  }
-  // console.log(profileData);
+
+  console.log(profileData);
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -60,7 +47,7 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
           <SideBArDashbord />
         </div>
         <div className={sideBar ? "md:col-span-6 " : "md:col-span-8  "}>
-          {/* <DashboarNumbers profileData={profileData} /> */}
+          <DashboarNumbers profileData={profileData} />
           <RcommandedTour
             packages={tours}
             activitys={activitys}
@@ -78,11 +65,25 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
 }
 
 export default Dashboard;
-export async function getServerSideProps({ query, locale }) {
-  const token = query.token || "";
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  const locale = context.locale || "en";
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  const token = session.user.accessToken || null;
 
   const tours = await fetchApi(
     `${baseUrl}/packages?locale=${locale}&type_id=1&limit=7`
+  );
+  const profileData = await fetchApi(
+    `${baseUrl}/profile?locale=${locale}`,
+    token
   );
   const activitys = await fetchApi(
     `${baseUrl}/packages?locale=${locale}&type_id=2&limit=7`
@@ -96,7 +97,7 @@ export async function getServerSideProps({ query, locale }) {
 
   return {
     props: {
-      // profileData: profileData.data,
+      profileData: profileData.data,
       tours: tours.data,
       activitys: activitys.data,
       umrah: umrah.data,

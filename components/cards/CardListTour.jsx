@@ -25,6 +25,7 @@ function CardListTour({
   visitedLocations,
   reviewsCount,
   tourId,
+  tourType,
 }) {
   const { ViewTours } = useStateContext();
   const { data: session } = useSession();
@@ -37,18 +38,19 @@ function CardListTour({
   const stars = Array.from({ length: reatingNumber }, (_, i) => (
     <BsStarFill key={i} />
   ));
+  console.log(pageType);
   const addToFavorite = async () => {
     await axios
       .post(
         "https://new.tourzable.com/api/addToFav",
         {
-          type: pageType,
+          type: tourType,
           id: tourId,
         },
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + session.user.accessToken,
+            Authorization: "Bearer " + session?.user?.accessToken,
           },
         }
       )
