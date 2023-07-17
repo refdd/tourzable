@@ -14,13 +14,18 @@ import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import { getSession, useSession } from "next-auth/react";
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
+import Loading from "@/components/hleper/Loading";
 
 function Wishlist({ favoritesPackages, favoritesLandmarks }) {
   const { sideBar } = useStateContext();
   const { data: session } = useSession();
   const router = useRouter();
-
-  // console.log(query.token);
+  useEffect(() => {
+    if (!session) {
+      router.push("/Login");
+    }
+  }, []);
+  if (!session) return <Loading />;
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -66,15 +71,11 @@ export default Wishlist;
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   const locale = context.locale || "en";
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: true,
-      },
-    };
+
+  let token = "";
+  if (session) {
+    token = session?.user?.accessToken || "";
   }
-  const token = session.user.accessToken || null;
 
   const favoritesPackages = await fetchApi(
     `${baseUrl}/favorites_packages?locale=${locale}`,

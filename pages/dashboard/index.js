@@ -21,7 +21,12 @@ function Dashboard({ tours, activitys, umrah, landmarks, profileData }) {
   const router = useRouter();
   const { query, pathname } = router;
 
-  console.log(status);
+  useEffect(() => {
+    if (!session) {
+      router.push("/Login");
+    }
+  }, []);
+  if (!session) return <Loading />;
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -68,16 +73,11 @@ export default Dashboard;
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   const locale = context.locale || "en";
-  if (!session) {
-    return {
-      redirect: {
-        destination: `/Login`,
-        permanent: true,
-      },
-    };
-  }
-  const token = session.user.accessToken || null;
 
+  let token = "";
+  if (session) {
+    token = session?.user?.accessToken || "";
+  }
   const tours = await fetchApi(
     `${baseUrl}/packages?locale=${locale}&type_id=1&limit=7`
   );

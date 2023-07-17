@@ -2,6 +2,7 @@ import BookingContainer from "@/components/dashbord/booking/BookingContainer";
 import TableBooking from "@/components/dashbord/booking/TableBooking";
 import TableData from "@/components/dashbord/booking/TableData";
 import DashbordNavBar from "@/components/dashbord/homeDashbord/DashbordNavBar";
+import Loading from "@/components/hleper/Loading";
 import SideBArDashbord from "@/components/hleper/SideBarDashbord";
 import DownLoadApp from "@/components/mainSections/DownLoadApp";
 import Footer from "@/components/mainSections/Footer";
@@ -19,7 +20,12 @@ function MyBooking({ customBookings }) {
   const { sideBar } = useStateContext();
   const { data: session } = useSession();
   const router = useRouter();
-
+  useEffect(() => {
+    if (!session) {
+      router.push("/Login");
+    }
+  }, []);
+  if (!session) return <Loading />;
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />
@@ -62,15 +68,10 @@ export default MyBooking;
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   const locale = context.locale || "en";
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
+  let token = "";
+  if (session) {
+    token = session?.user?.accessToken || "";
   }
-  const token = session.user.accessToken || null;
   const customBookings = await fetchApi(
     `${baseUrl}/bookings?locale=${locale}`,
     token

@@ -79,16 +79,12 @@ function GuideOrders({ profileData }) {
 
 export default GuideOrders;
 export async function getServerSideProps(context) {
-  const token = context.query.token || null;
   const session = await getSession(context);
   const locale = context.locale || "en";
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
+
+  let token = "";
+  if (session) {
+    token = session?.user?.accessToken || "";
   }
   // const token =
   //   "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5OGViOTc5Ny0xZTFiLTRmZDctYWM5Mi03Yjg1ZWNiOGVmZmIiLCJqdGkiOiJlNzFlZjRlN2E1ZjBhYTVmNzMyYzc1MWY4YThmZmVkYTM1ZTNjYmQyODU0ZjJjNDQwYmMwNmQxNjVjODFlMjQyYmViYmJkYzQ4N2JmZjM0ZSIsImlhdCI6MTY4NjgyNTY4Ny42MjQ0NTgwNzQ1Njk3MDIxNDg0Mzc1LCJuYmYiOjE2ODY4MjU2ODcuNjI0NDU5MDI4MjQ0MDE4NTU0Njg3NSwiZXhwIjoxNzAyNjM2ODg3LjYyMTYzOTAxMzI5MDQwNTI3MzQzNzUsInN1YiI6IjEwIiwic2NvcGVzIjpbXX0.dqRHk8S5f6cbBbXAstpznp78BII2opIG_fZQB4F4y7gEyWoD0WmFyhMjKZ4llVygx5nTSY8FLKC3fD_t1lVk79puUJdjfufV4ZCll-kCCK9P_X-NpRz27YEOFK8wbVSrXIewo7Wu0dnX9KqY9TSZj3WUcEIC1lS-XVmYGIqMhdKkssMtrpUjvbBLUt8Tipg72Yqotg-Os0F1aEfPfq630J4mrOhrWTKHUwe3hTqqjOnADRNOHEcg5VPZdj3YQSrUTRPvljfq6qAqbeUI__9RFDBKCOZUF-mXNAoCu8MqGr-sqwVmK9VpUHuYKIGjOGyfmJ1RtThSPk-0_sKeujVWQCrS93OuhCj21OJS9NjHQvArxTVmZE7gyheqT8AucHq5BXe5Q1yXCLGItL5Py09jAXpgTqlwLWJxnVyLtkno-5DsvATvLinhEeVqU-t31RW1WlPMhxyzfxwPge0GXGXyE2SPloub0glrIRR3ZD4Df6Eh2R5KloqQ8f-oUrxeJgbfBoGTUvn1E6cJ_WdkP0K0zRCR3e-S6B6jp9l3HkIclcdOf449eRVKh7EhQPNwbfXTpdAHDkMwdr2zXeDjw2FM8WFuwyTeUaK8e9Xj3nvap5tuap7GMvC7yTEq9vrhgHw6Jg5fec8HsfeKRQDS4FpDvSz8jhtoqryzrxioPlzdguM" ||
