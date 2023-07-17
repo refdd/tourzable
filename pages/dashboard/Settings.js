@@ -19,12 +19,7 @@ function Settings() {
   const { data: session } = useSession();
   const router = useRouter();
   const { query } = router;
-  useEffect(() => {
-    if (!session) return;
-    if (!session) {
-      router.push("/Login");
-    }
-  }, []);
+
   return (
     <div className="bg-[#f5f5f5]">
       <DashbordNavBar />

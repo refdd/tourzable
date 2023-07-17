@@ -83,31 +83,34 @@ export default function UserNav() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleClose}>
-          <Link href={"/dashboard/Settings"} className="flex items-center">
+          <Link
+            href={"/dashboard/Settings"}
+            className="flex items-center gap-2"
+          >
             <Avatar /> Profile
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link href={"/dashboard"} className="flex items-center">
+          <Link href={"/dashboard"} className="flex items-center gap-2">
             <Avatar /> My account
           </Link>
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
-          <Link href={"/dashboard/mybooking"}>
+          <Link href={"/dashboard/mybooking"} className="flex items-center">
             <ListItemIcon>
               <HiOutlinePresentationChartBar className="text-xl" />
             </ListItemIcon>
+            <span> My booking</span>
           </Link>
-          My booking
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link href={"/dashboard/wishlist"}>
+          <Link href={"/dashboard/wishlist"} className="flex items-center">
             <ListItemIcon>
               <BsFillBookmarkCheckFill className="text-xl" />
             </ListItemIcon>
+            <span>Favorites</span>
           </Link>
-          Favorites
         </MenuItem>
         <MenuItem
           onClick={() => {

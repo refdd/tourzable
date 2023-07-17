@@ -25,7 +25,7 @@ function BookingContainer({ dataBooking }) {
       },
     });
   };
-  console.log(parseInt(dataBooking[4].status?.color));
+  // console.log(parseInt(dataBooking[4].status?.color));
   return (
     <div>
       <div className=" bg-white shadow-lg rounded-lg p-7">
@@ -151,7 +151,12 @@ function BookingContainer({ dataBooking }) {
                   </div>
                 </div>
               </div>
-              <Modal open={cancel} onClose={handleClose}>
+              <Modal
+                open={cancel}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
                 <CancelForm handleClose={handleClose} bookingId={idBooking} />
               </Modal>
               <Modal open={question} onClose={handleCloseQuestion}>

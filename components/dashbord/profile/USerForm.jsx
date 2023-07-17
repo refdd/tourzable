@@ -8,8 +8,8 @@ import React, { useEffect, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 
 function USerForm({ selectedImag }) {
-  const [fristName, setFristName] = useState("Mohamed");
-  const [lastName, setLastName] = useState("Refat");
+  const [fristName, setFristName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setnumber] = useState("+966");
   const { data: session, update } = useSession();
@@ -28,7 +28,7 @@ function USerForm({ selectedImag }) {
       setnumber(session.user.phone);
     }
   }, [session]);
-  // console.log(session);
+  // console.log(session?.user?.accessToken);
   async function updataSession(first_name, last_name, email, phone) {
     await update({
       ...session,
@@ -54,7 +54,7 @@ function USerForm({ selectedImag }) {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + session.user.accessToken,
+            Authorization: "Bearer " + session?.user?.accessToken,
           },
         }
       )

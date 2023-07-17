@@ -1,12 +1,13 @@
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 function CancelForm({ handleClose, bookingId }) {
   const methods = useForm();
-  const router = useRouter();
-  const { query, pathname } = router;
+  const { data: session } = useSession();
+  // console.log(session?.user?.accessToken);
   const onSubmit = (data) => {
     axios
       .post(
@@ -18,7 +19,7 @@ function CancelForm({ handleClose, bookingId }) {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + query.token,
+            Authorization: "Bearer " + session?.user?.accessToken,
           },
         }
       )

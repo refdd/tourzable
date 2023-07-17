@@ -32,9 +32,7 @@ function CalenderGuide({ profileData }) {
       });
     }
   }, [session]);
-  if (!query.token) {
-    return;
-  }
+
   const { tour_orders } = profileData;
   return (
     <div className="bg-[#f5f5f5]">

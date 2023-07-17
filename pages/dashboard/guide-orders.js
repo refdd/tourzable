@@ -31,9 +31,7 @@ function GuideOrders({ profileData }) {
       });
     }
   }, [session]);
-  if (!query.token) {
-    return;
-  }
+
   const { tour_orders_requests } = profileData;
   // console.log(tour_orders_requests[0]);
   return (
