@@ -18,7 +18,7 @@ function LandMarksCard({ image, title, destination, slug }) {
             {title}
           </p>
         </Link>
-        <div className=" flex items-center space-x-3">
+        <div className=" flex items-center gap-3">
           <ImLocation2 className="text-lg text-mainColor" />
           <span className="text-MainYeloow text-[15px] font-sans capitalize">
             {destination}

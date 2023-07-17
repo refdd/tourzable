@@ -33,7 +33,7 @@ function ListTourcontainer({ tours, pageType }) {
 
     setSortedItems(sortItems());
   }, [sortBy, setSortBy, tours]);
-  // console.log(tours[0]);
+  console.log(sortedItems[0]);
 
   return (
     <div className="container mx-auto px-4 mt-6">
@@ -58,13 +58,15 @@ function ListTourcontainer({ tours, pageType }) {
                 duration={tour?.duration}
                 reatingNumber={tour?.package_rating}
                 pageType={pageType}
+                reviewsCount={tour.reviews_count}
                 visitedLocations={tour.visited_locations}
+                tourId={tour.id}
               />
             </div>
           );
         })}
       </div>
-      {!sortedItems?.length == 0 && <SeeMore />}
+      {sortedItems?.length >= 12 && <SeeMore />}
     </div>
   );
 }

@@ -10,7 +10,7 @@ function CardReview({ title, comment, imageAuther, autherName, autherJob }) {
       <p className="text-[#051036] text-[16px] font-medium font-sans capitalize">
         {comment}
       </p>
-      <div className="flex items-center space-x-8 border-t pt-4">
+      <div className="flex items-center gap-8 border-t pt-4">
         <div className="relative h-20 w-20 ">
           <Image
             loading="lazy"

@@ -74,7 +74,7 @@ function Checkout() {
       .get(`https://new.tourzable.com/api/coupons/${data}`)
       .then((response) => {
         console.log(response.data.data.id);
-        console.log(data);
+        // console.log(data);
         setDiscount(response.data.data.discount);
         setDiscountId(response.data.data.id);
       })
@@ -117,6 +117,7 @@ function Checkout() {
           prices={prices}
           payMode={payMode}
           discountId={discountId}
+          discount={discount}
         />
       </div>
       <Footer />

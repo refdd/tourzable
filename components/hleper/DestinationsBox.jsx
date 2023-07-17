@@ -9,7 +9,7 @@ import {
 
 function DestinationsBox() {
   return (
-    <div className="absolute top-[370%]  left-1/2 -translate-x-1/2 -translate-y-1/2  hidden group-hover/des:md:block z-20 w-[1100px] px-5">
+    <div className="absolute top-[299%]  left-1/2 -translate-x-1/2 -translate-y-1/2  hidden group-hover/des:md:block z-20 w-[1100px] px-5">
       <div className="grid grid-cols-5 gap-11 py-5 px-5 bg-[#fffffff2] rounded-md">
         {/* asia */}
         <div className=" flex flex-col space-y-3 w-52">

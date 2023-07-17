@@ -24,7 +24,7 @@ function VisaSection() {
             Hajj Season) And Excludes Other Activities Such As Studying.
           </p>
           <Link href={"https://visa.visitsaudi.com/"}>
-            <div className=" group flex items-center space-x-2 w-fit rounded transition-all hover:md:bg-MainYeloow bg-mainColor py-2 px-5 md:px-10 cursor-pointer  ">
+            <div className=" group flex items-center gap-2 w-fit rounded transition-all hover:md:bg-MainYeloow bg-mainColor py-2 px-5 md:px-10 cursor-pointer  ">
               <RiVisaFill className="text-[#fff] text-lg  group-hover:md:text-white " />
               <button className="text-[#fff] font-medium font-sans text-[15px] group-hover:md:text-white">
                 Get Visa

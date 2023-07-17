@@ -27,7 +27,7 @@ function InfoPaymentTour({
         {/* imaga and data */}
         <div className="flex flex-col space-y-5">
           {/* imaga and titel and code  */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center gap-3">
             <div className="relative w-[150px] h-[90px] md:w-[240px] md:h-[120px] ">
               <Image
                 loader={() => {
@@ -50,7 +50,7 @@ function InfoPaymentTour({
             </div>
           </div>
           {/* start date and end date */}
-          <div className="flex   items-center  space-x-11  ">
+          <div className="flex   items-center  gap-11  ">
             <div className="flex flex-col space-y-1">
               <span className="text-[16px] font-medium text-textPurple capitalize font-sans">
                 Tour Date
@@ -70,12 +70,12 @@ function InfoPaymentTour({
           </div>
         </div>
         {/* price */}
-        <div className="flex   items-center  space-x-11 pt-5  ">
+        <div className="flex   items-center  gap-11 pt-5  ">
           <div className="flex flex-col space-y-1">
             <span className="text-[16px] font-medium text-mainColor capitalize font-sans">
               Start From
             </span>
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center gap-1">
               <span className="text-[16px] text-textPurple font-medium uppercase">
                 usd
               </span>
@@ -157,33 +157,8 @@ function InfoPaymentTour({
                 Total Final Price
               </p>
               <p className="text-center text-xl font-medium text-[#28a745]">
-                {prices?.totalPrice} USD
+                {discount ? Math.floor(discountAmount) : prices?.total} USD
               </p>
-            </div>
-            {/* cobone */}
-            <div className="pt-3 md:w-[70%] md:mx-auto">
-              <TextField
-                label="add cobone price"
-                variant="standard"
-                fullWidth
-                value={cobone}
-                onChange={handleChangeCobone}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => {
-                          addCobone(cobone);
-                        }}
-                        color="primary"
-                        aria-label="add"
-                      >
-                        <AddBoxIcon className="text-mainColor text-xl" />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
             </div>
           </div>
         ) : (

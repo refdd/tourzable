@@ -82,7 +82,7 @@ function OverViewTourGuide({
           <p className="text-mainColor font-sans font-medium capitalize text-lg">
             Languages
           </p>
-          <div className="flex items-center flex-wrap space-x-10">
+          <div className="flex items-center flex-wrap gap-10">
             {/* {languages?.map((language, index) => (
               <p
                 key={index}

@@ -28,6 +28,7 @@ function Results({ tours, regions }) {
       <div className=" grid grid-cols-1 gap-5  md:grid-cols-3">
         <div className="hidden md:block col-span-1 mt-5">
           <From idPackage={"list Search"} />
+          {/* <FilterDesktop regions={regions} /> */}
         </div>
         <div className="col-span-2">
           <HeaderList numberOfPackage={tours?.length} regions={regions} />

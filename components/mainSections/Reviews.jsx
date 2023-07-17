@@ -17,7 +17,7 @@ function Reviews({ reviews, allPartners }) {
           <p className="text-white text-[16px] font-sans capitalize font-normal ">
             {t("common:home.reviewsDesc")}
           </p>
-          <div className="flex  space-x-24 pt-2 md:pt-8">
+          <div className="flex  gap-24 pt-2 md:pt-8">
             <div className="flex flex-col space-y-2">
               <span className="font-semibold text-3xl font-sans text-white">
                 13m+

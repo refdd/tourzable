@@ -25,7 +25,7 @@ function OfferSection({ offers, settingsOffer }) {
               </p>
             </div>
             {/*  */}
-            <div className="flex space-x-1 z-40 justify-center items-center">
+            <div className="flex gap-1 z-40 justify-center items-center">
               <span className="text-8xl font-semibold font-sans text-MainYeloow">
                 {settingsOffer?.discount_number}
               </span>

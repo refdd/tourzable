@@ -9,7 +9,7 @@ function FandQList() {
       <ul className=" flex flex-col py-1 px-2 bg-gray-50 rounded-md divide-y">
         <li className=" py-3 cursor-pointer">
           <Link className="flex items-center justify-between" href={"#General"}>
-            <div className="flex items-center space-x-2 ">
+            <div className="flex items-center gap-2 ">
               <TiDocumentText className="text-lg text-mainColor " />
               <span className="text-sm text-gray-700 font-sans font-medium capitalize">
                 General
@@ -20,7 +20,7 @@ function FandQList() {
         </li>
         <li className=" py-3 cursor-pointer">
           <Link className="flex items-center justify-between" href={"#Booking"}>
-            <div className="flex items-center space-x-2 ">
+            <div className="flex items-center gap-2 ">
               <TiDocumentText className="text-lg text-mainColor " />
               <span className="text-sm text-gray-700 font-sans font-medium capitalize">
                 Booking
@@ -34,7 +34,7 @@ function FandQList() {
             className="flex items-center justify-between"
             href={"#Registration"}
           >
-            <div className="flex items-center space-x-2 ">
+            <div className="flex items-center gap-2 ">
               <TiDocumentText className="text-lg text-mainColor " />
               <span className="text-sm text-gray-700 font-sans font-medium capitalize">
                 Registration
@@ -48,7 +48,7 @@ function FandQList() {
             className="flex items-center justify-between"
             href={"#Payments"}
           >
-            <div className="flex items-center space-x-2 ">
+            <div className="flex items-center gap-2 ">
               <TiDocumentText className="text-lg text-mainColor " />
               <span className="text-sm text-gray-700 font-sans font-medium capitalize">
                 Payments
@@ -59,7 +59,7 @@ function FandQList() {
         </li>
         <li className=" py-3 cursor-pointer">
           <Link className="flex items-center justify-between" href={"#Terms"}>
-            <div className="flex items-center space-x-2 ">
+            <div className="flex items-center gap-2 ">
               <TiDocumentText className="text-lg text-mainColor " />
               <span className="text-sm text-gray-700 font-sans font-medium capitalize">
                 Terms & Conditions
@@ -73,7 +73,7 @@ function FandQList() {
             className="flex items-center justify-between"
             href={"#Requirements"}
           >
-            <div className="flex items-center space-x-2 ">
+            <div className="flex items-center gap-2 ">
               <TiDocumentText className="text-lg text-mainColor " />
               <span className="text-sm text-gray-700 font-sans font-medium capitalize">
                 Travel Requirements

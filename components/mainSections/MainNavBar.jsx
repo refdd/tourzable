@@ -78,7 +78,7 @@ function MainNavBar() {
             menuBar ? "bg-white" : ""
           } ${!isTop ? "bg-[#FFF]" : undefined} `}
         >
-          <div className=" flex items-center space-x-5">
+          <div className=" flex items-center gap-5">
             {/* logo */}
             <Link href={"/"}>
               <div className=" relative w-[134px] h-[34px] md:h-[50px] md:w-[224px] flex items-center ">
@@ -196,7 +196,7 @@ function MainNavBar() {
             </ul>
           </div>
           {/* button distop */}
-          <div className=" hidden md:flex items-center space-x-3">
+          <div className=" hidden md:flex items-center gap-3">
             {session ? (
               <UserNav />
             ) : (
@@ -222,7 +222,7 @@ function MainNavBar() {
             )}
           </div>
           {/* user and menu bar */}
-          <div className="flex md:hidden items-center space-x-2">
+          <div className="flex md:hidden items-center gap-2">
             {/* icon user */}
             {session ? (
               <UserNav />

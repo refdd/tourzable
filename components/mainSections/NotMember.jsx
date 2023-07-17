@@ -12,14 +12,14 @@ function NotMember() {
           Join us! Our members can access savings of up to 50% and earn Trip
           Coins while booking
         </p>
-        <div className="flex items-center space-x-4">
-          <div className=" group flex items-center space-x-2 w-fit border hover:md:bg-mainColor border-[#3554d1] rounded transition-all bg-transparent h-16 px-5 md:px-10 cursor-pointer  ">
+        <div className="flex items-center gap-4">
+          <div className=" group flex items-center gap-2 w-fit border hover:md:bg-mainColor border-[#3554d1] rounded transition-all bg-transparent h-16 px-5 md:px-10 cursor-pointer  ">
             <button className="text-[#3554d1] font-medium font-sans text-[15px] group-hover:md:text-white">
               Sign In
             </button>
             <BsArrowUpRight className="text-[#3554d1] text-lg  group-hover:md:text-white " />
           </div>
-          <div className=" group flex items-center space-x-2 w-fit rounded transition-all hover:md:bg-mainColor bg-[#f8d448] h-16 px-5 md:px-10 cursor-pointer  ">
+          <div className=" group flex items-center gap-2 w-fit rounded transition-all hover:md:bg-mainColor bg-[#f8d448] h-16 px-5 md:px-10 cursor-pointer  ">
             <button className="text-[#051036] font-medium font-sans text-[15px] group-hover:md:text-white">
               Register
             </button>

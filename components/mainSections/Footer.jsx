@@ -87,7 +87,7 @@ function Footer() {
                 33vw"
               />
             </div>
-            <div className=" flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-10">
+            <div className=" flex flex-col space-y-3 md:space-y-0 md:flex-row md:gap-10">
               {/* coll and support */}
               <div className="flex flex-col space-y-1 ">
                 <span className="text-white text-[14px] capitalize font-sans">
@@ -117,8 +117,8 @@ function Footer() {
               Your all-in-one travel app
             </p>
 
-            <div className="flex   flex-row  space-x-3 ">
-              <div className="flex items-center space-x-1 bg-MainYeloow rounded-lg  w-fit px-4 py-3">
+            <div className="flex   flex-row  gap-3 ">
+              <div className="flex items-center gap-1 bg-MainYeloow rounded-lg  w-fit px-4 py-3">
                 <BsApple className="text-mainColor text-2xl" />
                 <div className="flex flex-col ">
                   <span className="text-mainColor text-[14px] font-sans capitalize">
@@ -129,7 +129,7 @@ function Footer() {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center space-x-1 bg-MainYeloow rounded-lg  w-fit px-4 py-3">
+              <div className="flex items-center gap-1 bg-MainYeloow rounded-lg  w-fit px-4 py-3">
                 <BsGooglePlay className="text-mainColor text-2xl" />
                 <div className="flex flex-col ">
                   <span className="text-mainColor text-[14px] font-sans capitalize">
@@ -147,17 +147,21 @@ function Footer() {
             <p className="text-white text-[16px] font-sans font-medium capitalize">
               Your all-in-one travel app
             </p>
-            <div className="flex items-center space-x-5 text-white text-lg">
-              <Link href={"https://www.facebook.com/tourzable"}>
+            <div className="flex items-center gap-5 text-white text-lg">
+              <Link target="_blank" href={"https://www.facebook.com/tourzable"}>
                 <BsFacebook />
               </Link>
-              <Link href={"https://twitter.com/tourzableksa"}>
+              <Link target="_blank" href={"https://twitter.com/tourzableksa"}>
                 <BsTwitter />
               </Link>
-              <Link href={"https://www.instagram.com/tourzable/"}>
+              <Link
+                target="_blank"
+                href={"https://www.instagram.com/tourzable/"}
+              >
                 <BsInstagram />
               </Link>
               <Link
+                target="_blank"
                 href={"https://www.linkedin.com/in/tourzable-ksa-13b4a7201/"}
               >
                 <BsLinkedin />
@@ -257,7 +261,7 @@ function Footer() {
                 </p>
               </li>
               <li className=" hover:text-[#3554d1] transition-all ">
-                <div className="flex flex-col ">
+                <div className="flex flex-row gap-3 ">
                   <Image
                     src={mada}
                     width={90}
@@ -289,18 +293,23 @@ function Footer() {
               Contact Us
             </p>
             <ul className="flex flex-col space-y-7 pt-2 text-white text-[16px] font-sans capitalize">
-              <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
-                <AiFillPhone className="text-lg text-white" />
-                <span>0564445507</span>
-              </li>
+              <Link href="tel:0564445507">
+                <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
+                  <AiFillPhone className="text-lg text-white" />
+                  <span>0564445507</span>
+                </li>
+              </Link>
+
               <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
                 <MdLocationPin className="text-lg text-white" />
                 <span>Eastern Province</span>
               </li>
-              <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
-                <BsFillEnvelopeFill className="text-lg text-textPurple" />
-                <span> Sales@Tourzable.Com</span>
-              </li>
+              <Link href="mailto:Sales@Tourzable.Com">
+                <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
+                  <BsFillEnvelopeFill className="text-lg text-textPurple" />
+                  <span> Sales@Tourzable.Com</span>
+                </li>
+              </Link>
               <li className=" hover:text-[#3554d1] transition-all flex items-center gap-3">
                 <div className="flex flex-col ">
                   <Link href={"https://maroof.sa/businesses/details/126288"}>

@@ -84,7 +84,7 @@ function HeaderList({ numberOfPackage, regions }) {
             onClick={() => {
               setOpenFilter(true);
             }}
-            className="   flex  md:hidden h-10 px-5 rounded-full bg-MainYeloow space-x-2 items-center cursor-pointer "
+            className="   flex  md:hidden h-10 px-5 rounded-full bg-MainYeloow gap-2 items-center cursor-pointer "
           >
             <TbArrowsUpDown className="text-lg text-mainColor" />
             <button className="font-medium text-[15px] font-sans capitalize text-mainColor">

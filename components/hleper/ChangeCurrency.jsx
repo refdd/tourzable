@@ -42,7 +42,7 @@ export default function ChangeCurrency({ isTop, InSinglePage }) {
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Tooltip title="language">
+        <Tooltip title="Currnecy">
           <IconButton
             onClick={handleClick}
             size="small"

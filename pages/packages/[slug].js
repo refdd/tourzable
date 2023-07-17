@@ -54,6 +54,7 @@ function SingleTour({ singletour }) {
     meta_desc,
     meta_title,
     immediate_booking,
+    reviews_count,
   } = singletour;
   console.log(singletour);
   return (
@@ -82,7 +83,7 @@ function SingleTour({ singletour }) {
         </div>
         <HeaderSingle
           title={title}
-          ratingNumber={package_rating}
+          reviews_count={reviews_count}
           location={city?.title}
           price={best_price}
           starNumber={package_rating}
@@ -98,6 +99,7 @@ function SingleTour({ singletour }) {
               includes={includes}
               unincludes={unincludes}
               board={board}
+              tourCode={code}
               hotel_rate={hotel_rate?.title}
             />
             <Itinerary daysItinerary={days} />

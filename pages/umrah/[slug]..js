@@ -52,6 +52,9 @@ function SingleTour({ singletour }) {
     image,
     meta_desc,
     meta_title,
+    reviews_count,
+    code,
+    immediate_booking,
   } = singletour;
   // console.log(singletour);
   return (
@@ -79,7 +82,7 @@ function SingleTour({ singletour }) {
         </div>
         <HeaderSingle
           title={title}
-          ratingNumber={package_rating}
+          reviews_count={reviews_count}
           location={city?.title}
           price={best_price}
           starNumber={package_rating}
@@ -95,6 +98,7 @@ function SingleTour({ singletour }) {
               includes={includes}
               unincludes={unincludes}
               board={board}
+              tourCode={code}
               hotel_rate={hotel_rate?.title}
             />
             <Itinerary daysItinerary={days} />
@@ -103,7 +107,16 @@ function SingleTour({ singletour }) {
             <TermsAndConditions />
             <LeaveReview />
           </div>
-          <From idPackage={id} />
+          <From
+            idPackage={id}
+            image={image}
+            title={title}
+            tourCode={code}
+            best_price={best_price}
+            min={min}
+            max={max}
+            payMode={immediate_booking}
+          />
         </div>
         {/* <RelatedTours /> */}
         <Subscribe />

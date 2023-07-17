@@ -43,7 +43,7 @@ function ItineraryDays({ daysItinerary }) {
         {daysItinerary.map((q, index) => (
           <div key={q.id} className=" border mb-4 rounded shadow-lg py-5 px-3 ">
             <button
-              className="flex  items-center  space-x-7 px-3 w-full "
+              className="flex  items-center  gap-7 px-3 w-full "
               onClick={() => handleClick(index)}
             >
               <div className="flex flex-col items-center justify-center h-[60px] w-[60px]  rounded-full bg-mainColor">
@@ -72,7 +72,7 @@ function ItineraryDays({ daysItinerary }) {
 
                 <div className="flex flex-col space-y-3">
                   {q?.landmarks?.map((item) => (
-                    <div key={item.id} className="flex items-start space-x-3">
+                    <div key={item.id} className="flex items-start gap-3">
                       <div className=" w-14 ">
                         <div className=" flex items-center justify-center border-2 border-textPurple  w-10 h-10  rounded-full">
                           <span>1</span>

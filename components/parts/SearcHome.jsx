@@ -68,7 +68,7 @@ function SearcHome({ regions }) {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col md:flex-row
                   md:divide-x space-y-4 py-5 px-6 md:py-0
-                  md:space-y-0 md:items-center md:space-x-2"
+                  md:space-y-0 md:items-center md:gap-2"
       >
         <div className=" md:w-[35%] md:px-3">
           <div className="felx flex-col justify-center md:mt-2">
@@ -136,7 +136,7 @@ function SearcHome({ regions }) {
           </div>
         </div>
         <div
-          className="  group flex space-x-1 justify-center transition-all items-center bg-secondColor
+          className="  group flex gap-1 justify-center transition-all items-center bg-secondColor
          hover:md:bg-mainLightColor rounded py-5   md:flex-1  md:px-3 md:h-12 md:rounded-[100px] "
         >
           <BiSearch className="text-white text-lg" />

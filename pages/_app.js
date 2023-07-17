@@ -64,6 +64,7 @@ export default function App({ Component, pageProps, session }) {
         changeLanguage("en");
     }
   }, []);
+  console.log(rtlTheme);
   return (
     <SessionProvider session={session}>
       <ContextProvider>

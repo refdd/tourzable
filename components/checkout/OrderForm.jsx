@@ -22,6 +22,7 @@ function OrderForm({
   payMode,
   prices,
   discountId,
+  discount,
 }) {
   const [number, setnumber] = useState("+1");
   const [fristName, setFristName] = useState("");
@@ -45,7 +46,7 @@ function OrderForm({
       setnumber(session.user.phone);
     }
   }, [session]);
-  console.log(prices);
+  console.log(discount);
 
   const onSubmit = (data) => {
     axios
@@ -90,6 +91,7 @@ function OrderForm({
               max,
               aduits,
               childs,
+              discount,
             },
           });
           // console.log("refat");

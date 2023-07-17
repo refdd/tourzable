@@ -25,8 +25,8 @@ function TimerDown({ date }) {
     return () => clearInterval(intervalId);
   }, [date]);
   return (
-    <ul className="flex space-x-4 items-center z-40">
-      <li className="flex space-x-1 items-end">
+    <ul className="flex gap-4 items-center z-40">
+      <li className="flex gap-1 items-end">
         <span className="text-3xl font-semibold text-white">
           {timeRemaining.days}{" "}
         </span>
@@ -34,7 +34,7 @@ function TimerDown({ date }) {
           {timeRemaining.days > 1 ? "days" : "day"}
         </span>
       </li>
-      <li className="flex space-x-1 items-end">
+      <li className="flex gap-1 items-end">
         <span className="text-3xl font-semibold text-white">
           {timeRemaining.hours}
         </span>
@@ -42,7 +42,7 @@ function TimerDown({ date }) {
           Hrs
         </span>
       </li>
-      <li className="flex space-x-1 items-end">
+      <li className="flex gap-1 items-end">
         <span className="text-3xl font-semibold text-white">
           {timeRemaining.minutes}
         </span>
@@ -50,7 +50,7 @@ function TimerDown({ date }) {
           mins
         </span>
       </li>
-      <li className="flex space-x-1 items-end">
+      <li className="flex gap-1 items-end">
         <span className="text-3xl font-semibold text-white">
           {timeRemaining.seconds}
         </span>

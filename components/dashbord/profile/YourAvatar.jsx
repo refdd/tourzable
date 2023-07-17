@@ -57,7 +57,7 @@ function YourAvatar({
         {/* button */}
         <div
           onChange={handleFileSelect}
-          className="flex items-center space-x-2 bg-mainColor w-fit px-5 py-2  rounded-md cursor-pointer"
+          className="flex items-center gap-2 bg-mainColor w-fit px-5 py-2  rounded-md cursor-pointer"
         >
           <BsCloudUpload className="text-white text-xl" />
           <input

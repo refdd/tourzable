@@ -31,6 +31,8 @@ const MenuProps = {
 function FilterDesktop({ regions }) {
   const [priceRang, setpriceRang] = useState([10, 6666790]);
   const [location, setLocation] = useState([]);
+  const [search, setSearch] = useState();
+  const [daysCounter, setDaysCounter] = useState();
   const [nameOfpackage, setnameOfpackage] = useState();
   const [starNumber, setstarNumber] = React.useState(4);
   const { t, i18n } = useTranslation();
@@ -58,8 +60,8 @@ function FilterDesktop({ regions }) {
     router.push({
       pathname: path,
       query: {
-        search: data.search,
-        days_count: data.days,
+        search: search,
+        days_count: daysCounter,
         location: location,
         price_range_from: priceRang[0],
         price_range_to: priceRang[1],
@@ -73,7 +75,7 @@ function FilterDesktop({ regions }) {
     //   starNumber,
     // });
   };
-  console.log(location);
+  // console.log(location);
   return (
     <div className="container mx-auto px-4 pt-7">
       <FormProvider {...methods}>
@@ -87,20 +89,18 @@ function FilterDesktop({ regions }) {
               {t("common:list.searchList")}
             </p>
             <div className=" py-6 border-b">
-              <Controller
-                name={"search"}
-                control={methods.control}
-                defaultValue=""
-                render={({ field }) => (
-                  <TextField
-                    type={"text"}
-                    {...field}
-                    label={t("common:list.SearchEx")}
-                    fullWidth
-                    variant="outlined"
-                    id="outlined-required"
-                  />
-                )}
+              <TextField
+                value={search}
+                placeholder=""
+                required
+                fullWidth
+                variant="standard"
+                name="search"
+                label={t("common:list.SearchEx")}
+                type="text"
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -167,20 +167,19 @@ function FilterDesktop({ regions }) {
                       ),
                     }}
                   /> */}
-                  <Controller
-                    name={"days"}
-                    control={methods.control}
-                    defaultValue=""
-                    render={({ field }) => (
-                      <TextField
-                        type={"number"}
-                        {...field}
-                        label={t("common:list.days_Number")}
-                        fullWidth
-                        variant="outlined"
-                        id="outlined-required"
-                      />
-                    )}
+
+                  <TextField
+                    value={daysCounter}
+                    placeholder=""
+                    required
+                    fullWidth
+                    variant="standard"
+                    name="days"
+                    label={t("common:list.days_Number")}
+                    type="number"
+                    onChange={(e) => {
+                      setDaysCounter(e.target.value);
+                    }}
                   />
                 </div>
               </li>
@@ -236,7 +235,7 @@ function FilterDesktop({ regions }) {
           </div> */}
           {/* button Search */}
           <div
-            className="flex justify-center items-center space-x-1
+            className="flex justify-center items-center gap-1
          bg-mainColor rounded py-3 text-white text-lg transition-all hover:bg-[#051036] hover:text-white"
           >
             <BiSearch className="" />

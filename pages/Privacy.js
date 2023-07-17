@@ -7,10 +7,12 @@ import NotMember from "@/components/mainSections/NotMember";
 import OverViewTerms from "@/components/mainSections/OverViewTerms";
 import Subscribe from "@/components/mainSections/Subscribe";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
 
-function Privacy() {
+function Privacy({ privacy }) {
+  console.log(privacy);
   return (
     <>
       <Head>
@@ -36,3 +38,12 @@ function Privacy() {
 }
 
 export default Privacy;
+export async function getServerSideProps({ locale, query }) {
+  const privacy = await fetchApi(`${baseUrl}/posts`);
+
+  return {
+    props: {
+      privacy: privacy.data,
+    },
+  };
+}

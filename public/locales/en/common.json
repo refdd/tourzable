@@ -1,10 +1,10 @@
 {
     "home":{
         "home": "Home",
-        "package": "Package",
-        "actives": "Actives",
+        "package": "Packages",
+        "actives": "Activities",
         "umrah": "Umrah Plus",
-        "landMarks": "LandMarks",
+        "landMarks": "Landmarks",
         "destinations": "Destinations",
         "blog": "Saudi Travel Blog",
         "HeaderHome": "Explore the best of Saudi Arabia",

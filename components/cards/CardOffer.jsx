@@ -80,7 +80,7 @@ function CardOffer({
         {description}
       </p>
       {/* rating*/}
-      <div className=" flex items-center space-x-2">
+      <div className=" flex items-center gap-2">
         <span className="h-[30px] w-[30px] bg-MainYeloow font-semibold  text-mainColor rounded flex justify-center items-center">
           {ratingNumber}
         </span>
@@ -92,7 +92,7 @@ function CardOffer({
         </span>
       </div>
       {/* price */}
-      <div className=" flex items-center space-x-1 text-lg font-sans font-medium ">
+      <div className=" flex items-center gap-1 text-lg font-sans font-medium ">
         <span className=" group-hover:text-mainColor text-[16px] transition-all text-[#051036]">
           {t("common:home.Starting_from")}
         </span>

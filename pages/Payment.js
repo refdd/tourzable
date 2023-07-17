@@ -5,29 +5,31 @@ import Footer from "@/components/mainSections/Footer";
 import NormailNavBar from "@/components/mainSections/NormailNavBar";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
 import { useStateContext } from "@/contexts/ContextProvider";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import axios from "axios";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import React, { useEffect, useState } from "react";
 
-function Payment() {
+function Payment({ settings, prices }) {
   const [urlData, setUrlData] = useState();
   const [aduits, setAduits] = useState();
   const [childs, setChilds] = useState();
+  const [discount, setdiscount] = useState();
   const [isloding, setIsloding] = useState(false);
   const { pricesPayment } = useStateContext();
   const router = useRouter();
   const { query } = router;
-  // console.log(aduits, childs);
+  console.log(settings.PAYMENT_GATWAY);
   useEffect(() => {
     if (query.aduits) {
       setAduits(parseInt(query.aduits));
       setChilds(parseInt(query.childs));
+      setdiscount(parseInt(query.discount));
     }
     return;
-  }, [query.aduits]);
-  console.log(pricesPayment);
+  }, [query.aduits, aduits]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +52,7 @@ function Payment() {
       }, 300);
     }
   }, [urlData]);
+
   return (
     <>
       {isloding && (
@@ -71,24 +74,26 @@ function Payment() {
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 my-10">
           <div>
-            <PaymentServis />
-            <div>
-              <form
-                action="{shopperResultUrl}"
-                className="paymentWidgets"
-                data-brands="VISA"
-              ></form>
-            </div>
+            {settings.PAYMENT_GATWAY == "HYPERPAY" ? (
+              <div>
+                <form
+                  action="{shopperResultUrl}"
+                  className="paymentWidgets"
+                  data-brands="VISA"
+                ></form>
+              </div>
+            ) : (
+              <PaymentServis />
+            )}
           </div>
 
           <InfoPaymentTour
-            prices={pricesPayment}
+            prices={prices}
             infant={0}
             childs={childs}
             aduits={aduits}
             cobone={433563}
-            //   handleChangeCobone={handleChangeCodone}
-            //   addCobone={addCobone}
+            discount={discount}
           />
         </div>
         <Footer />
@@ -98,3 +103,17 @@ function Payment() {
 }
 
 export default Payment;
+export async function getServerSideProps({ params, locale, query, res }) {
+  const settings = await fetchApi(`${baseUrl}/settings`);
+  const prices = await fetchApi(
+    `${baseUrl}/get_booking_prices?adult=${query.aduits}&kid=${
+      query.childs
+    }&infant=${0}&package_id=${query.idPackage}`
+  );
+  return {
+    props: {
+      settings: settings,
+      prices: prices.data,
+    }, // will be passed to the page component as props
+  };
+}

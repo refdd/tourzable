@@ -20,7 +20,7 @@ function FavoritesContainer({ packages }) {
                 sigleImage={tour?.image}
                 duration={tour?.duration}
                 reatingNumber={tour?.package_rating}
-                // pageType={pageType}
+                pageType={pageType}
                 visitedLocations={tour.visited_locations}
               />
             </div>

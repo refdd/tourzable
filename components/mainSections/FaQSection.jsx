@@ -42,7 +42,7 @@ function FaQSection({ faqs }) {
         {faqs?.map((q, index) => (
           <div key={q.id} className=" border mb-8 rounded shadow-lg py-5 px-3 ">
             <button
-              className="flex  w-full items-center text-left   space-x-2  "
+              className="flex  w-full items-center text-left   gap-2  "
               onClick={() => handleClick(index)}
             >
               <div className="w-[20%] md:w-[10%] flex items-center justify-center">

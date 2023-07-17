@@ -71,7 +71,7 @@ function BookingContainer({ dataBooking }) {
                   {item.title}
                 </p>
                 {/* info */}
-                <div className="flex  items-center space-x-2">
+                <div className="flex  items-center gap-2">
                   <div className="flex items-center">
                     <AiFillClockCircle className="text-mainColor" />
                     <span className="ml-1 font-sans text-sm text-gray-500 capitalize">

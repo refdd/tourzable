@@ -99,7 +99,7 @@ function GuideOrdersSection({ tourOrdersRequests }) {
               </div>
               {activeIndex == order.id && (
                 <div className="flex flex-col   justify-center py-4 space-y-3">
-                  <div className="bg-mainColor py-3 px-7 rounded-lg  cursor-pointer flex items-center space-x-3">
+                  <div className="bg-mainColor py-3 px-7 rounded-lg  cursor-pointer flex items-center gap-3">
                     <button
                       onClick={handleOpenAccept}
                       className="text-sm font-sans font-medium capitalize text-white"
@@ -108,7 +108,7 @@ function GuideOrdersSection({ tourOrdersRequests }) {
                     </button>
                     <AiFillCheckCircle className="text-white text-[20px]" />
                   </div>
-                  <div className="bg-MainYeloow py-3 px-7 rounded-lg  cursor-pointer flex items-center space-x-3">
+                  <div className="bg-MainYeloow py-3 px-7 rounded-lg  cursor-pointer flex items-center gap-3">
                     <button
                       onClick={handleOpenReject}
                       className="text-sm font-sans font-medium capitalize text-gray-900"
@@ -117,7 +117,7 @@ function GuideOrdersSection({ tourOrdersRequests }) {
                     </button>
                     <AiFillCloseCircle className="text-gray-900 text-[20px]" />
                   </div>
-                  <div className=" border border-mainColor py-3 px-7 rounded-lg  cursor-pointer flex items-center space-x-3">
+                  <div className=" border border-mainColor py-3 px-7 rounded-lg  cursor-pointer flex items-center gap-3">
                     <button
                       onClick={handleOpenInquery}
                       className="text-sm font-sans font-medium capitalize text-gray-700"

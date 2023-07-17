@@ -39,7 +39,7 @@ function BlogCard({ image, duration, title, desc, author, name, job, slug }) {
               <p className="text-[#697488] text-[15px] font-sans capitalize">
                 {desc}
               </p>
-              {/* <div className="flex items-center space-x-8 border-t pt-4">
+              {/* <div className="flex items-center gap-8 border-t pt-4">
                 <div className="relative h-16 w-16 ">
                   <Image
                     loading="lazy"

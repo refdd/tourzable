@@ -16,8 +16,8 @@ function DownLoadApp() {
             confirmation. Access your booking info offline.
           </p>
           {/* buttons */}
-          <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 ">
-            <div className="flex items-center space-x-4 bg-mainColor rounded-lg  w-fit px-7 py-3">
+          <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:gap-4 ">
+            <div className="flex items-center gap-4 bg-mainColor rounded-lg  w-fit px-7 py-3">
               <BsApple className="text-white text-2xl" />
               <div className="flex flex-col ">
                 <span className="text-white text-[14px] font-sans capitalize">
@@ -28,7 +28,7 @@ function DownLoadApp() {
                 </span>
               </div>
             </div>
-            <div className="flex items-center space-x-4 bg-mainColor rounded-lg  w-fit px-7 py-3">
+            <div className="flex items-center gap-4 bg-mainColor rounded-lg  w-fit px-7 py-3">
               <BsGooglePlay className="text-white text-2xl" />
               <div className="flex flex-col ">
                 <span className="text-white text-[14px] font-sans capitalize">

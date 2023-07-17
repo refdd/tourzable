@@ -1,5 +1,5 @@
 import { TextareaAutosize, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MuiPhoneNumber from "material-ui-phone-number-2";
 import { ImMan } from "react-icons/im";
 import { FaChild } from "react-icons/fa";
@@ -14,14 +14,32 @@ import { format } from "date-fns";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { useSession } from "next-auth/react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-function Inquery({ idPackage }) {
-  const [number, setnumber] = useState("+1");
-  const [aduits, setAduits] = useState(0);
+const theme = createTheme({
+  direction: "rtl",
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          direction: "ltr",
+        },
+      },
+    },
+  },
+});
+function Inquery({ idPackage, min }) {
+  const [fristName, setFristName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setnumber] = useState("+966");
+  const [aduits, setAduits] = useState(min);
   const [childs, setChilds] = useState(0);
   const methods = useForm();
   const [selectedDate, setSelectedDate] = useState(null);
   const router = useRouter();
+  const { data: session, update } = useSession();
   const { t, i18n } = useTranslation();
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -48,13 +66,25 @@ function Inquery({ idPackage }) {
   const handleOnChange = (value) => {
     setnumber(value);
   };
+  console.log(theme);
+  useEffect(() => {
+    if (session) {
+      setFristName(session.user.first_name);
+      setLastName(session.user.last_name);
+      setEmail(session.user.email);
+      setnumber(session.user.phone);
+    }
+  }, [session]);
   const onSubmit = (data) => {
     axios
       .post(
         "https://new.tourzable.com/api/send_inquiry",
         {
           ...data,
-          name: `${data.firstName} ${data.lastName}`,
+          name: `${fristName} ${lastName}`,
+          first_name: fristName,
+          last_name: lastName,
+          email,
           phone: number,
           adult: aduits,
           kid: childs,
@@ -80,29 +110,47 @@ function Inquery({ idPackage }) {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-y-4 md:gap-x-4 ">
           {/* frist name  */}
           <div className="">
-            <CustomTextField
+            <TextField
+              value={fristName}
               required
+              fullWidth
+              variant="standard"
               name="firstName"
               label={t("common:single.first_name")}
-              type={"text"}
+              type="text"
+              onChange={(e) => {
+                setFristName(e.target.value);
+              }}
             />
           </div>
           {/* last name */}
           <div className="">
-            <CustomTextField
+            <TextField
+              value={lastName}
               required
-              name="lastName"
+              fullWidth
+              variant="standard"
+              name="firstName"
               label={t("common:single.last_name")}
-              type={"text"}
+              type="text"
+              onChange={(e) => {
+                setLastName(e.target.value);
+              }}
             />
           </div>
           {/*email address */}
           <div className=" md:mt-2">
-            <CustomTextField
+            <TextField
+              value={email}
               required
-              name="email"
+              fullWidth
+              variant="standard"
+              name="EmailAddress "
               label={t("common:single.email_address")}
               type="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
           </div>
           {/*code andnumber */}
@@ -195,19 +243,22 @@ function Inquery({ idPackage }) {
           </div>
           {/*date*/}
           <div className="  md:col-span-2">
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                value={selectedDate}
-                onChange={handleDateChange}
-                slotProps={{
-                  textField: {
-                    variant: "standard",
-                    fullWidth: true,
-                    label: t("common:single.travel_dates"),
-                  },
-                }}
-              />
-            </LocalizationProvider>
+            <ThemeProvider theme={theme}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  renderInput={(params) => <TextField {...params} />}
+                  slotProps={{
+                    textField: {
+                      variant: "standard",
+                      fullWidth: true,
+                      label: t("common:single.travel_dates"),
+                    },
+                  }}
+                />
+              </LocalizationProvider>
+            </ThemeProvider>
           </div>
           {/*text message */}
           <div className=" mt-5  md:col-span-2">

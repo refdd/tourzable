@@ -15,14 +15,23 @@ function OverView({
   unincludes,
   board,
   hotel_rate,
+  tourCode,
 }) {
   const { t, i18n } = useTranslation();
   return (
     <div id="overview" className="">
       <div className=" border-b pb-4">
-        <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
-          {t("common:single.Overview")}
-        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
+            {t("common:single.Overview")}
+          </p>
+          <div className="flex items-center gap-1">
+            <span className="text-lg font-sans capitalize text-mainColor font-medium">
+              code tour:
+            </span>
+            <span className="text-sm text-gray-800 ">{tourCode}</span>
+          </div>
+        </div>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 py-4">
           <div className=" flex justify-center  items-center flex-col">
             <HiOutlineUserGroup className="text-3xl text-MainYeloow " />
@@ -79,7 +88,7 @@ function OverView({
             </p>
             <ul className="flex flex-col space-y-3 py-4">
               {includes?.map((item) => (
-                <li key={item.id} className="flex items-center space-x-2">
+                <li key={item.id} className="flex items-center gap-2">
                   <FcCheckmark />
                   <p>{item.title}</p>
                 </li>
@@ -93,7 +102,7 @@ function OverView({
               </p>
               <ul className="flex flex-col space-y-3 py-4">
                 {unincludes?.map((item) => (
-                  <li key={item.id} className="flex items-center space-x-2">
+                  <li key={item.id} className="flex items-center gap-2">
                     <AiOutlineClose className="text-lg text-red-600" />
                     <p>{item.title}</p>
                   </li>

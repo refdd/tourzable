@@ -81,7 +81,7 @@ function NextTrip({ posts }) {
         </Swiper>
       </div>
       <Link href={"Saudi-travel-blog"}>
-        <div className=" group flex items-center mx-auto  space-x-2 w-fit rounded transition-all hover:md:bg-MainYeloow bg-mainColor h-16 px-5 md:px-10 cursor-pointer  ">
+        <div className=" group flex items-center mx-auto  gap-2 w-fit rounded transition-all hover:md:bg-MainYeloow bg-mainColor h-16 px-5 md:px-10 cursor-pointer  ">
           <button className=" font-medium font-sans text-[15px] text-white md:font-semibold md:text-lg">
             {t("common:home.See_More")}
           </button>

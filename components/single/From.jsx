@@ -18,7 +18,7 @@ function From({
   return (
     <div className="container mx-auto px-4 pb-8 h-full " id="InquireFrom">
       <div className=" bg-gray-50 rounded py-4 md:sticky md:top-14 ">
-        <div className="flex items-center space-x-2 py-2 px-4 border-b-2  ">
+        <div className="flex items-center gap-2 py-2 px-4 border-b-2  ">
           <div
             onClick={() => {
               setOpenFrom(false);
@@ -27,7 +27,7 @@ function From({
              ${
                openFrom
                  ? " bg-white  text-textPurple"
-                 : "text-white bg-MainYeloow "
+                 : "text-white bg-[#ffc107] "
              }`}
           >
             <button className="text-[16px]  font-sans font-medium capitalize">
@@ -61,7 +61,7 @@ function From({
             payMode={payMode}
           />
         ) : (
-          <Inquery idPackage={idPackage} />
+          <Inquery idPackage={idPackage} min={min} />
         )}
       </div>
     </div>
