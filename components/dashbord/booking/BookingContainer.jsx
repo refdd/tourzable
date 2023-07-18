@@ -140,15 +140,6 @@ function BookingContainer({ dataBooking }) {
                       cancel
                     </button>
                   </div>
-                  <div
-                    onClick={handleOpenQuestion}
-                    className="py-2 px-6 flex items-center gap-2 cursor-pointer border  rounded-lg"
-                  >
-                    <AiFillQuestionCircle className={"text-mainColor"} />
-                    <button className="text-gray-800 text-sm font-semibold capitalize font-sans">
-                      have a question
-                    </button>
-                  </div>
                 </div>
               </div>
               <Modal
@@ -158,9 +149,6 @@ function BookingContainer({ dataBooking }) {
                 aria-describedby="modal-modal-description"
               >
                 <CancelForm handleClose={handleClose} bookingId={idBooking} />
-              </Modal>
-              <Modal open={question} onClose={handleCloseQuestion}>
-                <HaveQuestion handleClose={handleCloseQuestion} />
               </Modal>
             </div>
           ))}

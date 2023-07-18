@@ -9,7 +9,20 @@ import { useRouter } from "next/router";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useTranslation } from "react-i18next";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
+const theme = createTheme({
+  direction: "rtl",
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          direction: "ltr",
+        },
+      },
+    },
+  },
+});
 function SearcHome({ regions }) {
   const { dateRange, setDateRange } = useStateContext();
   const [location, setLocation] = useState("");
@@ -43,24 +56,6 @@ function SearcHome({ regions }) {
       },
     });
   };
-
-  // function on click eny were closed
-  // useEffect(() => {
-  //   const handleClick = (event) => {
-  //     if (boxRef.current && !boxRef.current.contains(event.target)) {
-  //       setOpenDate(false)
-  //     }
-
-  //   };
-
-  //   document.addEventListener('click', handleClick);
-
-  //   return () => {
-  //     document.removeEventListener('click', handleClick);
-  //   };
-  // }, []);
-
-  // close date range box
 
   return (
     <div className="w-[90%] md:w-[70%] bg-white rounded-md mt-10 mx-auto  md:rounded-[100px] shadow-lg border md:border-0  md:py-3 md:shadow-xl">
@@ -103,36 +98,24 @@ function SearcHome({ regions }) {
             </Select>
           </div>
         </div>
-        {/* <div ref={boxRef} className="relative md:w-[40%] md:px-3">
-          <div
-          onClick={()=>{
-            setOpenDate(!openDate)
-          }}
-          className="flex flex-col space-y-1 border-b pb-4">
-            <p className="font-medium text-sm font-sans text-[#051036] ">
-              Check in - Check out
-            </p>
-            <p className="text-[#697488] text-sm font-light  ">
-              {formattedStartDate}- {formattedEndDate}
-            </p>
-          </div>
-          {openDate &&<DateRangePicker   /> }
-        </div> */}
+
         <div className="md:w-[35%] md:px-3">
           <div className="  md:col-span-2">
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                value={selectedDate}
-                onChange={handleDateChange}
-                slotProps={{
-                  textField: {
-                    variant: "standard",
-                    fullWidth: true,
-                    label: t("common:list.Choose_Date"),
-                  },
-                }}
-              />
-            </LocalizationProvider>
+            <ThemeProvider theme={theme}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  slotProps={{
+                    textField: {
+                      variant: "standard",
+                      fullWidth: true,
+                      label: t("common:list.Choose_Date"),
+                    },
+                  }}
+                />
+              </LocalizationProvider>
+            </ThemeProvider>
           </div>
         </div>
         <div

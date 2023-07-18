@@ -7,10 +7,12 @@ import NotMember from "@/components/mainSections/NotMember";
 import Reviews from "@/components/mainSections/Reviews";
 import Subscribe from "@/components/mainSections/Subscribe";
 import WhyChooseUs from "@/components/mainSections/WhyChooseUs";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
 
-function AboutUs() {
+function AboutUs({ aboutUs }) {
+  console.log(aboutUs);
   return (
     <div>
       <Head>
@@ -21,7 +23,7 @@ function AboutUs() {
       </Head>
       <MainHeaderList title={"About us "} />
       {/* <WhyChooseUs /> */}
-      <AboutUsSection />
+      <AboutUsSection aboutUs={aboutUs} />
       {/* <NumberOfTourzable /> */}
       {/* <Reviews /> */}
       <Subscribe />
@@ -33,3 +35,12 @@ function AboutUs() {
 }
 
 export default AboutUs;
+export async function getServerSideProps({ locale, query }) {
+  const aboutUs = await fetchApi(`${baseUrl}/pages/about-us?locale=${locale}`);
+
+  return {
+    props: {
+      aboutUs: aboutUs.data,
+    },
+  };
+}

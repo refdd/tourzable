@@ -38,7 +38,7 @@ function CardTour({
       .post(
         "https://new.tourzable.com/api/addToFav",
         {
-          type: tourType,
+          type: "package",
           id: tourId,
         },
         {

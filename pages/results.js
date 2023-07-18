@@ -11,8 +11,9 @@ import FaQSection from "@/components/mainSections/FaQSection";
 import MainHeaderList from "@/components/list/MainHeaderList";
 import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import From from "@/components/single/From";
+import FormCustomizeTour from "@/components/customizeTour/FormCustomizeTour";
 
-function Results({ tours, regions }) {
+function Results({ tours, regions, cities }) {
   // console.log(tours);
   return (
     <>
@@ -26,8 +27,8 @@ function Results({ tours, regions }) {
 
       <div className="py-2 bg-[#f5f5f5]"> </div>
       <div className=" grid grid-cols-1 gap-5  md:grid-cols-3">
-        <div className="hidden md:block col-span-1 mt-5">
-          <From idPackage={"list Search"} />
+        <div className=" col-span-1 mt-5">
+          <FormCustomizeTour blog cities={cities} />
           {/* <FilterDesktop regions={regions} /> */}
         </div>
         <div className="col-span-2">
@@ -52,11 +53,12 @@ export async function getServerSideProps({ query, locale }) {
     `${baseUrl}/packages?locale=${locale}&type_id=${type_id}&region_id=${region_id}&date=${date}`
   );
   const regions = await fetchApi(`${baseUrl}/regions`);
-
+  const cities = await fetchApi(`${baseUrl}/cities?locale=${locale}`);
   return {
     props: {
       tours: tours.data,
       regions: regions.data,
+      cities: cities.data,
     },
   };
 }

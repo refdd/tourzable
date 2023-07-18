@@ -7,10 +7,12 @@ import NotMember from "@/components/mainSections/NotMember";
 import OverViewTerms from "@/components/mainSections/OverViewTerms";
 import Subscribe from "@/components/mainSections/Subscribe";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
 
-function TermsConditions() {
+function TermsConditions({ conditions }) {
+  console.log(conditions);
   return (
     <>
       <Head>
@@ -26,7 +28,7 @@ function TermsConditions() {
           currentLink={"FAQ"}
         />
       </div>
-      <OverViewTerms />
+      <OverViewTerms data={conditions} />
       <Subscribe />
       {/* <DownLoadApp /> */}
       {/* <NotMember /> */}
@@ -36,3 +38,14 @@ function TermsConditions() {
 }
 
 export default TermsConditions;
+export async function getServerSideProps({ locale, query }) {
+  const conditions = await fetchApi(
+    `${baseUrl}/pages/terms-conditions?locale=${locale}`
+  );
+
+  return {
+    props: {
+      conditions: conditions.data,
+    },
+  };
+}

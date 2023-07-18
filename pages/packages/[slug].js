@@ -88,7 +88,7 @@ function SingleTour({ singletour }) {
           price={best_price}
           starNumber={package_rating}
         />
-        <SingleGalleryContainer image={image} days={days} />
+        <SingleGalleryContainer image={image} days={days} tourId={id} />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-1">
           <div className="col-span-2 container mx-auto px-4">
             <OverView

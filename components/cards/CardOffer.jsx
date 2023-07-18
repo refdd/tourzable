@@ -1,9 +1,12 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { BiHeart } from "react-icons/bi";
 import ImageSlider from "../tour/ImageSlider";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import axios from "axios";
 function CardOffer({
   image,
   location,
@@ -13,11 +16,38 @@ function CardOffer({
   sigleImage,
   discount,
   ratingNumber,
+  tourId,
+  packageType,
+  tourSlug,
 }) {
   const router = useRouter();
   const { currency } = router.query;
   const { t, i18n } = useTranslation();
-
+  const { data: session } = useSession();
+  const [favoriteIcon, setFavoriteIcon] = useState(false);
+  const addToFavorite = async () => {
+    console.log("sfdfdsfsd");
+    await axios
+      .post(
+        "https://new.tourzable.com/api/addToFav",
+        {
+          type: "package",
+          id: tourId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + session?.user?.accessToken,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div
       dir={i18n.dir()}
@@ -57,13 +87,34 @@ function CardOffer({
           </p>
         </div>
         {/* heart icon */}
-        <div
-          className="group/item absolute top-3 right-2 shadow-md h-[30px] w-[30px]  bg-white flex items-center justify-center 
-        rounded-full transition-all hover:bg-[#3554d1]
-     "
-        >
-          <BiHeart className="text-sm text-black transition-all group-hover/item:text-white" />
-        </div>
+        {session ? (
+          <div
+            onClick={() => {
+              addToFavorite();
+              setFavoriteIcon(!favoriteIcon);
+            }}
+            className={`group/item absolute top-3 right-2 shadow-md h-[30px] w-[30px] ${
+              favoriteIcon ? "bg-mainColor" : "bg-white "
+            } flex items-center justify-center  cursor-pointer
+            rounded-full transition-all hover:bg-[#3554d1] z-10`}
+          >
+            <BiHeart
+              className={`text-sm  transition-all ${
+                favoriteIcon ? "text-white" : "  text-black"
+              }  group-hover/item:text-white`}
+            />
+          </div>
+        ) : (
+          <Link href={"/Login"}>
+            <div
+              className="group/item absolute top-3 right-2 shadow-md h-[30px] w-[30px]  bg-white flex items-center justify-center  cursor-pointer
+          rounded-full transition-all hover:bg-[#3554d1] z-10
+       "
+            >
+              <BiHeart className="text-sm text-black transition-all group-hover/item:text-white" />
+            </div>
+          </Link>
+        )}
       </div>
 
       {/* title */}
@@ -72,9 +123,11 @@ function CardOffer({
         <p className="text-[#697488] text-sm font-sans font-normal capitalize mb-1">
           {location}
         </p>
-        <p className="hover-underline-animation text-lg text-[#051036] font-medium font-serif capitalize">
-          {title}
-        </p>
+        <Link href={`${packageType}/${tourSlug}`}>
+          <p className="hover-underline-animation text-lg text-[#051036] font-medium font-serif capitalize">
+            {title}
+          </p>
+        </Link>
       </div>
       <p className="text-gray-500 text-sm md:text-lg font-sans capitalize font-normal">
         {description}

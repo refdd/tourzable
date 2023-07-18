@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderSections from "../parts/HeaderSections";
 
-function OverViewTerms({ privacy }) {
+function OverViewTerms({ data }) {
   return (
     <div className="container mx-auto px-4 md:px-10 mt-10">
       <div className="grid grid-cols-1 gap-7 md:grid-cols-9">
@@ -25,7 +25,7 @@ function OverViewTerms({ privacy }) {
             <div className="flex flex-col space-y-3">
               <div
                 dangerouslySetInnerHTML={{
-                  __html: privacy?.desc,
+                  __html: data?.desc,
                 }}
               ></div>
             </div>

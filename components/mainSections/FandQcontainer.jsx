@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FaQSection from "./FaQSection";
 import SingleFandQ from "./SingleFandQ";
 const General = [
@@ -101,7 +101,34 @@ const Requirements = [
     answer: "Please Visit: Https://Visa.Visitsaudi.Com/",
   },
 ];
-function FandQcontainer() {
+function FandQcontainer({ faqs }) {
+  const [general, setGeneral] = useState([]);
+  const [booking, setBooking] = useState([]);
+  const [registration, setRegistration] = useState([]);
+  const [payments, setPayments] = useState([]);
+  const [terms, setTerms] = useState([]);
+  const [pequirements, setRequirements] = useState([]);
+  useEffect(() => {
+    const generalData = faqs?.filter((item) => item?.category == null);
+    setGeneral(generalData);
+    const bookingData = faqs?.filter((item) => item?.category == "Booking");
+    setBooking(bookingData);
+    const registrationData = faqs?.filter(
+      (item) => item?.category == "Registration"
+    );
+    setRegistration(registrationData);
+    const paymentsData = faqs?.filter((item) => item?.category == "Payments");
+    setPayments(paymentsData);
+    const termsData = faqs?.filter(
+      (item) => item?.category == "Terms&Conditions"
+    );
+    setTerms(termsData);
+    const requirementsData = faqs?.filter(
+      (item) => item?.category == "Travel_Requirements"
+    );
+    setRequirements(requirementsData);
+  }, []);
+  console.log(general);
   return (
     <div className="container mx-auto px-4 mt-10 col-span-7">
       <div className=" grid grid-cols-1 gap-8">
@@ -109,37 +136,37 @@ function FandQcontainer() {
           <p className="text-lg text-mainColor font-sans font-medium capitalize">
             General
           </p>
-          <SingleFandQ questions={General} />
+          <SingleFandQ questions={general} />
         </div>
         <div id="Booking" className="flex flex-col space-y-3">
           <p className="text-lg text-mainColor font-sans font-medium capitalize">
             Booking
           </p>
-          <SingleFandQ questions={Booking} />
+          <SingleFandQ questions={booking} />
         </div>
         <div id="Registration" className="flex flex-col space-y-3">
           <p className="text-lg text-mainColor font-sans font-medium capitalize">
             Registration
           </p>
-          <SingleFandQ questions={Registration} />
+          <SingleFandQ questions={registration} />
         </div>
         <div id="Payments" className="flex flex-col space-y-3">
           <p className="text-lg text-mainColor font-sans font-medium capitalize">
             Payments
           </p>
-          <SingleFandQ questions={Payments} />
+          <SingleFandQ questions={payments} />
         </div>
         <div id="Terms" className="flex flex-col space-y-3">
           <p className="text-lg text-mainColor font-sans font-medium capitalize">
             Terms & Conditions
           </p>
-          <SingleFandQ questions={Terms} />
+          <SingleFandQ questions={terms} />
         </div>
         <div id="Requirements" className="flex flex-col space-y-3">
           <p className="text-lg text-mainColor font-sans font-medium capitalize">
             Travel Requirements
           </p>
-          <SingleFandQ questions={Requirements} />
+          <SingleFandQ questions={pequirements} />
         </div>
       </div>
     </div>

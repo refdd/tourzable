@@ -28,7 +28,7 @@ function Privacy({ privacy }) {
           currentLink={"FAQ"}
         />
       </div>
-      <OverViewTerms privacy={privacy} />
+      <OverViewTerms data={privacy} />
       <Subscribe />
       {/* <DownLoadApp /> */}
       {/* <NotMember /> */}

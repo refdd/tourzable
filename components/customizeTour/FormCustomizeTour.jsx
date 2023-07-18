@@ -28,6 +28,7 @@ import {
 import CustomTextField from "../hleper/CustomTextField";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 const labels = {
   0.5: "1 star",
   1: "1 star",
@@ -53,6 +54,19 @@ const MenuProps = {
     },
   },
 };
+
+const theme = createTheme({
+  direction: "rtl",
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          direction: "ltr",
+        },
+      },
+    },
+  },
+});
 function FormCustomizeTour({ blog, cities }) {
   const [number, setnumber] = useState("+1");
   const [startPoint, setstartPoint] = useState("");
@@ -311,35 +325,39 @@ function FormCustomizeTour({ blog, cities }) {
               </div>
               {/*start date*/}
               <div className=" ">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    value={StartDate}
-                    onChange={handlesetStartDateChange}
-                    slotProps={{
-                      textField: {
-                        variant: "standard",
-                        fullWidth: true,
-                        label: "Start Date",
-                      },
-                    }}
-                  />
-                </LocalizationProvider>
+                <ThemeProvider theme={theme}>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      value={StartDate}
+                      onChange={handlesetStartDateChange}
+                      slotProps={{
+                        textField: {
+                          variant: "standard",
+                          fullWidth: true,
+                          label: "Start Date",
+                        },
+                      }}
+                    />
+                  </LocalizationProvider>
+                </ThemeProvider>
               </div>
               {/*endDate date*/}
               <div className="">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    value={EndDate}
-                    onChange={handlesetEndDateChange}
-                    slotProps={{
-                      textField: {
-                        variant: "standard",
-                        fullWidth: true,
-                        label: "End Date",
-                      },
-                    }}
-                  />
-                </LocalizationProvider>
+                <ThemeProvider theme={theme}>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      value={EndDate}
+                      onChange={handlesetEndDateChange}
+                      slotProps={{
+                        textField: {
+                          variant: "standard",
+                          fullWidth: true,
+                          label: "End Date",
+                        },
+                      }}
+                    />
+                  </LocalizationProvider>
+                </ThemeProvider>
               </div>
               {/* counter */}
               <div className="  md:col-span-2">
@@ -496,6 +514,7 @@ function FormCustomizeTour({ blog, cities }) {
 
                 <div className="flex items-center w-full gap-5">
                   <Rating
+                    dir="ltr"
                     name="hover-feedback"
                     value={ratingStar}
                     precision={0.5}
@@ -535,7 +554,7 @@ function FormCustomizeTour({ blog, cities }) {
                   onChange={handleChange}
                   inputProps={{ "aria-label": "controlled" }}
                 />
-                <p className="text-sm font-sans font-medium text-gray-800 capitalize">
+                <p className=" flex gap-1 text-sm font-sans font-medium text-gray-800 capitalize">
                   Agree Our{" "}
                   <span className="text-mainColor cursor-pointer">
                     Terms & Conditions

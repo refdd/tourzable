@@ -6,9 +6,15 @@ import gallery1 from "../../public/assets/images/gallery1.png";
 import gallery2 from "../../public/assets/images/gallery2.png";
 import gallery3 from "../../public/assets/images/gallery3.png";
 import GallerySlider from "./GallerySlider";
-function SingleGalleryContainer({ image, days }) {
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import axios from "axios";
+function SingleGalleryContainer({ image, days, tourId }) {
   const [openGallery, setOpenGallery] = useState(false);
   const [allGallery, setAllGallery] = useState([]);
+  const { data: session } = useSession();
+  const [favoriteIcon, setFavoriteIcon] = useState(false);
+
   useEffect(() => {
     let newArray;
     const lanmarks = days?.map((item) => {
@@ -29,6 +35,28 @@ function SingleGalleryContainer({ image, days }) {
     alllImage();
     setAllGallery(newArray);
   }, []);
+  const addToFavorite = async () => {
+    await axios
+      .post(
+        "https://new.tourzable.com/api/addToFav",
+        {
+          type: "package",
+          id: tourId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + session?.user?.accessToken,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   // console.log(allGallery);
   return (
     <div className="container mx-auto px-4 md:px-10 my-10">
@@ -56,13 +84,34 @@ function SingleGalleryContainer({ image, days }) {
               className="rounded"
             />
             {/* heart icon */}
-            <div
-              className="group/item absolute top-3 right-2 shadow-md h-[40px] w-[40px]  bg-white flex items-center justify-center 
-            rounded-full transition-all hover:bg-[#3554d1] z-10
-         "
-            >
-              <BiHeart className="text-lg text-black transition-all group-hover/item:text-white cursor-pointer" />
-            </div>
+            {session ? (
+              <div
+                onClick={() => {
+                  addToFavorite();
+                  setFavoriteIcon(!favoriteIcon);
+                }}
+                className={`group/item absolute top-3 right-2 shadow-md h-[30px] w-[30px] ${
+                  favoriteIcon ? "bg-mainColor" : "bg-white "
+                } flex items-center justify-center  cursor-pointer
+            rounded-full transition-all hover:bg-[#3554d1] z-10`}
+              >
+                <BiHeart
+                  className={`text-sm  transition-all ${
+                    favoriteIcon ? "text-white" : "  text-black"
+                  }  group-hover/item:text-white`}
+                />
+              </div>
+            ) : (
+              <Link href={"/Login"}>
+                <div
+                  className="group/item absolute top-3 right-2 shadow-md h-[30px] w-[30px]  bg-white flex items-center justify-center  cursor-pointer
+          rounded-full transition-all hover:bg-[#3554d1] z-10
+       "
+                >
+                  <BiHeart className="text-sm text-black transition-all group-hover/item:text-white" />
+                </div>
+              </Link>
+            )}
           </div>
         </div>
         <div className="hidden grid-cols-1 md:grid-cols-2 gap-4 md:grid">

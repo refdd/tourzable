@@ -8,10 +8,12 @@ import OverViewTerms from "@/components/mainSections/OverViewTerms";
 import Subscribe from "@/components/mainSections/Subscribe";
 import VisaSection from "@/components/mainSections/VisaSection";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
 
-function Visa() {
+function Visa({ visa }) {
+  console.log(visa);
   return (
     <>
       <Head>
@@ -27,7 +29,7 @@ function Visa() {
           currentLink={"Visa"}
         />
       </div>
-      <VisaSection />
+      <VisaSection visa={visa} />
       <Subscribe />
       {/* <DownLoadApp /> */}
       {/* <NotMember /> */}
@@ -37,3 +39,12 @@ function Visa() {
 }
 
 export default Visa;
+export async function getServerSideProps({ locale, query }) {
+  const visa = await fetchApi(`${baseUrl}/pages/visa?locale=${locale}`);
+
+  return {
+    props: {
+      visa: visa.data,
+    },
+  };
+}

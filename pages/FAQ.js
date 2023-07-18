@@ -6,10 +6,11 @@ import Footer from "@/components/mainSections/Footer";
 import NotMember from "@/components/mainSections/NotMember";
 import Subscribe from "@/components/mainSections/Subscribe";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
 
-function FAQ() {
+function FAQ({ faqs }) {
   return (
     <>
       <Head>
@@ -27,7 +28,7 @@ function FAQ() {
       </div>
       <div className=" grid grid-cols-1 gap-6 md:grid-cols-9 md:gap-2">
         <FandQList />
-        <FandQcontainer />
+        <FandQcontainer faqs={faqs} />
       </div>
       <Subscribe />
       {/* <DownLoadApp /> */}
@@ -38,3 +39,12 @@ function FAQ() {
 }
 
 export default FAQ;
+export async function getServerSideProps({ locale, query }) {
+  const faqs = await fetchApi(`${baseUrl}/faqs?locale=${locale}`);
+
+  return {
+    props: {
+      faqs: faqs.data,
+    },
+  };
+}

@@ -7,10 +7,11 @@ import NotMember from "@/components/mainSections/NotMember";
 import OverViewTerms from "@/components/mainSections/OverViewTerms";
 import Subscribe from "@/components/mainSections/Subscribe";
 import IconBreadcrumbs from "@/components/single/Breadcrumbs";
+import { baseUrl, fetchApi } from "@/utils/ferchApi";
 import Head from "next/head";
 import React from "react";
 
-function CancellationPolicy() {
+function CancellationPolicy({ policy }) {
   return (
     <>
       <Head>
@@ -26,7 +27,7 @@ function CancellationPolicy() {
           currentLink={"Cancellation Policy"}
         />
       </div>
-      <OverViewTerms />
+      <OverViewTerms data={policy} />
       <Subscribe />
       {/* <DownLoadApp /> */}
       {/* <NotMember /> */}
@@ -36,3 +37,14 @@ function CancellationPolicy() {
 }
 
 export default CancellationPolicy;
+export async function getServerSideProps({ locale, query }) {
+  const policy = await fetchApi(
+    `${baseUrl}/pages/cancellation-policy?locale=${locale}`
+  );
+
+  return {
+    props: {
+      policy: policy.data,
+    },
+  };
+}

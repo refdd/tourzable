@@ -12,7 +12,7 @@ import { Pagination } from "swiper";
 import { useTranslation } from "react-i18next";
 function OfferSlider({ offers }) {
   const { t, i18n } = useTranslation();
-
+  console.log(offers[0]);
   return (
     <div>
       <HeaderSections titel={t("common:home.OffersHeader")} desc={""} />
@@ -51,6 +51,9 @@ function OfferSlider({ offers }) {
               sigleImage={offer.image}
               discount={offer.discount}
               ratingNumber={offer.package_rating}
+              tourId={offer.id}
+              packageType={offer?.type?.slug}
+              tourSlug={offer?.slug}
             />
           </SwiperSlide>
         ))}

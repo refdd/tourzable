@@ -44,7 +44,7 @@ function CardListTour({
       .post(
         "https://new.tourzable.com/api/addToFav",
         {
-          type: tourType,
+          type: "package",
           id: tourId,
         },
         {
@@ -179,7 +179,7 @@ function CardListTour({
         <div className="text-gray-500 text-lg font-sans capitalize font-normal md:text-[16px]">
           <div
             dangerouslySetInnerHTML={{
-              __html: description,
+              __html: description?.substring(0, 90),
             }}
           ></div>
         </div>
