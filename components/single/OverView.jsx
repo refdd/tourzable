@@ -16,6 +16,7 @@ function OverView({
   board,
   hotel_rate,
   tourCode,
+  eligibles,
 }) {
   const { t, i18n } = useTranslation();
   return (
@@ -79,6 +80,24 @@ function OverView({
         <div className="py-4 border-y flex flex-col space-y-4">
           <div dangerouslySetInnerHTML={{ __html: desc }} className=""></div>
         </div>
+        {/* eligibles */}
+        {!eligibles?.length == 0 && (
+          <div className="p-3 bg-gray-50 rounded shadow-md md:flex-1">
+            <p className="text-[22px] text-mainColor font-medium font-sans capitalize">
+              Suitable For
+            </p>
+            <ul className="flex items-center gap-3 flex-wrap mt-5">
+              {eligibles?.map((item) => (
+                <li
+                  key={item?.id}
+                  className="text-sm font-medium font-sans text-gray-600 capitalize hover:text-mainColor transition-all cursor-pointer"
+                >
+                  <span>{item.title}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* price includes  */}
         <div className="flex flex-col gap-4 pt-4 md:flex-row">

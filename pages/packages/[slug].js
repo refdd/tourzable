@@ -55,6 +55,7 @@ function SingleTour({ singletour }) {
     meta_title,
     immediate_booking,
     reviews_count,
+    eligibles,
   } = singletour;
   console.log(singletour);
   return (
@@ -101,6 +102,7 @@ function SingleTour({ singletour }) {
               board={board}
               tourCode={code}
               hotel_rate={hotel_rate?.title}
+              eligibles={eligibles}
             />
             <Itinerary daysItinerary={days} />
             <AdditionalInfo noteContent={note} />
